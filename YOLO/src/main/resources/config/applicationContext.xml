@@ -7,6 +7,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 		
+	<context:component-scan base-package="yolo.*"></context:component-scan>
+		
 	<context:property-placeholder location="classpath:config/dbConnConfig.properties"/>
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -18,7 +20,12 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation" value="classpath:config/MyBatis.xml"></property>
+		<property name="configLocation" value="classpath:config/MyBatisConfig.xml"></property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/UserSql.xml</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

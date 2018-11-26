@@ -21,6 +21,9 @@ public class UserDAOTest extends TestCase {
 	@Autowired
 	private ApplicationContext context;
 	
+	@Autowired
+	private InterfaceUserDAO userDAO;
+	
 	@Test @Ignore
 	public void dbConnTest() {
 		DataSource dataSource = (DataSource)context.getBean("dataSource");
@@ -31,9 +34,9 @@ public class UserDAOTest extends TestCase {
 		}
 	}
 	
-	@Test
+	@Test 
 	public void seletUserTest() {
-		System.out.println();
+		System.out.println(userDAO.selectUser(1));
 	}
 
 }

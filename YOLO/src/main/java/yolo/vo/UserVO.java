@@ -1,7 +1,11 @@
 package yolo.vo;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("User")
 public class UserVO {
 
 	private int userId;
@@ -14,6 +18,8 @@ public class UserVO {
 	private String p_answer;
 	private LocalDateTime wdate;
 	private LocalDateTime udate;
+
+	public UserVO() {}
 	
 	// insert 시 사용할 생성자 테스트22222222
 	public UserVO(String profileImage, String nickName, String email, String password, int p_qId, String p_answer) {
@@ -24,21 +30,7 @@ public class UserVO {
 		this.p_qId = p_qId;
 		this.p_answer = p_answer;
 	}
-	
-	// select 시 사용할 생성자
-	public UserVO(int userId, boolean userType, String profileImage, String nickName, String email, String password, int p_qId, String p_answer, LocalDateTime wdate, LocalDateTime udate) {
-		this.userId = userId;
-		this.userType = userType;
-		this.profileImage = profileImage;
-		this.nickName = nickName;
-		this.email = email;
-		this.password = password;
-		this.p_qId = p_qId;
-		this.p_answer = p_answer;
-		this.wdate = wdate;
-		this.udate = udate;
-	}
-	
+
 	// update 시 사용할 생성자
 	public UserVO(String profileImage, String nickName, String password, int p_qId, String p_answer) {
 		super();
@@ -58,6 +50,10 @@ public class UserVO {
 	}
 
 	public boolean isUserType() {
+		return userType;
+	}
+	
+	public boolean getUserType() {
 		return userType;
 	}
 
