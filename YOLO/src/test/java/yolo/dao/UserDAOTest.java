@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserDAOTest extends TestCase {
 	@Autowired
 	private ApplicationContext context;
 	
-	@Test
+	@Test @Ignore
 	public void dbConnTest() {
 		DataSource dataSource = (DataSource)context.getBean("dataSource");
 		try {
@@ -28,6 +29,11 @@ public class UserDAOTest extends TestCase {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void seletUserTest() {
+		System.out.println();
 	}
 
 }

@@ -21,8 +21,9 @@
 		<property name="configLocation" value="classpath:config/MyBatis.xml"></property>
 	</bean>
 	
-	<!-- <bean class="org.mybatis.spring.mapper.ClassPathMapperScanner">
-		
-	</bean> -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="yolo.dao"></property>
+		<property name="annotationClass" value="yolo.dao.AnnotationUserMapper"></property>
+	</bean>
 
 </beans>
