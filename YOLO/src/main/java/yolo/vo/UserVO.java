@@ -15,7 +15,7 @@ public class UserVO {
 	private LocalDateTime wdate;
 	private LocalDateTime udate;
 	
-	// insert 시 사용할 생성자 테스트
+	// insert 시 사용할 생성자 테스트222
 	public UserVO(String profileImage, String nickName, String email, String password, int p_qId, String p_answer) {
 		this.profileImage = profileImage;
 		this.nickName = nickName;
