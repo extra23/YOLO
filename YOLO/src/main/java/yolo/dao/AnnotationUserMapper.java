@@ -1,5 +1,5 @@
 package yolo.dao;
 
-public @interface AnnotationUserMapper {
+public @interface AnnotationUserMapper {///
 
 }

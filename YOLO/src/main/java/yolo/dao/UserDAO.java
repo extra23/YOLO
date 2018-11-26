@@ -11,7 +11,7 @@ import yolo.vo.UserVO;
 public class UserDAO implements InterfaceUserDAO {
 	
 	@Autowired
-	private InterfaceUserMapper userMapper;
+	private InterfaceUserMapper userMapper;////
 
 	public void insertUser(UserVO user) {
 		userMapper.insertUser(user);

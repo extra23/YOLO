@@ -9,7 +9,7 @@
 		
 	<context:component-scan base-package="yolo.*"></context:component-scan>
 		
-	<context:property-placeholder location="classpath:config/dbConnConfig.properties"/>
+	<context:property-placeholder location="classpath:config/dbConnConfig.properties"/><!-- - -->
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driverClassName}"></property>

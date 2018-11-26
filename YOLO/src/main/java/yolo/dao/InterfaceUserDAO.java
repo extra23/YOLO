@@ -6,7 +6,7 @@ import yolo.vo.UserVO;
 
 public interface InterfaceUserDAO {
 	
-	public void insertUser(UserVO user);
+	public void insertUser(UserVO user);///
 	
 	public UserVO selectUser(int userId);
 	

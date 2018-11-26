@@ -22,7 +22,7 @@ public class UserDAOTest extends TestCase {
 	private ApplicationContext context;
 	
 	@Autowired
-	private InterfaceUserDAO userDAO;
+	private InterfaceUserDAO userDAO;////
 	
 	@Test @Ignore
 	public void dbConnTest() {
