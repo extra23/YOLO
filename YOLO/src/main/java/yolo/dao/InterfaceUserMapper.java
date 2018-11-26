@@ -4,9 +4,10 @@ import java.util.List;
 
 import yolo.vo.UserVO;
 
-public interface InterfaceUserDAO {
-	
-	public void insertUser(UserVO user);///
+@AnnotationUserMapper
+public interface InterfaceUserMapper {////
+
+public void insertUser(UserVO user);
 	
 	public UserVO selectUser(int userId);
 	
@@ -15,5 +16,5 @@ public interface InterfaceUserDAO {
 	public void updateUser(UserVO user);
 	
 	public void deleteUser(int userId);
-
+	
 }
