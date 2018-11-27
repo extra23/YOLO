@@ -20,6 +20,10 @@ public class UserDAO implements InterfaceUserDAO {
 	public UserVO selectUser(int userId) {
 		return userMapper.selectUser(userId);
 	}
+	
+	public UserVO selectUser(String email) {
+		return userMapper.selectUser(email);
+	}
 
 	public List<UserVO> selectUserList() {
 		return userMapper.selectUserList();

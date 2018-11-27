@@ -12,6 +12,10 @@
 		select * from user where userId=#{userId}
 	</select>
 	
+	<select id="selectUser" parameterType="String" resultType="User">
+		select * from user where email=#{email}
+	</select>
+	
 	<select id="selectUserList" resultType="User">
 		select * from user
 	</select>
