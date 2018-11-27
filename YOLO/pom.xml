@@ -67,7 +67,7 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-typehandlers-jsr310</artifactId>
 			<version>1.0.2</version>
-		</dependency>
+		</dependency><!--  -->
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
