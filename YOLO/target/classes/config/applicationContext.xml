@@ -32,5 +32,13 @@
 		<property name="basePackage" value="yolo.dao"></property>
 		<property name="annotationClass" value="yolo.dao.AnnotationUserMapper"></property>
 	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="uploadTempDir" value="uploadTempDir"></property>
+	</bean>
+	
+	<bean id="uploadTempDir" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg value=""></constructor-arg>
+	</bean>
 
 </beans>
