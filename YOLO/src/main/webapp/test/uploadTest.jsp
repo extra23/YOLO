@@ -12,7 +12,7 @@
 	
 	<form action="fileupload" method="post" enctype="multipart/form-data">
 	
-		<input type="file" name="profileImage" placeholder="파일 선택"><br>
+		<input type="file" name="uploadfile" placeholder="파일 선택"><br>
 		
 		<input type="submit" value="업로드">
 	

@@ -18,7 +18,12 @@ public class UserService implements InterfaceUserService {
 		
 	}
 
-	public UserVO readUser(int userId) {
+	public UserVO readUserByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserVO readUSerByEmail(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -8,7 +8,9 @@ public interface InterfaceUserService {
 	
 	public void addUser(UserVO user);
 	
-	public UserVO readUser(int userId);
+	public UserVO readUserByUserId(int userId);
+	
+	public UserVO readUSerByEmail(String email);
 	
 	public List<UserVO> readUserList();
 	
