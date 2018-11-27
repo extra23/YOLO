@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -128,19 +129,19 @@ li {
 	<div class="buttonlist" id="navbarResponsive">
 		<ul class="navbar-nav ml-auto">
 
-			<%-- <c:if test="${empty user.userId }"> --%>
+			 <c:if test="${empty user.userId }"> 
 			<!-- 임의지정 -->
 			<li class="nav-item"><a class="nav-link" href="/YOLO/login">Login&nbsp;&nbsp;</a></li>
 			<li class="nav-item"><a class="nav-link" href="/YOLO/enroll">Join</a></li>
 
 			<!-- 얘는 로그인 상태에 뜰 부분 -->
 
-			<!-- 	</c:if> -->
-			<%-- 	<c:if test="${!empty user.userId }">
+				</c:if> 
+			 	<c:if test="${!empty user.userId }">
 						<li class="nav-item" style="color: white; margin-top: 10px;"><small>[${authUser.nickname}님, 안녕하세요. :D]</small>&nbsp;&nbsp;</li>
 						<li class="nav-item"><a class="nav-link" style="cursor: pointer;" onclick="deleteUser()">Withdrawal&nbsp;&nbsp;</a></li>
 						<li class="nav-item"><a class="nav-link" href="/YOLO/logout">Logout&nbsp;&nbsp;</a></li> <!--얘는 메인페이지로 이동해야함.-->
-					</c:if> --%>
+					</c:if> 
 		</ul>
 	</div>
 
