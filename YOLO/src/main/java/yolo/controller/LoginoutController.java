@@ -33,7 +33,7 @@ public class LoginoutController {
 	public String processSubmit(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 			// 1. request로 parameter를 받음(eamil, password)
-			String eamil = req.getParameter("email");
+			String email = req.getParameter("email");
 			String password = req.getParameter("password");
 			
 			// 2. 받아온 paramter의 무결성 체크(비었는지 안비었는지)
@@ -46,7 +46,7 @@ public class LoginoutController {
 			}
 			req.setAttribute("errors", errors);
 			if(!errors.isEmpty()) {
-				return FORM_VIEW;
+				return "login";
 			}
 			
 			// 3. 무결성 체크 후 비지 않았다면 객체 받고 객체의 메소드를 통해서 인증
