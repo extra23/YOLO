@@ -5,4 +5,33 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+<!-- 웹 어플리에케이션이 처음 올라갈 때 스프링 설정파일도 같이 올려주기 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/config/applicationContext.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- dispatcherServlet :서블릿을 등록해 url 매핑을 걸어준다. -->
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:/config/bean-web.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- url-pattern은 url이 이패턴으로 접근했을 때 servlet-name으로 연결시켜 주는 것이다. -->
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	
+	
 </web-app>
