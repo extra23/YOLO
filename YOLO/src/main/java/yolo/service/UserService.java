@@ -2,13 +2,20 @@ package yolo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import yolo.dao.InterfaceUserDAO;
 import yolo.vo.UserVO;
 
+@Service("UserService")
 public class UserService implements InterfaceUserService {
+	
+	@Autowired
+	private InterfaceUserDAO userDAO;
 
 	public void addUser(UserVO user) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public UserVO readUser(int userId) {
