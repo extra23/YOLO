@@ -149,7 +149,7 @@
 				<!-- 임의지정 -->
 				<li class="nav-item" id="login"><a class="nav-link" href="login" style="color: gray;">Login</a></li>
 				&nbsp;&nbsp;
-				<li class="nav-item" id="join"><a class="nav-link" href="/YOLO/enroll" style="color: gray;">Join</a></li>
+				<li class="nav-item" id="join"><a class="nav-link" href="join" style="color: gray;">Join</a></li>
 			</c:if>
 			
 			<!-- 얘는 로그인 상태에 뜰 부분 -->

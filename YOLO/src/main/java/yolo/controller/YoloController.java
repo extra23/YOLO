@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -32,6 +33,9 @@ public class YoloController {
 	
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	private ServletContext servletContext;
 	
 	// mianBoard(메인 화면)으로 이동
 	@RequestMapping("/mainBoard")
@@ -92,18 +96,27 @@ public class YoloController {
 	
 	// 회원가입 후 (로그인 하고) 메인으로 이동
 	@RequestMapping(value="join", method=RequestMethod.POST)
-	public String addUser(
-			@RequestParam("profileImage") String profileImage,
-			@RequestParam("nickName") String nickName,
-			@RequestParam("email") String email,
-			@RequestParam("password") String password,
-			@RequestParam("p_qId") int p_qId,
-			@RequestParam("p_answer") String p_answer
-			) {
+	public String addUser(@RequestParam("profileImage") String profileImage, @RequestParam("nickName") String nickName, @RequestParam("email") String email, @RequestParam("password") String password, @RequestParam("p_qId") int p_qId, @RequestParam("p_answer") String p_answer) {
+		
+		
 		UserVO user = new UserVO(profileImage, nickName, email, password, p_qId, p_answer);
 		userService.addUser(user);
+		
 		return "mainBoard";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//리스트로 유저의 정보 받아오는 것
 		@RequestMapping("/getUserList.do")

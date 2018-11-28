@@ -44,7 +44,7 @@ public class LoginService {
 		}
 		
 		// email 객체가 존재하지만 객체의 비밀번호와 입력한 비밀번호가 일치하지 않을 때
-		if(user.getPassword() != password) {
+		if(!user.getPassword().equals(password)) {
 			throw new InvalidPasswordException("비밀번호가 일치하지 않음.");
 		}
 		
