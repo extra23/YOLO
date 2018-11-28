@@ -21,7 +21,7 @@ public class UserVO {
 
 	public UserVO() {}
 	
-	// insert 시 사용할 생성자 테스트22222222///
+	// insert 시 사용할 생성자 테스트
 	public UserVO(String profileImage, String nickName, String email, String password, int p_qId, String p_answer) {
 		this.profileImage = profileImage;
 		this.nickName = nickName;
