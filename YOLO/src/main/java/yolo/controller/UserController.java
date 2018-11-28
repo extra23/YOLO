@@ -86,5 +86,18 @@ public class UserController {
 		return "mainBoard";
 	}
 	
+	@RequestMapping(value="uploadTest", method=RequestMethod.GET)
+	public String fileuploadForm() {
+		return "uploadTest";
+	}
+	
+	@RequestMapping(value="uploadTest", method=RequestMethod.POST)
+	public ModelAndView fileupload() {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		
+		return mav;
+	}
 	
 }
