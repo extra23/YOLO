@@ -113,7 +113,7 @@ li {
 
 		<div class="col-lg-6">
 		 
-			<form class="input-group" action="search?searchId=${param.searchId}"
+			<form class="input-group" action="searchUser.do"
 				method="post">
 				<input type="text" name="searchWord" class="form-control"> <span
 					class="input-group-btn"> <input type="submit" id="searchbutton"
