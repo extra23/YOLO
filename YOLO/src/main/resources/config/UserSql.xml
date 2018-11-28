@@ -3,16 +3,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="yolo.dao.InterfaceUserMapper">
-<!--  -->
+
 	<insert id="insertUser" parameterType="User">
 		insert into user(profileImage, nickName, email, password, p_qId, p_answer) values(#{profileImage}, #{nickName}, #{email}, #{password}, #{p_qId}, #{p_answer})
 	</insert>
 	
-	<select id="selectUser" parameterType="Integer" resultType="User">
+	<select id="selectUserByUserId" parameterType="Integer" resultType="User">
 		select * from user where userId=#{userId}
 	</select>
 	
-	<select id="selectUser" parameterType="String" resultType="User">
+	<select id="selectUserByEmail" parameterType="String" resultType="User">
 		select * from user where email=#{email}
 	</select>
 	

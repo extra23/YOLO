@@ -19,6 +19,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/mainBoard")
+	public String getMainBoard() {
+		System.out.println("여기 들어옴");
+		return "mainBoard";
+	}
+	
 	//리스트로 유저의 정보 받아오는 것
 	@RequestMapping("/getUserList.do")
 	public String readUserList(Model model) {

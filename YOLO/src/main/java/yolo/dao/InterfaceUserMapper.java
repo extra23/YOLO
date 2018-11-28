@@ -9,9 +9,9 @@ public interface InterfaceUserMapper {
 
 public void insertUser(UserVO user);
 	
-	public UserVO selectUser(int userId);
+	public UserVO selectUserByUserId(int userId);
 	
-	public UserVO selectUser(String email);
+	public UserVO selectUserByEmail(String email);
 	
 	public List<UserVO> selectUserList();
 	

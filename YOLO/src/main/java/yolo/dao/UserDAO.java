@@ -11,18 +11,18 @@ import yolo.vo.UserVO;
 public class UserDAO implements InterfaceUserDAO {
 	
 	@Autowired
-	private InterfaceUserMapper userMapper;////
+	private InterfaceUserMapper userMapper;
 
 	public void insertUser(UserVO user) {
 		userMapper.insertUser(user);
 	}
 
 	public UserVO selectUser(int userId) {
-		return userMapper.selectUser(userId);
+		return userMapper.selectUserByUserId(userId);
 	}
 	
 	public UserVO selectUser(String email) {
-		return userMapper.selectUser(email);
+		return userMapper.selectUserByEmail(email);
 	}
 
 	public List<UserVO> selectUserList() {
