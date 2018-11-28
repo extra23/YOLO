@@ -27,5 +27,9 @@
 	<delete id="deleteUser" parameterType="Integer">
 		delete from user where userId=#{userId}
 	</delete>
+	
+	<select id="searchUser" parameterType="String" resultType="User">
+		select * from user where email Like CONCAT(‘%’, #{searchKeyword}, ‘%’)
+	</select>
 
 </mapper>

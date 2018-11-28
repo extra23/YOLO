@@ -19,4 +19,6 @@ public void insertUser(UserVO user);
 	
 	public void deleteUser(int userId);
 	
+	public List<UserVO> searchUser(String email);
+	
 }

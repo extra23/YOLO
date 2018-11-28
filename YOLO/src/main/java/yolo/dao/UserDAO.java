@@ -37,4 +37,9 @@ public class UserDAO implements InterfaceUserDAO {
 		userMapper.deleteUser(userId);
 	}
 
+	public List<UserVO> searchUser(String email) {
+	
+		return userMapper.searchUser(email);
+	}
+
 }
