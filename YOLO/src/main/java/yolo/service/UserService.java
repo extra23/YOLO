@@ -12,35 +12,37 @@ import yolo.vo.UserVO;
 public class UserService implements InterfaceUserService {
 	
 	@Autowired
-	private InterfaceUserDAO userDAO;
+	InterfaceUserDAO userDAO;
 
 	public void addUser(UserVO user) {
-		
+		userDAO.insertUser(user);
 	}
 
 	public UserVO readUserByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.selectUser(userId);
 	}
 
 	public UserVO readUSerByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.selectUser(email);
 	}
 
 	public List<UserVO> readUserList() {
-		// TODO Auto-generated method stub
-		return null;
+		return userDAO.selectUserList();
 	}
 
 	public void modifyUser(UserVO user) {
-		// TODO Auto-generated method stub
+		userDAO.updateUser(user);
 
 	}
 
-	public void removeUser(int user) {
-		// TODO Auto-generated method stub
+	public void removeUser(int userId) {
+		userDAO.deleteUser(userId);
 
+	}
+
+	public List<UserVO> searchUser(String email) {
+		
+		return userDAO.searchUser(email);
 	}
 
 }

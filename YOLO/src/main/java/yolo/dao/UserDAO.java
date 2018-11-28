@@ -18,15 +18,18 @@ public class UserDAO implements InterfaceUserDAO {
 	}
 
 	public UserVO selectUser(int userId) {
-		return userMapper.selectUserByUserId(userId);
+		UserVO user = userMapper.selectUserByUserId(userId);
+		return user;
 	}
 	
 	public UserVO selectUser(String email) {
-		return userMapper.selectUserByEmail(email);
+		UserVO user = userMapper.selectUserByEmail(email);
+		return user;
 	}
 
 	public List<UserVO> selectUserList() {
-		return userMapper.selectUserList();
+		List<UserVO> userList = userMapper.selectUserList();
+		return userList;
 	}
 
 	public void updateUser(UserVO user) {
@@ -38,8 +41,8 @@ public class UserDAO implements InterfaceUserDAO {
 	}
 
 	public List<UserVO> searchUser(String email) {
-	
-		return userMapper.searchUser(email);
+		List<UserVO> userList = userMapper.searchUser(email);
+		return userList;
 	}
 
 }

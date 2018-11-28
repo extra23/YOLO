@@ -100,4 +100,12 @@ public class UserController {
 		return mav;
 	}
 	
+	//유저의 이메일로 찾아서 searchPage로 넘기는 메소드
+		@RequestMapping("/searchUser.do")
+		public String searchUser(Model model, @RequestParam("searchWord") String email) {
+			List<UserVO> userSearchList = userService.searchUser(email);
+			model.addAttribute("userSearchList",userSearchList);
+			return "searchPage";
+		}
+	
 }

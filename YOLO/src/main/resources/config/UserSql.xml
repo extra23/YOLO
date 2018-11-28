@@ -28,8 +28,8 @@
 		delete from user where userId=#{userId}
 	</delete>
 	
-	<select id="searchUser" parameterType="String" resultType="User">
-		select * from user where email Like CONCAT(‘%’, #{searchKeyword}, ‘%’)
+	<select id="searchUser" parameterType="string" resultType="User">
+		select * from user where email Like CONCAT('%',#{email},'%')
 	</select>
 
 </mapper>
