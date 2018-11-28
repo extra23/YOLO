@@ -7,10 +7,17 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 		
+		
+	<!-- 빈 등록 -->	
+	<!-- 컨테이너에 빈으로 넣으려면 컴포넌트 스캐너를 이용해서 빈을 찾아 넣어야 한다.(빈 등록을 위해 필요) -->	
 	<context:component-scan base-package="yolo.*"></context:component-scan>
 		
 	<context:property-placeholder location="classpath:config/dbConfig.properties"/>
 	
+	
+	<!-- 디비 접속 정보 -->
+	<!-- mysql에 접속하기 위한 접속 정보를 프로퍼티로 넣어주면 된다. -->
+	<!-- 아래에 있는 sqlSessionFactory에 인자값으로 들어감.  -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${db.driverClassName}"></property>
 		<property name="url" value="${db.url}"></property>
@@ -18,20 +25,35 @@
 		<property name="password" value="${db.password}"></property>
 	</bean>
 	
+	
+	
+	<!-- 모든 바이바티스 애플리케이션은 SqlSessionFactory 인스턴스를 사용한다. -->
+	<!-- 안에 프로퍼티로 아래의 값들을 넣어줌. -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		
+		<!-- 얘는 프로퍼티로 데이터 소스(접속 정보)를 받아야 함 -->
 		<property name="dataSource" ref="dataSource"></property>
+		
+		<!-- @Alias 해 준 클래스들을 프로퍼티로 받아 옴. -->
 		<property name="configLocation" value="classpath:config/MyBatisConfig.xml"></property>
-		<property name="mapperLocations">
+		
+		<!-- 설정 정보와 모델에 대한 정보를 넣었으니 쿼리에 대한 정보를 넣는다. -->
+		<property name="mapperLocations"><!-- 얘는 정보가 여러 개가 들어갈 수 있기 때문에 배열로 들어갈 수 있다. -->
 			<list>
 				<value>classpath:config/UserSql.xml</value>
 			</list>
 		</property>
 	</bean>
 	
+	
+	<!-- SQL 실행이나 트랜잭션 관리 -->
+	<!-- UserDaoImplJDBC 에서 SqlSession 객체 쓸 때 사용. Mapper쓸때는 필요 없음. -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	
+	
+	<!-- 마이바티스 매퍼 인터페이스를 한꺼번에 스캔. -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="yolo.dao"></property>
 		<property name="annotationClass" value="yolo.dao.AnnotationUserMapper"></property>
