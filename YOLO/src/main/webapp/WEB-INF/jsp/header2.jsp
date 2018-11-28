@@ -43,7 +43,7 @@ body,input{
 .col-lg-6 {
 	top: 30px;
 	left: calc(100%/ 1.6);
-	width: 250px;
+	width: 300px;
 	float: none;
 	display: inline-block;
 }
@@ -53,10 +53,9 @@ body,input{
 }
 
 #sitename{
-	  
     top: 20px;
     position: relative;
-    right: 1005px;
+    right: 900px;
     float: right;
     display: inline-block;
     font-size: 50px;
@@ -136,8 +135,8 @@ li {
 
 			 <c:if test="${empty user.userId }"> 
 			<!-- 임의지정 -->
-			<li class="nav-item" id="login"><a class="nav-link" href="/YOLO/login">Login&nbsp;&nbsp;</a></li>
-			<li class="nav-item" id="join"><a class="nav-link" href="/YOLO/enroll">Join</a></li>
+			<li class="nav-item" id="login"><a class="nav-link" href="/YOLO/login" style="color: gray;">Login&nbsp;&nbsp;</a></li>
+			<li class="nav-item" id="join"><a class="nav-link" href="/YOLO/enroll" style="color: gray;">Join</a></li>
 
 			<!-- 얘는 로그인 상태에 뜰 부분 -->
 
