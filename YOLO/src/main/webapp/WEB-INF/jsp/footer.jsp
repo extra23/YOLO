@@ -7,7 +7,7 @@
 <style type="text/css">
 
 .footer{background-color: gray;
-position:fixed; left:0; bottom:0; z-index:2; width:100%;
+ left:0; bottom:0; z-index:2; width:100%;
 height:200px;}
 
 .cr{font-family: 'Baloo Tamma', cursive;
@@ -24,7 +24,7 @@ a:hover { color: black; text-decoration: underline;}
 
 .contact{background-color: gray;
 float:right;margin-left:1400px;margin-bottom:30px;
-position:fixed; left:0; bottom:0; z-index:2; width:400px; height: 150px;
+left:0; bottom:0; z-index:2; width:400px; height: 150px;
 border:solid 1px black;
 font-family: 'Baloo Tamma', cursive;
 }

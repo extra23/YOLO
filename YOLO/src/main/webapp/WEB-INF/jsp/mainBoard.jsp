@@ -27,6 +27,7 @@ li{list-style: none; display: inline-block; width: 200px; height: 200px;}
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header2.jsp"></jsp:include>
 <div class="mainContent">
 <div class="menu">
 <div class="course">
@@ -52,5 +53,6 @@ li{list-style: none; display: inline-block; width: 200px; height: 200px;}
 </div>
 </div>
 </div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
