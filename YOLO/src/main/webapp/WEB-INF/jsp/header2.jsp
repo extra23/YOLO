@@ -87,18 +87,23 @@ a:link {
 	color: gray;
 }
 
+
+#login{width:100px;}
+#join{width:100px;}
+
 .buttonlist{margin-left: 1600px;
 position: relative;bottom: 65px;}
 
 .collapse navbar-collapse{position: relative;left: 500px;}
 li {
 	list-style-type: none;	
+	font-family: 'Baloo Tamma', cursive;
 }
 </style>
 <body>
 
-	<!--fix header  창 -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<!--fix header  창ss -->
+	<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> -->
 
 
 	<div class="background">
@@ -131,8 +136,8 @@ li {
 
 			 <c:if test="${empty user.userId }"> 
 			<!-- 임의지정 -->
-			<li class="nav-item"><a class="nav-link" href="/YOLO/login">Login&nbsp;&nbsp;</a></li>
-			<li class="nav-item"><a class="nav-link" href="/YOLO/enroll">Join</a></li>
+			<li class="nav-item" id="login"><a class="nav-link" href="/YOLO/login">Login&nbsp;&nbsp;</a></li>
+			<li class="nav-item" id="join"><a class="nav-link" href="/YOLO/enroll">Join</a></li>
 
 			<!-- 얘는 로그인 상태에 뜰 부분 -->
 
@@ -145,6 +150,6 @@ li {
 		</ul>
 	</div>
 
-	</nav>
+	<!-- </nav> -->
 </body>
 </html>

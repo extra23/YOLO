@@ -10,9 +10,12 @@
  left:0; bottom:0; z-index:2; width:100%;
 height:200px;}
 
-.cr{font-family: 'Baloo Tamma', cursive;
-margin-left: 200px;
-margin-top: 50px;
+.cr{    font-family: 'Baloo Tamma', cursive;
+    
+    margin-left: 250px;
+    width: 100px;
+    position: relative;
+    top: 40px;
 }
 
 a{font-family: 'Baloo Tamma', cursive;}
@@ -22,11 +25,18 @@ a:visited { color: black; text-decoration: none;}
 a:hover { color: black; text-decoration: underline;}
 .sns{color: black; text-decoration: underline;}
 
-.contact{background-color: gray;
-float:right;margin-left:1400px;margin-bottom:30px;
-left:0; bottom:0; z-index:2; width:400px; height: 150px;
-border:solid 1px black;
-font-family: 'Baloo Tamma', cursive;
+.contact{    background-color: gray;
+    float: right;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 400px;
+    height: 150px;
+    border: solid 1px black;
+    font-family: 'Baloo Tamma', cursive;
+    position: relative;
+    left: -200px;
+    top: -20px;
 }
 
 </style>
@@ -40,7 +50,7 @@ font-family: 'Baloo Tamma', cursive;
 <p class="cr">copyright</p>
 
 <div class="contact">
-<!-- <p class="sns">&lt;Contact&gt;</p> -->
+<!-- <p class="sns">&lt;Contact&gt;</p>ss-->
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt; Contact &gt; <!-- 무한 &nbsp; 오예~~~~ -->
