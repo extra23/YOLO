@@ -145,7 +145,7 @@
 	<div class="buttonlist" id="navbarResponsive">
 		<ul class="navbar-nav ml-auto">
 
-			<c:if test="${empty user.userId}">
+			<c:if test="${empty sessionScope.authUser}">
 				<!-- 임의지정 -->
 				<li class="nav-item" id="login"><a class="nav-link" href="login" style="color: gray;">Login</a></li>
 				&nbsp;&nbsp;
@@ -153,8 +153,8 @@
 			</c:if>
 			
 			<!-- 얘는 로그인 상태에 뜰 부분 -->
-			<c:if test="${!empty user.userId }">
-				<li class="nav-item" style="color: white; margin-top: 10px;"><small>[${authUser.nickname}님, 안녕하세요. :D]</small>&nbsp;&nbsp;</li>
+			<c:if test="${!empty sessionScope.authUser}">
+				<li class="nav-item" style="color: white; margin-top: 10px;"><small>[${authUser.nickName}님, 안녕하세요. :D]</small>&nbsp;&nbsp;</li>
 				<li class="nav-item"><a class="nav-link" style="cursor: pointer;" onclick="deleteUser()">Withdrawal&nbsp;&nbsp;</a></li>
 				<li class="nav-item"><a class="nav-link" href="/YOLO/logout">Logout&nbsp;&nbsp;</a></li>
 				<!--얘는 메인페이지로 이동해야함.-->

@@ -93,17 +93,19 @@
 	<c:choose>
 		<c:when test="${empty userImage}">
 			<div>
-				<img id="profileImg" src="/displayFile?fileName=/overaction.jpg" style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px;">
+				<img id="profileImg" src="/displayFile?fileName=/overaction.jpg" style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px; cursor: pointer;">
 			</div>
 		</c:when>
 		<c:otherwise>
 			<div>
-				<img id="profileImg" src="/displayFile?fileName=${userImage}" style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px;">
+				<img id="profileImg" src="/displayFile?fileName=${userImage}" style="border-radius: 0%; padding-top: 10px; height: 100px; width: 100px; cursor: pointer;">
 			</div>
 		</c:otherwise>
 	</c:choose>
 
 	<form action="join" method="post" enctype="multipart/form-data">
+	
+		<input id="input_img" type="file" name="file" placeholder="파일 선택" hidden="hidden">
 	
 		nickName : <input type="text" name="nickName"><br>
 	
