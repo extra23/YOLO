@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,13 +68,17 @@
 				<div class="form-group form-group-lg">
 					<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 					<div class="col-sm-6">
-						<input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
+						<input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" autocomplete=off>
+						<c:if test="${errors.email}"><span>Email을 입력해주세요.</span></c:if>
+						<c:if test="${errors.UserNotFound}"><span>Email이 일치하지 않습니다.</span></c:if>
 					</div>
 				</div>
 				<div class="form-group form-group-lg">
 					<label for="inputPassword3" class="col-sm-3 control-label">Password</label>
 					<div class="col-sm-6">
 						<input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
+						<c:if test="${errors.password}"><span>Password를 입력해주세요.</span></c:if>
+						<c:if test="${errors.InvalidPassword}"><span>Password가 일치하지 않습니다.</span></c:if>
 					</div>
 				</div>
 				<div class="form-group">
@@ -89,7 +93,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-7">
 						<!-- <button type="submit" class="btn btn-default btn-block btn-lg">Login</button> -->
-						<input type="submit" class="btn btn-default btn-block btn-lg" value="Login">
+						<input type="submit" class="btn btn-default btn-block btn-lg" value="Login" ac>
 					</div>
 					<div class="col-sm-offset-2 col-sm-7">
 						<button type="submit" class="btn btn-default btn-block btn-lg">Cancel</button>
