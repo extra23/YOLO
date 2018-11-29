@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.dao.InterfaceTopicMapper">
+
+	<insert id="insertTopic" parameterType="Topic">
+		insert into topic(moduleId, userId, tTitle, tContent) values(#{modueId}, #{userId}, #{tTitle}, #{tContent})
+	</insert>
+	
+	<select id="selectTopicByUserId" parameterType="Integer" resultType="Topic">
+		select tTitle, tContent from topic where userId=#{userId}
+	</select>
+	
+	<select id="selectTopicByTopicId" parameterType="Integer" resultType="Topic">
+		select tTitle, tContent from topic where topicId=#{topicId}
+	</select>
+	
+	<select id="selectTopicList" resultType="Topic">
+		select tTitle, tContent from topic
+	</select>
+	
+	<update id="updateTopic" parameterType="Topic">
+		update topic set moduleId=#{moduleId}, tTitle=#{tTitle}, tContent=#{tContent} where topicId=#{topicId}
+	</update>
+	
+	<delete id="deleteTopic" parameterType="Integer" >
+		delete from topic where topicId=#{topicId}
+	</delete>
+	
+	<select id="searchTopic" parameterType="string" resultType="Topic">
+		select * from topic where tTitle Like CONCAT('%',#{tTitle},'%')
+	</select>
+
+</mapper>

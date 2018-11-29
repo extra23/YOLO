@@ -125,6 +125,7 @@ li {
 	border-color: gray;
 	color: black;
 	font-family: 'Baloo Tamma','Jua', cursive;
+	height: 35px;
 }
 .dropdown-menu>li>a{
 	font-family: 'Jua', sans-serif;
