@@ -54,7 +54,7 @@ public class LoginService {
 	}
 
 	// 로그인 처리
-	// @RequestMapping("loginCheck.do")
+	@RequestMapping("loginCheck.do")
 	public UserVO loginCheck(String email, String password) {
 
 		// userVO를 이용해서 email객체를 select 해옴
