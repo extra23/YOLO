@@ -52,7 +52,7 @@ public class YoloController {
 	
 	/*@Autowired
 	private ServletContext servletContext;*/
-	@Resource(name="uploadTempDir")
+	@Resource(name="uploadPath")
 	private String uploadPath;
 	
 	// mianBoard(메인 화면)으로 이동
