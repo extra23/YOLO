@@ -61,7 +61,7 @@ public class LoginService {
 		UserVO user = userDAO.selectUser(email);
 
 		// email 객체가 존재하지 않을 때의 처리
-		if (email == null) {
+		if (user == null) {
 			throw new UserNotFoundException("존재하지 않는 사용자");
 		}
 

@@ -80,12 +80,13 @@ public class YoloController {
 		}
 		
 		if(!errors.isEmpty()) {
-			modelAndView.addObject(errors);
+			modelAndView.addObject("errors",errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		}
 		
 		UserVO user = null;
+		System.out.println(email + "/" + password);
 		
 		try {
 			user = loginService.loginCheck(email, password);
@@ -94,12 +95,12 @@ public class YoloController {
 			return null;
 		} catch (UserNotFoundException e) {
 			errors.put("UserNotFound", true);
-			modelAndView.addObject(errors);
+			modelAndView.addObject("errors", errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		} catch (InvalidPasswordException e) {
 			errors.put("InvalidPassword", true);
-			modelAndView.addObject(errors);
+			modelAndView.addObject("errors", errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		}
