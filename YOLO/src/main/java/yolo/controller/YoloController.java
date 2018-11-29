@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,8 +50,10 @@ public class YoloController {
 	@Autowired
 	private LoginService loginService;
 	
-	@Autowired
-	private ServletContext servletContext;
+	/*@Autowired
+	private ServletContext servletContext;*/
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	// mianBoard(메인 화면)으로 이동
 	@RequestMapping("/mainBoard")
@@ -77,12 +80,13 @@ public class YoloController {
 		}
 		
 		if(!errors.isEmpty()) {
-			modelAndView.addObject(errors);
+			modelAndView.addObject("errors",errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		}
 		
 		UserVO user = null;
+		System.out.println(email + "/" + password);
 		
 		try {
 			user = loginService.loginCheck(email, password);
@@ -91,12 +95,12 @@ public class YoloController {
 			return null;
 		} catch (UserNotFoundException e) {
 			errors.put("UserNotFound", true);
-			modelAndView.addObject(errors);
+			modelAndView.addObject("errors", errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		} catch (InvalidPasswordException e) {
 			errors.put("InvalidPassword", true);
-			modelAndView.addObject(errors);
+			modelAndView.addObject("errors", errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		}
@@ -122,7 +126,7 @@ public class YoloController {
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
-		String uploadPath = servletContext.getRealPath("/resources/images/");
+		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
 		File target = new File(uploadPath, savedName);
@@ -137,7 +141,7 @@ public class YoloController {
 	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST, produces="text/plain; charset=UTF-8")
 	public String uploadAjax(MultipartFile file, String str, HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		
-		String uploadPath = request.getServletContext().getRealPath("/resources/images/");
+		// String uploadPath = request.getServletContext().getRealPath("/resources/images/");
 		
 		System.out.println("originalName : " + file.getOriginalFilename());
 		
@@ -162,7 +166,7 @@ public class YoloController {
 	@RequestMapping("/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
 		
-		String uploadPath = servletContext.getRealPath("/resources/images/");
+		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		
 		InputStream in = null;
 		ResponseEntity<byte[]> entity = null;
@@ -202,7 +206,7 @@ public class YoloController {
 	@RequestMapping(value="/deleteFile", method=RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName){
 		
-		String uploadPath = servletContext.getRealPath("/resources/images/");
+		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		
 		System.out.println("delete file : " + fileName);
 		
@@ -277,5 +281,38 @@ public class YoloController {
 		model.addAttribute("userSearchList",userSearchList);
 		return "searchPage";
 	}
+	
+	// 로그인
+	@RequestMapping(value="/mainBoard.do")
+	public ModelAndView login() throws Exception{
+		ModelAndView mav = new ModelAndView("/mainBoard.do");
+		return mav;
+					
+					//Map<String, Object> map = UserService.
+					/*req.getParameter("email");		
+					// 로그인 성공시
+					if(req.getParameter("email") == null) {
+						mav.addObject("msg", "")
+					}*/
+	}
+
+	// 로그인을 하지 않았을때 로그인하지 않았다고 알려주고 로그인 페이지로 이동
+	@RequestMapping(value = "/needLogin.do")
+	public ModelAndView needLogin() throws Exception {
+		ModelAndView mav = new ModelAndView("/loginWarning");
+			mav.addObject("msg", "로그인 후 이용해주시기 바랍니다.");
+			return mav;
+		}
+
+	// 로그아웃
+	@RequestMapping(value = "logoutTry.do")
+	public ModelAndView logout(HttpServletRequest request) throws Exception {
+		request.getSession().removeAttribute("login");
+
+		ModelAndView mav = new ModelAndView("/logout");
+		mav.addObject("msg", "로그아웃되었습니다 빠잉");
+
+		return mav;
+		}
 	
 }

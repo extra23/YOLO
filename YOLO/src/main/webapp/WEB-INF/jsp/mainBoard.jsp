@@ -110,10 +110,12 @@
 			margin-top: 0px !important;
 		}
 		
+		::-webkit-scrollbar {display: none;}
+		
 	</style>
 	
 </head>
-<body id="contentBody">
+<body id="contentBody" style="-ms-overflow-style: none;">
 	
 	<jsp:include page="header2.jsp"></jsp:include>
 	
