@@ -9,7 +9,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<!-- 합쳐지고 최소화된 최신 자바스크립트1 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
@@ -29,9 +29,9 @@
 .form-group-lg{margin-right: 20px!important;}
 .btn{margin-bottom: 10px;}
 .joinTitle{margin-top: 40px; font-size: 50px;}
-input[type="file"]{color: transparent; width: 200px; opacity: 0}
-.profile{width: 20%; height: 200px; margin-left: 420px; border: 1px solid darkgray; border-radius: 10px; background-color: white;}
-.profileButton{width: 30%; margin-left: 22%; margin-bottom:30px; border-radius: 10px; margin-right: 5%;}
+input[type="file"]{width: 0%; height: 0%;}
+.profile{width: 20%; height: 200px; margin-left: 39%; border: 1px solid darkgray; border-radius: 10px; background-color: white;}
+.profileButton{width: 30%; margin-left: 22.5%; margin-bottom:30px; border-radius: 10px; margin-right: 5%;}
 .profileTitle{padding-right: 60px; padding-bottom: 10px;}
 .form-control{margin-bottom: 20px;}
 .button_base {
@@ -73,15 +73,21 @@ input[type="file"]{color: transparent; width: 200px; opacity: 0}
 
 </style>
 <script type="text/javascript">
+
 $(function () {
-	$('input[type="file"]').change(function () {
-		if($(this).val() != ""){
-			$(this).css('color','#333');
-		}else{
-			$(this).css('color','transparent');
-		}
-	});
-})
+$('.fileButton').click(function (e) {
+	e.preventDefault();
+	$("input:file").click();               
+	var ext = $("input:file").val().split(".").pop().toLowerCase();
+	if(ext.length > 0){
+		if($.inArray(ext, ["gif","png","jpg","jpeg"]) == -1) { 
+			alert("gif,png,jpg 파일만 업로드 할수 있습니다.");
+			return false;  
+		}                  
+	}
+	$("input:file").val().toLowerCase();
+});                         
+});            
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -95,10 +101,10 @@ $(function () {
 	<label for="profileImage" class="control-label profileTitle">ProfileImage</label>
 	<div class="form-group form-group-lg">
     <div class="profile">
-      <input type="file" id="profileImage" onchange="javascript: document.getElementById('fileName').value = this.value">
+      <input type="file" id="profileImage">
     </div>
     <div class="profileButton"> 
-    <input type="button" value="Browse" class="fileButton button_base b01_simple_rollover"></div>
+    <input type="button" value="Browse" class="fileButton button_base b01_simple_rollover" onfocus="this.blur();"></div>
          
   </div>
   <div class="form-group form-group-lg">
