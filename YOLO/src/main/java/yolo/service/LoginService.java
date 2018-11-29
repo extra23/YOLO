@@ -75,7 +75,7 @@ public class LoginService {
 	}
 
 	// 로그아웃
-	@RequestMapping("logout.do")
+	// @RequestMapping("/logout")
 	public ModelAndView logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		// 1. session 받아오기
 		HttpSession session = req.getSession(false);
