@@ -13,5 +13,11 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
 	</bean>
+	
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg>
+			<value>C:/temp/</value>
+		</constructor-arg>
+	</bean>
 
 </beans>

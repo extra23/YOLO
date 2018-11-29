@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,8 +50,10 @@ public class YoloController {
 	@Autowired
 	private LoginService loginService;
 	
-	@Autowired
-	private ServletContext servletContext;
+	/*@Autowired
+	private ServletContext servletContext;*/
+	@Resource(name="uploadTempDir")
+	private String uploadPath;
 	
 	// mianBoard(메인 화면)으로 이동
 	@RequestMapping("/mainBoard")
@@ -122,7 +125,7 @@ public class YoloController {
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
-		String uploadPath = servletContext.getRealPath("/resources/images/");
+		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
 		File target = new File(uploadPath, savedName);
@@ -137,7 +140,7 @@ public class YoloController {
 	@RequestMapping(value="/uploadAjax", method=RequestMethod.POST, produces="text/plain; charset=UTF-8")
 	public String uploadAjax(MultipartFile file, String str, HttpSession session, HttpServletRequest request, Model model) throws Exception {
 		
-		String uploadPath = request.getServletContext().getRealPath("/resources/images/");
+		// String uploadPath = request.getServletContext().getRealPath("/resources/images/");
 		
 		System.out.println("originalName : " + file.getOriginalFilename());
 		
@@ -162,7 +165,7 @@ public class YoloController {
 	@RequestMapping("/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
 		
-		String uploadPath = servletContext.getRealPath("/resources/images/");
+		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		
 		InputStream in = null;
 		ResponseEntity<byte[]> entity = null;
@@ -202,7 +205,7 @@ public class YoloController {
 	@RequestMapping(value="/deleteFile", method=RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName){
 		
-		String uploadPath = servletContext.getRealPath("/resources/images/");
+		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		
 		System.out.println("delete file : " + fileName);
 		
