@@ -43,7 +43,7 @@
 		<input type="text" name="nickName" placeholder="nickName">
 	</p>
 	<p>
-		<input type="password" name="oldPwd" placeholder="현재 비밀번호1">
+		<input type="password" name="oldPwd" placeholder="현재 비밀번호11">
 		<c:if test="${errors.oldPwd}"><span>현재 비밀번호를 입력해주세요</span></c:if>
 		<c:if test="${errors.wrongOldPwd}"><span>잘못된 비밀번호 입니다.</span></c:if>
 	</p>

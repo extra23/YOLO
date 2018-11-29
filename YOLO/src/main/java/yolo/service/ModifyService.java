@@ -31,7 +31,7 @@ public class ModifyService {
 		
 		// user객체와 입력받은 비밀번호를 비교해서 잘못된 비밀번호를 입력했다면
 		if(!user.getPassword().equals(oldPwd)) {
-			throw new InvalidPasswordException("잘못된 비밀번호");
+			throw new InvalidPasswordException("잘못된 비밀번호1");
 		}
 		
 		user.setProfileImage(profileImage);
