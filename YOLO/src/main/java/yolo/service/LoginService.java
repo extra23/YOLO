@@ -86,7 +86,7 @@ public class LoginService {
 		}
 
 		// 3. login 페이지로 redirect
-		resp.sendRedirect(req.getContextPath() + "/login");
+		resp.sendRedirect(req.getContextPath() + "/mainBoard");
 
 		return null;
 	}

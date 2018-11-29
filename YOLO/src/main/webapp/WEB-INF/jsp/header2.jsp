@@ -156,7 +156,7 @@
 			<c:if test="${!empty sessionScope.authUser}">
 				<li class="nav-item" style="color: white; margin-top: 10px;"><small>[${authUser.nickName}님, 안녕하세요. :D]</small>&nbsp;&nbsp;</li>
 				<li class="nav-item"><a class="nav-link" style="cursor: pointer;" onclick="deleteUser()">Withdrawal&nbsp;&nbsp;</a></li>
-				<li class="nav-item"><a class="nav-link" href="/YOLO/logout">Logout&nbsp;&nbsp;</a></li>
+				<li class="nav-item"><a class="nav-link" href="logout">Logout&nbsp;&nbsp;</a></li>
 				<!--얘는 메인페이지로 이동해야함.-->
 			</c:if>
 			
