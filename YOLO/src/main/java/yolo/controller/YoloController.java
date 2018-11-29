@@ -282,37 +282,39 @@ public class YoloController {
 		return "searchPage";
 	}
 	
-	// 로그인
+	/*// 로그인
 	@RequestMapping(value="/mainBoard.do")
 	public ModelAndView login() throws Exception{
 		ModelAndView mav = new ModelAndView("/mainBoard.do");
 		return mav;
 					
 					//Map<String, Object> map = UserService.
-					/*req.getParameter("email");		
+					req.getParameter("email");		
 					// 로그인 성공시
 					if(req.getParameter("email") == null) {
 						mav.addObject("msg", "")
-					}*/
-	}
+					}
+	}*/
 
 	// 로그인을 하지 않았을때 로그인하지 않았다고 알려주고 로그인 페이지로 이동
-	@RequestMapping(value = "/needLogin.do")
+	/*@RequestMapping(value = "/needLogin.do")
 	public ModelAndView needLogin() throws Exception {
 		ModelAndView mav = new ModelAndView("/loginWarning");
 			mav.addObject("msg", "로그인 후 이용해주시기 바랍니다.");
 			return mav;
-		}
+		}*/
 
 	// 로그아웃
 	@RequestMapping(value = "logoutTry.do")
-	public ModelAndView logout(HttpServletRequest request) throws Exception {
-		request.getSession().removeAttribute("login");
+	public String logout(HttpServletRequest request) throws Exception {
+		
 
-		ModelAndView mav = new ModelAndView("/logout");
-		mav.addObject("msg", "로그아웃되었습니다 빠잉");
+		request.getSession().removeAttribute("authUser");
 
-		return mav;
-		}
+		
+
+		return "mainBoard";
+		
+	}
 	
 }
