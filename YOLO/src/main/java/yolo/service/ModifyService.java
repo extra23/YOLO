@@ -40,6 +40,6 @@ public class ModifyService {
 		user.setP_qId(p_qId);
 		user.setP_answer(p_answer);
 		
-		return null;
+		return Modify;
 	}
 }
