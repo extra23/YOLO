@@ -280,7 +280,7 @@ public class YoloController {
 		return "searchPage";
 	}
 	
-	/*// 로그인
+	/*// 로그인-
 	@RequestMapping(value="/mainBoard.do")
 	public ModelAndView login() throws Exception{
 		ModelAndView mav = new ModelAndView("/mainBoard.do");
