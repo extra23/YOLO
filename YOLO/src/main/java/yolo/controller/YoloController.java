@@ -148,15 +148,7 @@ public class YoloController {
 		ResponseEntity<String> img_path = new ResponseEntity<String>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
 		String user_imgPath = (String)img_path.getBody();
 		
-		System.out.println(user_imgPath);
-		
-		UserVO vo = new UserVO();
-		vo.setProfileImage(user_imgPath);
-		
-		UserVO id = (UserVO)session.getAttribute("login");
-		System.out.println(id.getUserId());
-		
-		System.out.println("file name : " + user_imgPath);
+		System.out.println("user_imgPath : " + user_imgPath);
 		
 		return user_imgPath;
 		
@@ -206,17 +198,23 @@ public class YoloController {
 	@RequestMapping(value="/deleteFile", method=RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName){
 		
+		System.out.println("deleteFile 함수");
+		
 		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		
 		System.out.println("delete file : " + fileName);
 		
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+		System.out.println("formatName : " + formatName);
 		
 		org.springframework.http.MediaType mType = MediaUtils.getMediaType(formatName);
 		
 		if(mType != null) {
 			String front = fileName.substring(0, 12);
+			System.out.println("front : " + front);
 			String end = fileName.substring(14);
+			System.out.println("end : " + end);
+			System.out.println("뭔가 : " + uploadPath + (front + end).replace('/', File.separatorChar));
 			new File(uploadPath + (front + end).replace('/', File.separatorChar)).delete();
 		}
 		

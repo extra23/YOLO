@@ -1,137 +1,135 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>header.jsp</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>header.jsp</title>
 
-<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Jua"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<style>
-body, input {
-	font-family: 'Baloo Tamma', cursive;
-	font-size: 25px;
-}
-
-.background {
-	background-color: black;
-	height: 100px;
-	width: 100%;
-}
-
-#logo {
-	float: left;
-	margin: 15px;
-}
-
-#logo img {
-	border-radius: 100%;
-	width: 50px;
-}
-
-/* 검색창 */
-.col-lg-6 {
-	top: 30px;
-	left: calc(100%/ 1.6);
-	width: 300px;
-	float: none;
-	display: inline-block;
-}
-
-.row {
-	background-color: black;
-}
-
-#sitename {
-	top: 20px;
-	position: relative;
-	right: 900px;
-	float: right;
-	display: inline-block;
-	font-size: 50px;
-	color: gray;
-}
-
-#sitename a {
-	text-decoration: none;
-	color: gray;
-}
-
-input[type="submit"] {
-	font-family: 'Jua', sans-serif;
-}
-
-.joinbutton {
-	top: 8px;
-	left: calc(100%/ 1.3);
-	float: none;
-	display: inline-block;
-}
-
-/* 로그인버튼 */
-.dropdown {
-	top: 8px;
-	left: calc(100%/ 1.3);
-	float: none;
-	display: inline-block;
-}
-
-/* a:link {
+	<style>
+		body, input {
+			font-family: 'Baloo Tamma', cursive;
+			font-size: 25px;
+		}
+		
+		.background {
+			background-color: black;
+			height: 100px;
+			width: 100%;
+		}
+		
+		#logo {
+			float: left;
+			margin: 15px;
+		}
+		
+		#logo img {
+			border-radius: 100%;
+			width: 50px;
+		}
+		
+		/* 검색창 */
+		.col-lg-6 {
+			top: 30px;
+			left: calc(100%/ 1.6);
+			width: 300px;
+			float: none;
+			display: inline-block;
+		}
+		
+		.row {
+			background-color: black;
+		}
+		
+		#sitename {
+			top: 20px;
+			position: relative;
+			right: 900px;
+			float: right;
+			display: inline-block;
+			font-size: 50px;
+			color: gray;
+		}
+		
+		#sitename a {
+			text-decoration: none;
+			color: gray;
+		}
+		
+		input[type="submit"] {
+			font-family: 'Jua', sans-serif;
+		}
+		
+		.joinbutton {
+			top: 8px;
+			left: calc(100%/ 1.3);
+			float: none;
+			display: inline-block;
+		}
+		
+		/* 로그인버튼 */
+		.dropdown {
+			top: 8px;
+			left: calc(100%/ 1.3);
+			float: none;
+			display: inline-block;
+		}
+			
+		/* a:link {
 			text-decoration: none;
 			color: gray;
 		} */
-#login {
-	width: 100px;
-}
+		
+		#login {
+			width: 100px;
+		}
+		
+		#join {
+			width: 100px;
+		}
+		
+		.buttonlist {
+			margin-left: 1600px;
+			position: relative;
+			bottom: 65px;
+		}
+		
+		.collapse navbar-collapse {
+			position: relative;
+			left: 500px;
+		}
+		
+		li {
+			list-style-type: none;
+			font-family: 'Baloo Tamma', cursive;
+		}
+		
+		.btn-group{
+			background-color: black;
+			height: 35px;
+			top: -5px;
+		}
+		
+		.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group>.btn+.dropdown-toggle{
+			background-color: white;
+			border-color: gray;
+			color: black;
+			font-family: 'Baloo Tamma','Jua', cursive;
+			height: 35px;
+		}
 
-#join {
-	width: 100px;
-}
-
-.buttonlist {
-	margin-left: 1600px;
-	position: relative;
-	bottom: 65px;
-}
-
-.collapse navbar-collapse {
-	position: relative;
-	left: 500px;
-}
-
-li {
-	list-style-type: none;
-	font-family: 'Baloo Tamma', cursive;
-}
-
-.btn-group{
-	background-color: black;
-	height: 35px;
-	top: -5px;
-}
-.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group>.btn+.dropdown-toggle{
-	background-color: white;
-	border-color: gray;
-	color: black;
-	font-family: 'Baloo Tamma','Jua', cursive;
-	height: 35px;
-}
-.dropdown-menu>li>a{
-	font-family: 'Jua', sans-serif;
-}
-
-</style>
+		.dropdown-menu>li>a{
+			font-family: 'Jua', sans-serif;
+		}
+		
+	</style>
 </head>
 <body>
 

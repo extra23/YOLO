@@ -16,8 +16,11 @@
 	
 	<bean id="uploadPath" class="java.lang.String">
 		<constructor-arg>
-			<value>C:/temp/</value>
+			<value>C:\temp\</value>
 		</constructor-arg>
 	</bean>
+	
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:resources location="/WEB-INF/resources/images/" mapping="/images/**"></mvc:resources>
 
 </beans>
