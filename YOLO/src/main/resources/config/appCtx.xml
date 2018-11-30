@@ -56,11 +56,7 @@
 	<!-- 마이바티스 매퍼 인터페이스를 한꺼번에 스캔. -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="yolo.dao"></property>
-		<property name="annotationClass">
-			<list>
-				<value>yolo.dao.AnnotationUserMapper</value>
-				<value>yolo.dao.AnnotationTopicMapper</value>
-			</list>
+		<property name="annotationClass" value="yolo.dao.AnnotationUserMapper">
 		</property>
 		
 	</bean>

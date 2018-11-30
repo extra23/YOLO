@@ -4,7 +4,7 @@ import java.util.List;
 
 import yolo.vo.TopicVO;
 
-@AnnotationTopicMapper
+@AnnotationUserMapper
 public interface InterfaceTopicMapper {
 	
 	public void insertTopic(TopicVO topic);
