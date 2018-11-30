@@ -2,6 +2,7 @@ package yolo.dao;
 
 import java.util.List;
 
+import yolo.vo.SearchVO;
 import yolo.vo.TopicVO;
 
 @AnnotationUserMapper
@@ -19,5 +20,5 @@ public interface InterfaceTopicMapper {
 	
 	public void deleteTopic(int topicId);
 	
-	public List<TopicVO> searchTopic(String tTitle);
+	public List<SearchVO> searchTopic(String tTitle);
 }

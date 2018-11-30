@@ -28,8 +28,8 @@
 		delete from topic where topicId=#{topicId}
 	</delete>
 	
-	<select id="searchTopic" parameterType="string" resultType="Topic">
-		select * from topic where tTitle Like CONCAT('%',#{tTitle},'%')
+	<select id="searchTopic" parameterType="string" resultType="Search">
+		select * from topic t join user u on u.userId = t.userId where tTitle Like CONCAT('%',#{tTitle},'%')
 	</select>
 
 </mapper>

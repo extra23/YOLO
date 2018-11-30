@@ -41,6 +41,7 @@
 		<property name="mapperLocations"><!-- 얘는 정보가 여러 개가 들어갈 수 있기 때문에 배열로 들어갈 수 있다. -->
 			<list>
 				<value>classpath:config/UserSql.xml</value>
+				<value>classpath:config/TopicSql.xml</value>
 			</list>
 		</property>
 	</bean>

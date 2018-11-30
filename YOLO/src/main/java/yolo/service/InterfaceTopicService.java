@@ -2,6 +2,7 @@ package yolo.service;
 
 import java.util.List;
 
+import yolo.vo.SearchVO;
 import yolo.vo.TopicVO;
 
 public interface InterfaceTopicService {
@@ -18,5 +19,5 @@ public interface InterfaceTopicService {
 	
 	public void removeTopic(int topicId);
 	
-	public List<TopicVO> searchTopic(String tTitle);
+	public List<SearchVO> searchTopic(String tTitle);
 }
