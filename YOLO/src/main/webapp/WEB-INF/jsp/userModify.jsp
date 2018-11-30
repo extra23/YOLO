@@ -41,21 +41,24 @@
 		<input type="file" name="file" placeholder="파일 선택" hidden="hidden">
 	</p>
 	<p>
-		<input type="text" name="nickName" placeholder="nickName">
+		<input type="text" name="nickName" placeholder="${user.nickName}">
 	</p>
 	<p>
-		<input type="password" name="oldPwd" placeholder="현재 비밀번호11">
+		<input type="password" name="oldPwd" placeholder="현재 비밀번호111">
 		<c:if test="${errors.oldPwd}"><span>현재 비밀번호를 입력해주세요</span></c:if>
 		<c:if test="${errors.wrongOldPwd}"><span>잘못된 비밀번호 입니다.</span></c:if>
 	</p>
 	<p>
 		<input type="password" name="newPwd" placeholder="새로운 비밀번호">
+		<c:if test="${errors.newPwd}"><span>새로운 비밀번호를 입력해주세요</span></c:if>
+		<c:if test="${errors.wrongOldPwd}"><span>바꾸려는 비밀번호가 현재 비밀번호와 같습니다.</span></c:if>
+		
 	</p>
 	<p>
-		<input type="text" name="p_qId">
+		<input type="number" name="p_qId" value="${user.p_qId}">
 	</p>
 	<p>
-		<input type="text" name="p_answer">
+		<input type="text" name="p_answer" value="${user.p_answer}">
 	</p>
 	<p>
 		<input type="submit" name="정보 수정">
@@ -76,3 +79,5 @@
 	</script>
 </body>
 </html>
+
+
