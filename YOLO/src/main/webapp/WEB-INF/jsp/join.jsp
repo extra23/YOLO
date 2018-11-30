@@ -177,7 +177,7 @@
 			formData.append("file", file);
 	
 			$.ajax({
-				url : 'http://localhost:8090/YOLO/uploadAjax',
+				url : 'http://localhost:8888/YOLO/uploadAjax',
 				data : formData,
 				dataType : 'text',
 				processData : false,
