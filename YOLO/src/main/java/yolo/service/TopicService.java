@@ -2,47 +2,52 @@ package yolo.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import yolo.dao.InterfaceTopicDAO;
 import yolo.vo.TopicVO;
 
 
 @Service("TopicService")
 public class TopicService implements InterfaceTopicService {
 
+	@Autowired
+	InterfaceTopicDAO topicDAO;
+	
 	public void addTopic(TopicVO topic) {
-		// TODO Auto-generated method stub
+		topicDAO.insertTopic(topic);
 
 	}
 
 	public TopicVO readTopicByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return topicDAO.selectTopicByUserId(userId);
 	}
 
 	public TopicVO readTopicByTopicId(int topicId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return topicDAO.selectTopicByTopicId(topicId);
 	}
 
 	public List<TopicVO> readTopicList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return topicDAO.selectTopicList();
 	}
 
 	public void modifyTopic(TopicVO topic) {
-		// TODO Auto-generated method stub
+		topicDAO.updateTopic(topic);
 
 	}
 
 	public void removeTopic(int topicId) {
-		// TODO Auto-generated method stub
+		topicDAO.deleteTopic(topicId);
 
 	}
 
 	public List<TopicVO> searchTopic(String tTitle) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return topicDAO.searchTopic(tTitle);
 	}
 
 }

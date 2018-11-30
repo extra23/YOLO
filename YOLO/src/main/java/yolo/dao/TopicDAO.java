@@ -2,6 +2,7 @@ package yolo.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import yolo.vo.TopicVO;
@@ -9,39 +10,42 @@ import yolo.vo.TopicVO;
 @Repository("TopicDAO")
 public class TopicDAO implements InterfaceTopicDAO {
 
+	@Autowired
+	InterfaceTopicMapper topicMapper;
+	
 	public void insertTopic(TopicVO topic) {
-		// TODO Auto-generated method stub
+		topicMapper.insertTopic(topic);
 
 	}
 
 	public TopicVO selectTopicByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
+		TopicVO topic = topicMapper.selectTopicByUserId(userId);
+		return topic;
 	}
 
 	public TopicVO selectTopicByTopicId(int topicId) {
-		// TODO Auto-generated method stub
-		return null;
+		TopicVO topic = topicMapper.selectTopicByTopicId(topicId);
+		return topic;
 	}
 
 	public List<TopicVO> selectTopicList() {
-		// TODO Auto-generated method stub
-		return null;
+		List<TopicVO> topicList = topicMapper.selectTopicList();
+		return topicList;
 	}
 
 	public void updateTopic(TopicVO topic) {
-		// TODO Auto-generated method stub
+		topicMapper.updateTopic(topic);
 
 	}
 
 	public void deleteTopic(int topicId) {
-		// TODO Auto-generated method stub
+		topicMapper.deleteTopic(topicId);
 
 	}
 
 	public List<TopicVO> searchTopic(String tTitle) {
-		// TODO Auto-generated method stub
-		return null;
+		List<TopicVO> topicList = topicMapper.searchTopic(tTitle);
+		return topicList;
 	}
 
 }
