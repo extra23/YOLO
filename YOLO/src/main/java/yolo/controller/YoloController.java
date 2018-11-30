@@ -38,7 +38,9 @@ import yolo.exception.InvalidPasswordException;
 import yolo.exception.LoginFailException;
 import yolo.exception.UserNotFoundException;
 import yolo.service.LoginService;
+import yolo.service.TopicService;
 import yolo.service.UserService;
+import yolo.vo.SearchVO;
 import yolo.vo.UserVO;
 
 @Controller
@@ -49,6 +51,9 @@ public class YoloController {
 	
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	private TopicService topicService;
 	
 	/*@Autowired
 	private ServletContext servletContext;*/
@@ -272,11 +277,13 @@ public class YoloController {
 		return "mainBoard";
 	}
 	
-	//유저의 이메일로 찾아서 searchPage로 넘기는 메소드
+	//검색하는 메소드
 	@RequestMapping("/searchUser.do")
-	public String searchUser(Model model, @RequestParam("searchWord") String email) {
+	public String searchUser(Model model, @RequestParam("searchWord") String email, @RequestParam("searchWord") String tTitle) {
 		List<UserVO> userSearchList = userService.searchUser(email);
+		List<SearchVO> topicSearchList = topicService.searchTopic(tTitle);
 		model.addAttribute("userSearchList",userSearchList);
+		model.addAttribute("topicSearchList",topicSearchList);
 		return "searchPage";
 	}
 	

@@ -8,7 +8,8 @@
 <title>searchPage</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
 <body>
 <jsp:include page="header2.jsp"></jsp:include>
@@ -33,8 +34,8 @@
 			<c:forEach var="user" items="${userSearchList}">
 			<tr>
 				<td>${user.profileImage}</td>
-				<td>${user.nickName}</td>
-				<td><a href="getUser.do?email=${user.email}"> ${user.email}</a></td>
+				<td><a href="getUser.do?email=${user.email}">${user.nickName}</a></td>
+				<td>${user.email}</td>
 			</tr>
 			</c:forEach>
 		</tbody>
@@ -61,7 +62,7 @@
 		
 			<c:forEach var="topic" items="${topicSearchList}">
 			<tr>
-				<td>${topic.nickName}</td>
+				<td><a href="getUser.do?email=${user.email}">${topic.nickName}</a></td>
 				<td>${topic.tTitle}</td>
 				<td>${topic.tContent}</td>
 			</tr>
