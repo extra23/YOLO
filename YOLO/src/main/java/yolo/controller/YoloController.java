@@ -306,10 +306,7 @@ public class YoloController {
 	@RequestMapping(value = "logoutTry.do")
 	public String logout(HttpServletRequest request) throws Exception {
 		
-
 		request.getSession().removeAttribute("authUser");
-
-		
 
 		return "mainBoard";
 		
