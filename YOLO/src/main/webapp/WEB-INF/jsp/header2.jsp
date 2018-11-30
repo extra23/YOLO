@@ -64,6 +64,10 @@
 		}
 		
 		input[type="submit"] {
+			font-family: 'Jua','Baloo Tamma', sans-serif;
+		}
+		
+		.input-group .form-control:first-child{
 			font-family: 'Jua', sans-serif;
 		}
 		

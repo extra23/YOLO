@@ -7,9 +7,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>searchPage</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+		<!-- 부가적인 테마 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+
+
+
+<style type="text/css">
+
+	
+
+	table, .text-center, #h3, #a {
+		font-family: 'Jua', sans-serif;
+	}
+	
+	
+	
+	
+
+</style>
 </head>
 <body>
 <jsp:include page="header2.jsp"></jsp:include>
@@ -18,7 +40,7 @@
 	<h2 class="text-center">검색 목록</h2>
 	
 	<br>
-		<h3>사용자 이메일 검색</h3>
+		<h3 id="h3">사용자 이메일 검색</h3>
 	<table class="table table-bordered">
 		
 		<thead>
@@ -34,21 +56,21 @@
 			<c:forEach var="user" items="${userSearchList}">
 			<tr>
 				<td>${user.profileImage}</td>
-				<td><a href="getUser.do?email=${user.email}">${user.nickName}</a></td>
+				<td><a id="a" href="getUser.do?email=${user.email}">${user.nickName}</a></td>
 				<td>${user.email}</td>
 			</tr>
 			</c:forEach>
 		</tbody>
 		<tr>
 			<td colspan="3">
-				<a href="mainBoard">메인으로 돌아가기</a>
+				<a id="a"  href="mainBoard">메인으로 돌아가기</a>
 			</td>
 		</tr>
 	</table> 
 	
 	<hr>
 		
-		<h3>Topic 제목 검색</h3>
+		<h3 id="h3">Topic 제목 검색</h3>
 	 <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -62,7 +84,7 @@
 		
 			<c:forEach var="topic" items="${topicSearchList}">
 			<tr>
-				<td><a href="getUser.do?email=${user.email}">${topic.nickName}</a></td>
+				<td><a id="a"  href="getUser.do?email=${user.email}">${topic.nickName}</a></td>
 				<td>${topic.tTitle}</td>
 				<td>${topic.tContent}</td>
 			</tr>
@@ -70,14 +92,14 @@
 		</tbody>
 		<tr>
 			<td colspan="3">
-				<a href="mainBoard">메인으로 돌아가기</a>
+				<a id="a"  href="mainBoard">메인으로 돌아가기</a>
 			</td>
 		</tr>
 	</table> 
 	
 	<hr>
 	
-<%-- 	<h5>Module 제목 검색</h5>
+<%-- 	<h3 id="h3">Module 제목 검색</h3>
 	 <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -99,14 +121,14 @@
 		</tbody>
 		<tr>
 			<td colspan="3">
-				<a href="mainBoard">메인으로 돌아가기</a>
+				<a id="a" href="mainBoard">메인으로 돌아가기</a>
 			</td>
 		</tr>
 	</table> 
 	
 	<hr>
 	
-	<h5>Module 제목 검색</h5>
+	<h3 id="h3">Course 제목 검색</h3>
 	 <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -128,7 +150,7 @@
 		</tbody>
 		<tr>
 			<td colspan="3">
-				<a href="mainBoard">메인으로 돌아가기</a>
+				<a id="a" href="mainBoard">메인으로 돌아가기</a>
 			</td>
 		</tr>
 	</table>  --%>
