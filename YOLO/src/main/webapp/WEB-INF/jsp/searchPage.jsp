@@ -30,7 +30,11 @@ table, .text-center, #h3, #a {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<jsp:include page="header2.jsp"></jsp:include>
+=======
+<%-- <jsp:include page="header2.jsp"></jsp:include> --%>
+>>>>>>> branch 'master' of https://github.com/extra23/YOLO.git
 
 	<div class="panel panel-default">
 		<div class="panel-heading">검색 목록</div>
@@ -93,7 +97,7 @@ table, .text-center, #h3, #a {
 
 	<%-- 	<h3 id="h3">Module 제목 검색</h3>
 	 <table class="table table-bordered">
-		<thead>
+		<thead>sdfsdfsfd
 			<tr>
 				<th>작성자 닉네임</th>
 				<th>작성자 이메일</th>
@@ -147,9 +151,13 @@ table, .text-center, #h3, #a {
 		</tr>
 	</table>  --%>
 
+<<<<<<< HEAD
 
 
 	<jsp:include page="footer.jsp"></jsp:include>
+=======
+<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+>>>>>>> branch 'master' of https://github.com/extra23/YOLO.git
 
 </body>
 </html>
