@@ -226,7 +226,7 @@ hr {
 </style>
 </head>
 <body id="contentBody">
-	<jsp:include page="header2.jsp"></jsp:include>
+	<jsp:include page="header3.jsp"></jsp:include>
 	<div class="viewCon">
 		<div class="container">
 			<p class="mypage">MYPAGE</p>

@@ -236,7 +236,7 @@
 </head>
 <body>
 	
-	<%-- <jsp:include page="/WEB-INF/jsp/header2.jsp"></jsp:include> --%>
+	<jsp:include page="/WEB-INF/jsp/header3.jsp"></jsp:include>
 	
 	<div class="mainForm">
 		
@@ -315,7 +315,7 @@
 		
 	</div>
 	
-	<%-- <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include> --%>
+	<jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>
 
 </body>
 </html>

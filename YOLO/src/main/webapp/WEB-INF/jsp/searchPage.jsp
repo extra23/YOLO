@@ -30,11 +30,8 @@ table, .text-center, #h3, #a {
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<jsp:include page="header2.jsp"></jsp:include>
-=======
-<%-- <jsp:include page="header2.jsp"></jsp:include> --%>
->>>>>>> branch 'master' of https://github.com/extra23/YOLO.git
+
+	<jsp:include page="header3.jsp"></jsp:include>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">검색 목록</div>
@@ -151,13 +148,7 @@ table, .text-center, #h3, #a {
 		</tr>
 	</table>  --%>
 
-<<<<<<< HEAD
-
-
 	<jsp:include page="footer.jsp"></jsp:include>
-=======
-<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
->>>>>>> branch 'master' of https://github.com/extra23/YOLO.git
 
 </body>
 </html>

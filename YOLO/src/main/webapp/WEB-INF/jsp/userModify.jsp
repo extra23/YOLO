@@ -30,7 +30,7 @@
 </head>
 <body id="contentBody">
 
-	<jsp:include page="header2.jsp"></jsp:include>
+	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<h1 id="h1">프로필 수정</h1>
 	<br>
