@@ -36,7 +36,10 @@ import com.almom.util.UploadFileUtils;
 import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
+import yolo.service.CourseService;
+import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceLoginService;
+import yolo.service.InterfaceModuleService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.SearchVO;
@@ -53,6 +56,12 @@ public class YoloController {
 	
 	@Autowired
 	private InterfaceTopicService topicService;
+	
+	@Autowired
+	private InterfaceModuleService moduleService;
+	
+	@Autowired
+	private InterfaceCourseService courseService;
 	
 	/*@Autowired
 	private ServletContext servletContext;*/
@@ -338,13 +347,20 @@ public class YoloController {
 	
 	//검색하는 메소드
 	@RequestMapping("/searchUser.do")
-	public String searchUser(Model model, @RequestParam("searchWord") String email, @RequestParam("searchWord") String tTitle) {
+	public String searchUser(Model model, @RequestParam("searchWord") String email, @RequestParam("searchWord") String tTitle, @RequestParam("searchWord") String mTitle, @RequestParam("searchWord") String cTitle) {
 		//user email 검색
 		List<UserVO> userSearchList = userService.searchUser(email);
 		int userSearchCount = userService.countBySearch(email);
 		
 		//topic title 검색
 		List<SearchVO> topicSearchList = topicService.searchTopic(tTitle);
+//		int topicSearchCount = topicService.countBySearch(tTitle);
+		
+		List<SearchVO> moduleSearchList = moduleService.searchModule(mTitle);
+		int moduleSearchCount = moduleService.countBySearch(mTitle);
+		
+		List<SearchVO> courseSearchList = courseService.searchCourse(cTitle);
+		int courseSearchCount = courseService.countBySearch(cTitle);
 		
 		//user email검색 결과 
 		model.addAttribute("userSearchList",userSearchList);
@@ -352,6 +368,13 @@ public class YoloController {
 		
 		//topic title검색 결과
 		model.addAttribute("topicSearchList",topicSearchList);
+//		model.addAttribute("topicSearchCount",topicSearchCount);
+		
+		model.addAttribute("moduleSearchList",moduleSearchList);
+		model.addAttribute("moduleSearchCount",moduleSearchCount);
+		
+		model.addAttribute("courseSearchList",courseSearchList);
+		model.addAttribute("courseSearchCount",courseSearchCount);
 		
 		//검색 페이지로 돌아가기
 		return "searchPage";
