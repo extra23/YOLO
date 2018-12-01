@@ -23,5 +23,6 @@ public interface InterfaceModuleDAO {
 	//검색 결과를 출력ss
 	public List<SearchVO> searchModule(String mTitle);
 	
+	public int countBySearch(String mTitle);
 
 }

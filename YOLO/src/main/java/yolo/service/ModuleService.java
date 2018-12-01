@@ -56,4 +56,9 @@ public class ModuleService implements InterfaceModuleService {
 		return moduleDAO.searchModule(mTitle);
 	}
 
+	public int countBySearch(String mTitle) {
+		
+		return moduleDAO.countBySearch(mTitle);
+	}
+
 }

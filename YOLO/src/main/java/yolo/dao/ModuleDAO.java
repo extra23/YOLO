@@ -60,4 +60,9 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		return moduleList;
 	}
 
+	public int countBySearch(String mTitle) {
+		int count = moduleMapper.countBySearch(mTitle);
+		return count;
+	}
+
 }

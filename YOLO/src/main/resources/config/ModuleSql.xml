@@ -43,5 +43,10 @@
 	<select id="searchModule" parameterType="string" resultType="Search">
 		select * from module m join user u on u.userId = m.userId where mTitle Like CONCAT('%',#{mTitle},'%')
 	</select>
+	
+	<select id="countBySearch" parameterType="string" resultType="Integer">
+		select count(*) from module  m join user u on u.userId = m.userId where mTitle Like CONCAT('%',#{mTitle},'%')
+	</select>
+	
   </mapper>
 

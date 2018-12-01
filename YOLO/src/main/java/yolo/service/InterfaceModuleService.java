@@ -22,6 +22,6 @@ public interface InterfaceModuleService {
 	
 	public List<SearchVO> searchModule(String mTitle);
 	
-	
+	public int countBySearch(String mTitle);
 
 }
