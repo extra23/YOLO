@@ -241,7 +241,7 @@ hr {
 
 				<div class="butt">
 					<a href="modifyUser?userId=${authUser.userId}" style="font-family: 'Jua', sans-serif">[ 정보 수정 ]</a>&nbsp;&nbsp;&nbsp;
-					<a href="#" style="font-family: 'Jua', sans-serif">[ 회원 탈퇴 ]</a>
+					<a href="remove.do?userId=${authUser.userId}" style="font-family: 'Jua', sans-serif">[ 회원 탈퇴 ]</a>
 				</div>
 
 				<p class="par">&lt; Participation &gt;</p>
