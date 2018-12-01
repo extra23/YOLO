@@ -78,7 +78,7 @@
 			
 		</div> --%>
 		
-		<!-- <div id="search">
+		<div id="search">
 			<div class="col-lg-6">
 				<form class="input-group" action="searchUser.do" method="post">
 					<input type="text" name="searchWord" class="form-control">
@@ -87,7 +87,7 @@
 					</span>
 				</form>
 			</div>
-		</div> -->
+		</div>
 	
 	</div>
 	
@@ -102,9 +102,9 @@
 			
 		</div>
 		
-		<div id="search">
-			<a href="searchUser.do"><span class="glyphicon glyphicon-search" style="position: relative; top: 6px;"></span></a><!--  -->
-		</div>
+		<!-- <div id="search">
+			<a href="searchUser.do"><span class="glyphicon glyphicon-search" style="position: relative; top: 6px;"></span></a>
+		</div> -->
 	
 	</div>
 
