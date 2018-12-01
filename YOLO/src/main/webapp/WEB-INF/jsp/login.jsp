@@ -66,13 +66,13 @@ p {
 
 	<div class="mainForm">
 		<div class="loginForm">
-			<p>LOGIN</p>
+			<p>LOGIN</p><!-- 1 -->
 			<form class="form-horizontal" action="login" method="post">
 				<div class="form-group form-group-lg">
 					<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 					<div class="col-sm-6">
 						<input type="email" class="form-control" id="inputEmail3"
-							placeholder="Email" name="email" autocomplete=off>
+							placeholder="Email" name="email" value="${param.email}">
 						<c:if test="${errors.email}">
 							<span>Email을 입력해주세요.</span>
 						</c:if>
