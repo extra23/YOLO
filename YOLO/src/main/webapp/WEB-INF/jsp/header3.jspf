@@ -103,7 +103,7 @@
 		</div>
 		
 		<div id="search">
-			<a href="searchUser.do"><span class="glyphicon glyphicon-search" style="position: relative; top: 6px;"></span></a>
+			<a href="searchUser.do"><span class="glyphicon glyphicon-search" style="position: relative; top: 6px;"></span></a><!--  -->
 		</div>
 	
 	</div>

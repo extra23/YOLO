@@ -278,7 +278,7 @@
 					</div>
 				</div>
 				
-				<div class="form-group form-group-lg">
+				<div class="form-group form-group-lg"><!--  -->
 					<label for="confirmPassword" class="col-sm-3 control-label">ConfirmPassword</label>
 					<div class="col-sm-6">
 						<input type="password" class="form-control" name="confirmPassword">
