@@ -50,6 +50,11 @@ hr {
 	font-size: 27px;
 }
 
+.name {
+	margin-left: 170px;
+	margin-top: -48px;
+}
+
 .par {
 	margin-left: 236px;
 	margin-top: -20px;
@@ -218,7 +223,6 @@ hr {
 	top: 1237px;
 	left: 907px;
 }
-
 </style>
 </head>
 <body id="contentBody">
@@ -231,7 +235,7 @@ hr {
 				<div class="profilepic">사진</div>
 
 				<div class="nickname">
-					<p>&lt; nickname : ${authUser.nickName} &gt;</p>
+					&lt; nickname : <span style="font-family: 'Jua', sans-serif">${authUser.nickName}</span> &gt;
 				</div>
 
 
@@ -266,7 +270,8 @@ hr {
 			</div>
 			<div class="cobox">
 				<hr>
-				<h3 style="font-family: 'Jua', sans-serif">My course : &nbsp;&nbsp;&nbsp;&nbsp;co 개</h3>
+				<h3 style="font-family: 'Jua', sans-serif">My course :
+					&nbsp;&nbsp;&nbsp;&nbsp;co 개</h3>
 				<hr>
 				<br>
 				<div class="colist">
@@ -288,7 +293,8 @@ hr {
 				</div>
 				<div class="mobox">
 					<hr>
-					<h3 style="font-family: 'Jua', sans-serif">My module : &nbsp;&nbsp;&nbsp;&nbsp;co 개</h3>
+					<h3 style="font-family: 'Jua', sans-serif">My module :
+						&nbsp;&nbsp;&nbsp;&nbsp;co 개</h3>
 					<hr>
 					<br>
 					<!-- <div class="molist" >
