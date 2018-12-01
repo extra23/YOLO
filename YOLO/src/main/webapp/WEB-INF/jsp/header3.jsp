@@ -118,6 +118,9 @@
 				$(this).css("width", "280px");
 			});
 			
+			$("#search-btn").click(function(){
+				location.href = "searchUser.do?searchWord="+$("#txt").val();
+			});
 		});
 	</script>
 	
@@ -135,8 +138,9 @@
 	
 		<div id="search">
 		<div class="search-box">
+		
 			<input id="txt" class="search-txt" type="text" name="searchWord" placeholder="Type to search">
-			<a class="search-btn" href="searchUser.do?searchWord=searchWord">
+			<a class="search-btn" id="search-btn">
 				<i class="fas fa-search"></i>
 			</a>
 		</div>
