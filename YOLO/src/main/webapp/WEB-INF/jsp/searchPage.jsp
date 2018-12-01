@@ -1,105 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>searchPage</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-		<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua"
+	rel="stylesheet">
 
 
 
 <style type="text/css">
-
-	
-
-	table, .text-center, #h3, #a {
-		font-family: 'Jua', sans-serif;
-	}
-	
-	
-	
-	
-
+table, .text-center, #h3, #a {
+	font-family: 'Jua', sans-serif;
+}
 </style>
 </head>
 <body>
-<jsp:include page="header2.jsp"></jsp:include>
+	<jsp:include page="header2.jsp"></jsp:include>
 
-<div class="container">
-	<h2 class="text-center">검색 목록</h2>
-	
-	<br>
+	<div class="panel panel-default">
+		<div class="panel-heading">검색 목록</div>
+
+		<br>
 		<h3 id="h3">사용자 이메일 검색</h3>
-	<table class="table table-bordered">
-		
-		<thead>
+		<table class="table table-bordered">
+
+			<thead>
+				<tr>
+					<th>프로필 이미지</th>
+					<th>닉네임</th>
+					<th>이메일</th>
+				</tr>
+			</thead>
+			<tbody>
+
+
+				<c:forEach var="user" items="${userSearchList}">
+					<tr>
+						<td>${user.profileImage}</td>
+						<td><a id="a" href="getUser.do?email=${user.email}">${user.nickName}</a></td>
+						<td>${user.email}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
 			<tr>
-				<th>프로필 이미지</th>
-				<th>닉네임</th>
-				<th>이메일</th>
+				<td colspan="3"><a id="a" href="mainBoard">메인으로 돌아가기</a></td>
 			</tr>
-		</thead>
-		<tbody>
-		
-		
-			<c:forEach var="user" items="${userSearchList}">
-			<tr>
-				<td>${user.profileImage}</td>
-				<td><a id="a" href="getUser.do?email=${user.email}">${user.nickName}</a></td>
-				<td>${user.email}</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-		<tr>
-			<td colspan="3">
-				<a id="a"  href="mainBoard">메인으로 돌아가기</a>
-			</td>
-		</tr>
-	</table> 
-	
+		</table>
+	</div>
 	<hr>
-		
-		<h3 id="h3">Topic 제목 검색</h3>
-	 <table class="table table-bordered">
-		<thead>
+	<div class="panel panel-default">
+		<div class="panel-heading">Topic 제목 검색</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>작성자 닉네임</th>
+					<th>토픽 제목</th>
+					<th>토픽 내용</th>
+				</tr>
+			</thead>
+			<tbody>
+
+
+				<c:forEach var="topic" items="${topicSearchList}">
+					<tr>
+						<td><a id="a" href="getUser.do?email=${user.email}">${topic.nickName}</a></td>
+						<td>${topic.tTitle}</td>
+						<td>${topic.tContent}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
 			<tr>
-				<th>작성자 닉네임</th>
-				<th>토픽 제목</th>
-				<th>토픽 내용</th>
+				<td colspan="3"><a id="a" href="mainBoard">메인으로 돌아가기</a></td>
 			</tr>
-		</thead>
-		<tbody>
-		
-		
-			<c:forEach var="topic" items="${topicSearchList}">
-			<tr>
-				<td><a id="a"  href="getUser.do?email=${user.email}">${topic.nickName}</a></td>
-				<td>${topic.tTitle}</td>
-				<td>${topic.tContent}</td>
-			</tr>
-			</c:forEach>
-		</tbody>
-		<tr>
-			<td colspan="3">
-				<a id="a"  href="mainBoard">메인으로 돌아가기</a>
-			</td>
-		</tr>
-	</table> 
-	
+		</table>
+	</div>
 	<hr>
-	
-<%-- 	<h3 id="h3">Module 제목 검색</h3>
+
+	<%-- 	<h3 id="h3">Module 제목 검색</h3>
 	 <table class="table table-bordered">
 		<thead>
 			<tr>
@@ -154,10 +146,10 @@
 			</td>
 		</tr>
 	</table>  --%>
-	
-</div>
 
-<jsp:include page="footer.jsp"></jsp:include>
+
+
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
