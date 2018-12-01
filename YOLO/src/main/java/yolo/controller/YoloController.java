@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.almom.util.MediaUtils;
 import com.almom.util.UploadFileUtils;
 
+import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.service.InterfaceLoginService;
@@ -83,7 +84,7 @@ public class YoloController {
 		}
 		
 		if(!errors.isEmpty()) {
-			modelAndView.addObject("errors",errors);
+			modelAndView.addObject("errors", errors);
 			modelAndView.setViewName("login");
 			return modelAndView;
 		}
@@ -238,35 +239,90 @@ public class YoloController {
 	
 	
 	//리스트로 유저의 정보 받아오는 것
-		@RequestMapping("/getUserList.do")
-		public String readUserList(Model model) {
-			List<UserVO> userList = userService.readUserList();
-			model.addAttribute("userList",userList);
-			return "userList";
-		}
+	@RequestMapping("/getUserList.do")
+	public String readUserList(Model model) {
+		List<UserVO> userList = userService.readUserList();
+		model.addAttribute("userList",userList);
+		return "userList";
+	}
 	
 	//프로필 페이지 띄울 때
-	@RequestMapping("getUser.do")
+	@RequestMapping("/getUser.do")
 	public String readUser(Model model, @RequestParam("email") String email){
-		model.addAttribute("user",userService.readUSerByEmail(email));
+		model.addAttribute("user", userService.readUSerByEmail(email));
 		return "userView";
 	}
 	
+	
+	
+	
+	
+	
+	
 	//수정 페이지 열기
-	@RequestMapping(value="/modifyUserForm.do",method=RequestMethod.GET)
+	@RequestMapping(value="/modifyUser",method=RequestMethod.GET)
 	public ModelAndView modifyUserForm(@RequestParam("userId") int userId, ModelAndView mv) {
 		UserVO user = userService.readUserByUserId(userId);
-		mv.addObject("user",user);
+		mv.addObject("user", user);
 		mv.setViewName("userModify");
 		return mv;
 	}
+	
 	//수정해서 프로필 페이지로 넘기기
-	@RequestMapping(value = "/modify.do", method=RequestMethod.POST)
-	public String modifyUser(int userId, String profileImage, String nickName, String newPwd, String oldPwd, int p_qId, String p_answer) {
-		UserVO user = new UserVO(userId, profileImage, nickName, newPwd,p_qId,p_answer);
-		userService.modifyUser(user, oldPwd);
-		return "userView";
+	@RequestMapping(value = "/modifyUser", method=RequestMethod.POST)
+	public ModelAndView modifyUser(HttpServletRequest request, int userId, String profileImage, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, int p_qId, String p_answer) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		
+		if(oldPwd == null || oldPwd.isEmpty()) {
+			errors.put("oldPwd", true);
+			mav.addObject("errors", errors);
+			mav.setViewName("userModify");
+			return mav;
+		}
+		
+		if(!newPwd1.equals(newPwd2)) {
+			errors.put("notEqualNewPwd", true);
+			mav.addObject("errors", errors);
+			mav.setViewName("userModify");
+			return mav;
+		}
+		
+		UserVO user = new UserVO(userId, profileImage, nickName, email, newPwd1, p_qId, p_answer);
+		try{
+			userService.modifyUser(user, oldPwd);
+		}catch (UserNotFoundException e) {
+			errors.put("userNotFound", true);
+			mav.addObject("errors", errors);
+			mav.setViewName("userModify");
+			return mav;
+		}catch (DuplicatedPasswordException e) {
+			errors.put("duplicatedPassword", true);
+			mav.addObject("errors", errors);
+			mav.setViewName("userModify");
+			return mav;
+		}catch (InvalidPasswordException e) {
+			errors.put("invalidPassword", true);
+			mav.addObject("errors", errors);
+			mav.setViewName("userModify");
+			return mav;
+		}
+		
+		mav.addObject("user", user);
+		mav.setViewName("userView");
+		
+		request.getSession().setAttribute("authUser", user);
+		
+		return mav;
 	}
+	
+	
+	
+	
+	
+	
 	
 	//유저 탈퇴하고 메인 페이지로 복귀하기
 	@RequestMapping(value = "/remove.do/{userId}")

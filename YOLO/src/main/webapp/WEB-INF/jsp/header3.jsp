@@ -64,31 +64,9 @@
 <body>
 
 	<div id="header1">
-	
 		<div id="sitename">
 			<a href="mainBoard">#YOLO</a>
 		</div>
-		
-		<%-- <div id="aboutUser">
-			
-			<c:if test="${empty sessionScope.authUser}">
-				<div id="loginBtn">Login</div>
-				<div id="JoinBtn">Join</div>
-			</c:if>
-			
-		</div> --%>
-		
-		<div id="search">
-			<div class="col-lg-6">
-				<form class="input-group" action="searchUser.do" method="post">
-					<input type="text" name="searchWord" class="form-control">
-					<span class="input-group-btn"> 
-						<input type="submit" id="searchbutton" class="btn btn-outline-dark" value="search">
-					</span>
-				</form>
-			</div>
-		</div>
-	
 	</div>
 	
 	<div id="header2">
@@ -100,11 +78,33 @@
 				<div id="joinBtn"><a href="join">Join</a></div>
 			</c:if>
 			
+			<c:if test="${not empty sessionScope.authUser}">
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger">${authUser.nickName}</button>
+					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+						<span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="getUser.do?email=${authUser.email }">프로필</a></li>
+						<li><a href="#">토픽/모듈/코스 수정</a></li>
+						<li class="divider"></li>
+						<li><a href="logoutTry.do">로그아웃</a></li>
+					</ul>
+				</div>
+			</c:if>
+			
 		</div>
 		
-		<!-- <div id="search">
-			<a href="searchUser.do"><span class="glyphicon glyphicon-search" style="position: relative; top: 6px;"></span></a>
-		</div> -->
+		<div id="search">
+			<div class="col-lg-6">
+				<form class="input-group" action="searchUser.do" method="post">
+					<input type="text" name="searchWord" class="form-control">
+					<span class="input-group-btn"> 
+						<input type="submit" id="searchbutton" class="btn btn-outline-dark" value="search">
+					</span>
+				</form>
+			</div>
+		</div>
 	
 	</div>
 

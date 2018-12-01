@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import yolo.dao.InterfaceUserDAO;
+import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.vo.UserVO;
@@ -39,6 +40,11 @@ public class UserService implements InterfaceUserService {
 		// db에서 받아온 객체가 비었는지 확인
 		if(oldUser == null) {
 			throw new UserNotFoundException("존재하지 않는 사용자");
+		}
+		
+		// oldPwd와 newPwd 비교
+		if(oldUser.getPassword().equals(newUser.getPassword())) {
+			throw new DuplicatedPasswordException("비밀번호 중복");
 		}
 		
 		// 받아온 객체가 비어있지 않다면(사용자가 존재한다면) 받아온 사용자의 원래 비밀번호와 확인을 위한 oldPwd 비교

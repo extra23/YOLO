@@ -240,7 +240,7 @@ hr {
 
 
 				<div class="butt">
-					<a href="modify?userId=${authUser.userId}" style="font-family: 'Jua', sans-serif">[ 정보 수정 ]</a>&nbsp;&nbsp;&nbsp;
+					<a href="modifyUser?userId=${authUser.userId}" style="font-family: 'Jua', sans-serif">[ 정보 수정 ]</a>&nbsp;&nbsp;&nbsp;
 					<a href="#" style="font-family: 'Jua', sans-serif">[ 회원 탈퇴 ]</a>
 				</div>
 
