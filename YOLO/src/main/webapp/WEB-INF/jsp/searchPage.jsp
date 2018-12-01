@@ -34,7 +34,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="header2.jsp"></jsp:include>
+<%-- <jsp:include page="header2.jsp"></jsp:include> --%>
 
 <div class="container">
 	<h2 class="text-center">검색 목록</h2>
@@ -157,7 +157,7 @@
 	
 </div>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
 
 </body>
 </html>
