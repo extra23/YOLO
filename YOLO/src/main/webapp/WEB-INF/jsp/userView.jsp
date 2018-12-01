@@ -286,7 +286,7 @@ hr {
 					<li class="co"></li>
 					<li class="co"></li>
 					<li class="co"></li>
-					<li class="co" style="font-family: 'Jua', sans-serif">더보기</li>
+					<li class="co" style="font-family: 'Jua', sans-serif">더보기aa</li>
 				</ul> -->
 				</div>
 				<div class="mobox">
