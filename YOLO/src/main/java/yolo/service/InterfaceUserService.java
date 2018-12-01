@@ -19,4 +19,6 @@ public interface InterfaceUserService {
 	public void removeUser(int user);
 
 	public List<UserVO> searchUser(String email);
+	
+	public int countBySearch(String email);
 }

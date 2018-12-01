@@ -21,4 +21,5 @@ public void insertUser(UserVO user);
 	
 	public List<UserVO> searchUser(String email);
 	
+	public int countBySearch(String email);
 }
