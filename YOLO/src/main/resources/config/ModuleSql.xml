@@ -21,15 +21,15 @@
 	</insert>
 	
 	<select id="selectModuleByUserId" parameterType="Integer" resultType="Module"><!--resultType: RowMapper라고 생각하면 됨.User의 타입으로 만들어 주는 것. -->
-		select mTitle, mContent from module where userId=#{userId}
+		select * from module where userId=#{userId}
 	</select>
 	
 	<select id="selectModuleByModuleId" parameterType="Integer" resultType="Module">
-		select mTitle, mContent from module where moduleId=#{moduleId}
+		select * from module where moduleId=#{moduleId}
 	</select>
 	
 	<select id="selectModuleList" resultType="Module">
-		select mTitle, mContent from module
+		select * from module
 	</select>
 	
 	<update id="updateModule" parameterType="Module">

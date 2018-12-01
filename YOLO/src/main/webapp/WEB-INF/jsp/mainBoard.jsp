@@ -19,7 +19,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
-	<style type="text/css">
+	<style>
 	
 		#contentBody {
 			background: #F7F7F7 no-repeat center center fixed;
@@ -32,7 +32,6 @@
 		.mainContent {
 			width: 100%;
 			font-family: 'Jua', sans-serif;
-			/* background-color: #F7F7F7; */
 			text-align: center;
 		}
 
@@ -109,8 +108,6 @@
 		h3 {
 			margin-top: 0px !important;
 		}
-		
-		::-webkit-scrollbar {display: none;}
 		
 	</style>
 	

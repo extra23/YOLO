@@ -6,7 +6,7 @@
 <head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>header</title>
+	<title>header3.jsp</title>
 	
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
@@ -108,6 +108,47 @@
 		#loginBtn a, #joinBtn a {
 			color: black;
 		}
+		
+		/* .dropdown {
+			top: 8px;
+			left: calc(100%/ 1.3);
+			float: none;
+			display: inline-block;
+		}
+		
+		.buttonlist {
+			margin-left: 1600px;
+			position: relative;
+			bottom: 65px;
+		}
+		
+		.collapse navbar-collapse {
+			position: relative;
+			left: 500px;
+		}
+		
+		li {
+			list-style-type: none;
+			font-family: 'Baloo Tamma', cursive;
+		}
+		
+		.btn-group{
+			background-color: black;
+			height: 35px;
+			top: -5px;
+		}
+		
+		.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group>.btn+.dropdown-toggle{
+			background-color: white;
+			border-color: gray;
+			color: black;
+			font-family: 'Baloo Tamma','Jua', cursive;
+			height: 35px;
+		}
+
+		.dropdown-menu>li>a{
+			font-family: 'Jua', sans-serif;
+		} */
 	
 	</style>
 	

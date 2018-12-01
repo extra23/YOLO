@@ -9,7 +9,6 @@ import yolo.dao.InterfaceTopicDAO;
 import yolo.vo.SearchVO;
 import yolo.vo.TopicVO;
 
-
 @Service("TopicService")
 public class TopicService implements InterfaceTopicService {
 
@@ -32,8 +31,11 @@ public class TopicService implements InterfaceTopicService {
 	}
 
 	public List<TopicVO> readTopicList() {
-		
 		return topicDAO.selectTopicList();
+	}
+	
+	public List<TopicVO> readTopicListGroupByModuleId(int moduleId) {
+		return topicDAO.selectTopicListByModuleId(moduleId);
 	}
 
 	public void modifyTopic(TopicVO topic) {

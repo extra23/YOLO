@@ -5,7 +5,6 @@ import java.util.List;
 import yolo.vo.ModuleVO;
 import yolo.vo.SearchVO;
 
-//ss
 public interface InterfaceModuleService {
 	
 	public void addModule(ModuleVO module);

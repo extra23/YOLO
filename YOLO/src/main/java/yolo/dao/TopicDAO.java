@@ -33,6 +33,10 @@ public class TopicDAO implements InterfaceTopicDAO {
 		List<TopicVO> topicList = topicMapper.selectTopicList();
 		return topicList;
 	}
+	
+	public List<TopicVO> selectTopicListByModuleId(int moduleId) {
+		return topicMapper.selectTopicListByModuleId(moduleId);
+	}
 
 	public void updateTopic(TopicVO topic) {
 		topicMapper.updateTopic(topic);

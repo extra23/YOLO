@@ -5,9 +5,8 @@ import java.util.List;
 import yolo.vo.ModuleVO;
 import yolo.vo.SearchVO;
 
-@AnnotationUserMapper
+@AnnotationYoloMapper
 public interface InterfaceModuleMapper {
-	//ss
 
 	public void insertModule(ModuleVO module);
 	

@@ -5,7 +5,7 @@ import java.util.List;
 import yolo.vo.SearchVO;
 import yolo.vo.TopicVO;
 
-@AnnotationUserMapper
+@AnnotationYoloMapper
 public interface InterfaceTopicMapper {
 	
 	public void insertTopic(TopicVO topic);
@@ -16,6 +16,8 @@ public interface InterfaceTopicMapper {
 	
 	public List<TopicVO> selectTopicList();
 	
+	public List<TopicVO> selectTopicListByModuleId(int moduleId);
+	
 	public void updateTopic(TopicVO topic);
 	
 	public void deleteTopic(int topicId);
@@ -23,4 +25,5 @@ public interface InterfaceTopicMapper {
 	public List<SearchVO> searchTopic(String tTitle);
 	
 	public int countBySearch(String tTitle);
+	
 }

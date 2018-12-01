@@ -4,7 +4,7 @@ import java.util.List;
 
 import yolo.vo.UserVO;
 
-@AnnotationUserMapper
+@AnnotationYoloMapper
 public interface InterfaceUserMapper {
 
 public void insertUser(UserVO user);

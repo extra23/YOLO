@@ -15,6 +15,8 @@ public interface InterfaceTopicDAO {
 	
 	public List<TopicVO> selectTopicList();
 	
+	public List<TopicVO> selectTopicListByModuleId(int moduleId);
+	
 	public void updateTopic(TopicVO topic);
 	
 	public void deleteTopic(int topicId);
@@ -22,4 +24,5 @@ public interface InterfaceTopicDAO {
 	public List<SearchVO> searchTopic(String tTitle);
 	
 	public int countBySearch(String tTitle);
+	
 }

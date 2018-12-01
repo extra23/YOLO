@@ -20,6 +20,10 @@
 		select tTitle, tContent from topic
 	</select>
 	
+	<select id="selectTopicListByModuleId" parameterType="Integer" resultType="Topic">
+		select * from topic where moduleId=#{moduleId}
+	</select>
+	
 	<update id="updateTopic" parameterType="Topic">
 		update topic set moduleId=#{moduleId}, tTitle=#{tTitle}, tContent=#{tContent} where topicId=#{topicId}
 	</update>
