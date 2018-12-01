@@ -18,7 +18,7 @@ import yolo.exception.UserNotFoundException;
 import yolo.vo.UserVO;
 
 @Service("LoginService")
-public class LoginService {
+public class LoginService implements InterfaceLoginService{
 
 	// 이미 빈으로 등록된 userDAO를 자동 매칭해서 주입함.
 	@Autowired

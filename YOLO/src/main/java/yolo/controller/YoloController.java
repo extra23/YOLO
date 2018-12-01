@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,11 +34,10 @@ import com.almom.util.MediaUtils;
 import com.almom.util.UploadFileUtils;
 
 import yolo.exception.InvalidPasswordException;
-import yolo.exception.LoginFailException;
 import yolo.exception.UserNotFoundException;
-import yolo.service.LoginService;
-import yolo.service.TopicService;
-import yolo.service.UserService;
+import yolo.service.InterfaceLoginService;
+import yolo.service.InterfaceTopicService;
+import yolo.service.InterfaceUserService;
 import yolo.vo.SearchVO;
 import yolo.vo.UserVO;
 
@@ -47,13 +45,13 @@ import yolo.vo.UserVO;
 public class YoloController {
 
 	@Autowired
-	private UserService userService;
+	private InterfaceUserService userService;
 	
 	@Autowired
-	private LoginService loginService;
+	private InterfaceLoginService loginService;
 	
 	@Autowired
-	private TopicService topicService;
+	private InterfaceTopicService topicService;
 	
 	/*@Autowired
 	private ServletContext servletContext;*/

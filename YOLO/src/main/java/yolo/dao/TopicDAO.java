@@ -48,11 +48,6 @@ public class TopicDAO implements InterfaceTopicDAO {
 		List<SearchVO> topicList = topicMapper.searchTopic(tTitle);
 		return topicList;
 	}
-	
-	public int countBySearch(String tTitle) {
-		int count = topicMapper.countBySearch(tTitle);
-		return count;
-	}
 
 }
 

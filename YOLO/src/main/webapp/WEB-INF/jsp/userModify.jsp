@@ -37,6 +37,8 @@
 	
 	<form action="modify.do" method="post" name="fr">
 	
+	<input type="hidden" name="userId">
+	
 	<p>
 		<input type="file" name="file" placeholder="파일 선택" hidden="hidden">
 	</p>

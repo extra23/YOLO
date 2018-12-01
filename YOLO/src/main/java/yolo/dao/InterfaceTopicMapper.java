@@ -21,6 +21,4 @@ public interface InterfaceTopicMapper {
 	public void deleteTopic(int topicId);
 	
 	public List<SearchVO> searchTopic(String tTitle);
-	
-	public int countBySearch(String tTitle);
 }

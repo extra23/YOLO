@@ -21,6 +21,4 @@ public interface InterfaceTopicDAO {
 	
 	public List<SearchVO> searchTopic(String tTitle);
 	
-	public int countBySearch(String tTitle);
-	
 }
