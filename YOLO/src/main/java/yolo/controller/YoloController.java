@@ -264,9 +264,9 @@ public class YoloController {
 	}
 	//수정해서 프로필 페이지로 넘기기
 	@RequestMapping(value = "/modify.do", method=RequestMethod.POST)
-	public String modifyUser(String profileImage, String nickName, String password, int p_qId, String p_answer) {
-		UserVO user = new UserVO(profileImage, nickName, password,p_qId,p_answer);
-		userService.modifyUser(user);
+	public String modifyUser(int userId, String profileImage, String nickName, String newPwd, String oldPwd, int p_qId, String p_answer) {
+		UserVO user = new UserVO(userId, profileImage, nickName, newPwd,p_qId,p_answer);
+		userService.modifyUser(user, oldPwd);
 		return "userView";
 	}
 	

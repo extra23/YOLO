@@ -32,8 +32,9 @@ public class UserVO {
 	}
 
 	// update 시 사용할 생성자
-	public UserVO(String profileImage, String nickName, String password, int p_qId, String p_answer) {
+	public UserVO(int userId, String profileImage, String nickName, String password, int p_qId, String p_answer) {
 		super();
+		this.userId = userId;
 		this.profileImage = profileImage;
 		this.nickName = nickName;
 		this.password = password;

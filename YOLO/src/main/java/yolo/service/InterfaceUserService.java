@@ -14,7 +14,7 @@ public interface InterfaceUserService {
 	
 	public List<UserVO> readUserList();
 	
-	public void modifyUser(UserVO user);
+	public void modifyUser(UserVO user, String oldPwd);
 	
 	public void removeUser(int user);
 
