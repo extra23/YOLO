@@ -3,11 +3,13 @@ package yolo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import yolo.dao.InterfaceCourseDAO;
 import yolo.vo.CourseVO;
 import yolo.vo.SearchVO;
 
+@Service("CourseService")
 public class CourseService implements InterfaceCourseService {
 
 	@Autowired
