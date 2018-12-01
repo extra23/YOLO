@@ -107,13 +107,14 @@ p {
 					<div class="col-sm-offset-2 col-sm-7">
 						<!-- <button type="submit" class="btn btn-default btn-block btn-lg">Login</button> -->
 						<input type="submit" class="btn btn-default btn-block btn-lg"
-							value="Login" ac>
+							value="Login">
 					</div>
 					<div class="col-sm-offset-2 col-sm-7">
-						<button type="submit" class="btn btn-default btn-block btn-lg">Cancel</button>
+						<!-- <button type="submit" class="btn btn-default btn-block btn-lg">Cancel</button> -->
+						<a href="mainBoard" class="btn btn-default btn-block btn-lg">Cancel</a>
 					</div>
 					<div class="col-sm-offset-2 col-sm-7">
-						<button type="submit" class="btn btn-default btn-block btn-lg">Sign</button>
+						<a href="join" class="btn btn-default btn-block btn-lg">Join</a>
 					</div>
 				</div>
 			</form>
