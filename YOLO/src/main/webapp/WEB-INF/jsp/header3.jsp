@@ -15,7 +15,58 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	
+	<!-- 검색바 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel ="stylesheet" href="style.css">
+	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+	
 	<style>
+		body{
+			margin : 0;
+			paddng : 0;
+		}
+		#search{
+			display: inline-block;
+		}
+		.search-box{
+		position : relative;
+		top : 10px;
+		right: 10px;
+		transform : translate(0%, 0%);
+		background : white;
+		height : 40px;
+		border-radius : 104px;
+		padding : 10px;
+		}
+		.search-box:hover > .search-txt{
+		width: 280px;
+		padding: 0.6px; 
+		}
+		.search-box:hover > .search-btn{
+		background: white;
+		}
+		.search-btn{
+		color : black;
+		float : right;
+		width : 40px;
+		height : 20px;
+		border-radius : 50%;
+		background: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		}
+		.search-txt{
+		border : none;
+		background: none;
+		outline: none;
+		float: left;
+		padding : 0;
+		font-size: 16px;
+		transition : 0.4s;
+		line-height: 20px;
+		width: 0px;
+		}
 	
 		#header1 *, #header2 #aboutUser * {
 			font-family: 'Baloo Tamma', cursive;
@@ -46,19 +97,29 @@
 			padding-right: 18px;
 		}
 		
-		#aboutUser, #loginBtn, #joinBtn, #search {
+		#aboutUser, #loginBtn, #joinBtn, #search-box {
 			display: inline-block;
 		}
 		
-		#loginBtn, #joinBtn, #search{
+		#loginBtn, #joinBtn{
 			margin: 5px;
 		}
 		
-		#loginBtn a, #joinBtn a, #search {
+		#loginBtn a, #joinBtn a {
 			color: black;
 		}
 	
 	</style>
+	
+	<script type="text/javascript">
+		$(function(){
+			
+			$("#txt").keyup(function(){
+				$(this).css("width", "280px");
+			});
+			
+		});
+	</script>
 	
 </head>
 <body>
@@ -71,6 +132,16 @@
 	
 	<div id="header2">
 	
+	
+		<div id="search">
+		<div class="search-box">
+			<input id="txt" class="search-txt" type="text" name="searchWord" placeholder="Type to search">
+			<a class="search-btn" href="searchUser.do?searchWord=searchWord">
+				<i class="fas fa-search"></i>
+			</a>
+		</div>
+		</div>
+		
 		<div id="aboutUser">
 			
 			<c:if test="${empty sessionScope.authUser}">
@@ -95,7 +166,8 @@
 			
 		</div>
 		
-		<div id="search">
+		
+		<!-- <div id="search">
 			<div class="col-lg-6">
 				<form class="input-group" action="searchUser.do" method="post">
 					<input type="text" name="searchWord" class="form-control">
@@ -104,7 +176,7 @@
 					</span>
 				</form>
 			</div>
-		</div>
+		</div> -->
 	
 	</div>
 
