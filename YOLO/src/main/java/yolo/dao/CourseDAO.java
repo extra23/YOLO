@@ -47,7 +47,12 @@ public class CourseDAO implements InterfaceCourseDAO{
 	}
 
 	public void insertCourse(CourseVO course) {
-		// TODO Auto-generated method stub
+		courseMapper.insertCourse(course);
 		
+	}
+
+	public int countBySearch(String cTitle) {
+		int count = courseMapper.countBySearch(cTitle);
+		return count;
 	}
 }

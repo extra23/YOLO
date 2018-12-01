@@ -22,4 +22,6 @@ public interface InterfaceCourseMapper {
 	
 	public List<SearchVO> searchCourse(String cTitle);
 	
+	public int countBySearch(String cTitle);
+	
 }
