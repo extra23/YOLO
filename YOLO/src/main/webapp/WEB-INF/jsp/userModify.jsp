@@ -140,7 +140,7 @@
 		
 		<div class="modifyForm">
 			
-			<p class="modifyTitle">프로필 수정</p>
+			<p class="modifyTitle">프로필 수정</p><!-- ?? -->
 			
 			<form class="form-horizontal" action="modify" method="post" enctype="multipart/form-data">
 				
