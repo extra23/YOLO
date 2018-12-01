@@ -12,7 +12,7 @@ import yolo.vo.SearchVO;
 public class ModuleDAO implements InterfaceModuleDAO {
 	
 	@Autowired
-	InterfaceModuleDAO moduleMapper;
+	InterfaceModuleMapper moduleMapper;
 
 	public void insertModule(ModuleVO module) {
 		

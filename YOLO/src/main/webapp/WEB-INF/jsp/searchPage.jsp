@@ -149,8 +149,8 @@ tr {
 			</table>
 		</div>
 		<hr>
-		<div class="panel panel-default">
-			<div class="panel-heading" id="topic">
+ 		<div class="panel panel-default">
+			<div class="panel-heading" id="module">
 				Module 제목 검색 <span class="badge">${moduleSearchCount}</span>
 			</div>
 			<table class="table table-bordered">
@@ -181,7 +181,7 @@ tr {
 		</div>
 
 		<div class="panel panel-default">
-			<div class="panel-heading" id="topic">
+			<div class="panel-heading" id="course">
 				Course 제목 검색 <span class="badge">${courseSearchCount}</span>
 			</div>
 
@@ -209,7 +209,7 @@ tr {
 				</tr>
 			</table>
 		</div>
-	</div>
+	</div> 
 
 	<jsp:include page="footer.jsp"></jsp:include>
 
