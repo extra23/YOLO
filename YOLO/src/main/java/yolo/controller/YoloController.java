@@ -276,6 +276,11 @@ public class YoloController {
 		
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		
+		if(newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
+			newPwd1 = oldPwd;
+			newPwd2 = oldPwd;
+		}
+		
 		if(oldPwd == null || oldPwd.isEmpty()) {
 			errors.put("oldPwd", true);
 			mav.addObject("errors", errors);
