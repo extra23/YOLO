@@ -41,4 +41,7 @@ public class CourseService implements InterfaceCourseService {
 		return courseDAO.searchCourse(cTitle);
 	}
 
+	public int countBySearch(String cTitle) {
+		return courseDAO.countBySearch(cTitle);
+	}
 }

@@ -20,5 +20,7 @@ public interface InterfaceCourseDAO {
 	public void deleteCourse(int courseId);
 	
 	public List<SearchVO> searchCourse(String cTitle);
+	
+	public int countBySearch(String cTitle);
 
 }

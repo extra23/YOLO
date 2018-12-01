@@ -28,7 +28,12 @@
 		delete from course where courseId=#{courseId}
 	</delete>
 	
-	<select id="searchCourse" parameterType="String" resultType="Search">
-		select * from course c join user u on u.userId = c.userId where cTitle Like CONCAT('%',#{title},'%')
+	<select id="searchCourse" parameterType="string" resultType="Search">
+		select * from course c join user u on u.userId = c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>
+	
+	<select id="countBySearch" parameterType="string" resultType="Integer">
+		select count(*) from course c join user u on u.userId = c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
+	</select>
+	
 </mapper>
