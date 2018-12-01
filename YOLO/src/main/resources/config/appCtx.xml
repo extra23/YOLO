@@ -63,10 +63,15 @@
 		<property name="annotationClass" value="yolo.dao.AnnotationUserMapper"></property>
 	</bean>
 
+
+	<!-- 트랜젝션 : 예외 발생시 롤백을 시켜줌 -->
+	<!-- springframework에 있는 트랜젝션 매니저를 사용 -->
+	<!--인자값으로 위에서 디비 접속을 위해 설정해줬던 dataSource를 담아줌  -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
+	<!-- 트랜젝션이 필요한 각 상황에 메소드명과 함께 사용해주면 된다. 매니저는 위에서 기재해준 id 사용. -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager"><!--  -->
 		<tx:attributes>
 			<tx:method name="insert*" rollback-for="RuntimeException" />
@@ -88,7 +93,11 @@
 		</tx:attributes>
 	</tx:advice>
 	
+	<!-- aop를 설정 -->
+	
 	<aop:config>
+	
+		<!-- 어떤 것을 매칭시킬지 구체적으로 정해줘야 하므로 포인트 컷을 해줌 -->
 		<aop:pointcut expression="execution(public * yolo.service.Interface*.*(..))" id="controllerTx" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="controllerTx" />
 	</aop:config>
