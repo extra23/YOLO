@@ -119,6 +119,8 @@
 	
 	<jsp:include page="header2.jsp"></jsp:include>
 	
+	<%-- <jsp:include page="header3.jsp"></jsp:include> --%>
+	
 	<div class="mainContent">
 		<div class="menu">
 			<div class="course">
