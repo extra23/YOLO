@@ -49,5 +49,10 @@ public class TopicDAO implements InterfaceTopicDAO {
 		return topicList;
 	}
 
+	public int countBySearch(String tTitle) {
+		int count = topicMapper.countBySearch(tTitle);
+		return count;
+	}
+
 }
 

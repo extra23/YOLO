@@ -20,4 +20,6 @@ public interface InterfaceTopicService {
 	public void removeTopic(int topicId);
 	
 	public List<SearchVO> searchTopic(String tTitle);
+	
+	public int countBySearch(String tTitle);
 }

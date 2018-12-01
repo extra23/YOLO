@@ -51,4 +51,9 @@ public class TopicService implements InterfaceTopicService {
 		return topicDAO.searchTopic(tTitle);
 	}
 
+	public int countBySearch(String tTitle) {
+		
+		return topicDAO.countBySearch(tTitle);
+	}
+
 }
