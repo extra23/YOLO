@@ -31,5 +31,9 @@
 	<select id="searchTopic" parameterType="string" resultType="Search">
 		select * from topic t join user u on u.userId = t.userId where tTitle Like CONCAT('%',#{tTitle},'%')
 	</select>
+	
+	<select id="countBySearch" parameterType="string" resultType="Integer">
+		select count(*) from topic t join user u on u.userId = t.userId where tTitle Like CONCAT('%',#{tTitle},'%')
+	</select>
 
 </mapper>
