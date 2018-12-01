@@ -1,5 +1,8 @@
 package yolo.vo;
-//ss
+
+import org.apache.ibatis.type.Alias;
+
+@Alias("Module")
 public class ModuleVO {
 	
 	private int moduleId;
