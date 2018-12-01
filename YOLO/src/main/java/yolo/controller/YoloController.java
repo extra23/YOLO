@@ -354,11 +354,13 @@ public class YoloController {
 		
 		//topic title 검색
 		List<SearchVO> topicSearchList = topicService.searchTopic(tTitle);
-//		int topicSearchCount = topicService.countBySearch(tTitle);
+		int topicSearchCount = topicService.countBySearch(tTitle);
 		
+		//module title 검색
 		List<SearchVO> moduleSearchList = moduleService.searchModule(mTitle);
 		int moduleSearchCount = moduleService.countBySearch(mTitle);
 		
+		//course title 검색
 		List<SearchVO> courseSearchList = courseService.searchCourse(cTitle);
 		int courseSearchCount = courseService.countBySearch(cTitle);
 		
@@ -368,11 +370,13 @@ public class YoloController {
 		
 		//topic title검색 결과
 		model.addAttribute("topicSearchList",topicSearchList);
-//		model.addAttribute("topicSearchCount",topicSearchCount);
+		model.addAttribute("topicSearchCount",topicSearchCount);
 		
+		//module title 검색 결과
 		model.addAttribute("moduleSearchList",moduleSearchList);
 		model.addAttribute("moduleSearchCount",moduleSearchCount);
 		
+		//course title 검색 결과
 		model.addAttribute("courseSearchList",courseSearchList);
 		model.addAttribute("courseSearchCount",courseSearchCount);
 		
