@@ -36,7 +36,7 @@
 		<!-- 얘는 프로퍼티로 데이터 소스(접속 정보)를 받아야 함 -->
 		<property name="dataSource" ref="dataSource"></property>
 
-		<!-- @Alias 해 준 클래스들을 프로퍼티로 받아 옴. -->
+		<!-- @Alias 해 준 클래스들을 프로퍼티로 받아 옴.sss -->
 		<property name="configLocation" value="classpath:config/MyBatisConfig.xml"></property>
 
 		<!-- 설정 정보와 모델에 대한 정보를 넣었으니 쿼리에 대한 정보를 넣는다. -->
@@ -44,6 +44,7 @@
 			<list>
 				<value>classpath:config/UserSql.xml</value>
 				<value>classpath:config/TopicSql.xml</value>
+				<value>classpath:config/ModuleSql.xml</value>
 			</list>
 		</property>
 	</bean>
