@@ -19,4 +19,6 @@ public interface InterfaceUserDAO {
 	public void deleteUser(int userId);
 
 	public List<UserVO> searchUser(String email);
+	
+	public int countBySearch(String email);
 }

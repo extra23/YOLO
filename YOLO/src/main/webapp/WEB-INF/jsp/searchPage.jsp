@@ -71,7 +71,7 @@
 	<br>
 	<div class="container">
 		<div class="panel panel-default">
-			<div class="panel-heading">사용자 이메일 검색 <span class="badge">42</span> </div>
+			<div class="panel-heading">사용자 이메일 검색 <span class="badge">${userSearchCount}</span> </div>
 
 			<table class="table table-bordered">
 

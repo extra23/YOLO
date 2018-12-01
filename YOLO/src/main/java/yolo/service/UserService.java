@@ -44,5 +44,10 @@ public class UserService implements InterfaceUserService {
 		
 		return userDAO.searchUser(email);
 	}
+	
+	public int countBySearch(String email) {
+		
+		return userDAO.countBySearch(email);
+	}
 
 }

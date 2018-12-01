@@ -44,5 +44,10 @@ public class UserDAO implements InterfaceUserDAO {
 		List<UserVO> userList = userMapper.searchUser(email);
 		return userList;
 	}
+	
+	public int countBySearch(String email) {
+		int count = userMapper.countBySearch(email);
+		return count;
+	}
 
 }

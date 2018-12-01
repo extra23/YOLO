@@ -280,10 +280,21 @@ public class YoloController {
 	//검색하는 메소드
 	@RequestMapping("/searchUser.do")
 	public String searchUser(Model model, @RequestParam("searchWord") String email, @RequestParam("searchWord") String tTitle) {
+		//user email 검색
 		List<UserVO> userSearchList = userService.searchUser(email);
+		int userSearchCount = userService.countBySearch(email);
+		
+		//topic title 검색
 		List<SearchVO> topicSearchList = topicService.searchTopic(tTitle);
+		
+		//user email검색 결과 
 		model.addAttribute("userSearchList",userSearchList);
+		model.addAttribute("userSearchCount",userSearchCount);
+		
+		//topic title검색 결과
 		model.addAttribute("topicSearchList",topicSearchList);
+		
+		//검색 페이지로 돌아가기
 		return "searchPage";
 	}
 	
