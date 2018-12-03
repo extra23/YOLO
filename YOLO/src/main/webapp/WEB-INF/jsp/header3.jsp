@@ -10,6 +10,7 @@
 	
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
 	
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -30,7 +31,7 @@
 		}
 		.search-box{
 		position : relative;
-		top : 10px;
+		top : 8px;
 		right: 10px;
 		transform : translate(0%, 0%);
 		background : white;
@@ -95,6 +96,7 @@
 			text-align: right;
 			font-size: 30px;
 			padding-right: 18px;
+			height: 57px;
 		}
 		
 		#aboutUser, #loginBtn, #joinBtn, #search-box {
@@ -127,29 +129,33 @@
 			left: 500px;
 		}
 		
-		li {
-			list-style-type: none;
-			font-family: 'Baloo Tamma', cursive;
-		}
 		
-		.btn-group{
-			background-color: black;
+		 */
+		
+		#btn-group{
+			background-color: gray;
 			height: 35px;
 			top: -5px;
 		}
 		
-		.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), .btn-group>.btn+.dropdown-toggle{
+		#btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), #btn-group>.btn+.dropdown-toggle{
 			background-color: white;
 			border-color: gray;
 			color: black;
 			font-family: 'Baloo Tamma','Jua', cursive;
 			height: 35px;
 		}
-
-		.dropdown-menu>li>a{
-			font-family: 'Jua', sans-serif;
-		} */
-	
+		
+		#dropdownMenu{
+			top: 108%;
+		    left: -95px;
+		}
+		
+		#dropdownMenu>li{
+			list-style-type: none;
+		}
+		
+		
 	</style>
 	
 	<script type="text/javascript">
@@ -195,33 +201,22 @@
 			</c:if>
 			
 			<c:if test="${not empty sessionScope.authUser}">
-				<div class="btn-group">
+				<div class="btn-group" id="btn-group">
 					<button type="button" class="btn btn-danger">${authUser.nickName}</button>
-					<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<button type="button" class="btn btn-danger dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false">
 						<span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="getUser.do?email=${authUser.email }">프로필</a></li>
-						<li><a href="#">토픽/모듈/코스 수정</a></li>
+					<ul class="dropdown-menu" id="dropdownMenu" role="menu">
+						<li><a href="getUser.do?email=${authUser.email }" style="font-family:'Jua'">프로필</a></li>
+						<li><a href="#" style="font-family:'Jua'">토픽/모듈/코스 수정</a></li>
 						<li class="divider"></li>
-						<li><a href="logoutTry.do">로그아웃</a></li>
+						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
 					</ul>
 				</div>
 			</c:if>
 			
 		</div>
 		
-		
-		<!-- <div id="search">
-			<div class="col-lg-6">
-				<form class="input-group" action="searchUser.do" method="post">
-					<input type="text" name="searchWord" class="form-control">
-					<span class="input-group-btn"> 
-						<input type="submit" id="searchbutton" class="btn btn-outline-dark" value="search">
-					</span>
-				</form>
-			</div>
-		</div> -->
 	
 	</div>
 
