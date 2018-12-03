@@ -37,7 +37,9 @@ import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.service.InterfaceLoginService;
+import yolo.service.InterfacePQuestionService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.P_Question;
 import yolo.vo.UserVO;
 
 @Controller
@@ -48,6 +50,9 @@ public class UserController {
 
 	@Autowired
 	private InterfaceLoginService loginService;
+	
+	@Autowired
+	private InterfacePQuestionService pquestionService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -101,7 +106,10 @@ public class UserController {
 
 	// 회원가입 폼으로 이동
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String joinForm() {
+	public String joinForm(Model model) {
+		//회원가입 폼으로 이동시 비밀번호 힌트 질문을 데이터로 받아온다.
+		List<P_Question> qList = pquestionService.readQList();
+		model.addAttribute("qList",qList);
 		return "join";
 	}
 

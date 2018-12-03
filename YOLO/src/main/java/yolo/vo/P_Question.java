@@ -1,24 +1,22 @@
 package yolo.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("PwdQuestion")
 public class P_Question {
 
-	private int p_qId;
-	private String p_qContent;
-	
-	public int getP_qId() {
-		return p_qId;
+	private int pwQId;
+	private String question;
+	public int getPwQId() {
+		return pwQId;
 	}
-	
-	public void setP_qId(int p_qId) {
-		this.p_qId = p_qId;
+	public void setPwQId(int pwQId) {
+		this.pwQId = pwQId;
 	}
-	
-	public String getP_qContent() {
-		return p_qContent;
+	public String getQuestion() {
+		return question;
 	}
-	
-	public void setP_qContent(String p_qContent) {
-		this.p_qContent = p_qContent;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
-	
 }

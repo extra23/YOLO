@@ -46,6 +46,7 @@
 				<value>classpath:config/TopicSql.xml</value>
 				<value>classpath:config/ModuleSql.xml</value>
 				<value>classpath:config/CourseSql.xml</value>
+				<value>classpath:config/PquestionSql.xml</value>
 			</list>
 		</property>
 	</bean>
