@@ -23,7 +23,7 @@
 	<div id="moduleHeader">
 		
 		<div id="moduleTitle">
-			<a href="modulePage"><h1>${moduleAndTopic.module.mTitle}</h1></a>
+			<a href="modulePage?moduleId=${moduleAndTopic.module.moduleId}"><h1>${moduleAndTopic.module.mTitle}</h1></a>
 		</div>
 		
 		<div id="moduleSummary">${moduleAndTopic.module.mSummary}</div>

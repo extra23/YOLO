@@ -30,12 +30,13 @@
 		</div>
 		
 		<div id="tTitleList">
-			<form action="topicPage">
-				<c:forEach var="topic" items="${moduleAndTopic.topicList}">
-					<input type="button" value="${topic.tTitle}">
-					<input type="hidden" name="moduleId" value="${param.moduleId}">
+				<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status">
+					<form action="topicPage">
+						<input type="submit" value="${topic.tTitle}">
+						<input type="hidden" name="moduleId" value="${param.moduleId}">
+						<input type="hidden" name="topicIndex" value="${status.index}">
+					</form>	
 				</c:forEach>
-			</form>
 		</div>
 		
 	</div>

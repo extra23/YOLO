@@ -44,14 +44,19 @@ public class ModuleAndViewController {
 	
 	// tTitle 클릭 시 topic 페이지로 이동
 	@RequestMapping("/topicPage")
-	public ModelAndView getTopicPage(int moduleId) {
+	public ModelAndView getTopicPage(int moduleId, int topicIndex) {
+		System.out.println(topicIndex);
+		
 		ModelAndView mav = new ModelAndView();
 		
 		ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 		List<TopicVO> topicList = topicService.readTopicListGroupByModuleId(module.getModuleId());
 		UserVO user = userService.readUserByUserId(module.getUserId());
 		
-		mav.addObject("moduleAndTopic", new ModuleAndTopicVO(module, user, topicList));
+		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO(module, user, topicList);
+		
+		mav.addObject("moduleAndTopic", moduleAndTopic);
+		mav.addObject("eachTopic", moduleAndTopic.getTopicList().get(topicIndex));
 		mav.setViewName("courseModuleTopic/topic");
 		
 		return mav;
