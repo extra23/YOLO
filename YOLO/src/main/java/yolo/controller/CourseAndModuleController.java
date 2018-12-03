@@ -58,8 +58,12 @@ public class CourseAndModuleController {
 			moduleAndTopic.setTopicList(topicList);
 			moduleAndTopicList.add(moduleAndTopic);
 		}
+		courseAndModule.setModuleAndTopicList(moduleAndTopicList);
 		
-		return null;
+		mav.addObject("courseAndModule", courseAndModule);
+		mav.setViewName("courseModuleTopic/course");
+		
+		return mav;
 		
 	}
 	
