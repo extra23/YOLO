@@ -22,7 +22,10 @@
 	<script>
 		$(function(){
 			
-			
+			$("#topicList button").click(function(){
+				var content = "moduleAndTopic.topicList[" + $(this).val() + "].tTitle"
+				console.log("<h1>${"+ content +"}</h1>");
+			});
 			
 		});
 	</script>
@@ -46,8 +49,8 @@
 			</div>
 			
 			<div id="topicList">
-				<c:forEach var="topic" items="${moduleAndTopic.topicList}">
-					<button id="">${topic.tTitle}</button>
+				<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status">
+					<button value="${status.index}">${topic.tTitle}</button>
 				</c:forEach>
 			</div>
 		</div>
