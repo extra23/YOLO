@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>YOLO :: login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>비밀번호 찾는 페이지</title>
 
 	<!-- 합쳐지고 최소화된 최신 CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -19,8 +18,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
-	<style>
-	
+	<style type="text/css">
 		body {
 			background: #F7F7F7 no-repeat center center fixed;
 			-webkit-background-size: cover; 
@@ -41,7 +39,7 @@
 			margin-top: 180px;
 		}
 		
-		.loginForm {
+		.passwordForm {
 			width: 40%;
 			margin: 0 auto;
 			background-color: lightgray;
@@ -58,60 +56,65 @@
 			margin-bottom: 10px;
 		}
 		
-		.loginForm p {
+		.passwordForm p {
 			font-size: 50px;
 			margin-top: 40px;
 		}
 		
+		select {
+			width: 100%;
+			height: 40px;
+			border: 1px solid lightgray;
+			border-radius: 5px;
+			font-size: 20px !important;
+			color: gray !important;
+		}
 	</style>
 
 </head>
 <body>
-
 	<div class="mainForm">
-		<div class="loginForm">
-			<p>LOGIN</p>
-			<form class="form-horizontal" action="login" method="post">
+		<div class="passwordForm">
+			<p>Find Password</p>
+			<form class="form-horizontal" action="Find_PasswordForm.do" method="post">
 				<div class="form-group form-group-lg">
 					<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 					<div class="col-sm-6">
-						<input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" value="${param.email}">
-						<c:if test="${errors.email}">
-							<span>Email을 입력해주세요.</span>
-						</c:if>
-						<c:if test="${errors.UserNotFound}">
-							<span>Email이 일치하지 않습니다.</span>
+						<input type="email" class="form-control" placeholder="Email" name="email" value="${param.email}">
+						<c:if test="${errors.noUser}">
+							<span>user가 존재하지 않습니다.</span>
 						</c:if>
 					</div>
 				</div>
 				<div class="form-group form-group-lg">
-					<label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+					<label for="pQId" class="col-sm-3 control-label">Password Question</label>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" id="inputPassword3" placeholder="Password" name="password">
-						<c:if test="${errors.password}">
-							<span>Password를 입력해주세요.</span>
+							<select name="p_qId">
+								<option selected>&nbsp;비밀번호 힌트</option>
+								<c:forEach var="pQuestion" items="${qList}">
+									<option value="${pQuestion.pwQId}">${pQuestion.question}</option>
+								</c:forEach>
+							</select>
+							<c:if test="${errors.noP_q}">
+							<span>비밀번호 힌트가 일치하지 않습니다.</span>
 						</c:if>
-						<c:if test="${errors.InvalidPassword}">
-							<span>Password가 일치하지 않습니다.</span>
+					</div>
+				</div>
+				<div class="form-group form-group-lg">
+					<label for="inputPassword3" class="col-sm-3 control-label">Password Answer</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" placeholder="Password Answer" name="p_answer">
+						<c:if test="${errors.noP_answer}">
+							<span>비밀번호 답이 일치하지 않습니다.</span>
 						</c:if>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-7">
-						<!-- <button type="submit" class="btn btn-default btn-block btn-lg">Login</button> -->
+						
 						<input type="submit" class="btn btn-default btn-block btn-lg"
-							value="Login">
-					</div>
-					<div class="col-sm-offset-2 col-sm-7">
-						<!-- <button type="submit" class="btn btn-default btn-block btn-lg">Cancel</button> -->
-						<a href="mainBoard" class="btn btn-default btn-block btn-lg">Cancel</a>
-					</div>
-					<div class="col-sm-offset-2 col-sm-7">
-						<a href="join" class="btn btn-default btn-block btn-lg">Join</a>
-					</div>
-					<div class="col-sm-offset-2 col-sm-7">
-						<a href="Find_PasswordForm.do" class="btn btn-default btn-block btn-lg">Find Password</a>
-					</div>
+							value="비밀번호 찾기">
+					</div>		
 				</div>
 			</form>
 		</div>
