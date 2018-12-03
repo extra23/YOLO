@@ -33,13 +33,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.almom.util.MediaUtils;
 import com.almom.util.UploadFileUtils;
 
+
+import yolo.dao.UserDAO;
 import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
+import yolo.service.DeleteService;
 import yolo.service.InterfaceLoginService;
-import yolo.service.InterfacePQuestionService;
 import yolo.service.InterfaceUserService;
-import yolo.vo.P_Question;
 import yolo.vo.UserVO;
 
 @Controller
@@ -52,7 +53,7 @@ public class UserController {
 	private InterfaceLoginService loginService;
 	
 	@Autowired
-	private InterfacePQuestionService pquestionService;
+	private DeleteService deleteService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -106,10 +107,7 @@ public class UserController {
 
 	// 회원가입 폼으로 이동
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String joinForm(Model model) {
-		//회원가입 폼으로 이동시 비밀번호 힌트 질문을 데이터로 받아온다.
-		List<P_Question> qList = pquestionService.readQList();
-		model.addAttribute("qList",qList);
+	public String joinForm() {
 		return "join";
 	}
 
@@ -311,13 +309,6 @@ public class UserController {
 		return mav;
 	}
 
-	// 유저 탈퇴하고 메인 페이지로 복귀하기
-	@RequestMapping(value = "/remove.do/{userId}")
-	public String removeUser(@RequestParam("userId") int userId) {
-		userService.removeUser(userId);
-		return "mainBoard";
-	}
-
 	// 로그아웃
 	@RequestMapping(value = "logoutTry.do")
 	public String logout(HttpServletRequest request) throws Exception {
@@ -325,7 +316,51 @@ public class UserController {
 		request.getSession().removeAttribute("authUser");
 
 		return "mainBoard";
-
 	}
-
+	
+	// 유저 탈퇴페이지로 
+	@RequestMapping(value="/deleteUser", method = RequestMethod.GET)
+	public ModelAndView deleteUserForm(@RequestParam("userId") int userId, ModelAndView mv) {	
+		UserVO user = userService.readUserByUserId(userId);
+		mv.addObject("user", user);
+		return mv;
+	}
+		
+	
+	// 유저 탈퇴하고 메인 페이지로 복귀하기
+	/*@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+	public String deleteUser(@RequestParam("userId") int userId, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp, int topicId, int moduleId, int courseId){
+		ModelAndView mav = new ModelAndView();
+		
+		// Map<String, Boolean> errors 객체 생성
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		req.setAttribute("errors", errors);
+		
+		
+		try {
+			deleteService.deleteUser(userId);
+			HttpSession session = req.getSession(false);
+			UserDAO userDAO = (UserDAO)session.getAttribute("email");
+			if(session == null) {
+				// 잘못된 접근시 에러페이지로 보냄.
+				resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+				// 세션 삭제
+				session.invalidate();
+				// mainBoard 페이지로 돌아가기
+				//resp.sendRedirect(req.getContextPath() + "mainBoard");
+				//mav.setViewName("deleteUser");
+			}catch (InvalidPasswordException e) {
+				if(password == null || password.isEmpty()) {
+					errors.put("emptyPassword", true);
+				}else if(!password.equals(req.getParameter(password))) {
+					errors.put("wrongPwd", true);
+				}
+				errors.put("invalidPassword", true);
+				mav.addObject("errors", errors);
+				//mav.setViewName("deleteUser");
+				return "deleteUser";
+			}
+		
+		return "mainBoard";*/
+	
 }
