@@ -29,7 +29,7 @@
 			background-size: cover;
 		}
 	
-		.mainContent {
+		#mainContent {
 			width: 100%;
 			font-family: 'Jua', sans-serif;
 			text-align: center;
@@ -105,7 +105,7 @@
 			text-align: center;
 		}
 
-		h3 {
+		#mainContent h3 {
 			margin-top: 0px !important;
 		}
 		
@@ -116,7 +116,7 @@
 	
 	<jsp:include page="header3.jsp"></jsp:include>
 	
-	<div class="mainContent">
+	<div id="mainContent">
 		<div class="menu">
 			<div class="course">
 				<p class="title">
