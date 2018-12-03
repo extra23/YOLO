@@ -27,9 +27,9 @@ public class ModuleAndViewController {
 	@Autowired
 	private InterfaceUserService userService;
 
-	// mainModule 페이지로 이동
-	@RequestMapping("/mainModule")
-	public ModelAndView getMainModule(int moduleId) {
+	// module 페이지로 이동
+	@RequestMapping("/modulePage")
+	public ModelAndView getModulePage(int moduleId) {
 		ModelAndView mav = new ModelAndView();
 		
 		ModuleVO module = moduleService.readModuleByModuleId(moduleId);
@@ -37,7 +37,22 @@ public class ModuleAndViewController {
 		UserVO user = userService.readUserByUserId(module.getUserId());
 		
 		mav.addObject("moduleAndTopic", new ModuleAndTopicVO(module, user, topicList));
-		mav.setViewName("mainModule");
+		mav.setViewName("courseModuleTopic/module");
+		
+		return mav;
+	}
+	
+	// tTitle 클릭 시 topic 페이지로 이동
+	@RequestMapping("/topicPage")
+	public ModelAndView getTopicPage(int moduleId) {
+		ModelAndView mav = new ModelAndView();
+		
+		ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+		List<TopicVO> topicList = topicService.readTopicListGroupByModuleId(module.getModuleId());
+		UserVO user = userService.readUserByUserId(module.getUserId());
+		
+		mav.addObject("moduleAndTopic", new ModuleAndTopicVO(module, user, topicList));
+		mav.setViewName("courseModuleTopic/topic");
 		
 		return mav;
 	}

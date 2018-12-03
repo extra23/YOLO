@@ -1,5 +1,7 @@
 package yolo.vo;
 
+import java.time.LocalDateTime;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("Topic")
@@ -9,6 +11,8 @@ public class TopicVO {
 	private int userId;
 	private String tTitle;
 	private String tContent;
+	private LocalDateTime wdate;
+	private LocalDateTime udate;
 	
 	public TopicVO() {}
 

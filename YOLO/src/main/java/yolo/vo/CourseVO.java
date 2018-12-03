@@ -1,5 +1,7 @@
 package yolo.vo;
 
+import java.time.LocalDateTime;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("Course")
@@ -10,6 +12,9 @@ public class CourseVO {
 	private String cTitle;
 	private String cContent;
 	private String cSummary;
+	private LocalDateTime wdate;
+	private LocalDateTime udate;
+	
 	public CourseVO () {}
 	
 	//insert

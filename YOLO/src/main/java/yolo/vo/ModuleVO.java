@@ -1,5 +1,7 @@
 package yolo.vo;
 
+import java.time.LocalDateTime;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("Module")
@@ -11,11 +13,10 @@ public class ModuleVO {
 	private String mContent;
 	private String mSummary;
 	private int userId;
-	
+	private LocalDateTime wdate;
+	private LocalDateTime udate;
 
 	public ModuleVO() {}
-
-
 
 	//insert 
 	
