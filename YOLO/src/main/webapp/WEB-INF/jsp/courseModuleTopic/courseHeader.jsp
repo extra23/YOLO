@@ -6,31 +6,31 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<style>
-		
-		#moduleHeader, #moduleHeader div {
+	
+		#courseHeader, #courseHeader div {
 			border: 1px solid black;
 			margin: 20px;
 		}
 		
-		#moduleHeader div {
+		#courseHeader div {
 			padding: 10px;
 		}
-		
+	
 	</style>
 </head>
 <body>
 
-	<div id="moduleHeader">
+	<div id="courseHeader">
 		
-		<div id="moduleTitle">
-			<a href="modulePage?moduleId=${moduleAndTopic.module.moduleId}"><h1>${moduleAndTopic.module.mTitle}</h1></a>
+		<div id="courseTitle">
+			<a href="coursePage?courseId=${courseAndModule.course.courseId}"><h1>${courseAndModule.course.cTitle}</h1></a>
 		</div>
 		
-		<div id="moduleSummary">${moduleAndTopic.module.mSummary}</div>
+		<div id="courseSummary">${courseAndModule.course.cSummary}</div>
 		
 		<div id="btns">
 			<button>공동참여</button>
-			<button>새로운 모듈 생성</button>
+			<button>새로운 코스 생성</button>
 		</div>
 		
 	</div>

@@ -34,7 +34,7 @@ public class TopicService implements InterfaceTopicService {
 		return topicDAO.selectTopicList();
 	}
 	
-	public List<TopicVO> readTopicListGroupByModuleId(int moduleId) {
+	public List<TopicVO> readTopicListByModuleId(int moduleId) {
 		return topicDAO.selectTopicListByModuleId(moduleId);
 	}
 

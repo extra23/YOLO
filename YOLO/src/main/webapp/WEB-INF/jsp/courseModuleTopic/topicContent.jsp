@@ -11,12 +11,7 @@
 		#topicContent{
 			border: 1px solid black;
 			margin: 20px;
-			padding: 10px;
-		}
-		
-		#eachTopicContent {
-			border: 1px solid black;
-			padding: 10px;
+			padding: 20px;
 		}
 		
 	</style>

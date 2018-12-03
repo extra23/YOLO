@@ -15,7 +15,7 @@ public interface InterfaceTopicService {
 	
 	public List<TopicVO> readTopicList();
 	
-	public List<TopicVO> readTopicListGroupByModuleId(int moduleId);
+	public List<TopicVO> readTopicListByModuleId(int moduleId);
 	
 	public void modifyTopic(TopicVO topic);
 	

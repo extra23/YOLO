@@ -32,6 +32,10 @@
 		select * from module
 	</select>
 	
+	<select id="selectModuleListByCourseId" parameterType="Integer" resultType="Module">
+		select * from module where courseId=#{courseId}
+	</select>
+	
 	<update id="updateModule" parameterType="Module">
 		update module set courseId=#{courseId}, mTitle=#{mTitle}, mContent=#{mContent}, mSummary=#{mSummary} where moduleId=#{moduleId}
 	</update>

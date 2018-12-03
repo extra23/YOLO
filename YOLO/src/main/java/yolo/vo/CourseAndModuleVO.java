@@ -8,15 +8,15 @@ import org.apache.ibatis.type.Alias;
 public class CourseAndModuleVO {
 	private CourseVO course;
 	private UserVO user;
-	private List<ModuleAndTopicVO> moduleList; 
+	private List<ModuleAndTopicVO> moduleAndTopicList; 
 	
 	public CourseAndModuleVO() {}
 
-	public CourseAndModuleVO(CourseVO course, UserVO user, List<ModuleAndTopicVO> moduleList) {
+	public CourseAndModuleVO(CourseVO course, UserVO user, List<ModuleAndTopicVO> moduleAndTopicList) {
 		super();
 		this.course = course;
 		this.user = user;
-		this.moduleList = moduleList;
+		this.moduleAndTopicList = moduleAndTopicList;
 	}
 
 	public CourseVO getCourse() {
@@ -35,13 +35,12 @@ public class CourseAndModuleVO {
 		this.user = user;
 	}
 
-	public List<ModuleAndTopicVO> getModuleList() {
-		return moduleList;
+	public List<ModuleAndTopicVO> getModuleAndTopicList() {
+		return moduleAndTopicList;
 	}
 
-	public void setModuleList(List<ModuleAndTopicVO> moduleList) {
-		this.moduleList = moduleList;
+	public void setModuleAndTopicList(List<ModuleAndTopicVO> moduleAndTopicList) {
+		this.moduleAndTopicList = moduleAndTopicList;
 	}
-	
 	
 }

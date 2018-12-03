@@ -16,6 +16,8 @@ public interface InterfaceModuleMapper {
 	
 	public List<ModuleVO> selectModuleList();
 	
+	public List<ModuleVO> selectModuleListByCourseId(int courseId);
+	
 	public void updateModule(ModuleVO module);
 	
 	public void deleteModule(int moduleId);

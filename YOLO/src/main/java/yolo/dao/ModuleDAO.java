@@ -40,6 +40,11 @@ public class ModuleDAO implements InterfaceModuleDAO {
 			
 		return moduleList ;		
 	}
+	
+	public List<ModuleVO> selectModuleListByCourseId(int courseId) {
+		List<ModuleVO> moduleList = moduleMapper.selectModuleListByCourseId(courseId);
+		return null;
+	}
 
 	public void updateModule(ModuleVO module) {
 		

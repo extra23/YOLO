@@ -16,7 +16,7 @@ import yolo.vo.TopicVO;
 import yolo.vo.UserVO;
 
 @Controller
-public class ModuleAndViewController {
+public class ModuleAndTopicController {
 	
 	@Autowired
 	private InterfaceModuleService moduleService;
@@ -33,7 +33,7 @@ public class ModuleAndViewController {
 		ModelAndView mav = new ModelAndView();
 		
 		ModuleVO module = moduleService.readModuleByModuleId(moduleId);
-		List<TopicVO> topicList = topicService.readTopicListGroupByModuleId(module.getModuleId());
+		List<TopicVO> topicList = topicService.readTopicListByModuleId(module.getModuleId());
 		UserVO user = userService.readUserByUserId(module.getUserId());
 		
 		mav.addObject("moduleAndTopic", new ModuleAndTopicVO(module, user, topicList));
@@ -50,7 +50,7 @@ public class ModuleAndViewController {
 		ModelAndView mav = new ModelAndView();
 		
 		ModuleVO module = moduleService.readModuleByModuleId(moduleId);
-		List<TopicVO> topicList = topicService.readTopicListGroupByModuleId(module.getModuleId());
+		List<TopicVO> topicList = topicService.readTopicListByModuleId(module.getModuleId());
 		UserVO user = userService.readUserByUserId(module.getUserId());
 		
 		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO(module, user, topicList);

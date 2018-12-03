@@ -15,6 +15,8 @@ public interface InterfaceModuleService {
 	
 	public List<ModuleVO> readModuleList();
 	
+	public List<ModuleVO> readModuleListByCourseId(int courseId);
+	
 	public void modifyModule(ModuleVO module);
 	
 	public void removeModule(int moduleId);

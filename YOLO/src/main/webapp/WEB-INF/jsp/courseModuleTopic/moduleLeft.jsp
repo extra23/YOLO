@@ -25,8 +25,11 @@
 		
 		<div id="userInfo">
 			<img src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 50px; heigth: 50px; border-radius: 50%;"><br>
-				${moduleAndTopic.user.nickName}<br>
-				${moduleAndTopic.user.email}
+			<a href="getUser.do?email=${moduleAndTopic.user.email}">${moduleAndTopic.user.nickName}</a><br>
+			${moduleAndTopic.user.email}<br>
+			<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
+				<a href="modifyUser?userId=${moduleAndTopic.user.userId}">프로필 수정</a>
+			</c:if>
 		</div>
 		
 		<div id="tTitleList">

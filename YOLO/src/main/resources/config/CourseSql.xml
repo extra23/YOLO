@@ -9,15 +9,15 @@
 	</insert>
 	
 	<select id="selectCourseByUserId" parameterType="Integer" resultType="Course">
-		select cTitle, cContent from course where userId=#{userId}
+		select * from course where userId=#{userId}
 	</select>
 	
 	<select id="selectCourseByCourseId"  parameterType="Integer" resultType="Course">
-		select cTitle, cContent from course where courseId=#{courseId}
+		select * from course where courseId=#{courseId}
 	</select>
 	
 	<select id="selectCourseList" resultType="Course">
-		select cTitle, cContent form course
+		select * form course
 	</select>
 	
 	<update id="updateCourse" parameterType="Course">

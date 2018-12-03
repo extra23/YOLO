@@ -9,15 +9,15 @@
 	</insert>
 	
 	<select id="selectTopicByUserId" parameterType="Integer" resultType="Topic">
-		select tTitle, tContent from topic where userId=#{userId}
+		select * from topic where userId=#{userId}
 	</select>
 	
 	<select id="selectTopicByTopicId" parameterType="Integer" resultType="Topic">
-		select tTitle, tContent from topic where topicId=#{topicId}
+		select * from topic where topicId=#{topicId}
 	</select>
 	
 	<select id="selectTopicList" resultType="Topic">
-		select tTitle, tContent from topic
+		select * from topic
 	</select>
 	
 	<select id="selectTopicListByModuleId" parameterType="Integer" resultType="Topic">

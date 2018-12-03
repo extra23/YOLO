@@ -31,6 +31,10 @@ public class ModuleService implements InterfaceModuleService {
 	public List<ModuleVO> readModuleList() {
 		return moduleDAO.selectModuleList();
 	}
+	
+	public List<ModuleVO> readModuleListByCourseId(int courseId) {
+		return moduleDAO.selectModuleListByCourseId(courseId);
+	}
 
 	public void modifyModule(ModuleVO module) {
 		moduleDAO.updateModule(module);
