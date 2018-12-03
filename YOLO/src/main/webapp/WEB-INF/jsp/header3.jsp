@@ -138,6 +138,10 @@
 			top: -5px;
 		}
 		
+		#nickName{
+			font-family: 'Jua', cursive;
+		}
+		
 		#btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), #btn-group>.btn+.dropdown-toggle{
 			background-color: white;
 			border-color: gray;
@@ -148,11 +152,15 @@
 		
 		#dropdownMenu{
 			top: 108%;
-		    left: -95px;
+		    left: -152% !important;
 		}
 		
 		#dropdownMenu>li{
 			list-style-type: none;
+		}
+		
+		#btn-group * {
+			font-family: 'Jua';
 		}
 		
 		
@@ -201,18 +209,30 @@
 			</c:if>
 			
 			<c:if test="${not empty sessionScope.authUser}">
+				
+				
 				<div class="btn-group" id="btn-group">
 					<button type="button" class="btn btn-danger">${authUser.nickName}</button>
 					<button type="button" class="btn btn-danger dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false">
 						<span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
 					</button>
+					<c:if test="${authUser.userType}">
 					<ul class="dropdown-menu" id="dropdownMenu" role="menu">
 						<li><a href="getUser.do?email=${authUser.email }" style="font-family:'Jua'">프로필</a></li>
 						<li><a href="#" style="font-family:'Jua'">토픽/모듈/코스 수정</a></li>
 						<li class="divider"></li>
 						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
 					</ul>
+					</c:if>
+					<ul class="dropdown-menu" id="dropdownMenu" role="menu">
+						<li><a href="getUser.do?email=${authUser.email }" style="font-family:'Jua'">프로필</a></li>
+						<li><a href="adminForm.do" style="font-family:'Jua'">관리자 페이지</a></li>
+						<li class="divider"></li>
+						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
+					</ul>
+					
 				</div>
+				
 			</c:if>
 			
 		</div>

@@ -62,7 +62,7 @@
 
 		.help {
 			width: 32%;
-			height: 950px;
+			height: 850px;
 			border-radius: 10px;
 			background-color: white;
 			float: right;
@@ -97,7 +97,7 @@
 
 		.helpBox {
 			width: 93%;
-			height: 820px;
+			height: 702px;
 			background-color: gainsboro;
 			border-radius: 10px;
 			margin-left: 20px;
@@ -205,7 +205,7 @@
 					</div>
 
 
-					<div>
+					<!-- <div>
 						<br>
 						<h3>서비스 문제점</h3>
 						<hr>
@@ -215,7 +215,7 @@
 							연락 부탁드립니다.
 						</p>
 						<br>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

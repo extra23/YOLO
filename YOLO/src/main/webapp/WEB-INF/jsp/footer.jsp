@@ -114,6 +114,16 @@
 					<li><a href="https://www.instagram.com/">- Instagram</a></li>
 				</ul>
 			</li>
+			<li>
+			<h3>
+			Service Problem
+			</h3>
+			
+				
+				<a href="mailto:YOLO@gmail.com?Subject=Hello%Help Me!">YOLO@gmail.com</a>
+				
+			
+			</li>
 		</ul>
 	</div>
 	
