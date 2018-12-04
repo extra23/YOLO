@@ -14,33 +14,38 @@ public class UserVO {
 	private String nickName;
 	private String email;
 	private String password;
-	private int p_qId;
-	private String p_answer;
+	private int pwQId;
+	private String pwA;
 	private LocalDateTime wdate;
 	private LocalDateTime udate;
 
 	public UserVO() {}
-	
+
 	// insert 시 사용할 생성자 테스트
-	public UserVO(String profileImage, String nickName, String email, String password, int p_qId, String p_answer) {
+	
+	public UserVO(String profileImage, String nickName, String email, String password, int pwQId, String pwA) {
+		super();
 		this.profileImage = profileImage;
 		this.nickName = nickName;
 		this.email = email;
 		this.password = password;
-		this.p_qId = p_qId;
-		this.p_answer = p_answer;
+		this.pwQId = pwQId;
+		this.pwA = pwA;
 	}
 
-	// update 시 사용할 생성자
-	public UserVO(int userId, String profileImage, String nickName, String email, String password, int p_qId, String p_answer) {
+	
+	
+	//update
+	public UserVO(int userId, String profileImage, String nickName, String email, String password, int pwQId,
+			String pwA) {
 		super();
 		this.userId = userId;
 		this.profileImage = profileImage;
 		this.nickName = nickName;
 		this.email = email;
 		this.password = password;
-		this.p_qId = p_qId;
-		this.p_answer = p_answer;
+		this.pwQId = pwQId;
+		this.pwA = pwA;
 	}
 
 	public int getUserId() {
@@ -52,10 +57,6 @@ public class UserVO {
 	}
 
 	public boolean isUserType() {
-		return userType;
-	}
-	
-	public boolean getUserType() {
 		return userType;
 	}
 
@@ -95,20 +96,20 @@ public class UserVO {
 		this.password = password;
 	}
 
-	public int getP_qId() {
-		return p_qId;
+	public int getPwQId() {
+		return pwQId;
 	}
 
-	public void setP_qId(int p_qId) {
-		this.p_qId = p_qId;
+	public void setPwQId(int pwQId) {
+		this.pwQId = pwQId;
 	}
 
-	public String getP_answer() {
-		return p_answer;
+	public String getPwA() {
+		return pwA;
 	}
 
-	public void setP_answer(String p_answer) {
-		this.p_answer = p_answer;
+	public void setPwA(String pwA) {
+		this.pwA = pwA;
 	}
 
 	public LocalDateTime getWdate() {
@@ -126,5 +127,8 @@ public class UserVO {
 	public void setUdate(LocalDateTime udate) {
 		this.udate = udate;
 	}
+	
+	
+	
 	
 }

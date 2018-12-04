@@ -82,12 +82,15 @@
 					type : "POST",
 					data : {
 						email:$("#email").val(),
-						p_qId:$("#p_qId").val(),
-						p_answer:$("#p_answer").val()
+						p_qId:$("#pwQId").val(),
+						p_answer:$("#pwA").val()
 					},
-					sucess : function(result){
+					success : function(result){
 						alert(result);
 					},
+					error : function(error){
+						alert("오류예염"+error);
+					}
 				})
 			});
 		})
@@ -98,12 +101,13 @@
 	<div class="mainForm">
 		<div class="passwordForm">
 			<p>Find Password</p>
-			<form class="form-horizontal" action="Find_PasswordForm.do" method="post">
+			<!-- <form class="form-horizontal" action="Find_PasswordForm.do" method="post"> -->
+			<div class="form-horizontal">
 				<div class="form-group form-group-lg">
 					<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 					<div class="col-sm-6">
-						<input type="email" class="form-control" placeholder="Email" name="email" value="${param.email}">
-						<c:if test="${errors.noUser}">
+						<input type="email" class="form-control" placeholder="Email" id="email" name="email" value="${param.email}">
+						<c:if test="${errors.noEmail}">
 							<span>user가 존재하지 않습니다.</span>
 						</c:if>
 					</div>
@@ -111,7 +115,7 @@
 				<div class="form-group form-group-lg">
 					<label for="pQId" class="col-sm-3 control-label">Password Question</label>
 					<div class="col-sm-6">
-							<select name="p_qId">
+							<select name="pwQId" id="pwQId">
 								<option selected>&nbsp;비밀번호 힌트</option>
 								<c:forEach var="pQuestion" items="${qList}">
 									<option value="${pQuestion.pwQId}">${pQuestion.question}</option>
@@ -125,7 +129,7 @@
 				<div class="form-group form-group-lg">
 					<label for="inputPassword3" class="col-sm-3 control-label">Password Answer</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" placeholder="Password Answer" name="p_answer">
+						<input type="text" class="form-control" id="pwA" placeholder="Password Answer" name="p_answer">
 						<c:if test="${errors.noP_answer}">
 							<span>비밀번호 답이 일치하지 않습니다.</span>
 						</c:if>
@@ -134,11 +138,12 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-7">
 						
-						<input type="submit" id="findBtn" class="btn btn-default btn-block btn-lg"
-							value="비밀번호 찾기">
+						<button id="findBtn" class="btn btn-default btn-block btn-lg">비밀번호 찾기</button>
 					</div>		
 				</div>
-			</form>
+			
+			</div>
+			<!-- </form> -->
 		</div>
 	</div>
 

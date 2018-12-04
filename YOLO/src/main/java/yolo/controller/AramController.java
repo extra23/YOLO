@@ -43,33 +43,36 @@ public class AramController {
 	}
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.POST)
-	public ModelAndView findPassword(ModelAndView modelAndView, HttpServletRequest request,
-			HttpServletResponse response, UserVO user, String email, int p_qId, String p_answer) throws IOException {
+	public void findPassword(Model model, HttpServletRequest request,
+			HttpServletResponse response, UserVO user, String email, int pwQId, String pwA) throws IOException {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+//		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
 		// 이메일이 없을 때
-		if (!user.getEmail().equals(email)) {
+		if (userService.readUSerByEmail(email)==null) {
 			out.print("잘못된 이메일입니다.");
 			out.close();
 			
-			List<P_Question> qList = pquestionService.readQList();
-			modelAndView.addObject("qList",qList);
-			modelAndView.setViewName("find_PasswordForm"); 
-			return modelAndView;
+//			errors.put("noEmail", true);
+		
+			
 		} else {
 			UserVO uservo = userService.readUSerByEmail(email);
 
-			if (p_qId != user.getP_qId()) {
-
-				out.print("잘못된 비밀번호 찾기 질문 선택입니다.");
+			
+			if (pwQId != uservo.getPwQId()) {
+				out.print("잘못된 비밀번호 찾기 질문 입니다.");
 				out.close();
 				
-			} else if (p_answer != user.getP_answer()) {
+//				errors.put("noP_q", true);
+				
+			} else if (pwA != uservo.getPwA()) {
 				out.print("잘못된 비밀번호 찾기 질문 답변입니다.");
 				out.close();
 				
+//				errors.put("noP_answer", true);
 				
 			} else {
 
@@ -87,28 +90,31 @@ public class AramController {
 				emailService.send_email(user);
 				out.println("이메일로 임시 비밀번호를 발송하였습니다.");
 				out.close();
+				
+				
 			}
 		}
+//		modelAndView.addObject("errors",errors);
+		/*
 		List<P_Question> qList = pquestionService.readQList();
-		modelAndView.addObject("qList",qList);
-		modelAndView.setViewName("find_PasswordForm"); 
-		return modelAndView;
+		request.setAttribute("qList", qList);*/
+		
 		
 		/*
-		 * UserVO user = userService.readUSerByEmail(email); 
-		 * Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		 * 
-		 * 
-		 * try { if(user == null) { System.out.println("사용자가 없습니다.");
-		 * errors.put("noUser", true); throw new Exception(); } if(p_qId !=
-		 * user.getP_qId()) { errors.put("noP_q", true); throw new Exception(); }
-		 * if(p_answer != user.getP_answer()) { errors.put("noP_answer", true); throw
-		 * new Exception(); }
-		 * 
-		 * response.sendRedirect("find_Password"); return null; } catch(Exception e ) {
-		 * modelAndView.addObject("errors", errors); List<P_Question> qList =
-		 * pquestionService.readQList(); modelAndView.addObject("qList",qList);
-		 * modelAndView.setViewName("find_PasswordForm"); return modelAndView; }
+		  UserVO user = userService.readUSerByEmail(email); 
+		  Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		 
+		  
+		  try { if(user == null) { System.out.println("사용자가 없습니다.");
+		  errors.put("noUser", true); throw new Exception(); } if(p_qId !=
+		  user.getP_qId()) { errors.put("noP_q", true); throw new Exception(); }
+		  if(p_answer != user.getP_answer()) { errors.put("noP_answer", true); throw
+		  new Exception(); }
+		  
+		  response.sendRedirect("find_Password"); return null; } catch(Exception e ) {
+		  modelAndView.addObject("errors", errors); List<P_Question> qList =
+		  pquestionService.readQList(); modelAndView.addObject("qList",qList);
+		  modelAndView.setViewName("find_PasswordForm"); return modelAndView; }
 		 */
 
 	}
