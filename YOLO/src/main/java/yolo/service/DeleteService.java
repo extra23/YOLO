@@ -34,11 +34,11 @@ public class DeleteService {
 	@Autowired
 	private CourseDAO courseDAO;
 	
-	public String select(int userId) {
+/*	public String select(int userId) {
 		return null;
-	}
+	}*/
 	
-	public String delete(HttpServletRequest req, HttpServletResponse resp, int userId, String password, int topicId, int moduleId, int courseId)throws IOException{
+	public void delete(HttpServletRequest req, HttpServletResponse resp, int userId, String password){
 		
 		// userId를 이용해서 UserVO 객체를 DB에서 select 해옴
 		UserVO user = userDAO.selectUser(userId);
@@ -55,9 +55,9 @@ public class DeleteService {
 		}else {
 			// 비밀번호가 일치하면 DAO들을 통해서 내용 삭제
 			userDAO.deleteUser(userId);
-			topicDAO.deleteTopic(topicId);
-			moduleDAO.deleteModule(moduleId);
-			courseDAO.deleteCourse(courseId);	
+			topicDAO.deleteTuser(userId);
+			moduleDAO.deleteMuser(userId);
+			courseDAO.deleteCuser(userId);	
 		}
 		
 		// 입력할 때 사용하는 생성자
@@ -68,8 +68,7 @@ public class DeleteService {
 		/*if(!user.getUserId().equals(writeUser.getUserId())) {
 			throw new UserNotFoundException("사용자 권한 없음.");
 		}*/
-		
-		return "mainBoard";
+
 	}
 
 }

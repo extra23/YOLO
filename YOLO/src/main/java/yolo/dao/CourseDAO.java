@@ -41,6 +41,10 @@ public class CourseDAO implements InterfaceCourseDAO{
 		courseMapper.deleteCourse(courseId);
 	}
 	
+	public void deleteCuser(int userId) {
+		courseMapper.deleteCuser(userId);
+	}
+	
 	public List<SearchVO> searchCourse(String cTitle){
 		List<SearchVO> courseList = courseMapper.searchCourse(cTitle);
 		return courseList;

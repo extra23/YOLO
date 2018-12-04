@@ -57,6 +57,12 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		moduleMapper.deleteModule(moduleId);
 
 	}
+	
+	public void deleteMuser(int userId) {
+		
+		moduleMapper.deleteMuser(userId);
+
+	}
 
 	public List<SearchVO> searchModule(String mTitle) {
 		

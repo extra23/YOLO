@@ -47,6 +47,11 @@ public class TopicDAO implements InterfaceTopicDAO {
 		topicMapper.deleteTopic(topicId);
 
 	}
+	
+	public void deleteTuser(int userId) {
+		topicMapper.deleteTuser(userId);
+
+	}
 
 	public List<SearchVO> searchTopic(String tTitle) {
 		List<SearchVO> topicList = topicMapper.searchTopic(tTitle);

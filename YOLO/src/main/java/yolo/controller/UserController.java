@@ -336,39 +336,38 @@ public class UserController {
 		
 	
 	// 유저 탈퇴하고 메인 페이지로 복귀하기
-	/*@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
-	public String deleteUser(@RequestParam("userId") int userId, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp, int topicId, int moduleId, int courseId){
-		ModelAndView mav = new ModelAndView();
-		
-		// Map<String, Boolean> errors 객체 생성
-		Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		req.setAttribute("errors", errors);
-		
-		
-		try {
-			deleteService.deleteUser(userId);
-			HttpSession session = req.getSession(false);
-			UserDAO userDAO = (UserDAO)session.getAttribute("email");
-			if(session == null) {
-				// 잘못된 접근시 에러페이지로 보냄.
-				resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+		@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+		public String deleteUser(@RequestParam("userId") int userId, String email, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+			ModelAndView mav = new ModelAndView();
+			
+			// Map<String, Boolean> errors 객체 생성
+			Map<String, Boolean> errors = new HashMap<String, Boolean>();
+			req.setAttribute("errors", errors);
+			
+			
+			try {
+				deleteService.delete(req, resp, userId, password);
+				//UserDAO userDAO = (UserDAO)session.getAttribute("email");
+				}catch(InvalidPasswordException e) {
+					errors.put("invalidPassword", true);
+					mav.addObject("errors", errors);
+					return "deleteUser";
+				}catch(UserNotFoundException e) {
+					errors.put("UserNotFound", true);
+					mav.addObject("errors", errors);
+					return "deleteUser";
+				}
+				HttpSession session = req.getSession(false);
+				if(session == null) {
+					// 잘못된 접근시 에러페이지로 보냄.
+					resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+					}
 				// 세션 삭제
 				session.invalidate();
-				// mainBoard 페이지로 돌아가기
-				//resp.sendRedirect(req.getContextPath() + "mainBoard");
-				//mav.setViewName("deleteUser");
-			}catch (InvalidPasswordException e) {
-				if(password == null || password.isEmpty()) {
-					errors.put("emptyPassword", true);
-				}else if(!password.equals(req.getParameter(password))) {
-					errors.put("wrongPwd", true);
-				}
-				errors.put("invalidPassword", true);
-				mav.addObject("errors", errors);
-				//mav.setViewName("deleteUser");
-				return "deleteUser";
-			}
-		
-		return "mainBoard";*/
+			
+			// mainBoard 페이지로 돌아가기
+			return "mainBoard";
+		}
 	
+
 }
