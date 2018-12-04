@@ -23,13 +23,13 @@ public class EmailService implements InterfaceEmailService {
 		String hostSMTPpwd = "asdfkj11";
 		
 		//보내는 사람 Email, 제목, 내용
-		String fromEmail = "YOLOAdmin@yolo.com";
+		String fromEmail = "dia3546@naver.com";
 		String fromName = "YOLO관리자";
 		String subject = "";
 		String msg = "";
 
 		subject = "#YOLO 임시 비밀번호 입니다";
-		msg += "<div align='center' style='border:ipx solid black;>";
+		msg += "<div align='center' style='border:ipx solid black;'>";
 		msg += "<h3 style= 'color:blue;'>";
 		msg += user.getNickName() +"님의 임시비밀번호 입니다. 비밀번호를 변경하여 사용하세요 </h3>";
 		msg += "<p> 임시 비밀번호: ";

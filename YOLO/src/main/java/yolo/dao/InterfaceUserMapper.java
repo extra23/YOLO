@@ -23,5 +23,5 @@ public void insertUser(UserVO user);
 	
 	public int countBySearch(String email);
 	
-	public int update_pw(String email);
+	public int update_pw(UserVO user);
 }

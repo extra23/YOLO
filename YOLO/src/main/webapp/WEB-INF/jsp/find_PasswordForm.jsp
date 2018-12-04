@@ -77,16 +77,18 @@
 		$(function(){
 			
 			$("#findBtn").click(function(){
+			
 				$.ajax({
 					url : "Find_PasswordForm.do",
 					type : "POST",
 					data : {
 						email:$("#email").val(),
-						p_qId:$("#pwQId").val(),
-						p_answer:$("#pwA").val()
+						pwQId:$("#pwQId").val(),
+						pwA:$("#pwA").val()
 					},
 					success : function(result){
 						alert(result);
+						
 					},
 					error : function(error){
 						alert("오류예염"+error);
@@ -107,9 +109,7 @@
 					<label for="inputEmail3" class="col-sm-3 control-label">Email</label>
 					<div class="col-sm-6">
 						<input type="email" class="form-control" placeholder="Email" id="email" name="email" value="${param.email}">
-						<c:if test="${errors.noEmail}">
-							<span>user가 존재하지 않습니다.</span>
-						</c:if>
+					
 					</div>
 				</div>
 				<div class="form-group form-group-lg">
@@ -121,18 +121,14 @@
 									<option value="${pQuestion.pwQId}">${pQuestion.question}</option>
 								</c:forEach>
 							</select>
-							<c:if test="${errors.noP_q}">
-							<span>비밀번호 힌트가 일치하지 않습니다.</span>
-						</c:if>
+						
 					</div>
 				</div>
 				<div class="form-group form-group-lg">
 					<label for="inputPassword3" class="col-sm-3 control-label">Password Answer</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="pwA" placeholder="Password Answer" name="p_answer">
-						<c:if test="${errors.noP_answer}">
-							<span>비밀번호 답이 일치하지 않습니다.</span>
-						</c:if>
+						<input type="text" class="form-control" id="pwA" placeholder="Password Answer" name="pwA">
+					
 					</div>
 				</div>
 				<div class="form-group">
@@ -140,6 +136,11 @@
 						
 						<button id="findBtn" class="btn btn-default btn-block btn-lg">비밀번호 찾기</button>
 					</div>		
+				</div>
+				
+
+				<div class="col-sm-offset-2 col-sm-7">
+						<a href="mainBoard" class="btn btn-default btn-block btn-lg">Cancel</a>
 				</div>
 			
 			</div>

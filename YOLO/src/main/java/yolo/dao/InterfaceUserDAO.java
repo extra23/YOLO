@@ -22,5 +22,5 @@ public interface InterfaceUserDAO {
 	
 	public int countBySearch(String email);
 	
-	public int update_pw(String email);
+	public int update_pw(UserVO user);
 }

@@ -44,31 +44,31 @@ public class AramController {
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.POST)
 	public void findPassword(Model model, HttpServletRequest request,
-			HttpServletResponse response, UserVO user, String email, int pwQId, String pwA) throws IOException {
+			HttpServletResponse response, String email, int pwQId, String pwA) throws IOException {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 //		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
 		// 이메일이 없을 때
-		if (userService.readUSerByEmail(email)==null) {
+		UserVO uservo = userService.readUSerByEmail(email);
+		
+		if (uservo==null) {
 			out.print("잘못된 이메일입니다.");
 			out.close();
 			
 //			errors.put("noEmail", true);
 		
 			
-		} else {
-			UserVO uservo = userService.readUSerByEmail(email);
-
-			
+		} else {			
 			if (pwQId != uservo.getPwQId()) {
 				out.print("잘못된 비밀번호 찾기 질문 입니다.");
 				out.close();
 				
 //				errors.put("noP_q", true);
 				
-			} else if (pwA != uservo.getPwA()) {
+			} else if (!pwA.equals(uservo.getPwA())) {
+				System.out.println(pwA + ", " + uservo.getPwA());
 				out.print("잘못된 비밀번호 찾기 질문 답변입니다.");
 				out.close();
 				
@@ -81,13 +81,13 @@ public class AramController {
 				for (int i = 0; i < 8; i++) {
 					pw += (char) ((Math.random() * 26) + 97);
 				}
-				user.setPassword(pw);
+				uservo.setPassword(pw);
 
 				// 비밀번호 변경
-				userService.update_pw(email);
+				userService.update_pw(uservo);
 
 				// 비밀번호 변경 메일 발송
-				emailService.send_email(user);
+				emailService.send_email(uservo);
 				out.println("이메일로 임시 비밀번호를 발송하였습니다.");
 				out.close();
 				
