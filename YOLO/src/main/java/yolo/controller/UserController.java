@@ -264,7 +264,7 @@ public class UserController {
 	// 수정해서 프로필 페이지로 넘기기
 	@RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
 	public ModelAndView modifyUser(HttpServletRequest request, int userId, String profileImage, String email,
-			String nickName, String newPwd1, String newPwd2, String oldPwd, int p_qId, String p_answer) {
+			String nickName, String newPwd1, String newPwd2, String oldPwd, int pwQId, String pwA) {
 
 		ModelAndView mav = new ModelAndView();
 
@@ -289,7 +289,7 @@ public class UserController {
 			return mav;
 		}
 
-		UserVO user = new UserVO(userId, profileImage, nickName, email, newPwd1, p_qId, p_answer);
+		UserVO user = new UserVO(userId, profileImage, nickName, email, newPwd1, pwQId, pwA);
 		try {
 			userService.modifyUser(user, oldPwd);
 		} catch (UserNotFoundException e) {
@@ -368,6 +368,5 @@ public class UserController {
 			// mainBoard 페이지로 돌아가기
 			return "mainBoard";
 		}
-	
-
+		
 }

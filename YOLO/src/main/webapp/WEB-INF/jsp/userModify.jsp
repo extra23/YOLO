@@ -73,11 +73,11 @@
 				</p>
 				
 				<p>
-					p_qId : <input type="number" name="p_qId" value="${authUser.p_qId}">
+					p_qId : <input type="number" name="pwQId" value="${authUser.pwQId}">
 				</p>
 				
 				<p>
-					p_answer : <input type="text" name="p_answer" value="${authUser.p_answer}">
+					p_answer : <input type="text" name="pwA" value="${authUser.pwA}">
 				</p>
 				
 				<p>

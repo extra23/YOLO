@@ -32,8 +32,8 @@
 				<td>${user.nickName}</td>
 				<td><a href="getUser.do?email=${user.email}"> ${user.email}</a></td>
 				<td>${user.password}</td>
-				<td>${user.p_qId}</td>
-				<td>${user.p_answer }</td>
+				<td>${user.pwQId}</td>
+				<td>${user.pwA}</td>
 			</tr>
 			</c:forEach>
 		</tbody>
