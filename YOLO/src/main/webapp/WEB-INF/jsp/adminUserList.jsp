@@ -1,25 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관리자 : 사용자 리스트</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-		<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-		
-		<style type="text/css">
-		
-		body {background: url("images/background2.jpg") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;}
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 	
-		#container {background-color: rgb(250, 250, 250); border-radius: 20px; width: calc(100% - 260px); float: right; padding: 30px; margin: 20px; margin-left: -10px; margin-right: 25px;}
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+		
+		<style>
+
 		#container * {font-family: a찐빵M;}
 	
 		#userListTable {width: 90%; margin: auto;}
@@ -30,8 +31,7 @@
 		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
 		</style>
 </head>
-<div class="container">
-
+<div>
 	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<h2 class="text-center">사용자 목록</h2>
@@ -60,14 +60,15 @@
 				<td>${user.nickName}</td>
 				<td>${user.email}</a></td>
 				<td>${user.password}</td>
-				<td>${user.p_qId}</td>
-				<td>${user.p_answer }</td>
+				<td>${user.pwQId}</td>
+				<td>${user.pwA}</td>
 				<td><a href="adminUserListModify?pageNo=${param.pageNo}&userId=${user.email}">[수정]</a></td>
 				<td><a href="adminUserListDelete?pageNo=${param.pageNo}&userId=${user.email}">[삭제]</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>	
 	</table>
+	
 	
 	<div id="pagination">
 		<c:if test="${userPage.totalPages > 10 && not(userPage.currentPage eq 1)}">
@@ -85,8 +86,10 @@
 		<c:if test="${userPage.totalPages > 10 && not(userPage.currentPage eq userPage.endPage)}">
 			<a href="mUserList?pageNo=${userPage.totalPages}">&gt;&gt;</a>
 		</c:if>
+	
+		</div>
 	</div>
-	<jsp:include page="header3.jsp"></jsp:include>
 
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
