@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +32,7 @@
 </head>
 <div class="container">
 
-	<%-- <jsp:include page="header3.jsp"></jsp:include> --%>
+	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<h2 class="text-center">사용자 목록</h2>
 	<table id="userListTable">
@@ -63,8 +62,8 @@
 				<td>${user.password}</td>
 				<td>${user.p_qId}</td>
 				<td>${user.p_answer }</td>
-				<td><a href="mUserListrModify?pageNo=${param.pageNo}&userId=${user.email}">[수정]</a></td>
-				<td><a href="mUserListrDelete?pageNo=${param.pageNo}&userId=${user.email}">[삭제]</a></td>
+				<td><a href="adminUserListModify?pageNo=${param.pageNo}&userId=${user.email}">[수정]</a></td>
+				<td><a href="adminUserListDelete?pageNo=${param.pageNo}&userId=${user.email}">[삭제]</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>	
@@ -87,7 +86,7 @@
 			<a href="mUserList?pageNo=${userPage.totalPages}">&gt;&gt;</a>
 		</c:if>
 	</div>
-	<%-- <jsp:include page="header3.jsp"></jsp:include> --%>
+	<jsp:include page="header3.jsp"></jsp:include>
 
 </body>
 </html>

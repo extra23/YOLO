@@ -231,6 +231,7 @@
 						<c:if test="${authUser.userType}">
 						<li><a href="#" style="font-family:'Jua'">관리자 페이지</a></li>
 						</c:if>
+						<li><a href="adminUserList" style="font-family:'Jua'">사용자 리스트</a></li>
 						<li><a href="#" style="font-family:'Jua'">토픽/모듈/코스 수정</a></li>
 						<li class="divider"></li>
 						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
