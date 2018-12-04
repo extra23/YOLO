@@ -22,6 +22,8 @@ public interface InterfaceModuleMapper {
 	
 	public void deleteModule(int moduleId);
 	
+	public void deleteMuser(int userId);
+	
 	public List<SearchVO> searchModule(String mTitle);
 	
 	public int countBySearch(String mTitle);

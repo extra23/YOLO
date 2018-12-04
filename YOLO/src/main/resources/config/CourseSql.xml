@@ -28,6 +28,10 @@
 		delete from course where courseId=#{courseId}
 	</delete>
 	
+	<delete id="deleteCuser" parameterType="Integer">
+		delete from course where userId=#{userId}
+	</delete>
+	
 	<select id="searchCourse" parameterType="string" resultType="Search">
 		select * from course c join user u on u.userId = c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>

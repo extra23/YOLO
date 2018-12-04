@@ -20,6 +20,8 @@ public interface InterfaceCourseMapper {
 	
 	public void deleteCourse(int courseId);
 	
+	public void deleteCuser(int userId);
+	
 	public List<SearchVO> searchCourse(String cTitle);
 	
 	public int countBySearch(String cTitle);

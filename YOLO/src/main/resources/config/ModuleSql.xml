@@ -43,6 +43,10 @@
 	<delete id="deleteModule" parameterType="Integer">
 		delete from module where moduleId=#{moduleId}
 	</delete>
+	
+	<delete id="deleteMuser" parameterType="Integer">
+		delete from module where userId=#{userId}
+	</delete>
   
 	<select id="searchModule" parameterType="string" resultType="Search">
 		select * from module m join user u on u.userId = m.userId where mTitle Like CONCAT('%',#{mTitle},'%')
