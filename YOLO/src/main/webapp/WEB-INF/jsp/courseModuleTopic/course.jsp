@@ -11,6 +11,10 @@
 	<jsp:include page="../header3.jsp"></jsp:include>
 
 	<jsp:include page="courseHeader.jsp"></jsp:include>
+	
+	<jsp:include page="courseLeft1.jsp"></jsp:include>
+
+	<jsp:include page="../footer.jsp"></jsp:include>
 
 </body>
 </html>
