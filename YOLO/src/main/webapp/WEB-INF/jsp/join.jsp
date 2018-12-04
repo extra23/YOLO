@@ -310,7 +310,7 @@ select {
 					<label for="pQId" class="col-sm-3 control-label">p_qId</label>
 					<div class="col-sm-6">
 						<c:if test="${!empty qList}">
-							<select name="p_qId">
+							<select name="pwQId">
 								<option selected>&nbsp;비밀번호 힌트</option>
 								<c:forEach var="pQuestion" items="${qList}">
 									<option value="${pQuestion.pwQId}">${pQuestion.question}</option>
@@ -323,7 +323,7 @@ select {
 				<div class="form-group form-group-lg">
 					<label for="p_answer" class="col-sm-3 control-label">p_answer</label>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" name="p_answer">
+						<input type="text" class="form-control" name="pwA">
 					</div>
 				</div>
 

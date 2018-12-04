@@ -5,7 +5,7 @@
 <mapper namespace="yolo.dao.InterfaceUserMapper">
 
 	<insert id="insertUser" parameterType="User">
-		insert into user(profileImage, nickName, email, password, pwQId, p_answer) values(#{profileImage}, #{nickName}, #{email}, #{password}, #{pwQId}, #{pwA})
+		insert into user(profileImage, nickName, email, password, pwQId, pwA) values(#{profileImage}, #{nickName}, #{email}, #{password}, #{pwQId}, #{pwA})
 	</insert>
 	
 	<select id="selectUserByUserId" parameterType="Integer" resultType="User">

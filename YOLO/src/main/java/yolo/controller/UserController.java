@@ -123,12 +123,12 @@ public class UserController {
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public void addUser(HttpServletRequest request, HttpServletResponse response, MultipartFile file,
 			@RequestParam("nickName") String nickName, @RequestParam("email") String email,
-			@RequestParam("password") String password, @RequestParam("p_qId") int p_qId,
-			@RequestParam("p_answer") String p_answer) throws Exception {
+			@RequestParam("password") String password, @RequestParam("pwQId") int pwQId,
+			@RequestParam("pwA") String pwA) throws Exception {
 
 		String profileImage = uploadFile(file.getOriginalFilename(), file.getBytes());
 
-		UserVO user = new UserVO(profileImage, nickName, email, password, p_qId, p_answer);
+		UserVO user = new UserVO(profileImage, nickName, email, password, pwQId, pwA);
 		userService.addUser(user);
 
 		login(new ModelAndView(), request, response, user.getEmail(), user.getPassword());
