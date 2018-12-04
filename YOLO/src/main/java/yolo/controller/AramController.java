@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import yolo.service.InterfaceEmailService;
 import yolo.service.InterfacePQuestionService;
@@ -43,37 +42,29 @@ public class AramController {
 	}
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.POST)
-	public void findPassword(Model model, HttpServletRequest request,
-			HttpServletResponse response, String email, int pwQId, String pwA) throws IOException {
+	public void findPassword(Model model, HttpServletRequest request, HttpServletResponse response, String email,
+			int pwQId, String pwA) throws IOException {
 
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-//		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
 		// 이메일이 없을 때
 		UserVO uservo = userService.readUSerByEmail(email);
-		
-		if (uservo==null) {
+
+		if (uservo == null) {
 			out.print("잘못된 이메일입니다.");
 			out.close();
-			
-//			errors.put("noEmail", true);
-		
-			
-		} else {			
+
+		} else {
 			if (pwQId != uservo.getPwQId()) {
 				out.print("잘못된 비밀번호 찾기 질문 입니다.");
 				out.close();
-				
-//				errors.put("noP_q", true);
-				
+
 			} else if (!pwA.equals(uservo.getPwA())) {
 				System.out.println(pwA + ", " + uservo.getPwA());
 				out.print("잘못된 비밀번호 찾기 질문 답변입니다.");
 				out.close();
-				
-//				errors.put("noP_answer", true);
-				
+
 			} else {
 
 				// 임시 비밀번호 생성
@@ -90,32 +81,9 @@ public class AramController {
 				emailService.send_email(uservo);
 				out.println("이메일로 임시 비밀번호를 발송하였습니다.");
 				out.close();
-				
-				
+
 			}
 		}
-//		modelAndView.addObject("errors",errors);
-		/*
-		List<P_Question> qList = pquestionService.readQList();
-		request.setAttribute("qList", qList);*/
-		
-		
-		/*
-		  UserVO user = userService.readUSerByEmail(email); 
-		  Map<String, Boolean> errors = new HashMap<String, Boolean>();
-		 
-		  
-		  try { if(user == null) { System.out.println("사용자가 없습니다.");
-		  errors.put("noUser", true); throw new Exception(); } if(p_qId !=
-		  user.getP_qId()) { errors.put("noP_q", true); throw new Exception(); }
-		  if(p_answer != user.getP_answer()) { errors.put("noP_answer", true); throw
-		  new Exception(); }
-		  
-		  response.sendRedirect("find_Password"); return null; } catch(Exception e ) {
-		  modelAndView.addObject("errors", errors); List<P_Question> qList =
-		  pquestionService.readQList(); modelAndView.addObject("qList",qList);
-		  modelAndView.setViewName("find_PasswordForm"); return modelAndView; }
-		 */
 
 	}
 }

@@ -136,6 +136,15 @@
 			background-color: gray;
 			height: 35px;
 			top: -5px;
+			width: 150px;
+		}
+		
+		#namebox{
+			width: 125px;
+		}
+		
+		#dropdown{
+			width : 25px;
 		}
 		
 		#nickName{
@@ -152,7 +161,7 @@
 		
 		#dropdownMenu{
 			top: 108%;
-		    left: -152% !important;
+		    left: -7% !important;
 		}
 		
 		#dropdownMenu>li{
@@ -212,24 +221,22 @@
 				
 				
 				<div class="btn-group" id="btn-group">
-					<button type="button" class="btn btn-danger">${authUser.nickName}</button>
+					<button type="button" id="namebox" class="btn btn-danger">${authUser.nickName}</button>
 					<button type="button" class="btn btn-danger dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false">
 						<span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
 					</button>
-					<c:if test="${authUser.userType}">
+					
 					<ul class="dropdown-menu" id="dropdownMenu" role="menu">
-						<li><a href="getUser.do?email=${authUser.email }" style="font-family:'Jua'">프로필</a></li>
+						<li><a href="getUser.do?email=${authUser.email}" style="font-family:'Jua'">프로필</a></li>
+						<c:if test="${authUser.userType}">
+						<li><a href="#" style="font-family:'Jua'">관리자 페이지</a></li>
+						</c:if>
 						<li><a href="#" style="font-family:'Jua'">토픽/모듈/코스 수정</a></li>
 						<li class="divider"></li>
 						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
 					</ul>
-					</c:if>
-					<ul class="dropdown-menu" id="dropdownMenu" role="menu">
-						<li><a href="getUser.do?email=${authUser.email }" style="font-family:'Jua'">프로필</a></li>
-						<li><a href="adminForm.do" style="font-family:'Jua'">관리자 페이지</a></li>
-						<li class="divider"></li>
-						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
-					</ul>
+					
+					
 					
 				</div>
 				
