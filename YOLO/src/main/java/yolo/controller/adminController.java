@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import yolo.service.InterfaceUserService;
 import yolo.service.UserService;
 import yolo.vo.UserVO;
 
@@ -14,7 +15,7 @@ import yolo.vo.UserVO;
 public class adminController {
 	
 	@Autowired
-	private UserService userService;
+	private InterfaceUserService userService;
 	
 	// 관리자 사용자 리스트
 	@RequestMapping(value="/adminUserList")
