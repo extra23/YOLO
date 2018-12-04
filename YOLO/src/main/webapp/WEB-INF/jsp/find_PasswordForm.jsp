@@ -15,6 +15,8 @@
 
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
@@ -70,6 +72,26 @@
 			color: gray !important;
 		}
 	</style>
+	
+	<script>
+		$(function(){
+			
+			$("#findBtn").click(function(){
+				$.ajax({
+					url : "Find_PasswordForm.do",
+					type : "POST",
+					data : {
+						email:$("#email").val(),
+						p_qId:$("#p_qId").val(),
+						p_answer:$("#p_answer").val()
+					},
+					sucess : function(result){
+						alert(result);
+					},
+				})
+			});
+		})
+	</script>
 
 </head>
 <body>
@@ -112,7 +134,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-7">
 						
-						<input type="submit" class="btn btn-default btn-block btn-lg"
+						<input type="submit" id="findBtn" class="btn btn-default btn-block btn-lg"
 							value="비밀번호 찾기">
 					</div>		
 				</div>

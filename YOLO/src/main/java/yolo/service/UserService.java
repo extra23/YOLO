@@ -69,4 +69,9 @@ public class UserService implements InterfaceUserService {
 		return userDAO.countBySearch(email);
 	}
 
+	public int update_pw(String email) {
+		
+		return userDAO.update_pw(email);
+	}
+
 }

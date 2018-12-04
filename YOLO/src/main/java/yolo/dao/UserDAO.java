@@ -50,4 +50,9 @@ public class UserDAO implements InterfaceUserDAO {
 		return count;
 	}
 
+	public int update_pw(String email) {
+		
+		return userMapper.update_pw(email);
+	}
+
 }

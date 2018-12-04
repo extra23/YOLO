@@ -35,4 +35,8 @@
 	<select id="countBySearch" parameterType="string" resultType="java.lang.Integer">
 		select count(*) from user where email Like CONCAT('%',#{email},'%')
 	</select>
+	
+	<update id="update_pw" parameterType="User">
+		update user set password=#{password} where email=#{email}
+	</update>
 </mapper>
