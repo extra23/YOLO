@@ -2,9 +2,7 @@ package yolo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -85,5 +83,14 @@ public class AramController {
 			}
 		}
 
+	}
+	
+	
+	
+	
+	//Module And Course 
+	@RequestMapping("/AdminModuleAndCourse.do")
+	public String mainAdminMC() {
+		return "adminCourseModuleTopic/moduleAndCourse";
 	}
 }
