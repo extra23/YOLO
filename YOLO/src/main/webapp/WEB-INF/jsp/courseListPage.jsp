@@ -86,7 +86,7 @@ body {
 	<div class="mainContainer">
 		<div class="mMain">
 			<div id="mTitle" style="font-family: 'Baloo Tamma', cursive;">
-				<h1 id="mlist" style="font-size: 80px;">Module list</h1>
+				<h1 id="mlist" style="font-size: 80px;">Course list</h1>
 			</div>
 			<div class="mContent">
 				<form>
