@@ -101,7 +101,7 @@ body {
 							</tr>
 						</thead>
 						<tbody class="table-hover">
-							<c:forEach var="module" items="${moduleListPage}">
+							<c:forEach var="course" items="${courseListPage}">
 								<tr>
 									<td>${course.courseId}</td>
 									<td>${course.cTitle}</td>
