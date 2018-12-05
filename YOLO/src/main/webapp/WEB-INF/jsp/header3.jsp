@@ -8,18 +8,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>header3.jsp</title>
 	
+	<!-- 글꼴 -->
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
 	
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	
-	<!-- 검색바 -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel ="stylesheet" href="style.css">
-	<script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script> -->
 	
 	<style>
 		body{
@@ -205,7 +199,7 @@
 		
 			<input id="txt" class="search-txt" type="text" name="searchWord" placeholder="Type to search">
 			<a class="search-btn" id="search-btn">
-				<i class="fas fa-search"></i>
+				<i class="glyphicon glyphicon-search"></i>
 			</a>
 		</div>
 		</div>

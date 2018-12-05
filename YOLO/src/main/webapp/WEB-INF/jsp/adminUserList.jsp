@@ -1,25 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>관리자 : 사용자 리스트</title>
-
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>관리자 : 사용자 리스트</title>
 	
-	<!-- 합쳐지고 최소화된 최신 CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-	<!-- 부가적인 테마 -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+	<!-- 글꼴 -->
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 		
-		<style>
+	<style>
 
 		#container * {font-family: a찐빵M;}
 	
@@ -29,12 +25,15 @@
 		#userListTable thead {background-color: gainsboro;}
 		
 		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
-		</style>
+	</style>
+	
 </head>
-<div>
+<body>
+	
 	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<h2 class="text-center">사용자 목록</h2>
+	
 	<table id="userListTable">
 		<thead>
 			<tr>
@@ -58,7 +57,7 @@
 				</td>
 				<td>${user.profileImage}</td>
 				<td>${user.nickName}</td>
-				<td>${user.email}</a></td>
+				<td>${user.email}</td>
 				<td>${user.password}</td>
 				<td>${user.pwQId}</td>
 				<td>${user.pwA}</td>
@@ -86,10 +85,9 @@
 		<c:if test="${userPage.totalPages > 10 && not(userPage.currentPage eq userPage.endPage)}">
 			<a href="mUserList?pageNo=${userPage.totalPages}">&gt;&gt;</a>
 		</c:if>
-	
-		</div>
 	</div>
 
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 </html>
