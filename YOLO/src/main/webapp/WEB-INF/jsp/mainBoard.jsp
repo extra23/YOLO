@@ -8,9 +8,14 @@
 		
 		<title>YOLO :: mainBoard</title>
 
-		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+		<!-- 합쳐지고 최소화된 최신 CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+		<!-- 부가적인 테마 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 		<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
@@ -103,6 +108,8 @@
 		#mainContent h3 {
 			margin-top: 0px !important;
 		}
+		.plus{text-decoration: none!important; color: #d6d6d6; font-size: 50px; margin-top: 25%;}
+		.plus:hover{text-decoration: none!important; color: #3a3a3a;}
 		
 	</style>
 	
@@ -133,8 +140,8 @@
 				<div class="box">
 					<div class="card"></div>
 				</div>
-				<div class="box">
-					<div class="card"></div>
+				<div class="box" style="background-color: gray">
+					<div class="card"><a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/courseListPage"></a></div>
 				</div>
 			</div>
 			<div class="module">
@@ -157,8 +164,8 @@
 				<div class="box">
 					<div class="card"></div>
 				</div>
-				<div class="box">
-					<div class="card"></div>
+				<div class="box" style="background-color: gray">
+					<div class="card"><a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/moduleListPage"></a></div>
 				</div>
 			</div>
 			<div class="help">
