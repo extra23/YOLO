@@ -439,7 +439,7 @@ hr {
 						</td>
 						<td>
 							<div style="height: 100px; margin: 5px;">
-								<span id="h"> · history :</span><span class="badge"
+								<span id="h"> · history :</span> <span class="badge"
 									style="width: 50px; height: 30px; font-size: 20px;">50</span>
 							</div>
 						</td>
