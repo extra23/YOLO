@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import yolo.vo.CourseListVO;
 import yolo.vo.CourseVO;
 import yolo.vo.SearchVO;
 
@@ -58,5 +59,10 @@ public class CourseDAO implements InterfaceCourseDAO{
 	public int countBySearch(String cTitle) {
 		int count = courseMapper.countBySearch(cTitle);
 		return count;
+	}
+	
+	public List<CourseListVO> courseListPage(){
+		List<CourseListVO> courseListPage = courseMapper.courseListPage();
+		return courseListPage;
 	}
 }

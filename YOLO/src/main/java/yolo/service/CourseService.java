@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import yolo.dao.InterfaceCourseDAO;
+import yolo.vo.CourseListVO;
 import yolo.vo.CourseVO;
 import yolo.vo.SearchVO;
 
@@ -45,5 +46,9 @@ public class CourseService implements InterfaceCourseService {
 
 	public int countBySearch(String cTitle) {
 		return courseDAO.countBySearch(cTitle);
+	}
+	
+	public List<CourseListVO> CourseListPage(){
+		return courseDAO.courseListPage();
 	}
 }

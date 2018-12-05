@@ -2,6 +2,7 @@ package yolo.service;
 
 import java.util.List;
 
+import yolo.vo.CourseListVO;
 import yolo.vo.CourseVO;
 import yolo.vo.SearchVO;
 
@@ -22,4 +23,6 @@ public interface InterfaceCourseService {
 	public List<SearchVO> searchCourse(String cTitle); 
 	
 	public int countBySearch(String cTitle);
+	
+	public List<CourseListVO> CourseListPage();
 }

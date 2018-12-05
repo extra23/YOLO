@@ -5,39 +5,56 @@
 <mapper namespace="yolo.dao.InterfaceCourseMapper">
 
 	<insert id="insertCourse" parameterType="Course">
-		insert into course(userId, cTitle, cContent, cSummary) values(#{userId}, #{cTitle}, #{cContent}, #{cSummary})
+		insert into
+		course(userId, cTitle, cContent, cSummary) values(#{userId},
+		#{cTitle}, #{cContent}, #{cSummary})
 	</insert>
-	
-	<select id="selectCourseByUserId" parameterType="Integer" resultType="Course">
+
+	<select id="selectCourseByUserId" parameterType="Integer"
+		resultType="Course">
 		select * from course where userId=#{userId}
 	</select>
-	
-	<select id="selectCourseByCourseId"  parameterType="Integer" resultType="Course">
+
+	<select id="selectCourseByCourseId" parameterType="Integer"
+		resultType="Course">
 		select * from course where courseId=#{courseId}
 	</select>
-	
+
 	<select id="selectCourseList" resultType="Course">
 		select * form course
 	</select>
-	
+
 	<update id="updateCourse" parameterType="Course">
-		update course set cTitle=#{cTitle}, cContent=#{cContent}, cSummary=#{cSummary} where courseId=#{courseId}
+		update course set
+		cTitle=#{cTitle}, cContent=#{cContent}, cSummary=#{cSummary} where
+		courseId=#{courseId}
 	</update>
-	
+
 	<delete id="deleteCourse" parameterType="Integer">
-		delete from course where courseId=#{courseId}
+		delete from course where
+		courseId=#{courseId}
 	</delete>
-	
+
 	<delete id="deleteCuser" parameterType="Integer">
-		delete from course where userId=#{userId}
+		delete from course where
+		userId=#{userId}
 	</delete>
-	
-	<select id="searchCourse" parameterType="string" resultType="Search">
-		select * from course c join user u on u.userId = c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
+
+	<select id="searchCourse" parameterType="string"
+		resultType="Search">
+		select * from course c join user u on u.userId = c.userId
+		where cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>
-	
-	<select id="countBySearch" parameterType="string" resultType="Integer">
-		select count(*) from course c join user u on u.userId = c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
+
+	<select id="countBySearch" parameterType="string"
+		resultType="Integer">
+		select count(*) from course c join user u on u.userId =
+		c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>
-	
+
+	<select id="courseListPage" resultType="CourseList">
+		select c.courseId,
+		c.cTitle, u.userId, u.nickName, m.moduleId, m.mTitle from course c,
+		user u, module m where c.courseId=m.courseId and u.userId=m.userId;
+	</select>
 </mapper>
