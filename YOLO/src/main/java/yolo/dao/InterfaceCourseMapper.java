@@ -5,7 +5,7 @@ import java.util.List;
 import yolo.vo.CourseListVO;
 import yolo.vo.CourseVO;
 import yolo.vo.SearchVO;
-
+//
 @AnnotationYoloMapper
 public interface InterfaceCourseMapper {
 	
