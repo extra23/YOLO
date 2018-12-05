@@ -94,9 +94,9 @@ body {
 						style="border: 1px solid white !important">
 						<thead>
 							<tr class="category" style="border: 1px solid white !important">
-								<td width="25%">번호</td>
-								<td width="15%">제목</td>
-								<td width="15%">관리자</td>
+								<td width="10%">번호</td>
+								<td width="25%">제목</td>
+								<td width="15%">작성자</td>
 								<td width="20%">연관 모듈</td>
 							</tr>
 						</thead>
