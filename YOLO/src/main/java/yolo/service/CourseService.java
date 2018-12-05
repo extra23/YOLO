@@ -48,7 +48,7 @@ public class CourseService implements InterfaceCourseService {
 		return courseDAO.countBySearch(cTitle);
 	}
 	
-	public List<CourseListVO> CourseListPage(){
+	public List<CourseListVO> courseListPage(){
 		return courseDAO.courseListPage();
 	}
 }

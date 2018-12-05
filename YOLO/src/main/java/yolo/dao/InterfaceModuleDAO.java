@@ -2,6 +2,7 @@ package yolo.dao;
 
 import java.util.List;
 
+import yolo.vo.ModuleListVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.SearchVO;
 
@@ -26,5 +27,7 @@ public interface InterfaceModuleDAO {
 	public List<SearchVO> searchModule(String mTitle);
 	
 	public int countBySearch(String mTitle);
+	
+	public List<ModuleListVO> moduleListPage();
 
 }

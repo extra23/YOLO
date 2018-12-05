@@ -18,7 +18,7 @@ public class SoheeController {
 	
 	@RequestMapping("/courseListPage")
 	public String moduleListPage(Model model) {
-		List<CourseListVO> courseListPage = courseService.CourseListPage();
+		List<CourseListVO> courseListPage = courseService.courseListPage();
 		model.addAttribute("courseListPage",courseListPage);
 		return "courseListPage";
 	}

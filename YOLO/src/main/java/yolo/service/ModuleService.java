@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import yolo.dao.InterfaceModuleDAO;
-
+import yolo.vo.ModuleListVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.SearchVO;
 
@@ -54,6 +54,10 @@ public class ModuleService implements InterfaceModuleService {
 	public int countBySearch(String mTitle) {
 		
 		return moduleDAO.countBySearch(mTitle);
+	}
+	
+	public List<ModuleListVO> moduleListPage(){
+		return moduleDAO.moduleListPage();
 	}
 
 }

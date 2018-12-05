@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import yolo.vo.ModuleListVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.SearchVO;
 //ss
@@ -74,6 +75,11 @@ public class ModuleDAO implements InterfaceModuleDAO {
 	public int countBySearch(String mTitle) {
 		int count = moduleMapper.countBySearch(mTitle);
 		return count;
+	}
+	
+	public List<ModuleListVO> moduleListPage(){
+		List<ModuleListVO> moduleListPage = moduleMapper.moduleListPage();
+		return moduleListPage;
 	}
 
 }

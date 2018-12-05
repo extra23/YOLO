@@ -24,5 +24,5 @@ public interface InterfaceCourseService {
 	
 	public int countBySearch(String cTitle);
 	
-	public List<CourseListVO> CourseListPage();
+	public List<CourseListVO> courseListPage();
 }
