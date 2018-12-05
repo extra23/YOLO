@@ -35,7 +35,7 @@
 		#footer a:visited { color: black; text-decoration: none;}
 		#footer a:hover { color: black; text-decoration: underline;}
 		
-		.sns{color: black; text-decoration: underline;}
+		.sns{color: black; text-decoration: underline; }
 		
 		#conTitle{padding: 0px;}
 		
@@ -109,9 +109,9 @@
 			<li>
 				<h3>Contact</h3>
 				<ul id="contactList">
-					<li><a href="https://www.facebook.com/">- FaceBook</a></li>
-					<li><a href="https://twitter.com/">- Twitter</a></li>
-					<li><a href="https://www.instagram.com/">- Instagram</a></li>
+					<li><a href="https://www.facebook.com/">· FaceBook</a></li>
+					<li><a href="https://twitter.com/">· Twitter</a></li>
+					<li><a href="https://www.instagram.com/">· Instagram</a></li>
 				</ul>
 			</li>
 			<li>

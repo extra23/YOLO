@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>사용자 페이지</title>
 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>YOLO :: userView</title>
 
 <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma"
 	rel="stylesheet">
@@ -25,294 +26,537 @@
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
 
-<style type="text/css">
+<!--  <style>
+hr {
+ margin-top: 20px;
+ margin-bottom: 20px;
+ border: 0;
+ border-top: 1px solid #ccc !important;
+}
+
+
+.profilepic {
+ width: 180px;
+ height: 200px;
+ border: 5px dotted black;
+}
+
+.nickname {
+ margin-left: 236px;
+ margin-top: -200px;
+ font-size: 27px;
+}
+
+.name {
+ margin-left: 170px;
+ margin-top: -48px;
+}
+
+.par {
+ margin-left: 236px;
+ margin-top: -20px;
+ font-size: 27px;
+}
+
+.table-bordered {
+ border: 1px solid black;
+ margin-left: 236px;
+ margin-top: 29px;
+}
+
+.module {
+ margin-left: 20px;
+}
+
+.co {
+ margin-left: 20px;
+}
+
+.hi {
+ margin-left: 20px;
+}
+
+#contentBody {
+ background: #F7F7F7 no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+ font-family: 'Baloo Tamma', cursive;
+}
+
+.container {
+ font-family: 'Jua', sans-serif;
+ font-family: 'Baloo Tamma', cursive;
+}
+
+.viewCon {
+ /*  height: 1600px; */
+ 
+}
+
+.cobox {
+ margin-top: 170px;
+}
+
+.colist {
+ margin-left: 60px;
+ margin-top: 10px;
+}
+
+/* .co {
+ display: inline-block;
+ border: 1px solid black;
+ width: 200px;
+ height: 200px;
+ margin: 30px;
+ margin-top: 10px;
+ margin-bottom: 30px;
+}
+
+#colist li {
+ float: left;
+} */
+.co1 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+}
+
+.co2 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+ position: relative;
+ top: -200px;
+ right: -270px;
+ right: -270ox;
+}
+
+.co3 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+ position: relative;
+ top: -400px;
+ right: -540px;
+}
+
+.co4 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+ position: relative;
+ top: -600px;
+ right: -810px;
+}
+
+.plus1 {
+ margin-left: 48px;
+ margin-top: 80px;
+}
+
+.mobox {
+ margin-top: -475px;
+}
+
+.molist {
+ margin-left: 20px;
+}
+
+.mo {
+ display: inline-block;
+ border: 1px solid black;
+ width: 200px;
+ height: 200px;
+ margin: 65px;
+ margin-top: 10px;
+ margin-bottom: 240px;
+ margin-left: 3px;
+}
+
+#molist li {
+ float: left;
+}
+
+.plus2 {
+ margin-left: 48px;
+ margin-top: 80px;
+}
+
+/* .mo1 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+}
+
+.mo2 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+ position: relative;
+ top: -200px;
+ right: -270px;
+}
+
+.mo3 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+ position: relative;
+ top: -400px;
+ right: -540px;
+}
+
+.mo4 {
+ width: 200px;
+ height: 200px;
+ border: solid 1px black;
+ position: relative;
+ top: -600px;
+ right: -810px;
+} */
+.butt {
+ position: relative;
+ top: 1237px;
+ left: 907px;
+}
+ </style> -->
+
+<style>
+#mypage {
+	font-size: 80px;
+	/* margin-left: 400px; */
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;
+}
+
+#email {
+	margin-left: 20px;
+}
+
+#viewCon * {
+	font-family: 'Baloo Tamma', cursive;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#profilebox table {
+	width: 100%;
+	font-size: 27px;
+}
+
+#profilebox table, #profilebox tr, #profilebox td {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+
+#mail {
+	/* margin: 10px; */
+	position: relative;
+	top: 20px;
+}
+
+#name {
+	/* margin: 10px; */
+	position: relative;
+	top: 17px;
+}
+
+#par {
+	/* margin: 10px; */
+	/* margin-top: 10px; */
+	position: relative;
+	top: 20px;
+}
+
+#m {
+	position: relative;
+	top: 4px;
+}
+
+#c {
+	position: relative;
+	top: 4px;
+}
+
+#h {
+	position: relative;
+	top: 4px;
+}
+
 hr {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border: 0;
-	border-top: 1px solid #ccc !important;
+	border-top: 1px solid black !important
 }
 
-.mypage {
-	font-size: 80px;
-	margin-left: 400px;
+#cobox {
+	height: 400px;
 }
 
-.profilepic {
-	width: 180px;
-	height: 200px;
-	border: 5px dotted black;
+#mobox {
+	height: 400px;
 }
 
-.nickname {
-	margin-left: 236px;
-	margin-top: -200px;
-	font-size: 27px;
+ul {
+	list-style: none;
 }
 
-.name {
-	margin-left: 170px;
-	margin-top: -48px;
-}
-
-.par {
-	margin-left: 236px;
-	margin-top: -20px;
-}
-
-.table-bordered {
-	border: 1px solid black;
-	margin-left: 236px;
-	margin-top: 29px;
-}
-
-.module {
-	margin-left: 20px;
-}
-
-.co {
-	margin-left: 20px;
-}
-
-.hi {
-	margin-left: 20px;
-}
-
-#contentBody {
-	background: #F7F7F7 no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	font-family: 'Baloo Tamma', cursive;
-}
-
-.container {
-	font-family: 'Jua', sans-serif;
-	font-family: 'Baloo Tamma', cursive;
-}
-
-.viewCon {
-	/* 	height: 1600px; */
-	
-}
-
-.cobox {
-	margin-top: 170px;
-}
-
-.colist {
-	margin-left: 60px;
-	margin-top: 10px;
-}
-
-/* .co {
-	display: inline-block;
-	border: 1px solid black;
-	width: 200px;
-	height: 200px;
+ul li {
+	float: left;
 	margin: 30px;
-	margin-top: 10px;
-	margin-bottom: 30px;
 }
 
-#colist li {
-	float: left;
-} */
-.co1 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-}
-
-.co2 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-	position: relative;
-	top: -200px;
-	right: -270px;
-	right: -270ox;
-}
-
-.co3 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-	position: relative;
-	top: -400px;
-	right: -540px;
-}
-
-.co4 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-	position: relative;
-	top: -600px;
-	right: -810px;
-}
-
-.plus1 {
-	margin-left: 48px;
-	margin-top: 80px;
-}
-
-.mobox {
-	margin-top: -475px;
-}
-
-.molist {
-	margin-left: 20px;
-}
-
-.mo {
-	display: inline-block;
-	border: 1px solid black;
-	width: 200px;
-	height: 200px;
-	margin: 65px;
-	margin-top: 10px;
-	margin-bottom: 240px;
-	margin-left: 3px;
-}
-
-#molist li {
-	float: left;
-}
-
-.plus2 {
-	margin-left: 48px;
-	margin-top: 80px;
-}
-
-/* .mo1 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-}
-
-.mo2 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-	position: relative;
-	top: -200px;
-	right: -270px;
-}
-
-.mo3 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-	position: relative;
-	top: -400px;
-	right: -540px;
-}
-
-.mo4 {
-	width: 200px;
-	height: 200px;
-	border: solid 1px black;
-	position: relative;
-	top: -600px;
-	right: -810px;
-} */
 .butt {
-	position: relative;
-	top: 1237px;
-	left: 907px;
+    margin-left: 1188px;
 }
+
+.panel panel-default {
+	height: 120px;
+}
+
+.panel-heading {
+	margin-top: 10px;
+}
+
+.panel-body {
+	margin-top: 10px;
+}
+
+
+
+a {
+	position: relative;
+	left: 10px;
+}
+
+#plus {
+	margin-left: 41px;
+	position: relative;
+	top: 17px;
+}
+
+
 
 </style>
+
 </head>
 <body id="contentBody">
+
 	<jsp:include page="header3.jsp"></jsp:include>
-	<div class="viewCon">
+
+	<div id="viewCon">
+
 		<div class="container">
-			<p class="mypage">MYPAGE</p>
-			<div class="profilebox">
 
-				<div class="profilepic">사진</div>
+			<h1 id="mypage" style="font-family: 'Baloo Tamma', cursive;">MYPAGE</h1>
 
-				<div class="nickname">
-					&lt; nickname : <span style="font-family: 'Jua', sans-serif">${authUser.nickName}</span> &gt;
-				</div>
+			<%-- <div id="profilebox">
 
+    <div id="profilepic">
+     <img
+      src="${pageContext.request.contextPath}/images/profileImageBasic.png"
+      style="width: 180px; height: 200px; border-radius: 50%;">
+    </div>
 
-				<div class="butt">
-					<a href="modifyUser?userId=${authUser.userId}" style="font-family: 'Jua', sans-serif">[ 정보 수정 ]</a>&nbsp;&nbsp;&nbsp;
-					<a href="deleteUser?userId=${authUser.userId}" style="font-family: 'Jua', sans-serif">[ 회원 탈퇴 ]</a>
-				</div>
+    <div id="email">
+     &lt; E-mail : <span style="font-family: 'Jua', sans-serif">${authUser.email}</span>
+     &gt;
+    </div>
 
-				<p class="par">&lt; Participation &gt;</p>
+    <div id="nickname">
+     &lt; Nickname : <span style="font-family: 'Jua', sans-serif">${authUser.nickName}</span>
+     &gt;
+    </div>
 
-				<table class="table table-bordered">
-					<tbody>
+    <p id="par">&lt; Participation &gt;</p>
 
-						<tr>
-							<div class="module">
-								<td>&nbsp; module&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-									style="font-family: 'Jua', sans-serif">[ co ] 개</span></td>
+    <!-- <div id="moduleCnt">
+     <span style="font-family: 'Jua', sans-serif">[ co ] 개</span>
+    </div>
+
+    <div id="courseCnt">
+     <span style="font-family: 'Jua', sans-serif">[ co ] 개</span>
+    </div>
+
+    <div id="historyCnt">
+     <span style="font-family: 'Jua', sans-serif">[ co ] 개</span>
+    </div> -->
+    
+    <ul id="cntlist">
+     <li class="cnt">
+      <span style="font-family: 'Jua', sans-serif">[ co ] 개</span>
+     </li>
+     <li class="cnt">
+      <span style="font-family: 'Jua', sans-serif">[ co ] 개</span>
+     </li>
+     <li class="cnt">
+      <span style="font-family: 'Jua', sans-serif">[ co ] 개</span>
+     </li>
+    </ul>
+
+   </div> --%>
+
+			<div id="profilebox">
+
+				<table id="profileTable" style="width: 100%;">
+
+					<colgroup>
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+						<col width="25%">
+					</colgroup>
+
+					<tr>
+						<td rowspan="4" style="width: 250px;"><img src="img03.jpg"
+							style="width: 250px; height: 250px;"50%;></td>
+						<td colspan="3"><span id="mail">&lt; E-mail :<span
+								style="font-family: 'Jua', sans-serif">&nbsp;&nbsp;${authUser.email}</span>
+								&nbsp; &gt;
+						</span></td>
+					</tr>
+
+					<tr>
+						<td colspan="3"><span id="name">&lt; Nickname
+								:&nbsp;&nbsp; <span style="font-family: 'Jua', sans-serif">${authUser.nickName}</span>
+								&nbsp; &gt;
+						</span></td>
+					</tr>
+
+					<tr>
+						<td colspan="3"><span id="par">&lt; Participation &gt;</span></td>
+					</tr>
+
+					<tr>
+						<td>
+							<div style="height: 100px; margin: 5px;">
+								<span id="m"> · module :</span> <span class="badge"
+									style="width: 50px; height: 30px; font-size: 20px;">50</span>
 							</div>
-							<div class="course">
-								<td>&nbsp; course&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-									style="font-family: 'Jua', sans-serif">[ co ] 개</span></td>
+						</td>
+						<td>
+							<div style="height: 100px; margin: 5px;">
+								<span id="c"> · course :</span> <span class="badge"
+									style="width: 50px; height: 30px; font-size: 20px;">50</span>
 							</div>
-							<div class="hi">
-								<td>&nbsp; history&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-									style="font-family: 'Jua', sans-serif">[ co ] 개</span></td>
+						</td>
+						<td>
+							<div style="height: 100px; margin: 5px;">
+								<span id="h"> · history :</span><span class="badge"
+									style="width: 50px; height: 30px; font-size: 20px;">50</span>
 							</div>
-						</tr>
-					</tbody>
+						</td>
+					</tr>
+
 				</table>
-			</div>
-			<div class="cobox">
-				<hr>
-				<h3 style="font-family: 'Jua', sans-serif">My course :
-					&nbsp;&nbsp;&nbsp;&nbsp;co 개</h3>
-				<hr>
-				<br>
-				<div class="colist">
-					<div class="co1"></div>
-					<div class="co2"></div>
-					<div class="co3"></div>
-					<div class="co4">
-						<div class="plus1">
-							<a href="#" style="font-family: 'Jua', sans-serif">[ 더보기 ]</a>
-						</div>
-					</div>
 
-					<!-- 	<ul id="colist">
-					<li class="co"></li>
-					<li class="co"></li>
-					<li class="co"></li>
-					<li class="co" style="font-family: 'Jua', sans-serif">더보기aa</li>
-				</ul> -->
-				</div>
-				<div class="mobox">
-					<hr>
-					<h3 style="font-family: 'Jua', sans-serif">My module :
-						&nbsp;&nbsp;&nbsp;&nbsp;co 개</h3>
-					<hr>
-					<br>
-					<!-- <div class="molist" >
-					<div class="mo">더보기</div>
-					<div class="mo"></div>
-					<div class="mo"></div>
-					<div class="mo" style="font-family: 'Jua', sans-serif"></div>
-				</div> -->
-					<ul id="molist">
-						<li class="mo"></li>
-						<li class="mo"></li>
-						<li class="mo"></li>
-						<li class="mo"><div class="plus2">
-								<a href="#" style="font-family: 'Jua', sans-serif">[ 더보기 ]</a>
-							</div></li>
-					</ul>
-				</div>
 			</div>
+
+			<br>
+
+			<div id="cobox">
+				<hr>
+				<h3 style="font-family: 'Baloo Tamma', cursive;">
+					My course&nbsp;&nbsp;<span class="badge">50</span>
+				</h3>
+				<hr>
+
+				<br>
+
+
+				<ul id="colist">
+					<li class="co">
+						<div class="panel panel-default" style="width: 200px;">
+							<div class="panel-heading" style="margin-top: 0px;">title</div>
+							<div class="panel-body">summary</div>
+						</div>
+					</li>
+					<li class="co">
+						<div class="panel panel-default" style="width: 200px;">
+							<div class="panel-heading" style="margin-top: 0px;">title</div>
+							<div class="panel-body">summary</div>
+						</div>
+					</li>
+					<li class="co">
+						<div class="panel panel-default" style="width: 200px;">
+							<div class="panel-heading" style="margin-top: 0px;">title</div>
+							<div class="panel-body">summary</div>
+						</div>
+					</li>
+					<li class="co">
+						<div class="panel panel-default" style="width: 200px; height: 131.17px">
+							<div class="panel-body">
+								<span id="plus"><a href="#" style="font-family: 'Jua', sans-serif; color: black;">[ 더보기 ]</a></span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div id="mobox">
+				<hr>
+				<h3 style="font-family: 'Baloo Tamma', cursive;">
+					My module&nbsp;&nbsp;<span class="badge">50</span>
+				</h3>
+				<hr>
+
+				<br>
+
+				<ul id="molist">
+					<li class="mo">
+						<div class="panel panel-default" style="width: 200px;">
+							<div class="panel-heading" style="margin-top: 0px;">title</div>
+							<div class="panel-body">summary</div>
+						</div>
+					</li>
+					
+					<li class="mo">
+						<div class="panel panel-default" style="width: 200px;">
+							<div class="panel-heading" style="margin-top: 0px;">title</div>
+							<div class="panel-body">summary</div>
+						</div>
+					</li>
+					
+					<li class="mo">
+						<div class="panel panel-default" style="width: 200px;">
+							<div class="panel-heading" style="margin-top: 0px;">title</div>
+							<div class="panel-body">summary</div>
+						</div>
+					</li>
+					
+					<li class="mo">
+						<div class="panel panel-default" style="width: 200px; height: 131.17px">
+							<div class="panel-body">
+							<span id="plus"><a href="#" style="font-family: 'Jua', sans-serif; color: black;">[ 더보기 ]</a></span>
+							</div>
+						</div>
+					</li>
+				</ul>					
+			</div>
+
+		
 		</div>
-		<jsp:include page="footer.jsp"></jsp:include>
+
+		<div class="butt">
+			<a href="modifyUser?userId=${authUser.userId}" class="but"
+				style="font-family: 'Jua', sans-serif; color: black; font-size: 22px;">[ 정보 수정 ]</a>
+			&nbsp;&nbsp;&nbsp; <a href="removeUser?userId=${authUser.userId}" class="but"
+				style="font-family: 'Jua', sans-serif; color: black; font-size: 22px;">[ 회원 탈퇴 ]</a>
+		</div>
+
+
+
+
+
+
+
+	</div>
+
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
