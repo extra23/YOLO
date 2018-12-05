@@ -41,6 +41,11 @@
 		resultType="Module">
 		select * from module where courseId=#{courseId}
 	</select>
+	
+	<select id="selectModuleListByUserId" parameterType="Integer"
+		resultType="Module">
+		select * from module where userId=#{userId}
+	</select>
 
 	<update id="updateModule" parameterType="Module">
 		update module set

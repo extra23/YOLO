@@ -12,11 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import yolo.service.InterfaceEmailService;
+import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePQuestionService;
+import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.ModuleVO;
 import yolo.vo.P_Question;
+import yolo.vo.TopicVO;
 import yolo.vo.UserVO;
 
 @Controller
@@ -30,6 +35,12 @@ public class AramController {
 
 	@Autowired
 	private InterfaceEmailService emailService;
+	
+	@Autowired
+	private InterfaceModuleService moduleService;
+	
+	@Autowired
+	private InterfaceTopicService topicService;
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.GET)
 	public String findPasswordForm(Model model) {
@@ -87,10 +98,33 @@ public class AramController {
 	
 	
 	
-	
-	//Module And Course 
-	@RequestMapping("/AdminModuleAndCourse.do")
-	public String mainAdminMC() {
-		return "adminCourseModuleTopic/moduleAndCourse";
-	}
+	//Module And Course 에서 모듈 목록 가져오기
+		@RequestMapping("/AdminModuleAndCourse")
+		public String mainAdminMC(Model model,HttpServletRequest request, HttpServletResponse response) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			model.addAttribute("moduleList",moduleList);
+			
+			return "adminCourseModuleTopic/moduleAndCourse";
+		}
+		
+	//moduleCurver - Topic 목록 넘겨주기
+		@RequestMapping("/AdminModuleAndCourse")
+		public String topicList(Model model, int moduleId) {
+			
+			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
+			model.addAttribute("topicList",topicList);
+			return "moduleCurver";
+		}
+		
+	//moduleCurver - module 커버 내용 불러오기
+		@RequestMapping("/AdminModuleAndCourse")
+		public ModelAndView moduleCurver(ModelAndView modelAndView, int moduleId) {
+			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+			modelAndView.addObject("module",module);
+			modelAndView.setViewName("moduleCurver");
+			return modelAndView;
+		}
+		
 }

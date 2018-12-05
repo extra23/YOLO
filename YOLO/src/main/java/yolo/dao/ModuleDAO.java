@@ -46,6 +46,11 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		List<ModuleVO> moduleList = moduleMapper.selectModuleListByCourseId(courseId);
 		return moduleList;
 	}
+	
+	public List<ModuleVO> selectModuleListByUserId(int userId) {
+		List<ModuleVO> moduleList = moduleMapper.selectModuleListByUserId(userId);
+		return moduleList;
+	}
 
 	public void updateModule(ModuleVO module) {
 		
@@ -81,5 +86,7 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		List<ModuleListVO> moduleListPage = moduleMapper.moduleListPage();
 		return moduleListPage;
 	}
+
+	
 
 }

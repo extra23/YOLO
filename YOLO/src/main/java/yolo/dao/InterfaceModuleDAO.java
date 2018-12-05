@@ -19,6 +19,8 @@ public interface InterfaceModuleDAO {
 	
 	public List<ModuleVO> selectModuleListByCourseId(int courseId);
 	
+	public List<ModuleVO> selectModuleListByUserId(int userId);
+	
 	public void updateModule(ModuleVO module);
 	
 	public void deleteModule(int moduleId);
