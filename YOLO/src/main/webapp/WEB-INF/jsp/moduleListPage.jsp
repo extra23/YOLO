@@ -109,7 +109,6 @@ body {
 									<td>${module.nickName}</td>
 									<td>${module.udate}</td>
 									<td>${module.cTitle}</td>
-									<td></td>
 								</tr>
 							</c:forEach>
 						</tbody>
