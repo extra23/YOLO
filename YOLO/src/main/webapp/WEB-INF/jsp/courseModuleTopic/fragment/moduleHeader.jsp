@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<style>
-		
-		#moduleHeader, #moduleHeader div {
-			border: 1px solid black;
-			margin: 20px;
-		}
-		
-		#moduleHeader div {
-			padding: 10px;
-		}
-		
-	</style>
 </head>
 <body>
 
@@ -31,6 +20,12 @@
 		<div id="btns">
 			<button>공동참여</button>
 			<button>새로운 모듈 생성</button>
+			<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
+				<button>모듈 수정</button>
+			</c:if>
+			<c:if test="${not (moduleAndTopic.module.courseId eq 0)}">
+				<button>관련 코스 보러가기</button>
+			</c:if>
 		</div>
 		
 	</div>

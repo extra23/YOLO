@@ -10,18 +10,20 @@
 	<!-- 공통 : bootstrap & jQuery -->
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 	
 </head>
 <body>
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	
+	<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
+	
 	<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/moduleLeft.jsp"></jsp:include>
+	<jsp:include page="fragment/courseLeft.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/moduleContent.jsp"></jsp:include>
+	<jsp:include page="fragment/topicContent.jsp"></jsp:include>
 	
 	<jsp:include page="../footer.jsp"></jsp:include>
 

@@ -57,7 +57,7 @@ public class ModuleAndTopicController {
 		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO(module, user, topicList);
 		
 		mav.addObject("moduleAndTopic", moduleAndTopic);
-		mav.addObject("eachTopic", moduleAndTopic.getTopicList().get(topicIndex));
+		mav.addObject("topic", moduleAndTopic.getTopicList().get(topicIndex));
 		mav.setViewName("courseModuleTopic/topic");
 		
 		return mav;

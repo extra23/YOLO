@@ -33,11 +33,9 @@ public class CourseAndModuleController {
 	
 	@Autowired
 	private InterfaceUserService userService;
-
-	@RequestMapping("coursePage")
-	public ModelAndView getCoursePage(int courseId) {
+	
+	private CourseAndModuleVO makeObj(int courseId) {
 		
-		ModelAndView mav = new ModelAndView();
 		CourseAndModuleVO courseAndModule = new CourseAndModuleVO();
 		
 		// CourseAndModuleVO의 course
@@ -60,8 +58,46 @@ public class CourseAndModuleController {
 		}
 		courseAndModule.setModuleAndTopicList(moduleAndTopicList);
 		
-		mav.addObject("courseAndModule", courseAndModule);
+		return courseAndModule;
+		
+	}
+
+	@RequestMapping("coursePage")
+	public ModelAndView getCoursePage(int courseId) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("courseAndModule", makeObj(courseId));
 		mav.setViewName("courseModuleTopic/course");
+		
+		return mav;
+		
+	}
+	
+	@RequestMapping("moduleInCoursePage")
+	public ModelAndView getModuleInCoursePage(int courseId, int moduleIndex) {
+		
+		ModelAndView mav = new ModelAndView();
+		CourseAndModuleVO courseAndModule = makeObj(courseId);
+		
+		mav.addObject("courseAndModule", courseAndModule);
+		mav.addObject("moduleAndTopic", courseAndModule.getModuleAndTopicList().get(moduleIndex));
+		mav.setViewName("courseModuleTopic/moduleInCourse");
+		
+		return mav;
+		
+	}
+	
+	@RequestMapping("topicInCoursePage")
+	public ModelAndView getTopicInCoursePage(int courseId, int moduleIndex, int topicIndex) {
+		
+		ModelAndView mav = new ModelAndView();
+		CourseAndModuleVO courseAndModule = makeObj(courseId);
+		
+		mav.addObject("courseAndModule", courseAndModule);
+		mav.addObject("moduleAndTopic", courseAndModule.getModuleAndTopicList().get(moduleIndex));
+		mav.addObject("topic", courseAndModule.getModuleAndTopicList().get(moduleIndex).getTopicList().get(topicIndex));
+		mav.setViewName("courseModuleTopic/topicInCourse");
 		
 		return mav;
 		

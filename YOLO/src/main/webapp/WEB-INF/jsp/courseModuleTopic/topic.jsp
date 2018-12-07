@@ -16,11 +16,11 @@
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	
-	<jsp:include page="moduleHeader.jsp"></jsp:include>
+	<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
 	
-	<jsp:include page="moduleLeft.jsp"></jsp:include>
+	<jsp:include page="fragment/moduleLeft.jsp"></jsp:include>
 	
-	<jsp:include page="topicContent.jsp"></jsp:include>
+	<jsp:include page="fragment/topicContent.jsp"></jsp:include>
 	
 	<jsp:include page="../footer.jsp"></jsp:include>
 

@@ -6,22 +6,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<style>
-		
-		#topicContent{
-			border: 1px solid black;
-			margin: 20px;
-			padding: 20px;
-		}
-		
-	</style>
 </head>
 <body>
 
 	<div id="topicContent">
-		<div id="tTitle"><h2>${eachTopic.tTitle}</h2></div>
+		<div id="tTitle"><h2>${topic.tTitle}</h2></div>
 		<hr>
-		<div id="tContent">${eachTopic.tContent}</div>
+		<div id="tContent">${topic.tContent}</div>
 	</div>
 
 </body>
