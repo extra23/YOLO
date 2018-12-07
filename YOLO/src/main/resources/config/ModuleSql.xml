@@ -48,9 +48,7 @@
 	</select>
 
 	<update id="updateModule" parameterType="Module">
-		update module set
-		courseId=#{courseId}, mTitle=#{mTitle}, mContent=#{mContent},
-		mSummary=#{mSummary} where moduleId=#{moduleId}
+		update module set mTitle=#{mTitle}, mContent=#{mContent}, mSummary=#{mSummary} where moduleId=#{moduleId}
 	</update>
 
 	<delete id="deleteModule" parameterType="Integer">

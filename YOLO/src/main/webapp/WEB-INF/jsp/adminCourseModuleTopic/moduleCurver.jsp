@@ -35,8 +35,6 @@
 	top: -470px;
 	left: 230px;
 	width: 800px;
-	height: 100px;
-	border: 1px solid black;
 	position: relative;
 }
 #topicList{
@@ -126,14 +124,15 @@
 				<img src="resources/images/write.gif">
 				<h4>모듈을 수정하는 페이지 입니다.</h4>
 			</div>
-			<form name="writeForm" action="summernote_result.jsp" method="post">
+			<form name="writeForm" action="moduleModify" method="post">
 				<div id="formTable" style="display: none;">
-					모듈 제목 <input type="text" id="mTitle" value="${module.mTitle}"> <br>
-					모듈 요약<input type="text" id="mSummery" value="${module.mSummary}"> <br>
+				<input type="hidden" id="moduleId" value="${module.moduleId}">
+					모듈 제목 <input type="text" id="mTitle" value="${module.mTitle}" size="97"> <br>
+					모듈 요약 <input type="text" id="mSummery" value="${module.mSummary}" size="97"> <br>
 					모듈 내용	
 				<textarea id="summernote" name="summernote">${module.mContent}</textarea> 
 
-					<input type="submit" value="전송">
+					<input type="submit" value="수정">
 				</div>
 			</form>
 			<div id="topicList" style="display: none;">

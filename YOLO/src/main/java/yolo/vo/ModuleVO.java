@@ -33,9 +33,9 @@ public class ModuleVO {
 	
 	//update
 
-	public ModuleVO(int courseId, String mTitle, String mContent, String mSummary) {
+	public ModuleVO(int moduleId, String mTitle, String mContent, String mSummary) {
 		
-		this.courseId = courseId;
+		this.moduleId = moduleId;
 		this.mTitle = mTitle;
 		this.mContent = mContent;
 		this.mSummary = mSummary;

@@ -106,23 +106,34 @@ public class AramController {
 			model.addAttribute("moduleList",moduleList);
 			return "adminCourseModuleTopic/moduleAndCourse";
 		}
-		/*
-	//moduleCurver - Topic 목록 넘겨주기
-		@RequestMapping("/moduleCurver.do")
-		public String topicList(Model model, int moduleId) {
-			
-			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
-			model.addAttribute("topicList",topicList);
-			return "adminCourseModuleTopic/moduleCurver";
-		}
-		*/	
+
 	//moduleCurver - module 커버 내용 불러오기
 		@RequestMapping("/moduleCurver.do")
-		public String moduleCurver(Model model, int moduleId) {
+		public String moduleCurver(Model model,HttpServletRequest request, int moduleId) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+			
 			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
+			
+			model.addAttribute("moduleList",moduleList);
 			model.addAttribute("topicList",topicList);
 			model.addAttribute("module",module);
+			return "adminCourseModuleTopic/moduleAndCourse";
+		}
+		
+	//module커버의 내용 수정해주기
+		@RequestMapping(value="/moduleModify", method= RequestMethod.POST)
+		public String moduleModify(Model model, HttpServletRequest request,int moduleId, String mTitle, String mSummary, String mContent) {
+			ModuleVO module = new ModuleVO(moduleId, mTitle, mContent, mSummary);
+			moduleService.modifyModule(module);
+			
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			model.addAttribute("moduleList",moduleList);
+			
+			
 			return "adminCourseModuleTopic/moduleAndCourse";
 		}
 		
