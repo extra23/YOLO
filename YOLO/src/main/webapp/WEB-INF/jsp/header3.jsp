@@ -221,7 +221,7 @@
 					</button>
 					
 					<ul class="dropdown-menu" id="dropdownMenu" role="menu">
-						<li><a href="getUser.do?email=${authUser.email}" style="font-family:'Jua'">프로필</a></li>
+						<li><a href="userView?userId=${authUser.userId}" style="font-family:'Jua'">프로필</a></li>
 						<c:if test="${authUser.userType}">
 						<li><a href="#" style="font-family:'Jua'">관리자 페이지</a></li>
 						<li><a href="adminUserList" style="font-family:'Jua'">사용자 리스트</a></li>

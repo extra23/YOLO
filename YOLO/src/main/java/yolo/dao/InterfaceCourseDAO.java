@@ -10,7 +10,7 @@ public interface InterfaceCourseDAO {
 	
 	public void insertCourse(CourseVO course);
 	
-	public CourseVO selectCourseByUserId(int userId);
+	public List<CourseVO> selectCourseByUserId(int userId);
 	
 	public CourseVO selectCourseByCourseId(int courseId);
 	

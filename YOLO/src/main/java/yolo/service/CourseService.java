@@ -20,7 +20,7 @@ public class CourseService implements InterfaceCourseService {
 		courseDAO.insertCourse(course);
 	}
 	
-	public CourseVO readCourseByUserId(int userId) {
+	public List<CourseVO> readCourseByUserId(int userId) {
 		return courseDAO.selectCourseByUserId(userId);
 	}
 	

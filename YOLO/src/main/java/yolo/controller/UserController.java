@@ -39,12 +39,16 @@ import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.service.DeleteService;
+import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceLoginService;
+import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePQuestionService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.CourseVO;
+import yolo.vo.ModuleVO;
 import yolo.vo.P_Question;
 import yolo.vo.UserVO;
-//
+
 @Controller
 public class UserController {
 
@@ -59,6 +63,12 @@ public class UserController {
 	
 	@Autowired
 	private InterfacePQuestionService pquestionService;
+	
+	@Autowired
+	private InterfaceModuleService moduleService;
+	
+	@Autowired
+	private InterfaceCourseService courseService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -89,7 +99,6 @@ public class UserController {
 		}
 
 		UserVO user = null;
-		System.out.println(email + "/" + password);
 
 		try {
 			user = loginService.loginCheck(email, password);
@@ -238,10 +247,31 @@ public class UserController {
 	}
 
 	// 프로필 페이지 띄울 때
-	@RequestMapping("/getUser.do")
+	/*@RequestMapping("/getUser.do")
 	public String readUser(Model model, @RequestParam("email") String email) {
 		model.addAttribute("user", userService.readUSerByEmail(email));
 		return "userView";
+	}*/
+	@RequestMapping("userView")
+	public ModelAndView getUserView(int userId) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		// 넘겨주어야 할 객체 : User, Module, Course
+		// User 객체
+		UserVO user = userService.readUserByUserId(userId);
+		// List<ModuleVO> 객체 (해당 user가 생성한 Module만 리스트 형태로 불러옴)
+		List<ModuleVO> moduleList = moduleService.readModuleListByUserId(user.getUserId());
+		// List<CourseVO> 객체 (해당 user가 생성한 Module만 리스트 형태로 불러옴)
+		List<CourseVO> courseList = courseService.readCourseByUserId(user.getUserId());
+		
+		mav.addObject("user", user);
+		mav.addObject("moduleList", moduleList);
+		mav.addObject("courseList", courseList);
+		mav.setViewName("userView");
+		
+		return mav;
+		
 	}
 
 	// 리스트로 유저의 정보 받아오는 것

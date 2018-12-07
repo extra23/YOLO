@@ -10,7 +10,7 @@ public interface InterfaceCourseService {
 
 	public void addCourse(CourseVO course);
 	
-	public CourseVO readCourseByUserId(int userId);
+	public List<CourseVO> readCourseByUserId(int userId);
 	
 	public CourseVO readCourseByCourseId(int courseId);
 	

@@ -19,8 +19,8 @@ public class CourseDAO implements InterfaceCourseDAO{
 		courseMapper.insertCourse(course);
 	}
 	
-	public CourseVO selectCourseByUserId(int userId) {
-		CourseVO course = courseMapper.selectCourseByUserId(userId);
+	public List<CourseVO> selectCourseByUserId(int userId) {
+		List<CourseVO> course = courseMapper.selectCourseByUserId(userId);
 		return course;
 	}
 	
