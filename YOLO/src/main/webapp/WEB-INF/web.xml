@@ -70,6 +70,7 @@
 		<filter-name>loginCheckFilter</filter-name>
 		<url-pattern>/modifyUser</url-pattern>
 		<url-pattern>/deleteUser</url-pattern>
+		<url-pattern>/moduleAndCourse</url-pattern>
 	</filter-mapping>
   
 </web-app>

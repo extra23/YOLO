@@ -25,6 +25,12 @@
 	src="${pageContext.request.contextPath}/summernote/lang/summernote-ko-KR.js"></script>
 
 <style>
+#helpPage{
+	top: -470px;
+	position: relative;
+	text-align: center;
+}
+
 #formTable {
 	top: -470px;
 	left: 230px;
@@ -76,16 +82,29 @@
     	
     	//토픽목록 클릭하면 나오는것
     	$(function(){
+    		$("#helpBtn").click(function(){
+    			$("#helpPage").css("display","block");
+    			$("#formTable").css("display","none");
+    			$("#topicList").css("display","none");
+    			$("#helpBtn").addClass("active");
+    			$("#curverBtn").removeClass("active");
+    			$("#topicListBtn").removeClass("active");
+    		});
+    		
     		$("#topicListBtn").click(function(){
+    			$("#helpPage").css("display","none");
     			$("#formTable").css("display","none");
     			$("#topicList").css("display","block");
+    			$("#helpBtn").removeClass("active");
     			$("#curverBtn").removeClass("active");
     			$("#topicListBtn").addClass("active");
     		});
     		
     		$("#curverBtn").click(function(){
+    			$("#helpPage").css("display","none");
     			$("#formTable").css("display","block");
     			$("#topicList").css("display","none");
+    			$("#helpBtn").removeClass("active");
     			$("#topicListBtn").removeClass("active");
     			$("#curverBtn").addClass("active");
     		});
@@ -98,14 +117,19 @@
 
 		<div class="mainDiv">
 		<ul class="nav nav-tabs">
-			<li role="presentation" id="curverBtn" class="active"><a href="#">커버</a></li>
+			<li role="presentation" id="helpBtn" class="active"><a href="#">help!</a></li>
+			<li role="presentation" id="curverBtn"><a href="#">커버</a></li>
 			<li role="presentation" id="topicListBtn"><a href="#">토픽 목록</a></li>
 		</ul>
 			<br>
+			<div id="helpPage">
+				<img src="resources/images/write.gif">
+				<h4>모듈을 수정하는 페이지 입니다.</h4>
+			</div>
 			<form name="writeForm" action="summernote_result.jsp" method="post">
-				<div id="formTable">
+				<div id="formTable" style="display: none;">
 					모듈 제목 <input type="text" id="mTitle" value="${module.mTitle}"> <br>
-					모듈 요약<input type="text" id="mSummery" value="${module.mSummery}"> <br>
+					모듈 요약<input type="text" id="mSummery" value="${module.mSummary}"> <br>
 					모듈 내용	
 				<textarea id="summernote" name="summernote">${module.mContent}</textarea> 
 

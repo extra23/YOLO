@@ -100,7 +100,7 @@ public class AramController {
 	
 	//Module And Course 에서 모듈 목록 가져오기
 		@RequestMapping("/AdminModuleAndCourse")
-		public String mainAdminMC(Model model,HttpServletRequest request, HttpServletResponse response) {
+		public String mainAdminMC(Model model,HttpServletRequest request) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
 			model.addAttribute("moduleList",moduleList);
@@ -117,12 +117,13 @@ public class AramController {
 		}
 		*/	
 	//moduleCurver - module 커버 내용 불러오기
-	/*	@RequestMapping("/moduleCurver")
-		public ModelAndView moduleCurver(ModelAndView modelAndView, int moduleId) {
+		@RequestMapping("/moduleCurver.do")
+		public String moduleCurver(Model model, int moduleId) {
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
-			modelAndView.addObject("module",module);
-			modelAndView.setViewName("moduleCurver");
-			return modelAndView;
-		}*/
+			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
+			model.addAttribute("topicList",topicList);
+			model.addAttribute("module",module);
+			return "adminCourseModuleTopic/moduleAndCourse";
+		}
 		
 }

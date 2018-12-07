@@ -40,7 +40,7 @@
 		
 		<ul id="moduleListUl">
 		<c:forEach var="module" items="${moduleList}">
-			<li><a href="moduleCurver?moduleId=${module.moduleId}"> ${module.mTitle}</a></li>
+			<li><a href="moduleCurver.do?moduleId=${module.moduleId}"> ${module.mTitle}</a></li>
 		</c:forEach>
 		</ul>
 	</div>
