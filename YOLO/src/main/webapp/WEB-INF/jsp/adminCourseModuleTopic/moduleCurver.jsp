@@ -104,10 +104,10 @@
 			<br>
 			<form name="writeForm" action="summernote_result.jsp" method="post">
 				<div id="formTable">
-					모듈 제목 <input type="text" id="mTitle" value="mTitle"> <br>
-					모듈 요약<input type="text" id="mSummery" value="mSummery"> <br>
+					모듈 제목 <input type="text" id="mTitle" value="${module.mTitle}"> <br>
+					모듈 요약<input type="text" id="mSummery" value="${module.mSummery}"> <br>
 					모듈 내용	
-				<textarea id="summernote" name="summernote" cols="3" rows="3">Hello Summernote</textarea> 
+				<textarea id="summernote" name="summernote">${module.mContent}</textarea> 
 
 					<input type="submit" value="전송">
 				</div>
@@ -127,18 +127,14 @@
 				<tbody>
 
 					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
-					<c:forEach var="topic" items="${topicSearchList}">
+					<c:forEach var="topic" items="${topicList}">
 						<tr>
-							<td><a id="a" href="getUser.do?email=${topic.email}">${topic.nickName}</a></td>
-							<td>${topic.email}</td>
-							<td>${topic.tTitle}</td>
-							
+							<td><a id="a" href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a></td>
+							<td><a href="topicModify?topicId=${topic.topicId}">[수정]</a></td>
+							<td><a href="topicDelete?topicId=${topic.topicId}">[삭제]</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
-				<tr>
-					<td colspan="3"><a id="am" href="mainBoard">메인으로 돌아가기</a></td>
-				</tr>
 			</table>
 				<hr>
 				<button id="writeTopicBtn">글쓰기</button>
