@@ -25,7 +25,7 @@
 	</select>
 	
 	<update id="updateTopic" parameterType="Topic">
-		update topic set moduleId=#{moduleId}, tTitle=#{tTitle}, tContent=#{tContent} where topicId=#{topicId}
+		update topic set tTitle=#{tTitle}, tContent=#{tContent} where topicId=#{topicId}
 	</update>
 	
 	<delete id="deleteTopic" parameterType="Integer" >

@@ -27,8 +27,8 @@ public class TopicVO {
 	
 	
 	//update시 사용
-	public TopicVO(int moduleId, String tTitle, String tContent) {
-		this.moduleId = moduleId;
+	public TopicVO(int topicId, String tTitle, String tContent) {
+		this.topicId = topicId;
 		this.tTitle = tTitle;
 		this.tContent = tContent;
 	}
@@ -76,6 +76,22 @@ public class TopicVO {
 
 	public void settContent(String tContent) {
 		this.tContent = tContent;
+	}
+
+	public LocalDateTime getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(LocalDateTime wdate) {
+		this.wdate = wdate;
+	}
+
+	public LocalDateTime getUdate() {
+		return udate;
+	}
+
+	public void setUdate(LocalDateTime udate) {
+		this.udate = udate;
 	}
 	
 	
