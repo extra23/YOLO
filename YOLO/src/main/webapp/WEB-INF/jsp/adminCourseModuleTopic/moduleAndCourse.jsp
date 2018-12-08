@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
-	<title>Insert title here</title>
+	<title>모듈의 커버와 토픽목록을 보여주는 페이지</title>
 	<style>
 		#moduleList{
 			float: left;
@@ -31,7 +31,7 @@
 	<jsp:include page="../header3.jsp"></jsp:include>
 	<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="#">module</a></li>
-			<li role="presentation"><a href="#">course</a></li>
+			<li role="presentation"><a href="AdminCourseAndModule">course</a></li>
 		</ul>
 		<br>
 	<div id="moduleList">

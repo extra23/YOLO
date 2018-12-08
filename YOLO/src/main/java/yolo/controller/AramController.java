@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceEmailService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePQuestionService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.P_Question;
 import yolo.vo.TopicVO;
@@ -42,6 +44,9 @@ public class AramController {
 	
 	@Autowired
 	private InterfaceTopicService topicService;
+	
+	@Autowired
+	private InterfaceCourseService courseService;
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.GET)
 	public String findPasswordForm(Model model) {
@@ -101,7 +106,7 @@ public class AramController {
 	
 	//Module And Course 에서 모듈 목록 가져오기
 		@RequestMapping("/AdminModuleAndCourse")
-		public String mainAdminMC(Model model,HttpServletRequest request) {
+		public String mainAdminM(Model model,HttpServletRequest request) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
 			model.addAttribute("moduleList",moduleList);
@@ -212,4 +217,64 @@ public class AramController {
 			
 			return "adminCourseModuleTopic/moduleAndCourse";
 		}
+		
+		//여기서 부터 코스입니다
+		
+	//module And Course 에서 코스 가져오기
+		@RequestMapping("/AdminCourseAndModule")
+		public String mainAdminC(Model model, HttpServletRequest request) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
+			model.addAttribute("courseList",courseList);
+			
+			return "adminCourseModuleTopic/moduleAndCourse4";
+		}
+		
+	//course -> cuver에서 쓸 코스와 module리스트 가져오기
+		@RequestMapping("/courseCurver.do")
+		public String courseCurver(Model model, HttpServletRequest request, int courseId) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
+			
+			CourseVO course = courseService.readCourseByCourseId(courseId);
+			
+			List<ModuleVO> moduleList = moduleService.readModuleListByCourseId(courseId);
+			
+			model.addAttribute("courseList",courseList);
+			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("course",course);
+			return "adminCourseModuleTopic/moduleAndCourse4";
+		}
+		
+	//course의 커버 페이지 수정해주기
+		@RequestMapping("/courseModify")
+		public String courseModify(Model model, HttpServletRequest request, int courseId, String cTitle, String cSummary, @RequestParam("summernote") String cContent) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			
+			CourseVO course = new CourseVO(userId, courseId, cTitle, cContent, cSummary);
+			courseService.modifyCourse(course);
+			
+			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
+			model.addAttribute("courseList",courseList);
+			
+			return "adminCourseModuleTopic/moduleAndCourse4";
+		}
+		
+	//course의 커버 페이지 만들어주기
+		@RequestMapping("courseCreate")
+		public String courseCreate(Model model, HttpServletRequest request,String cTitle, String cSummary, @RequestParam("summernote") String cContent) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			
+			CourseVO course = new CourseVO(userId, 0, cTitle, cContent, cSummary);
+			courseService.addCourse(course);
+			
+			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
+			model.addAttribute("courseList",courseList);
+			
+			return "adminCourseModuleTopic/moduleAndCourse4";
+		}
+		
+		
+		
+		
 }

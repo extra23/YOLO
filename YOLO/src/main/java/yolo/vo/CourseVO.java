@@ -17,22 +17,25 @@ public class CourseVO {
 	
 	public CourseVO () {}
 	
-	//insert
-	public CourseVO(int userId, String cTitle, String cContent, String cSummary) {
+	//insert, update
+	public CourseVO(int userId, int courseId,String cTitle,  String cContent, String cSummary) {
 		this.userId = userId;
+		this.courseId = courseId;
 		this.cTitle = cTitle;
 		this.cContent = cContent;
 		this.cSummary = cSummary;
 	}
 
-	//update
-	public CourseVO(String cTitle, String cContent, String cSummary) {
+	/*//update
+	public CourseVO(int courseId,String cTitle, String cContent, String cSummary) {
+		this.courseId = courseId;
 		this.cTitle = cTitle;
 		this.cContent = cContent;
 		this.cSummary = cSummary;
-	}
+	}*/
 	
-	//CourseList
+
+		//CourseList
 		public CourseVO(int courseId, int userId, String cTitle, String cContent, String cSummary, LocalDateTime wdate,
 				LocalDateTime udate) {
 			this.courseId = courseId;
@@ -85,7 +88,22 @@ public class CourseVO {
 	public void setcSummary(String cSummary) {
 		this.cSummary = cSummary;
 	}
-	
+	public LocalDateTime getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(LocalDateTime wdate) {
+		this.wdate = wdate;
+	}
+
+	public LocalDateTime getUdate() {
+		return udate;
+	}
+
+	public void setUdate(LocalDateTime udate) {
+		this.udate = udate;
+	}
+
 
 }
 
