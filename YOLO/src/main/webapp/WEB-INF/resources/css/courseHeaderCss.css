@@ -1,12 +1,27 @@
 @charset "EUC-KR";
 
 #courseHeader {
-	border: 1px solid black;
+	text-align: center;
+	margin: 10px;
 }
 
 #courseTitle {
+	margin-top: 80px;
+	margin-bottom: 30px;
+}
+
+#courseTitle a, #courseTitle a:hover {
+	text-decoration: none;
 	font-family: 'Baloo Tamma', cursive;
 	font-size: 80px;
+	color: black;
+	line-height: 60px;
+	display: block;
+}
+
+#costudy, #newCourse, #edit {
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 #costudy {
@@ -17,4 +32,9 @@
 #newCourse {
 	width: 25px;
 	heigth: 25px;
+}
+
+#edit {
+	width: 25px;
+	height: 25px;
 }

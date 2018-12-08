@@ -77,6 +77,27 @@ public class UserController {
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
+	
+	// mianBoard(메인 화면)으로 이동
+	@RequestMapping("/mainBoard")
+	public ModelAndView getMainBoard() {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		List<CourseVO> courseBox = courseService.courseListBox();
+		mav.addObject("courseBoxView", courseBox);
+	
+		List<ModuleVO> moduleBox = moduleService.moduleListBox();
+		mav.addObject("moduleBoxView", moduleBox);
+		
+		List<UserVO> userList = userService.readUserList();
+		mav.addObject("userList", userList);
+		
+		mav.setViewName("mainBoard");
+		
+		return mav;
+		
+	}
 
 	// login(로그인 화면)으로 이동
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -252,11 +273,6 @@ public class UserController {
 	}
 
 	// 프로필 페이지 띄울 때
-	/*@RequestMapping("/getUser.do")
-	public String readUser(Model model, @RequestParam("email") String email) {
-		model.addAttribute("user", userService.readUSerByEmail(email));
-		return "userView";
-	}*/
 	@RequestMapping("/userView")
 	public ModelAndView getUserView(int userId) {
 		
@@ -356,12 +372,10 @@ public class UserController {
 	}
 
 	// 로그아웃
-	@RequestMapping(value = "logoutTry.do")
-	public String logout(HttpServletRequest request) throws Exception {
-
+	@RequestMapping(value="logout")
+	public void logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.getSession().removeAttribute("authUser");
-
-		return "mainBoard";
+		response.sendRedirect("mainBoard");
 	}
 	
 	// 유저 탈퇴페이지로 

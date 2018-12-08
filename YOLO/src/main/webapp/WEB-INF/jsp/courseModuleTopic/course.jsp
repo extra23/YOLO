@@ -18,17 +18,22 @@
 	
 	<!-- CSS & jQuery -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseHeaderCss.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseContent.css">
 	
 </head>
 <body>
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 
-	<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
+	<div style="width: 80%; margin: 30px auto;">
+		
+		<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/courseLeft.jsp"></jsp:include>
+		<jsp:include page="fragment/courseLeft.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/courseContent.jsp"></jsp:include>
+		<jsp:include page="fragment/courseContent.jsp"></jsp:include>
+	
+	</div>
 
 	<jsp:include page="../footer.jsp"></jsp:include>
 

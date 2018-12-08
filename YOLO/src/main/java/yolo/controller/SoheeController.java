@@ -47,7 +47,7 @@ public class SoheeController {
 		return "moduleListPage";
 	}
 	
-	@RequestMapping(value = "/mainBoard", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/mainBoard", method = RequestMethod.GET)
 	public String boxView(Model model) {
 		List<CourseVO> courseBox = courseService.courseListBox();
 		model.addAttribute("courseBoxView", courseBox);
@@ -59,6 +59,6 @@ public class SoheeController {
 		model.addAttribute("userList", userList);
 		
 		return "mainBoard";
-	}
+	}*/
 }
 

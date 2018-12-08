@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		
-		<title>YOLO :: mainBoard</title>
+	<title>YOLO :: mainBoard</title>
 
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+	<!-- 공통 : bootstrap & jQuery -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-		<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+	<!-- 글꼴 -->
+	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 	<style>
 	
@@ -31,10 +34,10 @@
 
 		.menu {
 			width: 93%;
-			height: 1000px;
 			align-content: center;
 			margin: 0 auto;
 			margin-top: 55px;
+			margin-bottom: 55px;
 		}
 
 		.course {
@@ -103,63 +106,70 @@
 			margin-top: 0px !important;
 		}
 		.nameCard {
-	float: left;
-	text-align: left;
-	font-size: 22px;
-	margin-top: 10px;
-	margin-left: 10px;
-	width: 90%;
-}
+			float: left;
+			text-align: left;
+			font-size: 22px;	
+			margin-top: 10px;
+			margin-left: 10px;
+			width: 90%;
+		}
 
-.proImg{border-radius: 5px;}
+		.proImg{
+			border-radius: 5px;
+		}
 
-.plus {
-	text-decoration: none !important;
-	color: #d6d6d6;
-	font-size: 50px;
-	margin-top: 25%;
-}
+		.plus {
+			text-decoration: none !important;
+			color: #d6d6d6;
+			font-size: 50px;
+			margin-top: 25%;
+		}
+	
+		.plus:hover {
+			text-decoration: none !important;
+			color: #3a3a3a;
+		}
 
-.plus:hover {
-	text-decoration: none !important;
-	color: #3a3a3a;
-}
+		.profileLink {
+			text-decoration: none!important; 
+			color: #d6d6d6;
+		}
 
-.profileLink{text-decoration: none!important; color: #d6d6d6;}
+		.profileLink:hover{
+			text-decoration: none !important; color: #3a3a3a;
+		}
 
-.profileLink:hover{text-decoration: none !important; color: #3a3a3a;}
+		.moduleSum {
+			margin-top: 20px;
+			margin-left: 10px;
+			font-size: 25px;
+			text-align: left;
+		}
+	
+		.mSummary {
+			text-decoration: none !important;
+			color: #3a3a3a;
+		}
 
-.moduleSum {
-	margin-top: 20px;
-	margin-left: 10px;
-	font-size: 25px;
-	text-align: left;
-}
+		.mSummary:hover {
+			color: #757575;
+		}
 
-.mSummary {
-	text-decoration: none !important;
-	color: #3a3a3a;
-}
+		.courseSum {
+			margin-top: 20px;
+			margin-left: 10px;
+			font-size: 25px;
+			text-align: left;
+		}
 
-.mSummary:hover {
-	color: #757575;
-}
+		.cSummary {
+			text-decoration: none !important;
+			color: #3a3a3a;
+		}
 
-.courseSum {
-	margin-top: 20px;
-	margin-left: 10px;
-	font-size: 25px;
-	text-align: left;
-}
-
-.cSummary {
-	text-decoration: none !important;
-	color: #3a3a3a;
-}
-
-.cSummary:hover {
-	color: #757575;
-}
+		.cSummary:hover {
+			color: #757575;
+		}
 		
 	</style>
 	
@@ -179,7 +189,7 @@
 					<small>Course</small>
 				</p>
 				
-				<c:forEach var="courseBox" items="${courseBoxView}" begin="1" end="5" step="1">
+				<c:forEach var="courseBox" items="${courseBoxView}" begin="0" end="4">
 					<div class="box">
 						<div class="card">
 							<c:forEach var="user" items="${userList}">
@@ -192,26 +202,25 @@
 							</c:forEach>
 						</div>
 						<div class="courseSum">
-							<a
-								href="${pageContext.request.contextPath}/coursePage?courseId=${courseBox.courseId}"
-								class="cSummary">${courseBox.cSummary}</a>
+							<a href="coursePage?courseId=${courseBox.courseId}" class="cSummary">${courseBox.cTitle}</a><br>
+							${courseBox.cSummary}
 						</div>
 					</div>
 				</c:forEach>
+				<c:if test="${courseBoxView.size() > 5}">
 				<div class="box" style="background-color: gray">
 					<div class="card">
-						<a class="plus glyphicon glyphicon-plus"
-							href="${pageContext.request.contextPath}/courseListPage"></a>
+						<a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/courseListPage"></a>
 					</div>
 				</div>
+				</c:if>
 			</div>
 			<div class="module">
 				<p class="title">
 					모듈<br>
 					<small>Module</small>
 				</p>
-				<c:forEach var="moduleBox" items="${moduleBoxView}" begin="1"
-					end="5" step="1">
+				<c:forEach var="moduleBox" items="${moduleBoxView}" begin="0" end="4">
 					<div class="box">
 						<div class="card">
 							<c:forEach var="user" items="${userList}">
@@ -224,18 +233,18 @@
 							</c:forEach>
 						</div>
 						<div class="moduleSum">
-							<a
-								href="${pageContext.request.contextPath}/modulePage?moduleId=${moduleBox.moduleId}"
-								class="mSummary">${moduleBox.mSummary}</a>
+							<a href="modulePage?moduleId=${moduleBox.moduleId}" class="mSummary">${moduleBox.mTitle}</a><br>
+							${moduleBox.mSummary}
 						</div>
 					</div>
 				</c:forEach>
+				<c:if test="${moduleBoxView.size() > 5}">
 				<div class="box" style="background-color: gray">
 					<div class="card">
-						<a class="plus glyphicon glyphicon-plus"
-							href="${pageContext.request.contextPath}/moduleListPage"></a>
+						<a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/moduleListPage"></a>
 					</div>
 				</div>
+				</c:if>
 			</div>
 			<div class="help">
 				<p class="title">YOLO의 도움말</p>
@@ -274,19 +283,6 @@
 						</p>
 						<br>
 					</div>
-
-
-					<!-- <div>
-						<br>
-						<h3>서비스 문제점</h3>
-						<hr>
-						<p>
-							서비스에 대한 문제점은 아래 링크의 토픽에 댓글이나 이메일 <a
-								href="mailto:YOLO@gmail.com?Subject=Hello%Help Me!">YOLO@gmail.com</a>로
-							연락 부탁드립니다.
-						</p>
-						<br>
-					</div> -->
 				</div>
 			</div>
 		</div>

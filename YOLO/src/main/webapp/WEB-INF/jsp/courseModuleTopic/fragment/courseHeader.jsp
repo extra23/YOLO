@@ -11,19 +11,16 @@
 
 	<div id="courseHeader">
 		
-		<div id="courseTitleDiv">
-			<a href="coursePage?courseId=${courseAndModule.course.courseId}" id="courseTitle">${courseAndModule.course.cTitle}</a>
-			<img id="costudy" src="${pageContext.request.contextPath}/images/costudy.png" title="공동공부">
-			<img id="newCourse" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 코스 생성">
+		<div id="courseTitle">
+			<a href="coursePage?courseId=${courseAndModule.course.courseId}">${courseAndModule.course.cTitle}</a>
+			<div id="courseSummary">${courseAndModule.course.cSummary}</div>
 		</div>
-		
-		<div id="courseSummary">${courseAndModule.course.cSummary}</div>
-		
-		<div id="btns">
-			<c:if test="${authUser.userId eq courseAndModule.user.userId}">
-				<button>코스 수정</button>
-			</c:if>
-		</div>
+
+		<img id="newCourse" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 코스 생성">		
+		<img id="costudy" src="${pageContext.request.contextPath}/images/costudy.png" title="공동공부">
+		<c:if test="${authUser.userId eq courseAndModule.user.userId}">
+			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="코스 수정">
+		</c:if>
 		
 	</div>
 

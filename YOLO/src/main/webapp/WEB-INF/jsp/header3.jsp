@@ -228,7 +228,7 @@
 						</c:if>
 						<li><a href="AdminModuleAndCourse" style="font-family:'Jua'">토픽/모듈/코스 수정</a></li>
 						<li class="divider"></li>
-						<li><a href="logoutTry.do" style="font-family:'Jua'">로그아웃</a></li>
+						<li><a href="logout" style="font-family:'Jua'">로그아웃</a></li>
 					</ul>
 					
 					
