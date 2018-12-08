@@ -33,6 +33,10 @@ public class SoheeController {
 	public String courseListPage(Model model) {
 		List<CourseListVO> courseListPage = courseService.courseListPage();
 		model.addAttribute("courseListPage",courseListPage);
+		
+		List<ModuleVO> moduleList = moduleService.readModuleList();
+		model.addAttribute("module", moduleList);
+		
 		return "courseListPage";
 	}
 	

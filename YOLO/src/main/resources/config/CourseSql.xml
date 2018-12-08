@@ -40,22 +40,20 @@
 		userId=#{userId}
 	</delete>
 
-	<select id="searchCourse" parameterType="string"
-		resultType="Search">
+	<select id="searchCourse" parameterType="string" resultType="Search">
 		select * from course c join user u on u.userId = c.userId
-		where cTitle Like CONCAT('%',#{cTitle},'%')
+		where cTitle
+		Like CONCAT('%',#{cTitle},'%')
 	</select>
 
-	<select id="countBySearch" parameterType="string"
-		resultType="Integer">
+	<select id="countBySearch" parameterType="string" resultType="Integer">
 		select count(*) from course c join user u on u.userId =
-		c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
+		c.userId where
+		cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>
 
 	<select id="courseListPage" resultType="CourseList">
-		select * from course c
-		left join module m on c.courseId = m.courseId left Join user u on
-		c.userId = c.userId
+		select * from course c left join module m on c.courseId = m.courseId left Join user u on c.userId = u.userId group by c.courseId;
 	</select>
 
 	<select id="courseListBox" resultType="Course">

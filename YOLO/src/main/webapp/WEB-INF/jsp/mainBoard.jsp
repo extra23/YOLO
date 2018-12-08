@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
+	<!--  -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
 		<title>YOLO :: mainBoard</title>
@@ -184,7 +184,7 @@
 								<c:if test="${courseBox.userId eq user.userId}">
 									<div class="nameCard">
 										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" >
-										<a class="profileLink" href="${pageContext.request.contextPath}/userView?email=${user.email}">${user.nickName}</a>
+										<a class="profileLink" href="${pageContext.request.contextPath}/userView?userId=${user.userId}">${user.nickName}</a>
 									</div>
 								</c:if>
 							</c:forEach>
@@ -215,8 +215,8 @@
 							<c:forEach var="user" items="${userList}">
 								<c:if test="${moduleBox.userId eq user.userId}">
 									<div class="nameCard">
-										<img src="#" width="45px" height="45px" ${user.profileImage}>
-										${user.nickName}
+										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" ${user.profileImage}>
+										<a class="profileLink" href="${pageContext.request.contextPath}/userView?userId=${user.userId}">${user.nickName}</a>
 									</div>
 								</c:if>
 							</c:forEach>

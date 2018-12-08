@@ -94,10 +94,10 @@ body {
 						style="border: 1px solid white !important">
 						<thead>
 							<tr class="category" style="border: 1px solid white !important">
-								<td width="10%">번호</td>
-								<td width="25%">제목</td>
-								<td width="15%">작성자</td>
-								<td width="20%">연관 모듈</td>
+								<td width="5%">번호</td>
+								<td width="20%">제목</td>
+								<td width="10%">작성자</td>
+								<td width="30%">연관 모듈</td>
 							</tr>
 						</thead>
 						<tbody class="table-hover">
@@ -106,7 +106,13 @@ body {
 									<td>${course.courseId}</td>
 									<td>${course.cTitle}</td>
 									<td>${course.nickName}</td>
-									<td>${course.mTitle}</td>
+									<td>
+									<c:forEach var="module" items="${module}">
+										<c:if test="${course.courseId eq module.courseId}">
+										${module.mTitle}
+										</c:if>
+									</c:forEach>
+										</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -115,7 +121,7 @@ body {
 			</div>
 		</div>
 	</div>
-
+<!--  -->
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

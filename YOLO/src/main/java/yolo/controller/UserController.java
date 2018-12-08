@@ -252,7 +252,7 @@ public class UserController {
 		model.addAttribute("user", userService.readUSerByEmail(email));
 		return "userView";
 	}*/
-	@RequestMapping("userView")
+	@RequestMapping("/userView")
 	public ModelAndView getUserView(int userId) {
 		
 		ModelAndView mav = new ModelAndView();
