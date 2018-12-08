@@ -61,8 +61,8 @@
 				<td>${user.password}</td>
 				<td>${user.pwQId}</td>
 				<td>${user.pwA}</td>
-				<td><a href="adminUserListModify?pageNo=${param.pageNo}&userId=${user.email}">[수정]</a></td>
-				<td><a href="adminUserListDelete?pageNo=${param.pageNo}&userId=${user.email}">[삭제]</a></td>
+				<td><a href="adminUserModify?userId=${user.userId}">[수정]</a></td>
+				<td><a href="adminUserDelete?userId=${user.userId}">[삭제]</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>	

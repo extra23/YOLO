@@ -43,35 +43,36 @@
 		
 		<div id="deleteForm">
 			
-			<form action="adminUserListDelete" method="post">
+			<form action="adminUserDelete" method="post">
 				
-				<input type="hidden" name="userId" value="${authUser.userId}">
+				<input type="hidden" name="userId" value="${user.userId}">
 				
 				<p>
 					<img src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%;">
 				</p>
 				
 				<p>
-					회원 email : <input type="email" name="email" readonly="readonly" value="${authUser.email}">
+					회원 email : <input type="email" name="email" disabled="disabled" value="${user.email}">
 				</p>
 			
 				<p>
-					회원 password : <input type="password" name="password" placeholder="Password">
-					<c:if test="${errors.password}">
-						<span>Password를 입력해주세요.</span>
+					회원 password : <input type="password" name="u_password" placeholder="User Password">
+					<c:if test="${errors.u_password}">
+						<span>회원 Password를 입력해주세요.</span>
 					</c:if>
 					<c:if test="${errors.invalidPassword}">
-						<span>잘못된 비밀번호 입니다.</span>
+						<span>잘못된 회원 비밀번호 입니다.</span>
 					</c:if>
 				</p>
 				
 				<p>
-					관리자  password : <input type="password" name="ad_password" placeholder="Password">
+					<input type="hidden" name="adminId" value="${authUser.userId}">
+					관리자  password : <input type="password" name="ad_password" placeholder="Admin Password">
 					<c:if test="${errors.ad_password}">
-						<span>Password를 입력해주세요.</span>
+						<span>관리자 Password를 입력해주세요.</span>
 					</c:if>
-					<c:if test="${errors.invalidPassword}">
-						<span>잘못된 비밀번호 입니다.</span>
+					<c:if test="${errors.adminInvalidPassword}">
+						<span>잘못된 관리자 비밀번호 입니다.</span>
 					</c:if>
 				</p>
 				
