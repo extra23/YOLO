@@ -62,4 +62,13 @@
 		select * from course order
 		by wdate desc
 	</select>
+	
+	<select id="cTitle">
+		select * from course order by cTitle ASC
+	</select>
+	
+	<select id="cUdate">
+		select * from course order by udate DESC
+	</select>
+	
 </mapper>
