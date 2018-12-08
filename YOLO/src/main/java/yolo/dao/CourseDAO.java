@@ -15,13 +15,18 @@ public class CourseDAO implements InterfaceCourseDAO{
 	@Autowired
 	InterfaceCourseMapper courseMapper;
 	
-	public void interCourse(CourseVO course) {
+	public void insertCourse(CourseVO course) {
 		courseMapper.insertCourse(course);
 	}
 	
 	public List<CourseVO> selectCourseByUserId(int userId) {
 		List<CourseVO> course = courseMapper.selectCourseByUserId(userId);
 		return course;
+	}
+	
+	public List<CourseListVO> courseListPage(){
+		List<CourseListVO> courseListPage = courseMapper.courseListPage();
+		return courseListPage;
 	}
 	
 	public CourseVO selectCourseByCourseId(int courseId) {
@@ -31,6 +36,21 @@ public class CourseDAO implements InterfaceCourseDAO{
 	
 	public List<CourseVO> selectCourseList(){
 		List<CourseVO> courseList = courseMapper.selectCourseList();
+		return courseList;
+	}
+	
+	public List<CourseVO> courseListBox(){
+		List<CourseVO> courseListBox = courseMapper.courseListBox();
+		return courseListBox;
+	}
+	
+	public int countBySearch(String cTitle) {
+		int count = courseMapper.countBySearch(cTitle);
+		return count;
+	}
+	
+	public List<SearchVO> searchCourse(String cTitle){
+		List<SearchVO> courseList = courseMapper.searchCourse(cTitle);
 		return courseList;
 	}
 	
@@ -44,30 +64,6 @@ public class CourseDAO implements InterfaceCourseDAO{
 	
 	public void deleteCuser(int userId) {
 		courseMapper.deleteCuser(userId);
-	}
+	}	
 	
-	public List<SearchVO> searchCourse(String cTitle){
-		List<SearchVO> courseList = courseMapper.searchCourse(cTitle);
-		return courseList;
-	}
-
-	public void insertCourse(CourseVO course) {
-		courseMapper.insertCourse(course);
-		
-	}
-
-	public int countBySearch(String cTitle) {
-		int count = courseMapper.countBySearch(cTitle);
-		return count;
-	}
-	
-	public List<CourseListVO> courseListPage(){
-		List<CourseListVO> courseListPage = courseMapper.courseListPage();
-		return courseListPage;
-	}
-	
-	public List<CourseVO> courseListBox(){
-		List<CourseVO> courseListBox = courseMapper.courseListBox();
-		return courseListBox;
-	}
 }

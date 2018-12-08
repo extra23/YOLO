@@ -169,21 +169,24 @@
 	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<div id="mainContent">
+		
 		<div class="menu">
+			
 			<div class="course">
+				
 				<p class="title">
 					코스<br>
 					<small>Course</small>
 				</p>
-				<c:forEach var="courseBox" items="${courseBoxView}" begin="1"
-					end="5" step="1">
+				
+				<c:forEach var="courseBox" items="${courseBoxView}" begin="1" end="5" step="1">
 					<div class="box">
 						<div class="card">
 							<c:forEach var="user" items="${userList}">
 								<c:if test="${courseBox.userId eq user.userId}">
 									<div class="nameCard">
-										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" >
-										<a class="profileLink" href="${pageContext.request.contextPath}/userView?userId=${user.userId}">${user.nickName}</a>
+										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" style="border-radius: 50%;" >
+										<a class="profileLink" href="userView?userId=${user.userId}">${user.nickName}</a>
 									</div>
 								</c:if>
 							</c:forEach>
@@ -214,7 +217,7 @@
 							<c:forEach var="user" items="${userList}">
 								<c:if test="${moduleBox.userId eq user.userId}">
 									<div class="nameCard">
-										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" ${user.profileImage}>
+										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px"  style="border-radius: 50%;">
 										<a class="profileLink" href="${pageContext.request.contextPath}/userView?userId=${user.userId}">${user.nickName}</a>
 									</div>
 								</c:if>

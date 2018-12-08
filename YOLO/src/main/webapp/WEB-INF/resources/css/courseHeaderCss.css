@@ -1,0 +1,20 @@
+@charset "EUC-KR";
+
+#courseHeader {
+	border: 1px solid black;
+}
+
+#courseTitle {
+	font-family: 'Baloo Tamma', cursive;
+	font-size: 80px;
+}
+
+#costudy {
+	width: 40px;
+	height: 40px;
+}
+
+#newCourse {
+	width: 25px;
+	heigth: 25px;
+}

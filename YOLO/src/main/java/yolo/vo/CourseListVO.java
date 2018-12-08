@@ -1,7 +1,7 @@
 package yolo.vo;
 
 import org.apache.ibatis.type.Alias;
-//
+
 @Alias("CourseList")
 public class CourseListVO {
 	private int courseId;

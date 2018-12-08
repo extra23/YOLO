@@ -11,15 +11,15 @@
 
 	<div id="courseHeader">
 		
-		<div id="courseTitle">
-			<a href="coursePage?courseId=${courseAndModule.course.courseId}"><h1>${courseAndModule.course.cTitle}</h1></a>
+		<div id="courseTitleDiv">
+			<a href="coursePage?courseId=${courseAndModule.course.courseId}" id="courseTitle">${courseAndModule.course.cTitle}</a>
+			<img id="costudy" src="${pageContext.request.contextPath}/images/costudy.png" title="공동공부">
+			<img id="newCourse" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 코스 생성">
 		</div>
 		
 		<div id="courseSummary">${courseAndModule.course.cSummary}</div>
 		
 		<div id="btns">
-			<button>공동참여</button>
-			<button>새로운 코스 생성</button>
 			<c:if test="${authUser.userId eq courseAndModule.user.userId}">
 				<button>코스 수정</button>
 			</c:if>
