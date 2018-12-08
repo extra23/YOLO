@@ -184,4 +184,32 @@ public class AramController {
 		
 		}
 		
+	//topicWriteForm
+		@RequestMapping("topicWriteForm")
+		public String topicWriteForm(Model model,HttpServletRequest request, int moduleId) {
+			
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			
+			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+			
+			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("module",module);
+			return "adminCourseModuleTopic/moduleAndCourse3";
+		}
+		
+	//topicWrite
+		@RequestMapping(value="topicWirte",method=RequestMethod.POST)
+		public String topicWrite(Model model, HttpServletRequest request,int moduleId, String tTitle, @RequestParam("summernote") String tContent) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			TopicVO topicvo = new TopicVO(moduleId, userId, tTitle, tContent);
+					
+			topicService.addTopic(topicvo);
+			
+			
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			model.addAttribute("moduleList",moduleList);
+			
+			return "adminCourseModuleTopic/moduleAndCourse";
+		}
 }

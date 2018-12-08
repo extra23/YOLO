@@ -164,7 +164,7 @@
 				</tbody>
 			</table>
 			
-				<button id="writeTopicBtn" onclick="location.href='topicWrite'">글쓰기</button>
+				<button id="writeTopicBtn" onclick="location.href='topicWriteForm?moduleId=${module.moduleId}'">글쓰기</button>
 				
 			</div>
 
