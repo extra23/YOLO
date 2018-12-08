@@ -5,9 +5,6 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-
-	
 	<title>moduleAndCourse4 - Course페이지 안에 커버 페이지</title>
 	<style>
 		#courseList{
@@ -43,14 +40,7 @@
 		
 	</style>
 	
-	<script>
-	
-		$(function(){
-			$("#courseCreateBtn").click(function(){
-				$("#courseCreateDiv").css('display','block');
-			});
-		});
-	</script>
+
 </head>
 <body>
 
@@ -61,8 +51,7 @@
 		</ul>
 		<br>
 	<div id="courseList">
-		<h3 class="text-center">코스 리스트 <a id="courseCreateBtn"> <i class="glyphicon glyphicon-plus-sign
-		"></i></a> </h3>
+		<h3 class="text-center">코스 리스트 <a class="glyphicon glyphicon-plus-sign"> </a> </h3>
 		
 		<ul id="courseListUl">
 		<c:forEach var="course" items="${courseList}">
@@ -71,18 +60,6 @@
 		</ul>
 	</div>
 	
-	<div id="courseCreateDiv" style="display: none" >
-		<form action="" method="post">
-		<div id="formTableDiv">
-			코스 제목 <input type="text" name="cTitle" size="97"> <br> 
-			코스 요약 <input type="text" name="cSummary" size="97"> <br>
-			코스 내용
-			<textarea id="summernote" name="summernote"></textarea>
-					
-			<input type="submit" formaction="courseCreate" value="작성">
-		</div>
-		</form>
-	</div>
 	
 	<div id="courseCurver">
 	<jsp:include page="courseCurver.jsp"></jsp:include>
