@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,8 +103,64 @@
 		#mainContent h3 {
 			margin-top: 0px !important;
 		}
-		.plus{text-decoration: none!important; color: #d6d6d6; font-size: 50px; margin-top: 25%;}
-		.plus:hover{text-decoration: none!important; color: #3a3a3a;}
+		.nameCard {
+	float: left;
+	text-align: left;
+	font-size: 22px;
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 90%;
+}
+
+.proImg{border-radius: 5px;}
+
+.plus {
+	text-decoration: none !important;
+	color: #d6d6d6;
+	font-size: 50px;
+	margin-top: 25%;
+}
+
+.plus:hover {
+	text-decoration: none !important;
+	color: #3a3a3a;
+}
+
+.profileLink{text-decoration: none!important; color: #d6d6d6;}
+
+.profileLink:hover{text-decoration: none !important; color: #3a3a3a;}
+
+.moduleSum {
+	margin-top: 20px;
+	margin-left: 10px;
+	font-size: 25px;
+	text-align: left;
+}
+
+.mSummary {
+	text-decoration: none !important;
+	color: #3a3a3a;
+}
+
+.mSummary:hover {
+	color: #757575;
+}
+
+.courseSum {
+	margin-top: 20px;
+	margin-left: 10px;
+	font-size: 25px;
+	text-align: left;
+}
+
+.cSummary {
+	text-decoration: none !important;
+	color: #3a3a3a;
+}
+
+.cSummary:hover {
+	color: #757575;
+}
 		
 	</style>
 	
@@ -120,23 +176,31 @@
 					코스<br>
 					<small>Course</small>
 				</p>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
+				<c:forEach var="courseBox" items="${courseBoxView}" begin="1"
+					end="5" step="1">
+					<div class="box">
+						<div class="card">
+							<c:forEach var="user" items="${userList}">
+								<c:if test="${courseBox.userId eq user.userId}">
+									<div class="nameCard">
+										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" >
+										<a class="profileLink" href="${pageContext.request.contextPath}/userView?email=${user.email}">${user.nickName}</a>
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div class="courseSum">
+							<a
+								href="${pageContext.request.contextPath}/coursePage?courseId=${courseBox.courseId}"
+								class="cSummary">${courseBox.cSummary}</a>
+						</div>
+					</div>
+				</c:forEach>
 				<div class="box" style="background-color: gray">
-					<div class="card"><a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/courseListPage"></a></div>
+					<div class="card">
+						<a class="plus glyphicon glyphicon-plus"
+							href="${pageContext.request.contextPath}/courseListPage"></a>
+					</div>
 				</div>
 			</div>
 			<div class="module">
@@ -144,23 +208,31 @@
 					모듈<br>
 					<small>Module</small>
 				</p>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
-				<div class="box">
-					<div class="card"></div>
-				</div>
+				<c:forEach var="moduleBox" items="${moduleBoxView}" begin="1"
+					end="5" step="1">
+					<div class="box">
+						<div class="card">
+							<c:forEach var="user" items="${userList}">
+								<c:if test="${moduleBox.userId eq user.userId}">
+									<div class="nameCard">
+										<img src="#" width="45px" height="45px" ${user.profileImage}>
+										${user.nickName}
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
+						<div class="moduleSum">
+							<a
+								href="${pageContext.request.contextPath}/modulePage?moduleId=${moduleBox.moduleId}"
+								class="mSummary">${moduleBox.mSummary}</a>
+						</div>
+					</div>
+				</c:forEach>
 				<div class="box" style="background-color: gray">
-					<div class="card"><a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/moduleListPage"></a></div>
+					<div class="card">
+						<a class="plus glyphicon glyphicon-plus"
+							href="${pageContext.request.contextPath}/moduleListPage"></a>
+					</div>
 				</div>
 			</div>
 			<div class="help">

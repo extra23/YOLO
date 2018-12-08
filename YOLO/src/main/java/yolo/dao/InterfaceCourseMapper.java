@@ -29,4 +29,6 @@ public interface InterfaceCourseMapper {
 	
 	public List<CourseListVO> courseListPage();
 	
+	public List<CourseVO> courseListBox();
+	
 }

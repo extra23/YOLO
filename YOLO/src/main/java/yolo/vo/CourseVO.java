@@ -31,6 +31,18 @@ public class CourseVO {
 		this.cContent = cContent;
 		this.cSummary = cSummary;
 	}
+	
+	//CourseList
+		public CourseVO(int courseId, int userId, String cTitle, String cContent, String cSummary, LocalDateTime wdate,
+				LocalDateTime udate) {
+			this.courseId = courseId;
+			this.userId = userId;
+			this.cTitle = cTitle;
+			this.cContent = cContent;
+			this.cSummary = cSummary;
+			this.wdate = wdate;
+			this.udate = udate;
+		}
 
 	//getter, setter
 	public int getCourseId() {

@@ -53,8 +53,13 @@
 	</select>
 
 	<select id="courseListPage" resultType="CourseList">
-		select c.courseId,
-		c.cTitle, u.userId, u.nickName, m.moduleId, m.mTitle from course c,
-		user u, module m where c.courseId=m.courseId and u.userId=m.userId;
+		select * from course c
+		left join module m on c.courseId = m.courseId left Join user u on
+		c.userId = c.userId
+	</select>
+
+	<select id="courseListBox" resultType="Course">
+		select * from course order
+		by wdate desc
 	</select>
 </mapper>

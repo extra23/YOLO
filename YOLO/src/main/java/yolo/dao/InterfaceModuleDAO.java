@@ -31,5 +31,7 @@ public interface InterfaceModuleDAO {
 	public int countBySearch(String mTitle);
 	
 	public List<ModuleListVO> moduleListPage();
+	
+	public List<ModuleVO> moduleListBox();
 
 }

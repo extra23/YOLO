@@ -40,6 +40,20 @@ public class ModuleVO {
 		this.mContent = mContent;
 		this.mSummary = mSummary;
 	}
+	
+	//moduleList
+	
+		public ModuleVO(int moduleId, int courseId, String mTitle, String mContent, String mSummary, int userId,
+				LocalDateTime wdate, LocalDateTime udate) {
+			this.moduleId = moduleId;
+			this.courseId = courseId;
+			this.mTitle = mTitle;
+			this.mContent = mContent;
+			this.mSummary = mSummary;
+			this.userId = userId;
+			this.wdate = wdate;
+			this.udate = udate;
+		}
 
 
 

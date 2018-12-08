@@ -87,6 +87,10 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		return moduleListPage;
 	}
 
+	public List<ModuleVO> moduleListBox(){
+		List<ModuleVO> moduleListBox = moduleMapper.moduleListBox();
+		return moduleListBox;
+	}
 	
 
 }

@@ -32,4 +32,6 @@ public interface InterfaceModuleMapper {
 	public int countBySearch(String mTitle);
 	
 	public List<ModuleListVO> moduleListPage();
+	
+	public List<ModuleVO> moduleListBox();
 }

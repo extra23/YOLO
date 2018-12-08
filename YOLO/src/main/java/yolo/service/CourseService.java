@@ -51,4 +51,8 @@ public class CourseService implements InterfaceCourseService {
 	public List<CourseListVO> courseListPage(){
 		return courseDAO.courseListPage();
 	}
+	
+	public List<CourseVO> courseListBox(){
+		return courseDAO.courseListBox();
+	}
 }

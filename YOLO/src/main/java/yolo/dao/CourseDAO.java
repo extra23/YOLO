@@ -65,4 +65,9 @@ public class CourseDAO implements InterfaceCourseDAO{
 		List<CourseListVO> courseListPage = courseMapper.courseListPage();
 		return courseListPage;
 	}
+	
+	public List<CourseVO> courseListBox(){
+		List<CourseVO> courseListBox = courseMapper.courseListBox();
+		return courseListBox;
+	}
 }

@@ -11,6 +11,8 @@ public class CourseListVO {
 	private int moduleId;
 	private String mTitle;
 	
+	public CourseListVO() {}
+
 	public CourseListVO(int courseId, String cTitle, int userId, String nickName, int moduleId, String mTitle) {
 		super();
 		this.courseId = courseId;
