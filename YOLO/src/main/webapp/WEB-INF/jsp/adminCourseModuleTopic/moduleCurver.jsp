@@ -121,14 +121,14 @@
 		</ul>
 			<br>
 			<div id="helpPage">
-				<img src="resources/images/write.gif">
+				<img src="resources/images/rirak.gif">
 				<h4>모듈을 수정하는 페이지 입니다.</h4>
 			</div>
 			<form name="writeForm" action="moduleModify" method="post">
 				<div id="formTable" style="display: none;">
-				<input type="hidden" id="moduleId" value="${module.moduleId}">
-					모듈 제목 <input type="text" id="mTitle" value="${module.mTitle}" size="97"> <br>
-					모듈 요약 <input type="text" id="mSummery" value="${module.mSummary}" size="97"> <br>
+				<input type="hidden" name="moduleId" value="${module.moduleId}">
+					모듈 제목 <input type="text" name="mTitle" value="${module.mTitle}" size="97"> <br>
+					모듈 요약 <input type="text" name="mSummary" value="${module.mSummary}" size="97"> <br>
 					모듈 내용	
 				<textarea id="summernote" name="summernote">${module.mContent}</textarea> 
 
