@@ -5,7 +5,7 @@
 <mapper namespace="yolo.dao.InterfaceTopicMapper">
 
 	<insert id="insertTopic" parameterType="Topic">
-		insert into topic(moduleId, userId, tTitle, tContent) values(#{modueId}, #{userId}, #{tTitle}, #{tContent})
+		insert into topic(moduleId, userId, tTitle, tContent) values(#{moduleId}, #{userId}, #{tTitle}, #{tContent})
 	</insert>
 	
 	<select id="selectTopicByUserId" parameterType="Integer" resultType="Topic">
