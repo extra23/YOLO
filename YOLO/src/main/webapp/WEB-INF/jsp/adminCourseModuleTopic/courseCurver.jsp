@@ -25,20 +25,20 @@
 
 <style>
 #helpPage {
-	top: -470px;
+	top: -647px;
 	position: relative;
 	text-align: center;
 }
 
 #formTable {
-	top: -470px;
+	top: -640px;
 	left: 230px;
 	width: 800px;
 	position: relative;
 }
 
 #moduleList {
-	top: -470px;
+	top: -647px;
 	left: 230px;
 	width: 800px;
 	position: relative;
