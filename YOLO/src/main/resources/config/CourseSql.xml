@@ -51,7 +51,7 @@
 		c.userId where
 		cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>
-
+<!--  -->
 	<select id="courseListPage" resultType="CourseList">
 		select * from course c left join module m on c.courseId = m.courseId left Join user u on c.userId = u.userId group by c.courseId;
 	</select>
