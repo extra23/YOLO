@@ -139,12 +139,14 @@ public class adminController {
 			return mv;
 		}
 		
-		mv.addObject("user", user);	
+		mv.addObject("newUser", newUser);
+		System.out.println(user + "user1");
 		mv.setViewName("adminUserList");
 		
 		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정
-		userDAO.updateUser(newUser);
-		req.getSession().setAttribute("user", newUser);
+		//userDAO.updateUser(user);
+		req.getSession().setAttribute("user", user);
+		System.out.println(user + "user2");
 	
 		List<UserVO> userList = userService.readUserList();
 		model.addAttribute("userList", userList);
