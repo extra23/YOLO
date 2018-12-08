@@ -175,7 +175,14 @@
 						<td>
 							<div style="height: 100px; margin: 5px;">
 								<span id="m"> · module :</span> 
-								<span class="badge" style="width: 50px; height: 30px; font-size: 20px;">50</span>
+								<span class="badge" style="width: 50px; height: 30px; font-size: 20px;">${coModuleAndModuleList.size()}</span>
+								<div style="display: none;">
+									<ul>
+										<c:forEach var="coModuleAndModule" items="${coModuleAndModuleList}">
+											<li>${coModuleAndModule.mTitle}</li>
+										</c:forEach>
+									</ul>
+								</div>
 							</div>
 						</td>
 						<td>

@@ -44,6 +44,13 @@
 	position: relative;
 }
 
+#modifyAndDelete{
+	float: right;
+}
+
+#writeTopicBtn{
+	float: right;  
+}
 </style>
 
 <script>
@@ -143,8 +150,6 @@
 				<thead>
 					<tr>
 						<th>토픽 제목</th>
-						<th>수정</th>
-						<th>삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -152,15 +157,14 @@
 					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
 					<c:forEach var="topic" items="${topicList}">
 						<tr>
-							<td><a id="a" href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a></td>
-							<td><a href="topicModify?topicId=${topic.topicId}">[수정]</a></td>
-							<td><a href="topicDelete?topicId=${topic.topicId}">[삭제]</a></td>
+							<td colspan="2"><a id="a" href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a><a id="modifyAndDelete" href="topicModifyDeleteForm?topicId=${topic.topicId}">[수정 및 삭제]</a>	</td>
+							
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-				<hr>
-				<button id="writeTopicBtn">글쓰기</button>
+			
+				<button id="writeTopicBtn" onclick="location.href='topicWrite'">글쓰기</button>
 				
 			</div>
 

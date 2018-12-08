@@ -138,4 +138,50 @@ public class AramController {
 			return "adminCourseModuleTopic/moduleAndCourse";
 		}
 		
+	
+	//topicModify/Delete Form
+		@RequestMapping("/topicModifyDeleteForm")
+		public String topicModifyDeleteForm(Model model,HttpServletRequest request, int topicId) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			
+			
+			TopicVO topic = topicService.readTopicByTopicId(topicId);
+			
+			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("topic",topic);
+			return "adminCourseModuleTopic/moduleAndCourse2";
+		}
+		
+	//topicModify
+		@RequestMapping(value="topicModify", method=RequestMethod.POST)
+		public String topicModify(Model model, HttpServletRequest request,int topicId,String tTitle, @RequestParam("summernote") String tContent) {
+			TopicVO topicvo = new TopicVO(topicId, tTitle, tContent);
+			topicService.modifyTopic(topicvo);
+			
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			model.addAttribute("moduleList",moduleList);
+			
+			TopicVO topic = topicService.readTopicByTopicId(topicId);
+			model.addAttribute("topic",topic);
+			
+			return "adminCourseModuleTopic/moduleAndCourse2";
+			
+		}
+		
+	//topicDelete
+		@RequestMapping("topicDelete")
+		public String topicDelete(Model model, HttpServletRequest request,int topicId) {
+			topicService.removeTopic(topicId);
+			
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			model.addAttribute("moduleList",moduleList);
+			
+			return "adminCourseModuleTopic/moduleAndCourse";
+			
+		
+		}
+		
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.dao.InterfaceCoModuleMapper">
+
+	<select id="selectJoinModule" parameterType="Integer" resultType="CoModuleAndModule">
+		select c.costudy_moduleId, c.moduleId, c.userId, m.mTitle from costudy_module c join module m on c.moduleId=m.moduleId where c.userId=#{userId}
+	</select>
+
+</mapper>
