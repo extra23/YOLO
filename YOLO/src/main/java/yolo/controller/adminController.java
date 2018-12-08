@@ -58,7 +58,7 @@ public class adminController {
 		return mv;
 	}
 	
-	// 수정해서 프로필 페이지로 넘기기
+	// 수정해서 프로필 페이지로 넘기기.
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
 	public ModelAndView modifyUser(@RequestParam("userId") int userId, int adminId, String profileImage, String email,
 		String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) {

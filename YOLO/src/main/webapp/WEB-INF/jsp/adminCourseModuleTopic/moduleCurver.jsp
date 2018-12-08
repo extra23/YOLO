@@ -131,7 +131,22 @@
 				<img src="resources/images/rirak.gif">
 				<h4>모듈을 수정하는 페이지 입니다.</h4>
 			</div>
+			<c:if test="${empty moduleList}">
+			<form name="writeForm" action="moduleInsert" method="post">
+				
+				<div id="formTable" style="display: none;">
+					모듈 제목 <input type="text" name="mTitle" size="97"> <br>
+					모듈 요약 <input type="text" name="mSummary" size="97"> <br>
+					모듈 내용	
+				<textarea id="summernote" name="summernote"></textarea> 
+					<input type="submit" value="생성">
+				</div>
+				
+			</form>
+			</c:if>
+			<c:if test="${not empty moduleList}">
 			<form name="writeForm" action="moduleModify" method="post">
+				
 				<div id="formTable" style="display: none;">
 				<input type="hidden" name="moduleId" value="${module.moduleId}">
 					모듈 제목 <input type="text" name="mTitle" value="${module.mTitle}" size="97"> <br>
@@ -141,7 +156,9 @@
 
 					<input type="submit" value="수정">
 				</div>
+				
 			</form>
+			</c:if>
 			<div id="topicList" style="display: none;">
 				<h3>토픽 목록</h3>
 				<!-- 토픽목록 가져오는 쿼리.. -->

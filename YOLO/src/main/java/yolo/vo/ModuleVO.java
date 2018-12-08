@@ -28,9 +28,16 @@ public class ModuleVO {
 		this.mSummary = mSummary;
 		this.userId = userId;
 	}
+	
+	
+	public ModuleVO(String mTitle, String mContent, String mSummary, int userId) {
+		super();
+		this.mTitle = mTitle;
+		this.mContent = mContent;
+		this.mSummary = mSummary;
+		this.userId = userId;
+	}
 
-	
-	
 	//update
 
 	public ModuleVO(int moduleId, String mTitle, String mContent, String mSummary) {

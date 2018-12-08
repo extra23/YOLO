@@ -19,8 +19,8 @@
 	<!-- 단, 쿼리문에서는 (?,?)이 아닌 (#{})를 사용해줌. -->
 	<insert id="insertModule" parameterType="Module">
 		insert into
-		module(courseId, mTitle, mContent, mSummary, userId)
-		values(#{courseId}, #{mTitle}, #{mContent}, #{mSummary}, #{userId})
+		module(mTitle, mContent, mSummary, userId)
+		values(#{mTitle}, #{mContent}, #{mSummary}, #{userId})
 	</insert>
 
 	<select id="selectModuleByUserId" parameterType="Integer"
