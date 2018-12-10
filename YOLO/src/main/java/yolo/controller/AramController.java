@@ -22,12 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceEmailService;
 import yolo.service.InterfaceModuleService;
-import yolo.service.InterfacePQuestionService;
+import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
-import yolo.vo.P_Question;
+import yolo.vo.PwdQuestionVO;
 import yolo.vo.TopicVO;
 import yolo.vo.UserVO;
 
@@ -35,7 +35,7 @@ import yolo.vo.UserVO;
 public class AramController {
 
 	@Autowired
-	private InterfacePQuestionService pquestionService;
+	private InterfacePwdQuestionService pquestionService;
 
 	@Autowired
 	private InterfaceUserService userService;
@@ -54,7 +54,7 @@ public class AramController {
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.GET)
 	public String findPasswordForm(Model model) {
-		List<P_Question> qList = pquestionService.readQList();
+		List<PwdQuestionVO> qList = pquestionService.readQList();
 		model.addAttribute("qList", qList);
 		return "find_PasswordForm";
 
