@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,12 +44,12 @@ import yolo.service.InterfaceCoModuleService;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceLoginService;
 import yolo.service.InterfaceModuleService;
-import yolo.service.InterfacePQuestionService;
+import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CoModuleAndModuleVO;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
-import yolo.vo.P_Question;
+import yolo.vo.PwdQuestionVO;
 import yolo.vo.UserVO;
 
 @Controller
@@ -64,7 +65,7 @@ public class UserController {
 	private DeleteService deleteService;
 	
 	@Autowired
-	private InterfacePQuestionService pquestionService;
+	private InterfacePwdQuestionService pwdQuestionService;
 	
 	@Autowired
 	private InterfaceModuleService moduleService;
@@ -146,27 +147,68 @@ public class UserController {
 	}
 
 	// 회원가입 폼으로 이동
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	@RequestMapping(value="join", method=RequestMethod.GET)
 	public String joinForm(Model model) {
 		//회원가입 폼으로 이동시 비밀번호 힌트 질문을 데이터로 받아온다.
-		List<P_Question> qList = pquestionService.readQList();
+		List<PwdQuestionVO> qList = pwdQuestionService.readQList();
 		model.addAttribute("qList",qList);
 		return "join";
 	}
 
 	// 회원가입 후 (로그인 하고) 메인으로 이동
-	@RequestMapping(value = "join", method = RequestMethod.POST)
-	public void addUser(HttpServletRequest request, HttpServletResponse response, MultipartFile file,
-			@RequestParam("nickName") String nickName, @RequestParam("email") String email,
-			@RequestParam("password") String password, @RequestParam("pwQId") int pwQId,
-			@RequestParam("pwA") String pwA) throws Exception {
+	@RequestMapping(value="join", method=RequestMethod.POST)
+	public String addUser(Model model, HttpServletRequest request, HttpServletResponse response, MultipartFile file, String email, String nickName, String password, String confirmPassword, int pwQId, String pwA) throws Exception {
 
+		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+		
+		// 값이 비었는지 확인
+		if(email == null || email.isEmpty()) {
+			errors.put("email", true);
+		}
+		
+		if(nickName == null || nickName.isEmpty()) {
+			errors.put("nickName", true);
+		}
+		
+		if(password == null || password.isEmpty()) {
+			errors.put("password", true);
+		}
+		
+		if(confirmPassword == null || confirmPassword.isEmpty()) {
+			errors.put("confirmPassword", true);
+		}
+		
+		if(pwQId == 0) {
+			errors.put("pwQId", true);
+		}
+		
+		if(pwA == null || pwA.isEmpty()) {
+			errors.put("pwA", true);
+		}
+		
+		// password와 confirmPassword 일치 여부
+		if(!password.equals(confirmPassword)) {
+			errors.put("passwordNotMatch", true);
+		}
+		
+		if(!errors.isEmpty()) {
+			System.out.println("들어옴");
+			List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+			model.addAttribute("qList", qList);
+			model.addAttribute("errors", errors);
+			return "join";
+		}
+		
+		System.out.println("야기는??");
+		
 		String profileImage = uploadFile(file.getOriginalFilename(), file.getBytes());
 
 		UserVO user = new UserVO(profileImage, nickName, email, password, pwQId, pwA);
 		userService.addUser(user);
 
 		login(new ModelAndView(), request, response, user.getEmail(), user.getPassword());
+		return null;
+		
 	}
 
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
@@ -181,7 +223,7 @@ public class UserController {
 		return savedName;
 	}
 
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")
 	public String uploadAjax(MultipartFile file, String str, HttpSession session, HttpServletRequest request,
 			Model model) throws Exception {
@@ -270,7 +312,7 @@ public class UserController {
 		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
 
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
-	}
+	}*/
 
 	// 프로필 페이지 띄울 때
 	@RequestMapping("/userView")

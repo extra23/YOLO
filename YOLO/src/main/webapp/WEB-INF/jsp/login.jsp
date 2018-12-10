@@ -63,6 +63,8 @@
 </head>
 <body>
 
+	<jsp:include page="header3.jsp"></jsp:include>
+
 	<div class="mainForm">
 		<div class="loginForm">
 			<p>LOGIN</p>
@@ -111,6 +113,8 @@
 			</form>
 		</div>
 	</div>
+
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
