@@ -146,6 +146,13 @@
 			<artifactId>commons-email</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json summernote에서 json사용해서 이미지 업로드 -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
+		</dependency>
 
 
 	</dependencies>
