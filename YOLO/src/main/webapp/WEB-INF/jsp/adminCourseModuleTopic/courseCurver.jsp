@@ -21,21 +21,17 @@
 	src="${pageContext.request.contextPath}/summernote/lang/summernote-ko-KR.js"></script>
 
 <style>
-#helpPage {
-	top: -647px;
-	position: relative;
-	text-align: center;
-}
+
 
 #formTable {
-	top: -640px;
+	top: -610px;
 	left: 230px;
 	width: 800px;
 	position: relative;
 }
 
 #moduleList {
-	top: -647px;
+	top: -610px;
 	left: 230px;
 	width: 800px;
 	position: relative;
@@ -71,7 +67,7 @@
 			data : data,
 			type : "POST",
 			url : "imgUpload",
-			enctype : "multipart/form-data",
+			enctype : "${pageContext.request.contextPath}/imgUpload",
 			cache : false,
 			contentType : false,
 			processData : false,
@@ -84,29 +80,17 @@
 
 	//토픽목록 클릭하면 나오는것
 	$(function() {
-		$("#helpBtn").click(function() {
-			$("#helpPage").css("display", "block");
-			$("#formTable").css("display", "none");
-			$("#moduleList").css("display", "none");
-			$("#helpBtn").addClass("active");
-			$("#curverBtn").removeClass("active");
-			$("#moduleListBtn").removeClass("active");
-		});
-
+		
 		$("#moduleListBtn").click(function() {
-			$("#helpPage").css("display", "none");
 			$("#formTable").css("display", "none");
 			$("#moduleList").css("display", "block");
-			$("#helpBtn").removeClass("active");
 			$("#curverBtn").removeClass("active");
 			$("#moduleListBtn").addClass("active");
 		});
 
 		$("#curverBtn").click(function() {
-			$("#helpPage").css("display", "none");
 			$("#formTable").css("display", "block");
 			$("#moduleList").css("display", "none");
-			$("#helpBtn").removeClass("active");
 			$("#moduleListBtn").removeClass("active");
 			$("#curverBtn").addClass("active");
 		});
@@ -119,19 +103,14 @@
 
 	<div class="mainDiv">
 		<ul class="nav nav-tabs">
-			<li role="presentation" id="helpBtn" class="active"><a href="#">help!</a></li>
-			<li role="presentation" id="curverBtn"><a href="#">커버</a></li>
+			<li role="presentation" id="curverBtn" class="active"><a href="#">커버</a></li>
 			<li role="presentation" id="moduleListBtn"><a href="#">모듈 목록</a></li>
 		</ul>
 		<br>
-		<div id="helpPage">
-			<img src="resources/images/happy.gif">
-			<h4>코스를 수정하는 페이지 입니다.</h4>
-		</div>
 		
 			<form name="writeForm" action="courseModify" method="post">
-				<div id="formTable" style="display: none;">
-				<c:if test="${not empty courseList}">
+				<div id="formTable">
+				<c:if test="${not empty course.cTitle}">
 					<input type="hidden" name="courseId" value="${course.courseId}">
 					코스 제목 <input type="text" name="cTitle" value="${course.cTitle}" size="97"> <br> 
 					코스 요약 <input type="text" name="cSummary" value="${course.cSummary}" size="97"> <br>
@@ -140,7 +119,7 @@
 					
 					<input type="submit" value="수정">
 				</c:if>
-				<c:if test="${empty courseList }">
+				<c:if test="${empty course.cTitle}">
 					코스 제목 <input type="text" name="cTitle" size="97"> <br> 
 					코스 요약 <input type="text" name="cSummary" size="97"> <br>
 					코스 내용

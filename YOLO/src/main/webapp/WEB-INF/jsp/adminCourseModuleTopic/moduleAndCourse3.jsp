@@ -12,7 +12,7 @@
 			float: left;
 			border: 1px solid lightgray;
 			width: 200px;
-			height: 500px;
+			height: 657px;
 		}
 		
 		#moduleListUl{
@@ -31,12 +31,12 @@
 	<jsp:include page="../header3.jsp"></jsp:include>
 	<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="#">module</a></li>
-			<li role="presentation"><a href="#">course</a></li>
+			<li role="presentation"><a href="AdminCourseAndModule">course</a></li>
 		</ul>
 		<br>
 	<div id="moduleList">
-		<h3 class="text-center">모듈리스트 <a href="#"> <i class="glyphicon glyphicon-plus-sign
-		"></i></a> </h3>
+		<h3 class="text-center">모듈리스트 <a href="AdminModuleAndCourse" class="glyphicon glyphicon-plus-sign
+		"></a> </h3>
 		
 		<ul id="moduleListUl">
 		<c:forEach var="module" items="${moduleList}">

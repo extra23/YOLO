@@ -53,7 +53,7 @@
 		</ul>
 		<br>
 	<div id="courseList">
-		<h3 class="text-center">코스 리스트 <a class="glyphicon glyphicon-plus-sign"> </a> </h3>
+		<h3 class="text-center">코스 리스트 <a href="AdminCourseAndModule" class="glyphicon glyphicon-plus-sign"> </a> </h3>
 		
 		<ul id="courseListUl">
 		<c:forEach var="course" items="${courseList}">

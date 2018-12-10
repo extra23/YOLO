@@ -30,7 +30,7 @@
 <style>
 
 	#formTable {
-		top: -470px;
+		top: -610px;
 		left: 230px;
 		width: 800px;
 		position: relative;
@@ -59,7 +59,7 @@
 	 	        data : data,
 	 	        type : "POST",
 	 	        url : "imgUpload",
-	 	        enctype : "multipart/form-data",
+	 	        enctype : "${pageContext.request.contextPath}/imgUpload",
 	 	        cache : false,
 	 	        contentType : false,
 	 	        processData : false,
@@ -91,7 +91,6 @@
 <body>
 	<div id="mainDiv">
 		<ul class="nav nav-tabs">
-			<li role="presentation" id="helpBtn" ><a href="AdminModuleAndCourse">help!</a></li>
 			<li role="presentation" id="curverBtn"><a href="AdminModuleAndCourse">커버</a></li>
 			<li role="presentation" id="topicListBtn" class="active"><a href="#">토픽 목록</a></li>
 		</ul>
