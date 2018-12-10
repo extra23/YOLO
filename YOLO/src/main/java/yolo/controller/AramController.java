@@ -109,11 +109,15 @@ public class AramController {
 	//summernote imageUpload하기
 	@RequestMapping("/imgUpload")
 	public void getFile(MultipartFile uploadFile, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("imgUpload controller");
+		
 		UUID uid = UUID.randomUUID();
 		String fileName = uid + "_" +uploadFile.getOriginalFilename(); // 파일명
+		System.out.println("파일명 : " + fileName);
 		
-		String uploadPath = "C:\\temp\\";
+		String uploadPath = "WEB-INF/resources/images/";
 		String sDownPath = request.getServletContext().getRealPath(uploadPath);
+		System.out.println("sDownPath : " + sDownPath);
 
 		File file = new File(sDownPath + fileName);
 

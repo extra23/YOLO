@@ -169,7 +169,7 @@
 		
 	</style>
 	
-	<script type="text/javascript">
+<!-- 	<script>
 		$(function(){
 			
 			$("#txt").keyup(function(){
@@ -180,7 +180,7 @@
 				location.href = "searchUser.do?searchWord="+$("#txt").val();
 			});
 		});
-	</script>
+	</script> -->
 	
 </head>
 <body>

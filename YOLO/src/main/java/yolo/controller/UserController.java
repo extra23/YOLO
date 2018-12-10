@@ -199,8 +199,6 @@ public class UserController {
 			return "join";
 		}
 		
-		System.out.println("야기는??");
-		
 		String profileImage = uploadFile(file.getOriginalFilename(), file.getBytes());
 
 		UserVO user = new UserVO(profileImage, nickName, email, password, pwQId, pwA);

@@ -1,5 +1,6 @@
-<%@ page language="java" isELIgnored="false" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
+<%@ page language="java" isELIgnored="false" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +17,6 @@
 	<script src="${pageContext.request.contextPath}/summernote/lang/summernote-ko-KR.js"></script>
 	
 	<script>
-    	$(document).ready(function() {
-			$('#summernote').summernote({ // summernote를 사용하기 위한 선언
-				height: 400,
-				lang: 'ko-KR',
-				callbacks: {
-					onImageUpload: function(files) {
-						sendFile(files[0]);
-					}
-				}
-			});
-    	});
     	
     	function sendFile(file) {
             // 파일 전송을 위한 폼생성
@@ -35,17 +25,18 @@
 	 	    $.ajax({ // ajax를 통해 파일 업로드 처리
 	 	        data : data,
 	 	        type : "POST",
-	 	        url : "imgUpload",
+	 	        url : "${pageContext.request.contextPath}/imgUpload",
 	 	        enctype : "multipart/form-data",
 	 	        cache : false,
 	 	        contentType : false,
 	 	        processData : false,
 	 	        success : function(data) { // 처리가 성공할 경우
 	 	        	console.log(data)
-                    $("#summernote").summernote('insertImage', data.url);
+                   $("#summernote").summernote('editor.insertImage', data.url);
 	 	        }
 	 	    });
 	 	}
+    	
   	</script>
 
 	<title>Insert title here</title>
@@ -55,5 +46,21 @@
 		<textarea id="summernote" name="summernote">Hello Summernote</textarea>
 		<input type="submit" value="전송">
 	</form>
+	
+	<script>
+	
+	$(document).ready(function() {
+		$('#summernote').summernote({ // summernote를 사용하기 위한 선언
+			height: 400,
+			lang: 'ko-KR',
+			callbacks: {
+				onImageUpload: function(files, editor, welEditable) {
+					sendFile(files[0], this);
+				}
+			}
+		});
+	});
+	
+	</script>
 </body>
 </html>

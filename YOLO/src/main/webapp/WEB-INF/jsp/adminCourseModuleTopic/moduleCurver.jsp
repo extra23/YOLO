@@ -81,7 +81,10 @@
 			processData : false,
 			success : function(data) { // 처리가 성공할 경우
 				console.log(data)
-				$("#summernote").summernote('insertImage', data.url);
+				$("#summernote").summernote('editor.insertImage', data.url);
+			},
+			error : function(){
+				alert("오류!!!!");
 			}
 		});
 	}
