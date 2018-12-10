@@ -86,6 +86,11 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		List<ModuleListVO> moduleListPage = moduleMapper.moduleListPage();
 		return moduleListPage;
 	}
+	
+	public List<ModuleListVO> myModuleList(int userId){
+		List<ModuleListVO> myModuleList = moduleMapper.myModuleList(userId);
+		return myModuleList;
+	}
 
 	public List<ModuleVO> moduleListBox(){
 		List<ModuleVO> moduleListBox = moduleMapper.moduleListBox();

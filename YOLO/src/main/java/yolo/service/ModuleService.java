@@ -63,6 +63,10 @@ public class ModuleService implements InterfaceModuleService {
 	public List<ModuleListVO> moduleListPage(){
 		return moduleDAO.moduleListPage();
 	}
+	
+	public List<ModuleListVO> myModuleList(int userId){
+		return moduleDAO.myModuleList(userId);
+	}
 
 	public List<ModuleVO> moduleListBox(){
 		return moduleDAO.moduleListBox();

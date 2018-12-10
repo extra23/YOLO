@@ -79,6 +79,11 @@
 		m.userId = u.userId;
 	</select>
 
+	<select id="myModuleList" parameterType="Integer" resultType="ModuleList">
+		select * from module m left join course c on m.courseId = c.courseId
+		left Join user u on m.userId = u.userId where u.userId=#{userId};
+	</select>
+
 	<select id="moduleListBox" resultType="Module">
 		select * from module order
 		by wdate desc

@@ -52,6 +52,10 @@ public class CourseService implements InterfaceCourseService {
 		return courseDAO.courseListPage();
 	}
 	
+	public List<CourseListVO> myCourseList(int userId){
+		return courseDAO.myCourseList(userId);
+	}
+	
 	public List<CourseVO> courseListBox(){
 		return courseDAO.courseListBox();
 	}

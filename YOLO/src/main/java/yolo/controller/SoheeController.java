@@ -40,6 +40,18 @@ public class SoheeController {
 		return "courseListPage";
 	}
 	
+	@RequestMapping("/myCourseList")
+	public String myCourseList(Model model, int userId) {
+		
+		List<CourseListVO> myCourseList = courseService.myCourseList(userId);
+		model.addAttribute("myCourseList", myCourseList);
+		
+		List<ModuleVO> moduleList = moduleService.readModuleList();
+		model.addAttribute("module", moduleList);
+		
+		return "myCourseList";
+	}
+	
 	@RequestMapping("/moduleListPage")
 	public String moduleListPage(Model model) {
 		List<ModuleListVO> moduleListPage = moduleService.moduleListPage();
@@ -47,7 +59,14 @@ public class SoheeController {
 		return "moduleListPage";
 	}
 	
-	/*@RequestMapping(value = "/mainBoard", method = RequestMethod.GET)
+	@RequestMapping("/myModuleList")
+	public String myModuleList(Model model, int userId) {
+		List<ModuleListVO> myModuleList = moduleService.myModuleList(userId);
+		model.addAttribute("myModuleList", myModuleList);
+		return "myModuleList";
+	}
+	
+	@RequestMapping(value = "/mainBoard", method = RequestMethod.GET)
 	public String boxView(Model model) {
 		List<CourseVO> courseBox = courseService.courseListBox();
 		model.addAttribute("courseBoxView", courseBox);
@@ -59,6 +78,6 @@ public class SoheeController {
 		model.addAttribute("userList", userList);
 		
 		return "mainBoard";
-	}*/
+	}
 }
 

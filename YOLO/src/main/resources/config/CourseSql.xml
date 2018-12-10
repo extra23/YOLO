@@ -58,6 +58,12 @@
 		c.userId = u.userId group by c.courseId;
 	</select>
 
+	<select id="myCourseList" parameterType="Integer" resultType="CourseList">
+		select * from course c left
+		join module m on c.courseId = m.courseId left Join user u on c.userId
+		= u.userId where u.userId = #{userId} group by c.courseId;
+	</select>
+
 	<select id="courseListBox" resultType="Course">
 		select * from course order
 		by wdate desc

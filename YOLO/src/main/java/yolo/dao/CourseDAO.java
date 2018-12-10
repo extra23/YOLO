@@ -29,6 +29,11 @@ public class CourseDAO implements InterfaceCourseDAO{
 		return courseListPage;
 	}
 	
+	public List<CourseListVO> myCourseList(int userId){
+		List<CourseListVO> myCourseList = courseMapper.myCourseList(userId);
+		return myCourseList;
+	}
+	
 	public CourseVO selectCourseByCourseId(int courseId) {
 		CourseVO course = courseMapper.selectCourseByCourseId(courseId);
 		return course;

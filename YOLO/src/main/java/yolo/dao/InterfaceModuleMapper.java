@@ -33,5 +33,7 @@ public interface InterfaceModuleMapper {
 	
 	public List<ModuleListVO> moduleListPage();
 	
+	public List<ModuleListVO> myModuleList(int userId);
+	
 	public List<ModuleVO> moduleListBox();
 }
