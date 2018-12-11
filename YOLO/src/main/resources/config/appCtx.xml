@@ -49,6 +49,7 @@
 				<value>classpath:config/PquestionSql.xml</value>
 				<value>classpath:config/CoModuleSql.xml</value>
 				<value>classpath:config/CoCourseSql.xml</value>
+				<value>classpath:config/PagingSql.xml</value>
 			</list>
 		</property>
 	</bean>

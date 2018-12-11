@@ -25,8 +25,6 @@
 	src="${pageContext.request.contextPath}/summernote/lang/summernote-ko-KR.js"></script>
 
 <style>
-
-
 #formTable {
 	top: -648px;
 	left: 230px;
@@ -79,7 +77,7 @@
 				console.log(data)
 				$("#summernote").summernote('editor.insertImage', data.url);
 			},
-			error : function(){
+			error : function() {
 				alert("오류!!!!");
 			}
 		});
@@ -87,7 +85,7 @@
 
 	//토픽목록 클릭하면 나오는것
 	$(function() {
-		
+
 		$("#topicListBtn").click(function() {
 			$("#formTable").css("display", "none");
 			$("#topicList").css("display", "block");
@@ -103,10 +101,7 @@
 
 		});
 
-		
-
 	});
-	
 </script>
 
 <title>Insert title here</title>
@@ -123,10 +118,10 @@
 		<c:if test="${empty module.mTitle}">
 			<form name="writeForm" action="moduleInsert" method="post">
 
-				<div id="formTable" >
-					모듈 제목 <input type="text" id="mTitle" name="mTitle" size="97"> <br>
-					모듈 요약 <input type="text" name="mSummary" size="97"> <br>
-					모듈 내용
+				<div id="formTable">
+					모듈 제목 <input type="text" id="mTitle" name="mTitle" size="97">
+					<br> 모듈 요약 <input type="text" name="mSummary" size="97">
+					<br> 모듈 내용
 					<textarea id="summernote" name="summernote"></textarea>
 					<input type="submit" value="생성">
 				</div>
@@ -177,6 +172,44 @@
 
 			<button id="writeTopicBtn"
 				onclick="location.href='topicWriteForm?moduleId=${module.moduleId}'">글쓰기</button>
+
+			<div id="pagination">
+				<c:if
+					test="${p.total > 10 && not(p.index eq 1)}">
+					<a href="pageList?pageNo=1">&lt;&lt;</a>
+				</c:if>
+				<c:if test="${p.pageStartNum > 5}">
+					<a href="pageList?pageNo=${p.pageStartNum - 5}">&lt;</a>
+				</c:if>
+				<c:forEach var="pageNo" begin="${p.pageStartNum}"
+					end="${p.pageCnt}">
+					<a href="pageList?pageNo=${pageNo}">[${pageNo}]</a>
+				</c:forEach>
+				<c:if test="${p.pageCnt > 5}">
+					<a href="${p.pageCnt + 5}">&gt;</a>
+				</c:if>
+				<c:if
+					test="${p.total > 10 && not(p.index eq p.pageCnt)}">
+					<a href="pageList?pageNo=${p.total}">&gt;&gt;</a>
+				</c:if>
+			</div>
+		
+
+			<nav>
+				<ul class="pagination">
+					<li><a href="#" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</nav>
 
 		</div>
 

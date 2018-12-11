@@ -22,11 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceEmailService;
 import yolo.service.InterfaceModuleService;
+import yolo.service.InterfacePagingService;
 import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
+import yolo.vo.PagingVO;
 import yolo.vo.PwdQuestionVO;
 import yolo.vo.TopicVO;
 import yolo.vo.UserVO;
@@ -51,7 +53,12 @@ public class AramController {
 	
 	@Autowired
 	private InterfaceCourseService courseService;
+	
+	@Autowired
+	private InterfacePagingService pagingService;
 
+	
+	
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.GET)
 	public String findPasswordForm(Model model) {
 		List<PwdQuestionVO> qList = pquestionService.readQList();
@@ -150,17 +157,25 @@ public class AramController {
 
 	//moduleCurver - module 커버 내용 불러오기
 		@RequestMapping("/moduleCurver.do")
-		public String moduleCurver(Model model,HttpServletRequest request, int moduleId) {
+		public String moduleCurver(Model model,HttpServletRequest request, int moduleId,  PagingVO pagingvo) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
 			
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+			List<TopicVO> topicList = pagingService.selectPaging(moduleId);
 			
-			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
+			
+			pagingvo.setTotal(pagingService.selectTotalPaging(moduleId));
+			
+			System.out.println(topicList);
+			System.out.println(pagingvo.getLast());
+			
+			
+			model.addAttribute("p",pagingvo);
 			
 			model.addAttribute("moduleList",moduleList);
-			model.addAttribute("topicList",topicList);
 			model.addAttribute("module",module);
+			model.addAttribute("topicList",topicList);
 			return "adminCourseModuleTopic/moduleAndCourse";
 		}
 		
@@ -310,6 +325,15 @@ public class AramController {
 		}
 		
 		
+	//페이지네이션
+		@RequestMapping("paging")
+		public String testPage(Model model, PagingVO pagingvo, int moduleId) {
+			List<TopicVO> topicList = pagingService.selectPaging(moduleId);
+			pagingvo.setTotal(pagingService.selectTotalPaging(moduleId));
+			model.addAttribute("topicList",topicList);
+			model.addAttribute("p",pagingvo);
+			return "page";
+		}
 		
 		
 }
