@@ -11,6 +11,7 @@ public class UserVO {
 	private int userId;
 	private boolean userType;
 	private String profileImage;
+	private String thumbnail;
 	private String nickName;
 	private String email;
 	private String password;
@@ -22,25 +23,24 @@ public class UserVO {
 	public UserVO() {}
 
 	// insert 시 사용할 생성자 테스트
-	
-	public UserVO(String profileImage, String nickName, String email, String password, int pwQId, String pwA) {
+	public UserVO(String profileImage, String thumbnail, String nickName, String email, String password, int pwQId, String pwA) {
 		super();
 		this.profileImage = profileImage;
+		this.thumbnail = thumbnail;
 		this.nickName = nickName;
 		this.email = email;
 		this.password = password;
 		this.pwQId = pwQId;
 		this.pwA = pwA;
 	}
-
-	
 	
 	//update
-	public UserVO(int userId, String profileImage, String nickName, String email, String password, int pwQId,
+	public UserVO(int userId, String profileImage, String thumbnail, String nickName, String email, String password, int pwQId,
 			String pwA) {
 		super();
 		this.userId = userId;
 		this.profileImage = profileImage;
+		this.thumbnail = thumbnail;
 		this.nickName = nickName;
 		this.email = email;
 		this.password = password;
@@ -70,6 +70,14 @@ public class UserVO {
 
 	public void setProfileImage(String profileImage) {
 		this.profileImage = profileImage;
+	}
+
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 
 	public String getNickName() {
@@ -127,8 +135,12 @@ public class UserVO {
 	public void setUdate(LocalDateTime udate) {
 		this.udate = udate;
 	}
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "UserVO [userId=" + userId + ", userType=" + userType + ", profileImage=" + profileImage + ", thumbnail="
+				+ thumbnail + ", nickName=" + nickName + ", email=" + email + ", password=" + password + ", pwQId="
+				+ pwQId + ", pwA=" + pwA + ", wdate=" + wdate + ", udate=" + udate + "]";
+	}
 	
 }

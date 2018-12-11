@@ -1,6 +1,7 @@
 package yolo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,14 +26,12 @@ import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.service.DeleteService;
-import yolo.service.InterfaceCoCourseService;
 import yolo.service.InterfaceCoModuleService;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceLoginService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceUserService;
-import yolo.vo.CoCourseAndCourseVO;
 import yolo.vo.CoModuleAndModuleVO;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
@@ -62,9 +61,6 @@ public class UserController {
 	
 	@Autowired
 	private InterfaceCoModuleService coModuleService;
-	
-	@Autowired
-	private InterfaceCoCourseService coCourseService;
 
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -189,9 +185,12 @@ public class UserController {
 			return "join";
 		}
 
-		String profileImage = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
-
-		UserVO user = new UserVO(profileImage, nickName, email, password, pwQId, pwA);
+		String[] fileNameArr = new String[2];
+		if(!file.getOriginalFilename().isEmpty()) {
+			fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
+		}
+		
+		UserVO user = new UserVO(fileNameArr[0], fileNameArr[1], nickName, email, password, pwQId, pwA);
 		userService.addUser(user);
 
 		login(new ModelAndView(), request, response, user.getEmail(), user.getPassword());
@@ -317,14 +316,11 @@ public class UserController {
 		List<CourseVO> courseList = courseService.readCourseByUserId(user.getUserId());
 		// List<CoModuleAndModule> 객체 (해당 user가 참여한 coStudy_Module 객체와 Module 객체를 조인한 CoModuleAndModule 객체를 리스트 형태로 불러옴)
 		List<CoModuleAndModuleVO> coModuleAndModuleList = coModuleService.readJoinModule(userId);
-		// List<CoCourseAndCourse> 객체 (해당 user가 참여한 coStudy_Course 객체와 Course 객체를 조인한 CoCourseAndCourse 객체를 리스트 형태로 불러옴)
-		List<CoCourseAndCourseVO> coCourseAndCourseList = coCourseService.readJoinCourse(userId);
 		
 		mav.addObject("user", user);
 		mav.addObject("moduleList", moduleList);
 		mav.addObject("courseList", courseList);
 		mav.addObject("coModuleAndModuleList", coModuleAndModuleList);
-		mav.addObject("coCourseAndCourseList",coCourseAndCourseList);
 		mav.setViewName("userView");
 		
 		return mav;
@@ -343,6 +339,8 @@ public class UserController {
 	@RequestMapping(value = "/modifyUser", method = RequestMethod.GET)
 	public ModelAndView modifyUserForm(@RequestParam("userId") int userId, ModelAndView mv) {
 		UserVO user = userService.readUserByUserId(userId);
+		List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+		mv.addObject("qList", qList);
 		mv.addObject("user", user);
 		mv.setViewName("userModify");
 		return mv;
@@ -350,58 +348,73 @@ public class UserController {
 
 	// 수정해서 프로필 페이지로 넘기기
 	@RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
-	public ModelAndView modifyUser(HttpServletRequest request, int userId, String profileImage, String email,
-			String nickName, String newPwd1, String newPwd2, String oldPwd, int pwQId, String pwA) {
-
+	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, int pwQId, String pwA) throws IOException, Exception {
+ 
 		ModelAndView mav = new ModelAndView();
 
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
-		if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
+		/*if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
 			newPwd1 = oldPwd;
 			newPwd2 = oldPwd;
-		}
+		}*/
 
 		if (oldPwd == null || oldPwd.isEmpty()) {
 			errors.put("oldPwd", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
+			List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+			mav.addObject("qList", qList);
 			return mav;
 		}
 
-		if (!newPwd1.equals(newPwd2)) {
+		if (newPwd1 != null && newPwd2 != null && !newPwd1.equals(newPwd2)) {
 			errors.put("notEqualNewPwd", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
+			List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+			mav.addObject("qList", qList);
 			return mav;
 		}
+		
+		String[] fileNameArr = new String[2];
+		System.out.println("file : " + file.getOriginalFilename());
+		if(file.getOriginalFilename() != "") {
+			System.out.println("들어옴");
+			fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
+		}
 
-		UserVO user = new UserVO(userId, profileImage, nickName, email, newPwd1, pwQId, pwA);
+		System.out.println("userId : " + userId);
+		UserVO user = new UserVO(userId, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
+		System.out.println("user : " + user.toString());
 		try {
 			userService.modifyUser(user, oldPwd);
 		} catch (UserNotFoundException e) {
+			System.out.println("catch1");
 			errors.put("userNotFound", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
 			return mav;
 		} catch (DuplicatedPasswordException e) {
+			System.out.println("catch2");
 			errors.put("duplicatedPassword", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
 			return mav;
 		} catch (InvalidPasswordException e) {
+			System.out.println("catch3");
 			errors.put("invalidPassword", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
 			return mav;
 		}
 
-		mav.addObject("user", user);
-		mav.setViewName("userView");
+		/*mav.addObject("user", user);
+		mav.setViewName("userView");*/
 
 		request.getSession().setAttribute("authUser", user);
 
-		return mav;
+		return getUserView(userId);
 	}
 
 	// 로그아웃

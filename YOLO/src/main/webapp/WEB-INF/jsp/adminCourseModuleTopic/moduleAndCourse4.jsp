@@ -11,7 +11,7 @@
 			float: left;
 			border: 1px solid lightgray;
 			width: 200px;
-			height: 690px;
+			height: 657px;
 			
 		}
 		

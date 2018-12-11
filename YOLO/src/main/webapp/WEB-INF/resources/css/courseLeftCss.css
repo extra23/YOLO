@@ -1,0 +1,22 @@
+@charset "EUC-KR";
+
+#courseLeft {
+	border: 1px solid black;
+	padding: 15px;
+	width: 20%;
+	float: left;
+}
+
+.toggle-custom {
+	position:absolute !important;
+	top:0;
+	right:0;
+}
+
+.toggle-custom[aria-expanded='true'] .glyphicon-plus:before {
+  content: "\2212";
+}
+
+#courseLeft h4 {
+	text-align: center;
+}

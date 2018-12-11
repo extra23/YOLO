@@ -140,14 +140,18 @@
 		}
 
 		.moduleSum {
-			margin-top: 20px;
-			margin-left: 10px;
+			padding: 15px;
+		}
+
+		.moduleSum a {
+			/* margin-top: 20px;
+			margin-left: 10px; */
 			font-size: 25px;
-			text-align: left;
+			/* text-align: left; */
 		}
 	
 		.mSummary {
-			text-decoration: none !important;
+			/* text-decoration: none !important; */
 			color: #3a3a3a;
 		}
 
@@ -156,14 +160,18 @@
 		}
 
 		.courseSum {
-			margin-top: 20px;
-			margin-left: 10px;
+			padding: 15px;
+		}
+
+		.courseSum a {
+			/* margin-top: 20px;
+			margin-left: 10px; */
 			font-size: 25px;
-			text-align: left;
+			/* text-align: left; */
 		}
 
 		.cSummary {
-			text-decoration: none !important;
+			/* text-decoration: none !important; */
 			color: #3a3a3a;
 		}
 
@@ -195,7 +203,7 @@
 							<c:forEach var="user" items="${userList}">
 								<c:if test="${courseBox.userId eq user.userId}">
 									<div class="nameCard">
-										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px" style="border-radius: 50%;" >
+										<img class="proImg" src="${pageContext.request.contextPath}/images/${user.thumbnail}" width="45px" height="45px" style="border-radius: 50%;" >
 										<a class="profileLink" href="userView?userId=${user.userId}">${user.nickName}</a>
 									</div>
 								</c:if>
@@ -207,13 +215,11 @@
 						</div>
 					</div>
 				</c:forEach>
-				<c:if test="${courseBoxView.size() > 5}">
 				<div class="box" style="background-color: gray">
-					<div class="card">
+					<div class="card" title="목록보기">
 						<a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/courseListPage"></a>
 					</div>
 				</div>
-				</c:if>
 			</div>
 			<div class="module">
 				<p class="title">
@@ -226,7 +232,7 @@
 							<c:forEach var="user" items="${userList}">
 								<c:if test="${moduleBox.userId eq user.userId}">
 									<div class="nameCard">
-										<img class="proImg" src="resources/images/profileImageBasic.png" width="45px" height="45px"  style="border-radius: 50%;">
+										<img class="proImg" src="${pageContext.request.contextPath}/images/${user.thumbnail}" width="45px" height="45px"  style="border-radius: 50%;">
 										<a class="profileLink" href="${pageContext.request.contextPath}/userView?userId=${user.userId}">${user.nickName}</a>
 									</div>
 								</c:if>
@@ -238,13 +244,11 @@
 						</div>
 					</div>
 				</c:forEach>
-				<c:if test="${moduleBoxView.size() > 5}">
 				<div class="box" style="background-color: gray">
-					<div class="card">
+					<div class="card" title="목록보기">
 						<a class="plus glyphicon glyphicon-plus" href="${pageContext.request.contextPath}/moduleListPage"></a>
 					</div>
 				</div>
-				</c:if>
 			</div>
 			<div class="help">
 				<p class="title">YOLO의 도움말</p>

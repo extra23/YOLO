@@ -24,14 +24,14 @@
 
 
 #formTable {
-	top: -648px;
+	top: -610px;
 	left: 230px;
 	width: 800px;
 	position: relative;
 }
 
 #moduleList {
-	top: -648px;
+	top: -610px;
 	left: 230px;
 	width: 800px;
 	position: relative;

@@ -1,15 +1,19 @@
 package com.almom.util;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
+
+import org.imgscalr.Scalr;
 import org.springframework.util.FileCopyUtils;
 
 public class UploadFileUtils {
 	
-	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception {
+	public static String[] uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception {
 		
 		UUID uid = UUID.randomUUID();
 		
@@ -31,21 +35,23 @@ public class UploadFileUtils {
 			uploadedFileName = makeIcon(uploadPath, savedPath, savedName);
 		}*/
 		
-		return savedPath + savedName;
+		String[] fileNameArr = {savedPath + savedName, makeThumbnail(uploadPath, savedPath, savedName)};
+		
+		return fileNameArr;
 		
 	}
 	
-	/*private static String makeIcon(String uploadPath, String path, String fileName) throws Exception {
+	/* private static String makeIcon(String uploadPath, String path, String fileName) throws Exception {
 		String iconName = uploadPath + path + File.separator + fileName;
 		return iconName.substring(uploadPath.length()).replace(File.separatorChar, '/');
-	}
+	} */
 	
 	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
 		BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path, fileName));
 		
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);
 		
-		String thumbnailName = uploadPath + path + File.separator + "s_" + fileName;
+		String thumbnailName = uploadPath + path + "s_" + fileName;
 		
 		File newFile = new File(thumbnailName);
 		
@@ -54,7 +60,7 @@ public class UploadFileUtils {
 		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
 		
 		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
-	}*/
+	}
 	
 	private static String calcPath(String uploadPath) {
 		Calendar cal = Calendar.getInstance();

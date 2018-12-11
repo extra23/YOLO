@@ -9,30 +9,29 @@
 </head>
 <body>
 
-	<div id="courseLeft1">
+	<div id="courseLeft">
+	
+		<h4>Module & Topic Menu</h4>
+		
+		<hr>
 
-		<c:forEach var="moduleAndTopic" items="${courseAndModule.moduleAndTopicList}" varStatus="status">
-		
-			<div class="mTitle">
-				<form action="moduleInCoursePage">
-					<input type="submit" value="${moduleAndTopic.module.mTitle}" class="mTitle">
-					<input type="hidden" name="courseId" value="${param.courseId}">
-					<input type="hidden" name="moduleIndex" value="${status.index}">
-				</form>
-			</div>
+		<ul class="nav">
+
+			<c:forEach var="moduleAndTopic" items="${courseAndModule.moduleAndTopicList}" varStatus="status">
 			
-			<div class="tTitleList">
-				<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status2">
-					<form action="topicInCoursePage">
-						<input type="submit" value="${topic.tTitle}">
-						<input type="hidden" name="courseId" value="${param.courseId}">
-						<input type="hidden" name="moduleIndex" value="${status.index}">
-						<input type="hidden" name="topicIndex" value="${status2.index}">
-					</form>
-				</c:forEach>
-			</div>
+				<li>
+					<a href="moduleInCoursePage?courseId=${param.courseId}&moduleIndex=${status.index}">${moduleAndTopic.module.mTitle}</a>
+					<a href="#" class="toggle-custom" id="btn-${status.index}" data-toggle="collapse" data-target="#submenu${status.index}" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+					<ul class="nav collapse" id="submenu${status.index}" role="menu" aria-labelledby="btn-${status.index}">
+						<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status2">
+							<li><a href="topicInCoursePage?courseId=${param.courseId}&moduleIndex=${status.index}&topicIndex=${status2.index}">${status.index}-${topic.tTitle}</a></li>
+						</c:forEach>
+					</ul>
+				</li>
+			
+			</c:forEach>
 		
-		</c:forEach>
+		</ul>
 	
 	</div>
 

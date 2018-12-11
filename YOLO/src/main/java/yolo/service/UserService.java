@@ -43,7 +43,7 @@ public class UserService implements InterfaceUserService {
 		}
 		
 		// oldPwd와 newPwd 비교
-		if(oldUser.getPassword().equals(newUser.getPassword())) {
+		if(newUser.getPassword() != null && oldUser.getPassword().equals(newUser.getPassword())) {
 			throw new DuplicatedPasswordException("비밀번호 중복");
 		}
 		
@@ -53,6 +53,9 @@ public class UserService implements InterfaceUserService {
 		}
 		
 		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정
+		if(newUser.getPassword() == null) {
+			newUser.setPassword(oldPwd);
+		}
 		userDAO.updateUser(newUser);
 	}
 
