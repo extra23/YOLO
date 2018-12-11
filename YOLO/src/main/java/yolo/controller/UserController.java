@@ -1,41 +1,26 @@
 package yolo.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.almom.util.MediaUtils;
 import com.almom.util.UploadFileUtils;
 
-
-import yolo.dao.UserDAO;
 import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
@@ -76,7 +61,7 @@ public class UserController {
 	@Autowired
 	private InterfaceCoModuleService coModuleService;
 
-	@Resource(name = "uploadPath")
+	@Resource(name="uploadPath")
 	private String uploadPath;
 	
 	// mianBoard(메인 화면)으로 이동
@@ -198,8 +183,8 @@ public class UserController {
 			model.addAttribute("errors", errors);
 			return "join";
 		}
-		
-		String profileImage = uploadFile(file.getOriginalFilename(), file.getBytes());
+
+		String profileImage = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
 
 		UserVO user = new UserVO(profileImage, nickName, email, password, pwQId, pwA);
 		userService.addUser(user);
@@ -208,8 +193,8 @@ public class UserController {
 		return null;
 		
 	}
-
-	private String uploadFile(String originalName, byte[] fileData) throws Exception {
+	
+	/*private String uploadFile(String originalName, byte[] fileData) throws Exception {
 		// String uploadPath = servletContext.getRealPath("/resources/images/");
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
@@ -219,7 +204,7 @@ public class UserController {
 		System.out.println(uploadPath);
 
 		return savedName;
-	}
+	}*/
 
 	/*@ResponseBody
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain; charset=UTF-8")

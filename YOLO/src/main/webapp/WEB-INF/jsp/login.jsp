@@ -33,7 +33,8 @@
 			width: 100%;
 			font-family: 'Jua', sans-serif;
 			text-align: center;
-			margin-top: 180px;
+			margin-top: 100px;
+			margin-bottom: 100px;
 		}
 		
 		.loginForm {

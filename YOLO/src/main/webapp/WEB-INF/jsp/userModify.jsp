@@ -30,6 +30,38 @@
 		
 	</style>
 	
+	<script>
+	
+		$(function(){
+			
+			$("#profileImage").click(function(){
+				$("#input_img").click();
+			});
+			
+			$("#input_img").change(function(e){
+				
+				var files = e.target.files;
+				var filesArr = Array.prototype.slice.call(files);
+				
+				filesArr.forEach(function(f){
+					if(!f.type.match("image.*")){
+						alert("확장자는 이미지 확장자만 가능합니다.");
+						return;
+					}
+					
+					var reader = new FileReader();
+					reader.onload = function(e){
+						$("#profileImage").attr("src", e.target.result);
+					}
+					reader.readAsDataURL(f);
+				});
+				
+			});
+			
+		});
+	
+	</script>
+	
 </head>
 <body id="contentBody">
 
@@ -43,10 +75,11 @@
 		
 			<form action="modifyUser" method="post" enctype="multipart/form-data">
 		
-				<input type="hidden" name="userId" value="${param.userId}">
+				<%-- <input type="hidden" name="userId" value="${param.userId}">
 				
 				<p>
-					<img src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%;">
+					<img id="profileImage" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%;">
+					<input id="input_img" type="file" name="file" accept="image/*" style="display: none;">
 				</p>
 				
 				<p>
@@ -84,7 +117,15 @@
 				
 				<p>
 					<input type="submit" value="수정">
-				</p>
+				</p> --%>
+				
+				<table>
+				
+					<tr>
+						<td></td>
+					</tr>
+				
+				</table>
 		
 			</form>
 		

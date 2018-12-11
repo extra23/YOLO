@@ -16,7 +16,7 @@
 	
 	<bean id="uploadPath" class="java.lang.String">
 		<constructor-arg>
-			<value>C:\temp\</value>
+			<value>WEB-INF/resources/images/</value>
 		</constructor-arg>
 	</bean>
 	
