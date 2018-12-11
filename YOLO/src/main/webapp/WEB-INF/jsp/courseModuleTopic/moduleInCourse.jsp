@@ -12,21 +12,32 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 	
-	<!-- CSS & jQuery -->
+	<!-- CSS & JavaScript(jQuery) -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseHeaderCss.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseLeftCss.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleInCourseHeaderCss.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleInCourseContentCss.css">
 	
 </head>
 <body>
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
+	<div style="width: 80%; margin: 80px auto;">
 	
-	<jsp:include page="fragment/courseLeft.jsp"></jsp:include>
+		<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
+		<jsp:include page="fragment/courseLeft.jsp"></jsp:include>
 	
-	<jsp:include page="fragment/moduleContent.jsp"></jsp:include>
+		<div id="moduleHeaderAndContent" style="float: right; width: 79%; margin-bottom: 80px;">
+			
+			<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
+	
+			<jsp:include page="fragment/moduleContent.jsp"></jsp:include>
+		
+		</div>
+	
+	</div>
 	
 	<jsp:include page="../footer.jsp"></jsp:include>
 

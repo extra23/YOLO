@@ -1,0 +1,8 @@
+@charset "EUC-KR";
+
+#moduleContent {
+	padding: 15px;
+	float: right;
+	width: 79%;
+	border: 1px solid black;
+}

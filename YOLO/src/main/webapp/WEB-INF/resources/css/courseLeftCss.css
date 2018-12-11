@@ -4,7 +4,8 @@
 	border: 1px solid black;
 	padding: 15px;
 	width: 20%;
-	float: left;
+	/* float: left; */
+	display: inline-block;
 }
 
 .toggle-custom {

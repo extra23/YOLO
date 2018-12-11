@@ -8,7 +8,9 @@
 </head>
 <body>
 
-	<div id="courseContent">
+	<div id="courseContent2">
+		<h4>Cover Page</h4>
+		<hr>
 		${courseAndModule.course.cContent}
 	</div>
 

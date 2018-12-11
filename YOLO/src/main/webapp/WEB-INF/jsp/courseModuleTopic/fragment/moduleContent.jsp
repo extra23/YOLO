@@ -9,6 +9,8 @@
 <body>
 
 	<div id="moduleContent">
+		<h3>Cover Page</h3>
+		<hr>
 		${moduleAndTopic.module.mContent}
 	</div>
 

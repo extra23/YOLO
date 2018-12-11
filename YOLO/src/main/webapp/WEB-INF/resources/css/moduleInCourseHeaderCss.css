@@ -1,0 +1,27 @@
+@charset "EUC-KR";
+
+#moduleHeader {
+	/* float: right; */
+	width: 100%;
+	border: 1px solid black;
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+#moduleTitle {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#moduleTitle a, #moduleTitle a:hover {
+	text-decoration: none;
+	font-family: 'Baloo Tamma', cursive;
+	font-size: 40px;
+	color: black;
+	line-height: 60px;
+	display: block;
+}
+
+#moduleHeader #costudy, #moduleHeader #newModule, #moduleHeader #edit {
+	display: none;
+}

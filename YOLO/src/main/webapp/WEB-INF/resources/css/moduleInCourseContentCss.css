@@ -1,0 +1,11 @@
+@charset "EUC-KR";
+
+#moduleContent {
+	/* clear: both; */
+	padding: 15px;
+	/* display: inline-block; */
+	width: 100%;
+	border: 1px solid black;
+	/* position: relative;
+	top: 0px; */
+}

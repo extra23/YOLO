@@ -1,0 +1,58 @@
+@charset "EUC-KR";
+
+#moduleLeft {
+	width: 20%;
+	padding: 15px;
+	border: 1px solid black;
+	display: inline-block;
+}
+
+#userInfo {
+	background-color: #ff8080;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+#thumbnailDiv {
+	overflow: hidden;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+}
+
+#thumbnailImg {
+	height: 80px;
+	width: auto;
+	position: relative;
+}
+
+/* #moduleLeft hr {
+	border-color: black;
+} */
+
+#userInfoTable {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#userInfoTable, #userInfoTable tr, #userInfoTable td {
+	padding: 5px;
+}
+
+#option {
+	width: 25px;
+	height: 25px;
+}
+
+#tTitleList {
+	margin-top: 30px;
+}
+
+#tTitleList h4 {
+	text-align: center;
+}
+
+#topicPlus {
+	width: 25px;
+	height: 25px;
+}

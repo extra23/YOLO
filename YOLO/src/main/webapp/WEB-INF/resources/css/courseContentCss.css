@@ -1,0 +1,11 @@
+@charset "EUC-KR";
+
+#courseContent2 {
+	float: right;
+	width: 79%;
+	border: 1px solid black;
+	padding: 15px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	word-wrap: break-word;
+}

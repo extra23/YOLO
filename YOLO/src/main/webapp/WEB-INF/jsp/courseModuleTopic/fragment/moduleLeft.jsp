@@ -12,22 +12,46 @@
 	<div id="moduleLeft">
 		
 		<div id="userInfo">
-			<img src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 50px; heigth: 50px; border-radius: 50%;"><br>
-			<a href="userView?userId=${moduleAndTopic.user.userId}">${moduleAndTopic.user.nickName}</a><br>
-			${moduleAndTopic.user.email}<br>
-			<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
-				<a href="modifyUser?userId=${moduleAndTopic.user.userId}">프로필 수정</a>
-			</c:if>
+			<table id="userInfoTable">
+				<tr>
+					<td rowspan="2">
+						<div id="thumbnailDiv">
+							<img id="thumbnailImg" src="${pageContext.request.contextPath}/images/${moduleAndTopic.user.thumbnail}">
+						</div>
+					</td>
+					<td style="padding-bottom: 0;">
+						<a href="userView?userId=${moduleAndTopic.user.userId}">${moduleAndTopic.user.nickName}</a>
+						<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
+							&nbsp;
+							<img id="option" src="${pageContext.request.contextPath}/images/option.png" title="프로필 수정">
+						</c:if>
+					</td>
+				</tr>
+				<tr>
+					<td style="padding-top: 0;">${moduleAndTopic.user.email}</td>
+				</tr>
+			</table>
 		</div>
 		
 		<div id="tTitleList">
-			<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status">
-				<form action="topicPage">
-					<input type="submit" value="${topic.tTitle}">
-					<input type="hidden" name="moduleId" value="${param.moduleId}">
-					<input type="hidden" name="topicIndex" value="${status.index}">
-				</form>	
-			</c:forEach>
+		
+			<h4>
+				Topic List
+				<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
+					&nbsp;<img id="topicPlus" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 토픽 추가">
+				</c:if>
+			</h4>
+		
+			<hr>
+		
+			<ul class="nav">
+				<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status">
+					<li style="text-indent: 1em;">
+						<a href="topicPage?moduleId=${param.moduleId}&topicIndex=${status.index}">${topic.tTitle}</a>
+					</li>
+				</c:forEach>
+			</ul>
+		
 		</div>
 		
 	</div>
