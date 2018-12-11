@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.dao.InterfaceCoCourseMapper">
+
+	<select id="selectJoinCourse" parameterType="Integer" resultType="CoCourseAndCourse">
+		select cc.costudy_courseId, cc.courseId, cc.userId, c.cTitle from costudy_course cc join course c on cc.courseId=c.courseId where cc.userId=#{userId}
+	</select>
+
+</mapper>
