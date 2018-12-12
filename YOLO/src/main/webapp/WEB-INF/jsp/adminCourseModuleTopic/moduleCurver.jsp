@@ -33,21 +33,21 @@
 	width: 800px;
 	position: relative;
 }
-
+/* 
 #topicList {
 	top: -610px;
 	left: 230px;
 	width: 800px;
 	position: relative;
 }
-
-#modifyAndDelete {
+ */
+/* #modifyAndDelete {
 	float: right;
 }
 
 #writeTopicBtn {
 	float: right;
-}
+} */
 </style>
 
 <script>
@@ -107,6 +107,12 @@
 
 	});
 	
+/* 	function fn_paging(curPage) {
+		alert("제바아아아아아아ㅏ아알!!!")
+		location.href = "Paging?curPage=" + curPage+"&moduleId="+${module.moduleId};
+		
+		} */
+	
 </script>
 
 <title>Insert title here</title>
@@ -117,7 +123,7 @@
 		<ul class="nav nav-tabs">
 			<li role="presentation" id="curverBtn" class="active"><a
 				href="#">커버</a></li>
-			<li role="presentation" id="topicListBtn"><a href="#">토픽 목록</a></li>
+			<li role="presentation" id="topicListBtn"><a href="topicList?moduleId=${module.moduleId}">토픽 목록</a></li>
 		</ul>
 		<br>
 		<c:if test="${empty module.mTitle}">
@@ -149,7 +155,7 @@
 
 			</form>
 		</c:if>
-		<div id="topicList" style="display: none;">
+		<%-- <div id="topicList" style="display: none;">
 			<h3>토픽 목록</h3>
 			<!-- 토픽목록 가져오는 쿼리.. -->
 			<hr>
@@ -178,8 +184,33 @@
 			<button id="writeTopicBtn"
 				onclick="location.href='topicWriteForm?moduleId=${module.moduleId}'">글쓰기</button>
 
-		</div>
-
+		<div id="pagination">
+		<c:if test="${paging.curRange > 0 }">
+			<a href="#" onclick="fn_paging(1)">[처음]</a>
+		</c:if>
+		<c:if test="${paging.curPage > 0}">
+			<a href="#" onclick="fn_paging(${paging.prevPage})">[이전]</a>
+		</c:if>
+		<c:forEach var="pageNum" begin="${paging.startPage}" end="${paging.endPage}">
+			<c:choose>
+				<c:when test="${pageNum eq paging.curPage}">
+					<span style="font-weight: bold"><a href="#" onclick="fn_paging(${pageNum})">${pageNum }</a> </span>
+				</c:when>
+				<c:otherwise>
+					<a href="#" onclick="fn_paging(${pageNum})">${pageNum }</a>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
+			<a href="#" onclick="fn_paging(${paging.nextPage})">[다음]</a>
+		</c:if>
+		<c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt >0}">
+			<a href="#" onclick="fn_paging(${paging.pageCnt})">[끝]</a>
+		</c:if>
 	</div>
+		
+		</div>--%>
+
+	</div> 
 </body>
 </html>

@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,12 +23,15 @@ import org.springframework.web.servlet.ModelAndView;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceEmailService;
 import yolo.service.InterfaceModuleService;
+import yolo.service.InterfacePagingService;
 import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
+import yolo.vo.PagingVO;
 import yolo.vo.PwdQuestionVO;
+import yolo.vo.TestVO;
 import yolo.vo.TopicVO;
 import yolo.vo.UserVO;
 
@@ -51,6 +55,9 @@ public class AramController {
 	
 	@Autowired
 	private InterfaceCourseService courseService;
+	
+	@Autowired
+	private InterfacePagingService pagingService;
 
 	@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.GET)
 	public String findPasswordForm(Model model) {
@@ -296,7 +303,7 @@ public class AramController {
 		}
 		
 	//course의 커버 페이지 만들어주기
-		@RequestMapping("courseCreate")
+		@RequestMapping("/courseCreate")
 		public String courseCreate(Model model, HttpServletRequest request,String cTitle, String cSummary, @RequestParam("summernote") String cContent) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			
@@ -306,10 +313,60 @@ public class AramController {
 			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
 			model.addAttribute("courseList",courseList);
 			
+	
 			return "adminCourseModuleTopic/moduleAndCourse4";
 		}
 		
 		
+	//PagingTest
+		@RequestMapping("/PagingTopic")
+		public String pagingTopic(@RequestParam(value="curPage",defaultValue="1") int curPage, Model model, int moduleId) {
+			
+			if(curPage ==0) {
+				curPage =1;
+			}
+			System.out.println("모듈: "+moduleId + curPage);
+			TestVO test = new TestVO(moduleId);
+			
+			int listCnt = pagingService.selectTotalPaging(moduleId);
+			System.out.println("listCnt: "+ listCnt+"curPage"+curPage);
+			PagingVO paging = new PagingVO(listCnt, curPage);
+			System.out.println(paging);
+			
+			System.out.println("listCnt: "+ listCnt+"curPage"+curPage);
+			test.setStartIndex(paging.getStartIndex());
+			test.setCntPerPage(paging.getPageSize());
+			
+			List<TopicVO> topicList = pagingService.selectPaging(test);
+			
+			model.addAttribute("topicList",topicList);
+			model.addAttribute("listCnt",listCnt);
+			model.addAttribute("paging",paging);		
+			
+			return "adminCourseModuleTopic/moduleAndCourse1";
+			
+		}
+		
+	//TopicLsit
+		@RequestMapping("/topicList")
+		public String topicList(int moduleId, HttpServletRequest request, Model model) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			
+			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+			
+			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
+			
+		
+			
+			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("topicList",topicList);
+			model.addAttribute("module",module);
+			
+			int curPage = 1;
+			
+			return pagingTopic(curPage, model, moduleId);
+		}
 		
 		
 }
