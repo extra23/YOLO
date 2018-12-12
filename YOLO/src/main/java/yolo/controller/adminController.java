@@ -158,7 +158,7 @@ public class adminController {
 		UserVO user = adminService.readUserByUserId(userId);
 		mv.addObject("user", user);
 		return mv;
-	}
+	}*/
 		
 	// 관리자에 의한 사용자 강제탈퇴
 	@RequestMapping(value="/adminUserDelete", method = RequestMethod.POST)
