@@ -58,7 +58,7 @@ public class adminController {
 		return mv;
 	}
 	
-	// 수정해서 프로필 페이지로 넘기기.
+	/*// 수정해서 프로필 페이지로 넘기기.
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
 	public ModelAndView modifyUser(@RequestParam("userId") int userId, int adminId, String profileImage, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) {
 
@@ -158,7 +158,7 @@ public class adminController {
 		UserVO user = adminService.readUserByUserId(userId);
 		mv.addObject("user", user);
 		return mv;
-	}
+	}*/
 		
 	// 관리자에 의한 사용자 강제탈퇴
 	@RequestMapping(value="/adminUserDelete", method = RequestMethod.POST)
