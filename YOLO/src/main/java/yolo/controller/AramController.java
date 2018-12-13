@@ -320,7 +320,11 @@ public class AramController {
 		
 	//PagingTest
 		@RequestMapping("/PagingTopic")
-		public String pagingTopic(@RequestParam(value="curPage",defaultValue="1") int curPage, Model model, int moduleId) {
+		public String pagingTopic(@RequestParam(value="curPage",defaultValue="1") int curPage, HttpServletRequest request,Model model, int moduleId) {
+			
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			
 			
 			if(curPage ==0) {
 				curPage =1;
@@ -339,9 +343,13 @@ public class AramController {
 			
 			List<TopicVO> topicList = pagingService.selectPaging(test);
 			
+			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+			
+			model.addAttribute("moduleList",moduleList);
 			model.addAttribute("topicList",topicList);
 			model.addAttribute("listCnt",listCnt);
 			model.addAttribute("paging",paging);		
+			model.addAttribute("module",module);
 			
 			return "adminCourseModuleTopic/moduleAndCourse1";
 			
@@ -349,23 +357,19 @@ public class AramController {
 		
 	//TopicLsit
 		@RequestMapping("/topicList")
-		public String topicList(int moduleId, HttpServletRequest request, Model model) {
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+		public String topicList(int moduleId,  HttpServletRequest request, Model model) {
 			
-			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+		
 			
 			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
 			
 		
 			
-			model.addAttribute("moduleList",moduleList);
-			model.addAttribute("topicList",topicList);
-			model.addAttribute("module",module);
 			
+			model.addAttribute("topicList",topicList);			
 			int curPage = 1;
 			
-			return pagingTopic(curPage, model, moduleId);
+			return pagingTopic(curPage, request, model, moduleId);
 		}
 		
 		

@@ -33,21 +33,7 @@
 	width: 800px;
 	position: relative;
 }
-/* 
-#topicList {
-	top: -610px;
-	left: 230px;
-	width: 800px;
-	position: relative;
-}
- */
-/* #modifyAndDelete {
-	float: right;
-}
 
-#writeTopicBtn {
-	float: right;
-} */
 </style>
 
 <script>
@@ -85,34 +71,9 @@
 		});
 	}
 
-	//토픽목록 클릭하면 나오는것
-	$(function() {
-		
-		$("#topicListBtn").click(function() {
-			$("#formTable").css("display", "none");
-			$("#topicList").css("display", "block");
-			$("#curverBtn").removeClass("active");
-			$("#topicListBtn").addClass("active");
-		});
-
-		$("#curverBtn").click(function() {
-			$("#formTable").css("display", "block");
-			$("#topicList").css("display", "none");
-			$("#topicListBtn").removeClass("active");
-			$("#curverBtn").addClass("active");
-
-		});
 
 		
 
-	});
-	
-/* 	function fn_paging(curPage) {
-		alert("제바아아아아아아ㅏ아알!!!")
-		location.href = "Paging?curPage=" + curPage+"&moduleId="+${module.moduleId};
-		
-		} */
-	
 </script>
 
 <title>Insert title here</title>
@@ -155,61 +116,7 @@
 
 			</form>
 		</c:if>
-		<%-- <div id="topicList" style="display: none;">
-			<h3>토픽 목록</h3>
-			<!-- 토픽목록 가져오는 쿼리.. -->
-			<hr>
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>토픽 제목</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
-					<c:forEach var="topic" items="${topicList}">
-						<tr>
-							<td colspan="2"><a id="a"
-								href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a><a
-								id="modifyAndDelete"
-								href="topicModifyDeleteForm?topicId=${topic.topicId}">[수정 및
-									삭제]</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-			<button id="writeTopicBtn"
-				onclick="location.href='topicWriteForm?moduleId=${module.moduleId}'">글쓰기</button>
-
-		<div id="pagination">
-		<c:if test="${paging.curRange > 0 }">
-			<a href="#" onclick="fn_paging(1)">[처음]</a>
-		</c:if>
-		<c:if test="${paging.curPage > 0}">
-			<a href="#" onclick="fn_paging(${paging.prevPage})">[이전]</a>
-		</c:if>
-		<c:forEach var="pageNum" begin="${paging.startPage}" end="${paging.endPage}">
-			<c:choose>
-				<c:when test="${pageNum eq paging.curPage}">
-					<span style="font-weight: bold"><a href="#" onclick="fn_paging(${pageNum})">${pageNum }</a> </span>
-				</c:when>
-				<c:otherwise>
-					<a href="#" onclick="fn_paging(${pageNum})">${pageNum }</a>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		<c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
-			<a href="#" onclick="fn_paging(${paging.nextPage})">[다음]</a>
-		</c:if>
-		<c:if test="${paging.curRange ne paging.rangeCnt && paging.rangeCnt >0}">
-			<a href="#" onclick="fn_paging(${paging.pageCnt})">[끝]</a>
-		</c:if>
-	</div>
-		
-		</div>--%>
+	
 
 	</div> 
 </body>

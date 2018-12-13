@@ -37,7 +37,10 @@
 
 
 	function fn_paging(curPage) {
+		location.href = "#";
+		console.log(location.href+"ttt");
 		location.href = "PagingTopic?curPage="+curPage+"&moduleId="+${module.moduleId};
+		
 		
 	} 
 	
@@ -111,19 +114,29 @@
 
 			<nav>
 				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
+					<c:if test="${paging.curPage > 0}">
+						<li><a href="#" aria-label="Previous" onclick="fn_paging(${paging.prevPage})"> <span
+								aria-hidden="true" >&laquo;</span>
+						</a></li>
+					</c:if>
+					<c:forEach var="pageNum" begin="${paging.startPage}"
+						end="${paging.endPage}">
+						<c:choose>
+							<c:when test="${pageNum eq paging.curPage}">
+								<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
+						<li><a href="#" aria-label="Next" onclick="fn_paging(${paging.nextPage})"> <span aria-hidden="true"
+								>&raquo;</span>
 					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
-					</a></li>
+					</c:if>
 				</ul>
-			</nav>
+			</nav> 
 
 		</div>
 
