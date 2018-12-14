@@ -38,7 +38,7 @@
 	</select>
 
 	<select id="selectModuleListByCourseId" parameterType="Integer" resultType="Module">
-		select * from module where moduleId in(select module_id from course_module where course_id=#{courseId})
+		select * from module where moduleId in(select moduleId from como where courseId=#{courseId})
 	</select>
 	
 	<select id="selectModuleListByUserId" parameterType="Integer"
