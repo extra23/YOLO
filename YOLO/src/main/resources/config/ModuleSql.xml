@@ -80,7 +80,7 @@
 	<select id="moduleListPage" resultType="ModuleList">
 		select m.moduleId,
 		m.mtitle, u.userId, u.nickName, m.udate, c.courseId, c.cTitle from
-		como co right outer join module m on co.moduleId = m.moduleId left
+		module m left join como co on co.moduleId = m.moduleId left
 		outer join user u on m.userId = u.userId join course c on co.courseId
 		= c.courseId order by m.udate desc;
 	</select>
