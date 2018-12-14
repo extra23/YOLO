@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseHeaderCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseLeftCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseContentCss.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/courseHeaderJs.js"></script>
 	
 </head>
 <body>
