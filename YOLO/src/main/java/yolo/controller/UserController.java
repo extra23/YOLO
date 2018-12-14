@@ -1,7 +1,7 @@
 package yolo.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +28,7 @@ import yolo.exception.UserNotFoundException;
 import yolo.service.DeleteService;
 import yolo.service.InterfaceCoModuleService;
 import yolo.service.InterfaceCourseService;
+import yolo.service.InterfaceEmailService;
 import yolo.service.InterfaceLoginService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePwdQuestionService;
@@ -61,6 +62,9 @@ public class UserController {
 	
 	@Autowired
 	private InterfaceCoModuleService coModuleService;
+	
+	@Autowired
+	private InterfaceEmailService emailService;
 
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -465,6 +469,62 @@ public class UserController {
 			
 			// mainBoard 페이지로 돌아가기
 			return "mainBoard";
+		}
+		
+		
+	//비밀번호 찾기 폼
+		@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.GET)
+		public String findPasswordForm(Model model) {
+			List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+			model.addAttribute("qList", qList);
+			return "find_PasswordForm";
+
+		}
+	//비밀번호 찾기
+		@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.POST)
+		public void findPassword(Model model, HttpServletRequest request, HttpServletResponse response, String email,
+				int pwQId, String pwA) throws IOException {
+
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+
+			// 이메일이 없을 때
+			UserVO uservo = userService.readUSerByEmail(email);
+
+			if (uservo == null) {
+				out.print("잘못된 이메일입니다.");
+				out.close();
+
+			} else {
+				if (pwQId != uservo.getPwQId()) {
+					out.print("잘못된 비밀번호 찾기 질문 입니다.");
+					out.close();
+
+				} else if (!pwA.equals(uservo.getPwA())) {
+					System.out.println(pwA + ", " + uservo.getPwA());
+					out.print("잘못된 비밀번호 찾기 질문 답변입니다.");
+					out.close();
+
+				} else {
+
+					// 임시 비밀번호 생성
+					String pw = "";
+					for (int i = 0; i < 8; i++) {
+						pw += (char) ((Math.random() * 26) + 97);
+					}
+					uservo.setPassword(pw);
+
+					// 비밀번호 변경
+					userService.update_pw(uservo);
+
+					// 비밀번호 변경 메일 발송
+					emailService.send_email(uservo);
+					out.println("이메일로 임시 비밀번호를 발송하였습니다.");
+					out.close();
+
+				}
+			}
+
 		}
 		
 }

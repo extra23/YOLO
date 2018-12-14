@@ -1,0 +1,30 @@
+@charset "EUC-KR";
+
+#formTable {
+	top: -610px;
+	left: 230px;
+	width: 800px;
+	position: relative;
+	font-family: 'Jua';
+	
+}
+#curverListUl{
+	font-family: 'Baloo Tamma', cursive;
+	font-size: 20px;
+}
+
+#innerList {
+	top: -610px;
+	left: 230px;
+	width: 800px;
+	position: relative;
+	font-family: 'Jua';
+}
+
+#modifyAndDelete {
+	float: right;
+}
+
+#writeTopicBtn {
+	float: right;
+}

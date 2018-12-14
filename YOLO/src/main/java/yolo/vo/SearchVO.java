@@ -11,9 +11,14 @@ public class SearchVO {
 	private String tContent;
 	private String mTitle;
 	private String cTitle;
-	
-	
+	private int topicId;
+	private int moduleId;
+	private int courseId;
+	private String mSummary;
+	private String cSummary;
+
 	public SearchVO () {}
+
 
 	public SearchVO(String nickName, String email, String tTitle, String tContent) {
 		this.nickName = nickName;
@@ -55,9 +60,89 @@ public class SearchVO {
 		this.tContent = tContent;
 	}
 
+	public String getmTitle() {
+		return mTitle;
+	}
 
+	public void setmTitle(String mTitle) {
+		this.mTitle = mTitle;
+	}
+
+	public String getcTitle() {
+		return cTitle;
+	}	
 	
+
+	public void setcTitle(String cTitle) {
+		this.cTitle = cTitle;
+	}
 	
-	
+	public int getTopicId() {
+		return topicId;
+	}
+
+
+
+
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
+	}
+
+
+
+
+	public int getModuleId() {
+		return moduleId;
+	}
+
+
+
+
+	public void setModuleId(int moduleId) {
+		this.moduleId = moduleId;
+	}
+
+
+
+
+	public int getCourseId() {
+		return courseId;
+	}
+
+
+
+
+	public void setCourseId(int courseId) {
+		this.courseId = courseId;
+	}
+
+
+
+
+	public String getmSummary() {
+		return mSummary;
+	}
+
+
+
+
+	public void setmSummary(String mSummary) {
+		this.mSummary = mSummary;
+	}
+
+
+
+
+	public String getcSummary() {
+		return cSummary;
+	}
+
+
+
+
+	public void setcSummary(String cSummary) {
+		this.cSummary = cSummary;
+	}
+
 	
 }

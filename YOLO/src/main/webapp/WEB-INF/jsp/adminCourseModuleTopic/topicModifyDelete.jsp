@@ -27,16 +27,7 @@
 
 <title>토픽을 수정하고 삭제하는 페이지</title>
 
-<style>
-
-	#formTable {
-		top: -610px;
-		left: 230px;
-		width: 800px;
-		position: relative;
-	}
-	
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleAndCourseInner.css">
 
 <script>
     	$(document).ready(function() {
@@ -90,9 +81,9 @@
 </head>
 <body>
 	<div id="mainDiv">
-		<ul class="nav nav-tabs">
-			<li role="presentation" id="curverBtn"><a href="AdminModuleAndCourse">커버</a></li>
-			<li role="presentation" id="topicListBtn" class="active"><a href="#">토픽 목록</a></li>
+		<ul id="curverListUl" class="nav nav-tabs">
+			<li role="presentation" id="curverBtn"><a href="AdminModuleAndCourse">Curver</a></li>
+			<li role="presentation" id="topicListBtn" class="active"><a href="#">Topic List</a></li>
 		</ul>
 		<br>
 		<form name="writeForm" action="topicModify" method="post">

@@ -95,7 +95,7 @@ tr {
 					<c:forEach var="user" items="${userSearchList}">
 						<tr>
 							<td>${user.profileImage}</td>
-							<td><a id="a" href="getUser.do?email=${user.email}">${user.nickName}</a></td>
+							<td><a id="finds" href="getUser.do?email=${user.email}">${user.nickName}</a></td>
 							<td>${user.email}</td>
 						</tr>
 					</c:forEach>
@@ -116,7 +116,6 @@ tr {
 						<th>작성자 닉네임</th>
 						<th>토픽 제목</th>
 						<th>토픽 내용</th>
-						<th>모듈 내용</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -124,10 +123,9 @@ tr {
 					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
 					<c:forEach var="topic" items="${topicSearchList}">
 						<tr>
-							<td><a id="a" href="getUser.do?email=${topic.email}">${topic.nickName}</a></td>
-							<td>${topic.email}</td>
-							<td>${topic.tTitle}</td>
-							<td>${topic.mTitle}</td>
+							<td><a id="finds" href="getUser.do?email=${topic.email}">${topic.nickName}</a></td>
+							<td><a id="finds" href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a></td>
+							<td>${topic.tContent}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -145,8 +143,8 @@ tr {
 				<thead>
 					<tr>
 						<th>작성자 닉네임</th>
-						<th>작성자 이메일</th>
 						<th>모듈 제목</th>
+						<th>모듈 요약</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -154,9 +152,9 @@ tr {
 
 					<c:forEach var="module" items="${moduleSearchList}">
 						<tr>
-							<td><a id="a" href="getUser.do?email=${module.email}">${module.nickName}</a></td>
-							<td>${module.email}</td>
+							<td><a id="finds" href="getUser.do?email=${module.email}">${module.nickName}</a></td>
 							<td>${module.mTitle}</td>
+							<td>${module.mSummary}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -165,8 +163,8 @@ tr {
 				</tr>
 			</table>
 
-			<hr>
 		</div>
+			<hr>
 
 		<div class="panel panel-default">
 			<div class="panel-heading" id="course">
@@ -177,8 +175,8 @@ tr {
 				<thead>
 					<tr>
 						<th>작성자 닉네임</th>
-						<th>작성자 이메일</th>
 						<th>코스 제목</th>
+						<th>코스 요약</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -186,9 +184,9 @@ tr {
 
 					<c:forEach var="course" items="${courseSearchList}">
 						<tr>
-							<td><a id="a" href="getUser.do?email=${course.email}">${course.nickName}</a></td>
-							<td>${course.email}</td>
+							<td><a id="finds" href="getUser.do?email=${course.email}">${course.nickName}</a></td>
 							<td>${course.cTitle}</td>
+							<td>${course.cSummary}</td>
 						</tr>
 					</c:forEach>
 				</tbody>

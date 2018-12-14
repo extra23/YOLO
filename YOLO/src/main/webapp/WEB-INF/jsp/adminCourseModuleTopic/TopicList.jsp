@@ -16,22 +16,7 @@
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 
-<style>
-#topicLists {
-	top: -610px;
-	left: 230px;
-	width: 800px;
-	position: relative;
-}
-
-#modifyAndDelete {
-	float: right;
-}
-
-#writeTopicBtn {
-	float: right;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleAndCourseInner.css">
 
 <script>
 
@@ -50,14 +35,14 @@
 <body>
 
 	<div class="mainDiv">
-		<ul class="nav nav-tabs">
+		<ul id="curverListUl" class="nav nav-tabs">
 			<li role="presentation" id="curverBtn"><a
-				href="moduleCurver?moduleId=${module.moduleId }">커버</a></li>
+				href="moduleCurver?moduleId=${module.moduleId }">Curver</a></li>
 			<li role="presentation" id="topicListBtn" class="active"><a
-				href="#">토픽 목록</a></li>
+				href="#">TopicList</a></li>
 		</ul>
 		<br>
-		<div id="topicLists" style="display: block;">
+		<div id="innerList" style="display: block;">
 			<h3>토픽 목록</h3>
 			<!-- 토픽목록 가져오는 쿼리.. -->
 			<hr>
@@ -90,29 +75,34 @@
 
 			<nav>
 				<ul class="pagination">
-					<c:if test="${paging.curPage ne 1}">
-						<li><a href="#" aria-label="Previous" onclick="fn_paging(${paging.prevPage})"> <span
-								aria-hidden="true" >&laquo;</span>
-						</a></li>
-					</c:if>
-					<c:forEach var="pageNum" begin="${paging.startPage}"
-						end="${paging.endPage}">
-						<c:choose>
-							<c:when test="${pageNum eq paging.curPage}">
-								<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
-						<li><a href="#" aria-label="Next" onclick="fn_paging(${paging.nextPage})"> <span aria-hidden="true"
-								>&raquo;</span>
-					</a></li>
+					<c:if test="${paging.endPage >1 }">
+						<c:if test="${paging.curPage ne 1}">
+							<li><a href="#" aria-label="Previous"
+								onclick="fn_paging(${paging.prevPage})"> <span
+									aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="pageNum" begin="${paging.startPage}"
+							end="${paging.endPage}">
+							<c:choose>
+								<c:when test="${pageNum eq paging.curPage}">
+									<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if
+							test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
+							<li><a href="#" aria-label="Next"
+								onclick="fn_paging(${paging.nextPage})"> <span
+									aria-hidden="true">&raquo;</span>
+							</a></li>
+						</c:if>
 					</c:if>
 				</ul>
-			</nav> 
+			</nav>
 
 		</div>
 

@@ -24,17 +24,7 @@
 <script
 	src="${pageContext.request.contextPath}/summernote/lang/summernote-ko-KR.js"></script>
 
-<style>
-
-
-#formTable {
-	top: -610px;
-	left: 230px;
-	width: 800px;
-	position: relative;
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleAndCourseInner.css">
 
 <script>
 	$(document).ready(function() {
@@ -95,10 +85,10 @@
 <body>
 
 	<div class="mainDiv">
-		<ul class="nav nav-tabs">
+		<ul id="curverListUl" class="nav nav-tabs">
 			<li role="presentation" id="curverBtn" class="active"><a
-				href="#">커버</a></li>
-			<li role="presentation"><a href="#" id="topicListBtn" >토픽 목록</a></li>
+				href="#">Curver</a></li>
+			<li role="presentation"><a href="#" id="topicListBtn" >Topic List</a></li>
 		</ul>
 		<br>
 		<c:if test="${empty module.mTitle}">
