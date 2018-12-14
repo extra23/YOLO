@@ -26,7 +26,7 @@
 	<div style="width: 80%; margin: 80px auto;">
 	
 		<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
-	
+		<button>d</button>
 		<jsp:include page="fragment/moduleLeft.jsp"></jsp:include>
 	
 		<jsp:include page="fragment/moduleContent.jsp"></jsp:include>

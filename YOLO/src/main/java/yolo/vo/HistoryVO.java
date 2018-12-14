@@ -10,17 +10,22 @@ public class HistoryVO {
 	private int historyId;
 	private int topciId;
 	private int userId;
+	private String nickName;
 	private String tTitle;
 	private LocalDateTime udate;
 	
 	public HistoryVO() {}
 	
-	// insert
-	/*public HistoryVO(int userId, int topicId, String tTitle) {
-		this.userId = userId;
-		this.topciId = topicId;
+	// List
+	public HistoryVO(String nickName, String tTitle, LocalDateTime udate) {
+		super();
+		this.nickName = nickName;
 		this.tTitle = tTitle;
-	}*/
+		this.udate = udate;
+	}
+	
+	
+	
 	public int getHistoryId() {
 		return historyId;
 	}
@@ -33,7 +38,6 @@ public class HistoryVO {
 		return topciId;
 	}
 
-
 	public void setTopciId(int topciId) {
 		this.topciId = topciId;
 	}
@@ -44,6 +48,14 @@ public class HistoryVO {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String gettTitle() {
