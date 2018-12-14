@@ -1,6 +1,7 @@
 package yolo.service;
 
 import java.util.List;
+import java.util.Map;
 
 import yolo.vo.ModuleListVO;
 import yolo.vo.ModuleVO;
@@ -28,7 +29,7 @@ public interface InterfaceModuleService {
 	
 	public int countBySearch(String mTitle);
 	
-	public List<ModuleListVO> moduleListPage();
+	public Map<Integer, ModuleRequest> moduleListPage();
 	
 	public List<ModuleListVO> myModuleList(int userId);
 	

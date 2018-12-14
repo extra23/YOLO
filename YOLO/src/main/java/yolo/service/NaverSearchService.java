@@ -1,4 +1,4 @@
-package yolo.service;
+/*package yolo.service;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -108,3 +108,4 @@ public class NaverSearchService{
     }
 }
  
+*/

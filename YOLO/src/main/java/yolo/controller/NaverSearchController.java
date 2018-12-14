@@ -1,4 +1,4 @@
-package yolo.controller;
+/*package yolo.controller;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -14,11 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import yolo.service.NaverSearchService;
 import yolo.vo.CourseVO;
 
-/*import java.io.BufferedReader;
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;*/
+import java.net.URLEncoder;
 @Controller("NaverSearchController")
 public class NaverSearchController {
 	
@@ -40,7 +40,7 @@ public class NaverSearchController {
 
 
 
-/*public static StringBuilder sb;//
+public static StringBuilder sb;//
 
 @RequestMapping("/test")
 public static void main(String[] args) {
@@ -78,10 +78,10 @@ public static void main(String[] args) {
 
 }
 }
-*/
 
 
-/*@RequestMapping("/test")
+
+@RequestMapping("/test")
 public String test(){
 String clientId = "NsHPzHEy_bdvm4_5n40J";//애플리케이션 클라이언트 아이디값";
 String clientSecret = "Jz1Zda_Pje";//애플리케이션 클라이언트 시크릿값";
@@ -113,10 +113,10 @@ try {
 }
 return "test";
 }
-*/
 
 
-/* private String clientId = "NsHPzHEy_bdvm4_5n40J";//애플리케이션 클라이언트 아이디값";
+
+ private String clientId = "NsHPzHEy_bdvm4_5n40J";//애플리케이션 클라이언트 아이디값";
 private String clientSecret = "Jz1Zda_Pje";//애플리케이션 클라이언트 시크릿값";
 private String target = "encyc";
 
@@ -132,5 +132,6 @@ private String target = "encyc";
     	String xml =
     			
     	return result;
-    }*/
+    }
     
+*/

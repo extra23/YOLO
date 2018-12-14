@@ -1,6 +1,8 @@
 package yolo.controller;
+import java.util.HashMap;
 //
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfaceUserService;
+import yolo.service.ModuleRequest;
 import yolo.vo.CourseListVO;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleListVO;
@@ -54,8 +57,12 @@ public class SoheeController {
 	
 	@RequestMapping("/moduleListPage")
 	public String moduleListPage(Model model) {
-		List<ModuleListVO> moduleListPage = moduleService.moduleListPage();
-		model.addAttribute("moduleListPage", moduleListPage);
+		
+		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
+		model.addAttribute("moduleMap", moduleMap);
+		
+		List<CourseListVO> courseListPage = courseService.courseListPage();
+		model.addAttribute("courseListPage",courseListPage);
 		return "moduleListPage";
 	}
 	

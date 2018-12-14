@@ -95,13 +95,17 @@ body {
 							</tr>
 						</thead>
 						<tbody class="table-hover">
-							<c:forEach var="module" items="${moduleListPage}">
+							<c:forEach var="module" items="${moduleMap.values()}" varStatus="status">
 								<tr>
-									<td>${module.moduleId}</td>
+									<td>${status.count}</td>
 									<td>${module.mTitle}</td>
 									<td>${module.nickName}</td>
 									<td>${module.udate}</td>
-									<td>${module.cTitle}</td>
+									<td>
+									<c:forEach var="cTitle" items="${module.cTitleList}">
+										${cTitle} 
+									</c:forEach>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
