@@ -14,9 +14,21 @@ public class CoCourseService implements InterfaceCoCourseService {
 	@Autowired
 	private InterfaceCoCourseDAO coCourseDAO;
 	
+	public int addCoCourse(CoCourseAndCourseVO coCourseAndCourse) {
+		return coCourseDAO.insertCoCourse(coCourseAndCourse);
+	}
+	
 	public List<CoCourseAndCourseVO> readJoinCourse(int userId) {
 		// TODO Auto-generated method stub
 		return coCourseDAO.selectJoinCourse(userId);
+	}
+
+	public CoCourseAndCourseVO readCoCourseByCourseIdAndUserId(CoCourseAndCourseVO coCourseAndCourse) {
+		return coCourseDAO.selectCoCourseByCourseIdAndUserId(coCourseAndCourse);
+	}
+
+	public void removeCoCourse(int costudy_courseId) {
+		coCourseDAO.deleteCoCourse(costudy_courseId);
 	}
 
 }

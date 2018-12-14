@@ -4,8 +4,23 @@
 
 <mapper namespace="yolo.dao.InterfaceCoCourseMapper">
 
+	<insert id="insertCoCourse" parameterType="CoCourseAndCourse">
+		insert into costudy_course(courseId, userId) values(#{courseId}, #{userId})
+		<selectKey keyProperty="costudy_courseId" resultType="Integer">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+
 	<select id="selectJoinCourse" parameterType="Integer" resultType="CoCourseAndCourse">
 		select cc.costudy_courseId, cc.courseId, cc.userId, c.cTitle from costudy_course cc join course c on cc.courseId=c.courseId where cc.userId=#{userId}
 	</select>
+	
+	<select id="selectCoCourseByCourseIdAndUserId" parameterType="CoCourseAndCourse" resultType="CoCourseAndCourse">
+		select * from costudy_course where courseId=#{courseId} and userId=#{userId}
+	</select>
+	
+	<delete id="deleteCoCourse" parameterType="Integer">
+		delete from costudy_course where costudy_courseId=#{costudy_courseId}
+	</delete>
 
 </mapper>

@@ -19,9 +19,13 @@
 		<c:if test="${authUser.userId eq courseAndModule.user.userId}">
 			<img id="newCourse" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 코스 생성">		
 		</c:if>
-		<img id="costudy" src="${pageContext.request.contextPath}/images/costudy.png" title="공동공부" onclick="costudyCourse(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+		
+		<c:if test="${not empty authUser}">
+			<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+		</c:if>
+		
 		<c:if test="${authUser.userId eq courseAndModule.user.userId}">
-			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="코스 수정">
+			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="코스 수정" onclick="courseHeader(${courseAndModule.course.courseId})">
 		</c:if>
 		
 	</div>
