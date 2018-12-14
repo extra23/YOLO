@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>moduleAndCourse4 - Course페이지 안에 커버 페이지</title>
+	<title>moduleAndCourse5 - Course페이지 안에 moduleList 페이지</title>
 	<style>
 		#mAcdiv{
 		    margin-left: 10%;
@@ -33,16 +33,11 @@
 			display: inline;
 		} 
 		
-		#courseCurver{
+		#moduleListCurver{
 			display: inline;
 			
 		}
-		#formTableDiv{
-			top: -470px;
-			left: 230px;
-			width: 800px;
-			position: relative;
-		}
+
 		
 		
 		
@@ -70,8 +65,8 @@
 	</div>
 	
 	
-	<div id="courseCurver">
-	<jsp:include page="courseCurver.jsp"></jsp:include>
+	<div id="moduleListCurver">
+	<jsp:include page="ModuleList.jsp"></jsp:include>
 	</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>

@@ -15,6 +15,9 @@ public class ModuleVO {
 	private int userId;
 	private LocalDateTime wdate;
 	private LocalDateTime udate;
+	private int startIndex;
+	private int cntPerPage;
+
 
 	public ModuleVO() {}
 
@@ -134,6 +137,38 @@ public class ModuleVO {
 		this.userId = userId;
 	}
 
+
+	public LocalDateTime getWdate() {
+		return wdate;
+	}
+
+	public void setWdate(LocalDateTime wdate) {
+		this.wdate = wdate;
+	}
+
+	public LocalDateTime getUdate() {
+		return udate;
+	}
+
+	public void setUdate(LocalDateTime udate) {
+		this.udate = udate;
+	}
+
+	public int getStartIndex() {
+		return startIndex;
+	}
+
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+
+	public int getCntPerPage() {
+		return cntPerPage;
+	}
+
+	public void setCntPerPage(int pageSize) {
+		this.cntPerPage = pageSize;
+	}
 
 
 	

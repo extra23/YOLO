@@ -13,6 +13,8 @@ public class TopicVO {
 	private String tContent;
 	private LocalDateTime wdate;
 	private LocalDateTime udate;
+	private int startIndex;
+	private int cntPerPage;
 	
 	public TopicVO() {}
 
@@ -32,6 +34,12 @@ public class TopicVO {
 		this.tTitle = tTitle;
 		this.tContent = tContent;
 	}
+	
+	//pagination
+	
+	public TopicVO(int moduleId) {
+		this.moduleId = moduleId;
+	}
 
 	
 	
@@ -41,7 +49,8 @@ public class TopicVO {
 	}
 
 
-	
+
+
 	public void setTopicId(int topicId) {
 		this.topicId = topicId;
 	}
@@ -92,6 +101,22 @@ public class TopicVO {
 
 	public void setUdate(LocalDateTime udate) {
 		this.udate = udate;
+	}
+	
+	public int getStartIndex() {
+		return startIndex;
+	}
+
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+
+	public int getCntPerPage() {
+		return cntPerPage;
+	}
+
+	public void setCntPerPage(int pageSize) {
+		this.cntPerPage = pageSize;
 	}
 	
 	

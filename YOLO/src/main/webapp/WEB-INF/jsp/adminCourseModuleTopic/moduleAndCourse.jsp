@@ -6,8 +6,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
-	<title>모듈의 커버와 토픽목록을 보여주는 페이지</title>
+	<title>모듈의 커버 보여주는 페이지</title>
 	<style>
+		#mAcdiv{
+		    margin-left: 10%;
+   			margin-top: 5%;
+    		width: 82%;
+		}
+	
 		#moduleList{
 			float: left;
 			border: 1px solid lightgray;
@@ -29,6 +35,8 @@
 <body>
 
 	<jsp:include page="../header3.jsp"></jsp:include>
+	
+	<div id="mAcdiv">
 	<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="#">module</a></li>
 			<li role="presentation"><a href="AdminCourseAndModule">course</a></li>
@@ -45,6 +53,7 @@
 	</div>
 	<div id="moduleCurver">
 	<jsp:include page="moduleCurver.jsp"></jsp:include>
+	</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

@@ -5,7 +5,7 @@
 
 <mapper namespace="yolo.dao.InterfacePagingMapper">
 
-	<select id="selectPaging" parameterType="Test" resultType="Topic" >
+	<select id="selectPaging" parameterType="Topic" resultType="Topic" >
 		select * from topic where moduleId = #{moduleId} order by udate DESC limit #{startIndex},#{cntPerPage}
 	</select>
 	

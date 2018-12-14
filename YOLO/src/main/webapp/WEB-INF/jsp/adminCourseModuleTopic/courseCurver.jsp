@@ -78,23 +78,18 @@
 		});
 	}
 
-	//토픽목록 클릭하면 나오는것
-	$(function() {
-		
-		$("#moduleListBtn").click(function() {
-			$("#formTable").css("display", "none");
-			$("#moduleList").css("display", "block");
-			$("#curverBtn").removeClass("active");
-			$("#moduleListBtn").addClass("active");
-		});
-
-		$("#curverBtn").click(function() {
-			$("#formTable").css("display", "block");
-			$("#moduleList").css("display", "none");
-			$("#moduleListBtn").removeClass("active");
-			$("#curverBtn").addClass("active");
-		});
+	//모듈목록 클릭하면 나오는 것
+	$(function(){
+		var num = ${course.courseId}
+		$("#moduleListBtn").click(function(){
+			if(isNaN(num)){
+				alert("코스를 선택해주세요.");
+			}else{
+				location.href = "moduleList?courseId="+num;
+			}
+		})
 	});
+	
 </script>
 
 <title>Insert title here</title>
@@ -104,7 +99,7 @@
 	<div class="mainDiv">
 		<ul class="nav nav-tabs">
 			<li role="presentation" id="curverBtn" class="active"><a href="#">커버</a></li>
-			<li role="presentation" id="moduleListBtn"><a href="#">모듈 목록</a></li>
+			<li role="presentation"><a href="#" id="moduleListBtn">모듈 목록</a></li>
 		</ul>
 		<br>
 		
@@ -118,6 +113,7 @@
 					<textarea id="summernote" name="summernote">${course.cContent}</textarea>
 					
 					<input type="submit" value="수정">
+					<input type="button" id="deleteBtn" value="삭제">
 				</c:if>
 				<c:if test="${empty course.cTitle}">
 					코스 제목 <input type="text" name="cTitle" size="97"> <br> 
@@ -129,36 +125,26 @@
 				</c:if>
 				</div>
 			</form>
-		
-		
-		<div id="moduleList" style="display: none;">
-			<h3>모듈 목록</h3>
-			<!-- 토픽목록 가져오는 쿼리.. -->
-			<hr>
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>모듈 제목</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
-					<c:forEach var="module" items="${moduleList}">
-						<tr>
-							<td colspan="2"><a id="a" href="modulePage?moduleId=${module.moduleId}">${module.mTitle}</a>
-							<a id="modifyAndDelete" href="moduleCurver.do?moduleId=${module.moduleId}">[수정 및 삭제]</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
-			<button id="writeTopicBtn"
-				onclick="location.href='moduleWriteForm?courseId=${course.courseId}'">글쓰기</button>
-
-		</div>
-
 	</div>
+	<script>
+	
+	
+		$(function(){
+			//코스 커버 삭제시 비밀번호 확인
+			$("#deleteBtn").click(function(){
+				var answer = prompt('해당 모듈을 삭제하려면 사용자의 비밀번호를 입력하세요','')
+				var password = ${authUser.password}
+				
+				var num = ${course.courseId}
+				if(answer==password){
+					location.href="courseDelete?courseId="+num
+				}else{
+					alert("비밀번호가 틀렸습니다!");
+				}
+			});
+	
+		})
+	</script>
+	</script>
 </body>
 </html>

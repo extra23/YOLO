@@ -71,8 +71,22 @@
 		});
 	}
 
+	
+	
 
+
+	$(function(){
+		var num = ${module.moduleId}
+		$("#topicListBtn").click(function(){
+			if(isNaN(num)){
+				alert("모듈을 선택해주세요.");
+			}else{
+				location.href = "topicList?moduleId="+num;
+			}
+		})
 		
+	});
+	
 
 </script>
 
@@ -84,7 +98,7 @@
 		<ul class="nav nav-tabs">
 			<li role="presentation" id="curverBtn" class="active"><a
 				href="#">커버</a></li>
-			<li role="presentation" id="topicListBtn"><a href="topicList?moduleId=${module.moduleId}">토픽 목록</a></li>
+			<li role="presentation"><a href="#" id="topicListBtn" >토픽 목록</a></li>
 		</ul>
 		<br>
 		<c:if test="${empty module.mTitle}">
@@ -112,6 +126,7 @@
 					<textarea id="summernote" name="summernote">${module.mContent}</textarea>
 
 					<input type="submit" value="수정">
+					<input type="button" id="deleteBtn" value="삭제">
 				</div>
 
 			</form>
@@ -119,5 +134,22 @@
 	
 
 	</div> 
+	<script>
+		$(function(){
+			//모듈의 삭제시 비밀번호 확인
+			$("#deleteBtn").click(function(){
+				var answer = prompt('해당 모듈을 삭제하려면 사용자의 비밀번호를 입력하세요','')
+				var password = ${authUser.password}
+				
+				var num = ${module.moduleId}
+				if(answer==password){
+					location.href="moduleDelete?moduleId="+num
+				}else{
+					alert("비밀번호가 틀렸습니다!");
+				}
+			});
+		
+		})
+	</script>
 </body>
 </html>

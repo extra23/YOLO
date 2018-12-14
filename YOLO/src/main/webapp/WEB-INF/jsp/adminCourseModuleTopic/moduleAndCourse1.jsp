@@ -8,6 +8,12 @@
 	
 	<title>모듈의 토픽목록을 보여주는 페이지</title>
 	<style>
+		#mAcdiv{
+		    margin-left: 10%;
+   			margin-top: 5%;
+    		width: 82%;
+		}
+		
 		#moduleList{
 			float: left;
 			border: 1px solid lightgray;
@@ -29,6 +35,7 @@
 <body>
 
 	<jsp:include page="../header3.jsp"></jsp:include>
+	<div id="mAcdiv">
 	<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><a href="#">module</a></li>
 			<li role="presentation"><a href="AdminCourseAndModule">course</a></li>
@@ -45,6 +52,7 @@
 	</div>
 	<div id="topicListCurver">
 	<jsp:include page="TopicList.jsp"></jsp:include>
+	</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

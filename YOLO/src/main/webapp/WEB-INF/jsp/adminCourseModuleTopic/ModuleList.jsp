@@ -17,7 +17,7 @@
 
 
 <style>
-#topicLists {
+#moduleLists {
 	top: -610px;
 	left: 230px;
 	width: 800px;
@@ -28,7 +28,7 @@
 	float: right;
 }
 
-#writeTopicBtn {
+#writeModuleBtn {
 	float: right;
 }
 </style>
@@ -38,7 +38,7 @@
 
 	function fn_paging(curPage) {
 		location.href = "#";
-		location.href = "PagingTopic?curPage="+curPage+"&moduleId="+${module.moduleId};
+		location.href = "PagingModule?curPage="+curPage+"&courseId="+${course.courseId};
 		
 		
 	} 
@@ -52,8 +52,8 @@
 	<div class="mainDiv">
 		<ul class="nav nav-tabs">
 			<li role="presentation" id="curverBtn"><a
-				href="moduleCurver?moduleId=${module.moduleId }">커버</a></li>
-			<li role="presentation" id="topicListBtn" class="active"><a
+				href="courseCurver?courseId=${course.courseId }">커버</a></li>
+			<li role="presentation" id="moduleListBtn" class="active"><a
 				href="#">토픽 목록</a></li>
 		</ul>
 		<br>
@@ -70,12 +70,12 @@
 				<tbody>
 
 					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
-					<c:forEach var="topic" items="${topicList}">
+					<c:forEach var="module" items="${moduleList}">
 						<tr>
 							<td colspan="2"><a id="a"
-								href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a><a
+								href="modulePage?moduleId=${module.moduleId}">${module.mTitle}</a><a
 								id="modifyAndDelete"
-								href="topicModifyDeleteForm?topicId=${topic.topicId}">[수정 및
+								href="moduleCurver?moduleId=${module.moduleId}">[수정 및
 									삭제]</a></td>
 
 						</tr>
@@ -83,8 +83,8 @@
 				</tbody>
 			</table>
 
-			<button id="writeTopicBtn"
-				onclick="location.href='topicWriteForm?moduleId=${module.moduleId}'">글쓰기</button>
+			<button id="writeModuleBtn"
+				onclick="location.href='AdminModuleAndCourse'">글쓰기</button>
 
 
 

@@ -31,7 +31,6 @@ import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.PagingVO;
 import yolo.vo.PwdQuestionVO;
-import yolo.vo.TestVO;
 import yolo.vo.TopicVO;
 import yolo.vo.UserVO;
 
@@ -156,19 +155,26 @@ public class AramController {
 		}
 
 	//moduleCurver - module 커버 내용 불러오기
-		@RequestMapping("/moduleCurver.do")
+		@RequestMapping("/moduleCurver")
 		public String moduleCurver(Model model,HttpServletRequest request, int moduleId) {
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			
 			
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 			
-			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
-			
-			model.addAttribute("moduleList",moduleList);
-			model.addAttribute("topicList",topicList);
 			model.addAttribute("module",module);
-			return "adminCourseModuleTopic/moduleAndCourse";
+			return mainAdminM(model, request);
+		}
+		
+	//module 커버 내용 추가해주기
+		@RequestMapping(value="/moduleInsert")
+		public String moduleInsert(Model model, HttpServletRequest request, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			
+			ModuleVO module = new ModuleVO(mTitle, mContent, mSummary, userId);
+			moduleService.addModule(module);
+			
+			
+			return mainAdminM(model, request);
 		}
 		
 	//module커버의 내용 수정해주기
@@ -177,12 +183,57 @@ public class AramController {
 			ModuleVO module = new ModuleVO(moduleId, mTitle, mContent, mSummary);
 			moduleService.modifyModule(module);
 			
+			return moduleCurver(model, request, moduleId);
+		}
+	//module커버의 내용 삭제하기
+		@RequestMapping("/moduleDelete")
+		public String moduleDelte(int moduleId, Model model, HttpServletRequest request) {
+			moduleService.removeModule(moduleId);
+			
+			return mainAdminM(model, request);
+		}
+		
+		
+	//PagingTest
+		@RequestMapping("/PagingTopic")
+		public String pagingTopic(@RequestParam(value="curPage",defaultValue="1") int curPage, HttpServletRequest request,Model model, int moduleId) {
+			
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+				
+			
+			TopicVO topic = new TopicVO(moduleId);
+				
+			int listCnt = pagingService.selectTotalPaging(moduleId);
+			PagingVO paging = new PagingVO(listCnt, curPage);
+				
+
+			topic.setStartIndex(paging.getStartIndex());
+			topic.setCntPerPage(paging.getPageSize());
+				
+			List<TopicVO> topicList = pagingService.selectPaging(topic);
+				
+			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
+				
 			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("topicList",topicList);
+			model.addAttribute("listCnt",listCnt);
+			model.addAttribute("paging",paging);		
+			model.addAttribute("module",module);
+				
+			return "adminCourseModuleTopic/moduleAndCourse1";
+				
+		}
 			
-			
-			return "adminCourseModuleTopic/moduleAndCourse";
+	//TopicLsit
+		@RequestMapping("/topicList")
+		public String topicList(int moduleId,  HttpServletRequest request, Model model) {
+				
+			//moduleId가 아무것도 안 들어왔을 때.. 오류처리 해줘야겠지
+				
+			int curPage = 1;
+				
+			return pagingTopic(curPage, request, model, moduleId);
 		}
 		
 	
@@ -206,14 +257,7 @@ public class AramController {
 			TopicVO topicvo = new TopicVO(topicId, tTitle, tContent);
 			topicService.modifyTopic(topicvo);
 			
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
-			model.addAttribute("moduleList",moduleList);
-			
-			TopicVO topic = topicService.readTopicByTopicId(topicId);
-			model.addAttribute("topic",topic);
-			
-			return "adminCourseModuleTopic/moduleAndCourse2";
+			return topicModifyDeleteForm(model, request, topicId);
 			
 		}
 		
@@ -222,13 +266,8 @@ public class AramController {
 		public String topicDelete(Model model, HttpServletRequest request,int topicId) {
 			topicService.removeTopic(topicId);
 			
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
-			model.addAttribute("moduleList",moduleList);
+			return mainAdminM(model, request);
 			
-			return "adminCourseModuleTopic/moduleAndCourse";
-			
-		
 		}
 		
 	//topicWriteForm
@@ -253,11 +292,9 @@ public class AramController {
 					
 			topicService.addTopic(topicvo);
 			
+			int curPage =1;
 			
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
-			model.addAttribute("moduleList",moduleList);
-			
-			return "adminCourseModuleTopic/moduleAndCourse";
+			return pagingTopic(curPage, request, model, moduleId);
 		}
 		
 		//여기서 부터 코스입니다
@@ -272,21 +309,59 @@ public class AramController {
 			return "adminCourseModuleTopic/moduleAndCourse4";
 		}
 		
-	//course -> cuver에서 쓸 코스와 module리스트 가져오기
-		@RequestMapping("/courseCurver.do")
+	//course -> 코스 커버 페이지 가져오기
+		@RequestMapping("/courseCurver")
 		public String courseCurver(Model model, HttpServletRequest request, int courseId) {
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
 			
 			CourseVO course = courseService.readCourseByCourseId(courseId);
 			
-			List<ModuleVO> moduleList = moduleService.readModuleListByCourseId(courseId);
-			
-			model.addAttribute("courseList",courseList);
-			model.addAttribute("moduleList",moduleList);
 			model.addAttribute("course",course);
-			return "adminCourseModuleTopic/moduleAndCourse4";
+			return mainAdminC(model, request);
 		}
+		
+		
+	//course의 페이지네이션
+		@RequestMapping("/PagingModule")
+		public String pagingModule(@RequestParam(value="curPage",defaultValue="1") int curPage, HttpServletRequest request,Model model, int courseId) {
+					
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+						
+					
+			TopicVO topic = new TopicVO(courseId);
+						
+			int listCnt = pagingService.selectTotalPaging(courseId);
+			PagingVO paging = new PagingVO(listCnt, curPage);
+						
+
+			topic.setStartIndex(paging.getStartIndex());
+			topic.setCntPerPage(paging.getPageSize());
+						
+			List<TopicVO> topicList = pagingService.selectPaging(topic);
+						
+			ModuleVO module = moduleService.readModuleByModuleId(courseId);
+						
+			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("topicList",topicList);
+			model.addAttribute("listCnt",listCnt);
+			model.addAttribute("paging",paging);		
+			model.addAttribute("module",module);
+						
+			return "adminCourseModuleTopic/moduleAndCourse1";
+						
+		}
+
+	//course의 모듈 리스트 가져오기
+		@RequestMapping("/moduleList")
+		public String ModuleList(int courseId,  HttpServletRequest request, Model model) {
+				
+			//moduleId가 아무것도 안 들어왔을 때.. 오류처리 해줘야겠지
+				
+			int curPage = 1;
+				
+			return pagingModule(curPage, request, model, courseId);
+		}
+			
 		
 	//course의 커버 페이지 수정해주기
 		@RequestMapping("/courseModify")
@@ -296,10 +371,15 @@ public class AramController {
 			CourseVO course = new CourseVO(userId, courseId, cTitle, cContent, cSummary);
 			courseService.modifyCourse(course);
 			
-			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
-			model.addAttribute("courseList",courseList);
+			return courseCurver(model, request, courseId);
+		}
+	
+	//course의 커버 내용 삭제하기
+		@RequestMapping("/courseDelete")
+		public String courseDelete(Model model, HttpServletRequest request, int courseId) {
+			courseService.removeCourse(courseId);
 			
-			return "adminCourseModuleTopic/moduleAndCourse4";
+			return mainAdminC(model, request);
 		}
 		
 	//course의 커버 페이지 만들어주기
@@ -308,69 +388,12 @@ public class AramController {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			
 			CourseVO course = new CourseVO(userId, 0, cTitle, cContent, cSummary);
-			courseService.addCourse(course);
-			
-			List<CourseVO> courseList =  courseService.readCourseByUserId(userId);
-			model.addAttribute("courseList",courseList);
-			
+			courseService.addCourse(course);			
 	
-			return "adminCourseModuleTopic/moduleAndCourse4";
+			return mainAdminC(model, request);
 		}
-		
-		
-	//PagingTest
-		@RequestMapping("/PagingTopic")
-		public String pagingTopic(@RequestParam(value="curPage",defaultValue="1") int curPage, HttpServletRequest request,Model model, int moduleId) {
-			
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
-			
-			
-			if(curPage ==0) {
-				curPage =1;
-			}
-			System.out.println("모듈: "+moduleId + curPage);
-			TestVO test = new TestVO(moduleId);
-			
-			int listCnt = pagingService.selectTotalPaging(moduleId);
-			System.out.println("listCnt: "+ listCnt+"curPage"+curPage);
-			PagingVO paging = new PagingVO(listCnt, curPage);
-			System.out.println(paging);
-			
-			System.out.println("listCnt: "+ listCnt+"curPage"+curPage);
-			test.setStartIndex(paging.getStartIndex());
-			test.setCntPerPage(paging.getPageSize());
-			
-			List<TopicVO> topicList = pagingService.selectPaging(test);
-			
-			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
-			
-			model.addAttribute("moduleList",moduleList);
-			model.addAttribute("topicList",topicList);
-			model.addAttribute("listCnt",listCnt);
-			model.addAttribute("paging",paging);		
-			model.addAttribute("module",module);
-			
-			return "adminCourseModuleTopic/moduleAndCourse1";
-			
-		}
-		
-	//TopicLsit
-		@RequestMapping("/topicList")
-		public String topicList(int moduleId,  HttpServletRequest request, Model model) {
-			
-		
-			
-			List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleId);
-			
-		
-			
-			
-			model.addAttribute("topicList",topicList);			
-			int curPage = 1;
-			
-			return pagingTopic(curPage, request, model, moduleId);
-		}
+	
+	
 		
 		
 }
