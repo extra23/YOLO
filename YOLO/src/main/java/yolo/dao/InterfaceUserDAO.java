@@ -2,6 +2,7 @@ package yolo.dao;
 
 import java.util.List;
 
+import yolo.vo.PagingVO;
 import yolo.vo.UserVO;
 
 public interface InterfaceUserDAO {
@@ -13,6 +14,8 @@ public interface InterfaceUserDAO {
 	public UserVO selectUser(String email);
 	
 	public List<UserVO> selectUserList();
+	
+	public List<UserVO> selectUserListByLimit(PagingVO paging);
 	
 	public void updateUser(UserVO user);
 	

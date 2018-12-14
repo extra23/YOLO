@@ -20,7 +20,8 @@
 	<insert id="insertModule" parameterType="Module">
 		insert into
 		module(mTitle, mContent, mSummary, userId)
-		values(#{mTitle}, #{mContent}, #{mSummary}, #{userId})
+		values(#{mTitle},
+		#{mContent}, #{mSummary}, #{userId})
 	</insert>
 
 	<select id="selectModuleByUserId" parameterType="Integer"
@@ -37,17 +38,21 @@
 		select * from module
 	</select>
 
-	<select id="selectModuleListByCourseId" parameterType="Integer" resultType="Module">
-		select * from module where moduleId in(select module_id from course_module where course_id=#{courseId})
+	<select id="selectModuleListByCourseId" parameterType="Integer"
+		resultType="Module">
+		select * from module where moduleId in(select moduleId from
+		como where courseId=#{courseId})
 	</select>
-	
+
 	<select id="selectModuleListByUserId" parameterType="Integer"
 		resultType="Module">
 		select * from module where userId=#{userId}
 	</select>
 
 	<update id="updateModule" parameterType="Module">
-		update module set mTitle=#{mTitle}, mContent=#{mContent}, mSummary=#{mSummary} where moduleId=#{moduleId}
+		update module set
+		mTitle=#{mTitle}, mContent=#{mContent}, mSummary=#{mSummary} where
+		moduleId=#{moduleId}
 	</update>
 
 	<delete id="deleteModule" parameterType="Integer">
@@ -60,24 +65,26 @@
 		userId=#{userId}
 	</delete>
 
-	<select id="searchModule" parameterType="string"
-		resultType="Search">
+	<select id="searchModule" parameterType="string" resultType="Search">
 		select * from module m join user u on u.userId = m.userId
-		where mTitle Like CONCAT('%',#{mTitle},'%')
+		where mTitle
+		Like CONCAT('%',#{mTitle},'%')
 	</select>
 
-	<select id="countBySearch" parameterType="string"
-		resultType="Integer">
+	<select id="countBySearch" parameterType="string" resultType="Integer">
 		select count(*) from module m join user u on u.userId =
-		m.userId where mTitle Like CONCAT('%',#{mTitle},'%')
+		m.userId where
+		mTitle Like CONCAT('%',#{mTitle},'%')
 	</select>
 
 	<select id="moduleListPage" resultType="ModuleList">
-		select * from module m
-		left join course c on m.courseId = c.courseId left Join user u on
-		m.userId = u.userId;
+		select m.moduleId,
+		m.mtitle, u.userId, u.nickName, m.udate, c.courseId, c.cTitle from
+		module m left join como co on co.moduleId = m.moduleId left
+		outer join user u on m.userId = u.userId join course c on co.courseId
+		= c.courseId order by m.udate desc;
 	</select>
-
+<!--  -->
 	<select id="myModuleList" parameterType="Integer" resultType="ModuleList">
 		select * from module m left join course c on m.courseId = c.courseId
 		left Join user u on m.userId = u.userId where u.userId=#{userId};
@@ -87,14 +94,14 @@
 		select * from module order
 		by wdate desc
 	</select>
-	
+
 	<select id="mTitle">
 		select * from module order by mTitle ASC
 	</select>
-	
+
 	<select id="mUdate">
 		select * from module order by udate DESC
 	</select>
-	
-	</mapper>
+
+</mapper>
 

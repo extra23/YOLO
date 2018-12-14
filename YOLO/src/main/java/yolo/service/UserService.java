@@ -9,6 +9,7 @@ import yolo.dao.InterfaceUserDAO;
 import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
+import yolo.vo.PagingVO;
 import yolo.vo.UserVO;
 
 @Service("UserService")
@@ -75,6 +76,10 @@ public class UserService implements InterfaceUserService {
 	public int update_pw(UserVO user) {
 		
 		return userDAO.update_pw(user);
+	}
+
+	public List<UserVO> readUserListByLimit(PagingVO paging) {
+		return userDAO.selectUserListByLimit(paging);
 	}
 
 }
