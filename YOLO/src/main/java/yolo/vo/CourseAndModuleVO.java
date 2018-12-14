@@ -20,10 +20,16 @@ public class CourseAndModuleVO {
 		this.user = user;
 		this.moduleAndTopicList = moduleAndTopicList;
 	}
+	
+	
+	//pagination
+
 
 	public CourseVO getCourse() {
 		return course;
 	}
+
+	
 
 	public void setCourse(CourseVO course) {
 		this.course = course;
