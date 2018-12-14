@@ -5,7 +5,7 @@
 <head>
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
+	<title></title>
 	
 	<!-- 공통 : bootstrap & jQuery -->
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -26,7 +26,7 @@
 	<div style="width: 80%; margin: 80px auto;">
 	
 		<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
-		<button>d</button>
+	
 		<jsp:include page="fragment/moduleLeft.jsp"></jsp:include>
 	
 		<jsp:include page="fragment/moduleContent.jsp"></jsp:include>
