@@ -19,14 +19,13 @@
 		</ul>
 		<br>
 	<div id="MorCList">
-		<h3 class="text-center">모듈리스트 <a href="AdminModuleAndCourse" class="glyphicon glyphicon-plus-sign
-		"></a> </h3>
-		
-		<ul id="ListUl">
+		<div class="list-group">
+		<div class="list-group-item active"><h3 class="text-center">모듈리스트 <a href="AdminModuleAndCourse">
+		<img id="writeImg" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 모듈 커버 만들기"></a></h3> </div>
 		<c:forEach var="module" items="${moduleList}">
-			<li><a href="moduleCurver.do?moduleId=${module.moduleId}"> ${module.mTitle}</a></li>
+			<a href="moduleCurver.do?moduleId=${module.moduleId}" class="list-group-item"> ${module.mTitle}</a>
 		</c:forEach>
-		</ul>
+		</div>
 	</div>
 	<div id="Curver">
 	<jsp:include page="topicModifyDelete.jsp"></jsp:include>

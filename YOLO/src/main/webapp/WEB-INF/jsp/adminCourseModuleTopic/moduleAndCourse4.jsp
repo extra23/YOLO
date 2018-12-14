@@ -20,13 +20,13 @@
 		</ul>
 		<br>
 	<div id="MorCList">
-		<h3 class="text-center">코스리스트 <a href="AdminCourseAndModule" class="glyphicon glyphicon-plus-sign"> </a> </h3>
-		
-		<ul id="ListUl">
+		<div class="list-group">
+			<div class="list-group-item active"><h3 class="text-center">코스리스트 <a href="AdminCourseAndModule"> 
+			<img id="writeImg" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 코스 커버 만들기"></a> </h3></div>
 		<c:forEach var="course" items="${courseList}">
-			<li><a href="courseCurver?courseId=${course.courseId}"> ${course.cTitle}</a></li>
+			<a href="courseCurver?courseId=${course.courseId}" class="list-group-item"> ${course.cTitle}</a>
 		</c:forEach>
-		</ul>
+		</div>
 	</div>
 	
 	

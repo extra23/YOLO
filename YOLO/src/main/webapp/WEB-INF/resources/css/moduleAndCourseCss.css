@@ -1,9 +1,12 @@
 @charset "EUC-KR";
 
 #mAcdiv{
-	margin-left: 10%;
+	margin-left: auto;
+	margin-right: auto;
 	margin-top: 5%;
     width: 82%;
+    height: 900px;
+    overflow: hidden;
 }
 		
 #mAcUl{
@@ -15,13 +18,22 @@
 	float: left;
 	border: 1px solid lightgray;
 	width: 200px;
-	height: 657px;
+	height: 700px;
 	font-family: 'Jua';
+	overflow: scroll;
+	overflow-x:hidden;  
 }
-		
-#ListUl{
-	list-style: none;
+::-webkit-scrollbar{
+	width: 0px;
+	background: transparent;
 }
+
+#writeImg{
+	margin-left: 5px;
+	margin-top: -8px;
+	width: 20px;
+}
+
 		 
 #Curver{
 	display: inline;

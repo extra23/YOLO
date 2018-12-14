@@ -76,13 +76,12 @@
 		<!-- 수정해주세요 -->
 		<form name="writeForm" action="topicWirte" method="post">
 			<div id="formTable">
-				<input type="number" name="moduleId" value="${module.moduleId}">
-				
-				토픽 제목 <input type="text" name="tTitle" size="97"> <br>
+				<input type="hidden" name="moduleId" value="${module.moduleId}">			
+				토픽 제목 <input type="text" name="tTitle" size="100"> <br> <br>
 				토픽 내용
 				<textarea id="summernote" name="summernote"></textarea>
 
-				<input type="submit" value="저장">
+				<input type="submit" class="btn btn-default navbar-btn" value="저장">
 			</div>
 		</form>
 	</div>

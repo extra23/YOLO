@@ -71,7 +71,7 @@
 				</tbody>
 			</table>
 
-			<button id="writeModuleBtn"
+			<button id="writeBtn" class="btn btn-default navbar-btn"
 				onclick="location.href='AdminModuleAndCourse'">글쓰기</button>
 
 

@@ -83,21 +83,21 @@
 				<div id="formTable">
 				<c:if test="${not empty course.cTitle}">
 					<input type="hidden" name="courseId" value="${course.courseId}">
-					코스 제목 <input type="text" name="cTitle" value="${course.cTitle}" size="97"> <br> 
-					코스 요약 <input type="text" name="cSummary" value="${course.cSummary}" size="97"> <br>
+					코스 제목 <input type="text" name="cTitle" value="${course.cTitle}" size="100"> <br> <br> 
+					코스 요약 <input type="text" name="cSummary" value="${course.cSummary}" size="100"> <br> <br> 
 					코스 내용
 					<textarea id="summernote" name="summernote">${course.cContent}</textarea>
 					
-					<input type="submit" value="수정">
-					<input type="button" id="deleteBtn" value="삭제">
+					<input type="submit" class="btn btn-default navbar-btn" value="수정">
+					<input type="button" class="btn btn-default navbar-btn" id="deleteBtn" value="삭제">
 				</c:if>
 				<c:if test="${empty course.cTitle}">
-					코스 제목 <input type="text" name="cTitle" size="97"> <br> 
-					코스 요약 <input type="text" name="cSummary" size="97"> <br>
+					코스 제목 <input type="text" name="cTitle" size="100"> <br> <br>
+					코스 요약 <input type="text" name="cSummary" size="100"> <br> <br>
 					코스 내용
 					<textarea id="summernote" name="summernote"></textarea>
 					
-					<input type="submit" formaction="courseCreate" value="작성">
+					<input type="submit" class="btn btn-default navbar-btn" formaction="courseCreate" value="작성">
 				</c:if>
 				</div>
 			</form>

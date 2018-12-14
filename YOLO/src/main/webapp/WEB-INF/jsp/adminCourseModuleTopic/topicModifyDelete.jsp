@@ -89,12 +89,12 @@
 		<form name="writeForm" action="topicModify" method="post">
 			<div id="formTable">
 				<input type="hidden" name="topicId" value="${topic.topicId}">
-				토픽 제목 <input type="text" name="tTitle" value="${topic.tTitle}" size="97"> <br>
+				토픽 제목 <input type="text" name="tTitle" value="${topic.tTitle}" size="100"> <br><br>
 				토픽 내용
 				<textarea id="summernote" name="summernote">${topic.tContent}</textarea>
 
-				<input type="submit" value="수정">
-				<input type="button" id="deleteBtn" value="삭제" >
+				<input type="submit" class="btn btn-default navbar-btn" value="수정">
+				<input type="button" class="btn btn-default navbar-btn" id="deleteBtn" value="삭제" >
 			</div>
 		</form>
 	</div>

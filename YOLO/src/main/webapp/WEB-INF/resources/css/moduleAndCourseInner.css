@@ -1,7 +1,7 @@
 @charset "EUC-KR";
 
 #formTable {
-	top: -610px;
+	top: -660px;
 	left: 230px;
 	width: 800px;
 	position: relative;
@@ -14,7 +14,7 @@
 }
 
 #innerList {
-	top: -610px;
+	top: -660px;
 	left: 230px;
 	width: 800px;
 	position: relative;
@@ -25,6 +25,6 @@
 	float: right;
 }
 
-#writeTopicBtn {
+#writeBtn {
 	float: right;
 }

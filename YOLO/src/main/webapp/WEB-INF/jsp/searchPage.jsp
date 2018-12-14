@@ -10,39 +10,42 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-<!-- 폰트 -->
-<link href="https://fonts.googleapis.com/css?family=Cute+Font|Hi+Melody"
-	rel="stylesheet">
 
 <style type="text/css">
+#navi{
+	font-family: 'Baloo Tamma', cursive;
+	font-size: 2em;
+}
+
 .panel-heading {
-	font-family: 'Cute Font', cursive;
+	font-family: 'Jua';
 	font-size: 1.5em;
+}
+
+.badge{
+	margin-left: 10px;
+	margin-top: -5px;
+	width: 30px;
 }
 
 th {
-	font-family: 'Cute Font', cursive;
-	font-size: 1.5em;
+	font-family: 'Jua';
+	font-size: 1.2em;
 }
 
 tr {
-	font-family: 'Hi Melody';
+	font-family: 'Jua';
 	font-size: 1.3em;
 }
 
-#a {
-	font-family: 'Hi Melody';
+#a,#am {
+	font-family: 'Jua';
 	font-size: 1em;
 }
 
 #a:hover {
 	color: skyblue;
 	font-weight: bold;
-}
-
-#am {
-	font-family: 'Cute Font', cursive;
-	font-size: 1.5em;
 }
 
 #am:hover {
@@ -68,11 +71,11 @@ tr {
 	<jsp:include page="header3.jsp"></jsp:include>
 	<br>
 	<div class="container">
-		<ul class="nav nav-tabs">
-			<li role="presentation"><a href="#user">사용자 이메일</a></li>
-			<li role="presentation"><a href="#topic">토픽</a></li>
-			<li role="presentation"><a href="#module">모듈</a></li>
-			<li role="presentation"><a href="#course">코스</a></li>
+		<ul class="nav nav-tabs" id="navi">
+			<li role="presentation" class="active"><a href="#user">User Email</a></li>
+			<li role="presentation"><a href="#topic">Topic</a></li>
+			<li role="presentation"><a href="#module">Module</a></li>
+			<li role="presentation"><a href="#course">Course</a></li>
 		</ul>
 		<br>
 		<div class="panel panel-default">

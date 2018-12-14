@@ -95,11 +95,11 @@
 			<form name="writeForm" action="moduleInsert" method="post">
 
 				<div id="formTable" >
-					모듈 제목 <input type="text" id="mTitle" name="mTitle" size="97"> <br>
-					모듈 요약 <input type="text" name="mSummary" size="97"> <br>
+					모듈 제목  <input type="text" id="mTitle" name="mTitle" size="100"> <br> <br>
+					모듈 요약  <input type="text" name="mSummary" size="100"> <br> <br>
 					모듈 내용
 					<textarea id="summernote" name="summernote"></textarea>
-					<input type="submit" value="생성">
+					<input type="submit" class="btn btn-default navbar-btn" value="생성">
 				</div>
 
 			</form>
@@ -109,14 +109,13 @@
 
 				<div id="formTable">
 					<input type="hidden" name="moduleId" value="${module.moduleId}">
-					모듈 제목 <input type="text" name="mTitle" id="mTitle"
-						value="${module.mTitle}" size="97"> <br> 모듈 요약 <input
-						type="text" name="mSummary" value="${module.mSummary}" size="97">
-					<br> 모듈 내용
+					모듈 제목 <input type="text" name="mTitle" id="mTitle" value="${module.mTitle}" size="100"> <br><br> 
+					모듈 요약 <input type="text" name="mSummary" value="${module.mSummary}" size="100"><br><br> 
+					모듈 내용
 					<textarea id="summernote" name="summernote">${module.mContent}</textarea>
 
-					<input type="submit" value="수정">
-					<input type="button" id="deleteBtn" value="삭제">
+					<input type="submit" class="btn btn-default navbar-btn" value="수정">
+					<input type="button" class="btn btn-default navbar-btn" id="deleteBtn" value="삭제">
 				</div>
 
 			</form>
