@@ -15,7 +15,6 @@ $(function(){
 	
 	// costudy 아이콘 클릭 시 costudy_module 테이블에 해당 courseId와 userId 받아서 추가 (Ajax)
 	$("#costudy").click(function(){
-		/*alert("courseId : " + courseId + "\nuserId : " + userId);*/
 		$.ajax({
 			url: "toggleCostudyCourse",
 			data: "courseId=" + courseId + "&userId=" + userId,
