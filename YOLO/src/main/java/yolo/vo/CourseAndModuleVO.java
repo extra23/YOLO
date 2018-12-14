@@ -9,6 +9,8 @@ public class CourseAndModuleVO {
 	private CourseVO course;
 	private UserVO user;
 	private List<ModuleAndTopicVO> moduleAndTopicList; 
+	private int startIndex;
+	private int cntPerPage;
 	
 	public CourseAndModuleVO() {}
 
@@ -41,6 +43,23 @@ public class CourseAndModuleVO {
 
 	public void setModuleAndTopicList(List<ModuleAndTopicVO> moduleAndTopicList) {
 		this.moduleAndTopicList = moduleAndTopicList;
+	}
+	
+
+	public int getStartIndex() {
+		return startIndex;
+	}
+
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+
+	public int getCntPerPage() {
+		return cntPerPage;
+	}
+
+	public void setCntPerPage(int pageSize) {
+		this.cntPerPage = pageSize;
 	}
 	
 }

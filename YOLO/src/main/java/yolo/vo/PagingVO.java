@@ -3,7 +3,7 @@ package yolo.vo;
 public class PagingVO {
 	
 	//한페이지당 게시글 수
-	private int pageSize =10;
+	private int pageSize;
 	
 	//한 블럭당 페이지 수
 	private int rangeSize = 5;

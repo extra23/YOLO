@@ -13,5 +13,5 @@
 		select count(*) from topic where moduleId = #{moduleId}
 	</select>
 
-
+	
 </mapper>
