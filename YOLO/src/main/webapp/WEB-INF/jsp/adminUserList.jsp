@@ -27,6 +27,14 @@
 		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
 	</style>
 	
+	<script>
+	
+		function fn_paging(curPage) {
+			location.href = "adminUserList?curPage=" + curPage;
+		}
+	
+	</script>
+	
 </head>
 <body>
 	
@@ -69,7 +77,7 @@
 	</table>
 	
 	
-	<div>
+                <div id="pagination">
                     <c:if test="${pagination.curRange ne 1 }">
                         <a href="#" onClick="fn_paging(1)">[처음]</a> 
                     </c:if>
@@ -97,6 +105,7 @@
                 <div>
                     총 게시글 수 : ${pagination.listCnt } /    총 페이지 수 : ${pagination.pageCnt } / 현재 페이지 : ${pagination.curPage } / 현재 블럭 : ${pagination.curRange } / 총 블럭 수 : ${pagination.rangeCnt }
                 </div>
+
 	
 
 	<jsp:include page="footer.jsp"></jsp:include>

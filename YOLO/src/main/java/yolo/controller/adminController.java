@@ -43,13 +43,13 @@ public class adminController {
 	private InterfaceAdminService adminService;	
 	
 	// 관리자 사용자 리스트
-	@RequestMapping(value="/adminUserList")
+	@RequestMapping(value="adminUserList")
 	public String readUserList(Model model, @RequestParam(defaultValue="1") int curPage) {
 		
 		int listCnt = userService.readUserList().size();
 		PagingVO paging = new PagingVO(listCnt, curPage);
 		/*paging.setStartIndex(0);*/
-		paging.setPageSize(20);
+		paging.setPageSize(10);
 		
 		System.out.println(paging);
 		
@@ -57,6 +57,7 @@ public class adminController {
 		
 		model.addAttribute("list", list);
         model.addAttribute("listCnt", listCnt);
+        model.addAttribute("curPage", curPage);
         model.addAttribute("pagination", paging);
         
 		return "adminUserList";

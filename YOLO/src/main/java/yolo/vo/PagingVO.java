@@ -48,15 +48,15 @@ public class PagingVO {
         /** 총 게시물 수 **/
         setListCnt(listCnt);
         
-        /** 1. 총 페이지 수 **/
-        /*setPageCnt(listCnt);*/
-        /** 2. 총 블럭(range)수 **/
+        /** 1. 총 페이지 수 **//*
+        setPageCnt(listCnt);
+        *//** 2. 총 블럭(range)수 **//*
         setRangeCnt(pageCnt);
-        /** 3. 블럭(range) setting **/
+        *//** 3. 블럭(range) setting **//*
         rangeSetting(curPage);
         
-        /** DB 질의를 위한 startIndex 설정 **/
-        setStartIndex(curPage);
+        *//** DB 질의를 위한 startIndex 설정 **//*
+        setStartIndex(curPage);*/
         
 	}
 	
@@ -96,7 +96,10 @@ public class PagingVO {
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
-		setPageCnt(listCnt);
+        setPageCnt(listCnt);
+        setRangeCnt(pageCnt);
+        rangeSetting(curPage);
+        setStartIndex(curPage);
 	}
 
 	public int getRangeSize() {
