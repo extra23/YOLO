@@ -78,13 +78,11 @@
 	</select>
 
 	<select id="moduleListPage" resultType="ModuleList">
-		select m.moduleId,
-		m.mtitle, u.userId, u.nickName, m.udate, c.courseId, c.cTitle from
-		module m left join como co on co.moduleId = m.moduleId left
-		outer join user u on m.userId = u.userId join course c on co.courseId
-		= c.courseId order by m.udate desc;
+		select * from module m left outer join como co on m.moduleId = co.moduleId
+		left join user u on m.userId = u.userId left join course c on
+		c.courseId = co.courseId order by m.udate desc
 	</select>
-<!--  -->
+	<!-- -->
 	<select id="myModuleList" parameterType="Integer" resultType="ModuleList">
 		select * from module m left join course c on m.courseId = c.courseId
 		left Join user u on m.userId = u.userId where u.userId=#{userId};
