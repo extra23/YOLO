@@ -27,6 +27,7 @@ import yolo.service.DeleteService;
 import yolo.service.InterfaceAdminService;
 import yolo.service.InterfaceUserService;
 import yolo.service.UserService;
+import yolo.vo.PagingVO;
 import yolo.vo.UserVO;
 
 @Controller
@@ -43,9 +44,21 @@ public class adminController {
 	
 	// 관리자 사용자 리스트
 	@RequestMapping(value="/adminUserList")
-	public String readUserList(Model model) {
-		List<UserVO> userList = userService.readUserList();
-		model.addAttribute("userList", userList);
+	public String readUserList(Model model, @RequestParam(defaultValue="1") int curPage) {
+		
+		int listCnt = userService.readUserList().size();
+		PagingVO paging = new PagingVO(listCnt, curPage);
+		/*paging.setStartIndex(0);*/
+		paging.setPageSize(20);
+		
+		System.out.println(paging);
+		
+		List<UserVO> list = userService.readUserListByLimit(paging);
+		
+		model.addAttribute("list", list);
+        model.addAttribute("listCnt", listCnt);
+        model.addAttribute("pagination", paging);
+        
 		return "adminUserList";
 	}
 	

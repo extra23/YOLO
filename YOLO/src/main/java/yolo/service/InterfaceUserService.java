@@ -2,6 +2,7 @@ package yolo.service;
 
 import java.util.List;
 
+import yolo.vo.PagingVO;
 import yolo.vo.UserVO;
 
 public interface InterfaceUserService {
@@ -13,6 +14,8 @@ public interface InterfaceUserService {
 	public UserVO readUSerByEmail(String email);
 	
 	public List<UserVO> readUserList();
+	
+	public List<UserVO> readUserListByLimit(PagingVO paging);
 	
 	public void modifyUser(UserVO user, String oldPwd);
 	

@@ -1,5 +1,8 @@
 package yolo.vo;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("Paging")
 public class PagingVO {
 	
 	//한페이지당 게시글 수
@@ -46,7 +49,7 @@ public class PagingVO {
         setListCnt(listCnt);
         
         /** 1. 총 페이지 수 **/
-        setPageCnt(listCnt);
+        /*setPageCnt(listCnt);*/
         /** 2. 총 블럭(range)수 **/
         setRangeCnt(pageCnt);
         /** 3. 블럭(range) setting **/
@@ -58,7 +61,7 @@ public class PagingVO {
 	}
 	
 	public void setPageCnt(int listCnt) {
-		 this.pageCnt = (int) Math.ceil(listCnt*1.0/pageSize);
+		this.pageCnt = (int) Math.ceil(listCnt*1.0/pageSize);
     }
     public void setRangeCnt(int pageCnt) {
         this.rangeCnt = (int) Math.ceil(pageCnt*1.0/rangeSize);
@@ -93,6 +96,7 @@ public class PagingVO {
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
+		setPageCnt(listCnt);
 	}
 
 	public int getRangeSize() {
@@ -174,9 +178,6 @@ public class PagingVO {
 				+ startPage + ", endPage=" + endPage + ", startIndex=" + startIndex + ", prevPage=" + prevPage
 				+ ", nextPage=" + nextPage + "]";
 	}
-	
-
-	
 
 }
 

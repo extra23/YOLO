@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import yolo.vo.PagingVO;
 import yolo.vo.UserVO;
 
 @Repository("UserDAO")
@@ -53,6 +54,10 @@ public class UserDAO implements InterfaceUserDAO {
 	public int update_pw(UserVO user) {
 		
 		return userMapper.update_pw(user);
+	}
+
+	public List<UserVO> selectUserListByLimit(PagingVO paging) {
+		return userMapper.selectUserListByLimit(paging);
 	}
 
 }
