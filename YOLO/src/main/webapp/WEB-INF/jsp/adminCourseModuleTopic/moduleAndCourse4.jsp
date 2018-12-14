@@ -64,7 +64,7 @@
 		
 		<ul id="courseListUl">
 		<c:forEach var="course" items="${courseList}">
-			<li><a href="courseCurver.do?courseId=${course.courseId}"> ${course.cTitle}</a></li>
+			<li><a href="courseCurver?courseId=${course.courseId}"> ${course.cTitle}</a></li>
 		</c:forEach>
 		</ul>
 	</div>

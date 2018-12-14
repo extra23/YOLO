@@ -12,6 +12,17 @@
 	<select id="selectTotalPaging" parameterType="Integer" resultType="Integer">
 		select count(*) from topic where moduleId = #{moduleId}
 	</select>
+	
+	<select id="selectPagingM" parameterType="CourseAndModuleVO" resultType="CourseAndModuleVO">
+		select * from module left join como on module.moduleId = como.moduleId where courseId=#{course.courseId} order by udate DESC
+	</select>
 
+	<select id="selectTotalPagignM" parameterType="Integer" resultType="Integer">
+		select count(*) from module join como on module.moduleId = como.moduleId where courseId = #{courseId};
+	</select>
+	
+	<select id="test" parameterType="Integer" resultType="Module">
+		select * from module join como on module.moduleId = como.moduleId where courseId = #{courseId};
+	</select>
 	
 </mapper>

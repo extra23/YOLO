@@ -145,6 +145,5 @@
 	
 		})
 	</script>
-	</script>
 </body>
 </html>

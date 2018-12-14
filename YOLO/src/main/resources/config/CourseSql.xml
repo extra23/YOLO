@@ -10,20 +10,6 @@
 		#{cTitle}, #{cContent}, #{cSummary})
 	</insert>
 
-	<select id="selectCourseByUserId" parameterType="Integer"
-		resultType="Course">
-		select * from course where userId=#{userId}
-	</select>
-
-	<select id="selectCourseByCourseId" parameterType="Integer"
-		resultType="Course">
-		select * from course where courseId=#{courseId}
-	</select>
-
-	<select id="selectCourseList" resultType="Course">
-		select * form course
-	</select>
-
 	<update id="updateCourse" parameterType="Course">
 		update course set
 		cTitle=#{cTitle}, cContent=#{cContent}, cSummary=#{cSummary} where
@@ -52,29 +38,45 @@
 		u.userId=c.userId where cTitle Like CONCAT('%',#{cTitle},'%')
 	</select>
 
-<!-- 	<select id="courseListPage" resultType="CourseList">
+	<select id="courseListPage" resultType="CourseList">
 		select * from course c
 		left join como co on c.courseId = co.courseId left Join user u on
 		c.userId = u.userId group by c.courseId;
 	</select>
-<!--  -->
-	<select id="myCourseList" parameterType="Integer" resultType="CourseList">
+
+	<select id="myCourseList" parameterType="Integer"
+		resultType="CourseList">
 		select * from course c left
-		join module m on c.courseId = m.courseId left Join user u on c.userId
-		= u.userId where u.userId = #{userId} group by c.courseId;
-	</select> -->
+		join module m on c.courseId =
+		m.courseId left Join user u on c.userId
+		= u.userId where u.userId =
+		#{userId} group by c.courseId;
+	</select>
 
 	<select id="courseListBox" resultType="Course">
 		select * from course order
 		by wdate desc
 	</select>
-	
+
 	<select id="cTitle">
 		select * from course order by cTitle ASC
 	</select>
-	
+
 	<select id="cUdate">
 		select * from course order by udate DESC
 	</select>
-	
+
+	<select id="selectCourseByUserId" parameterType="Integer"
+		resultType="Course">
+		select * from course where userId=#{userId}
+	</select>
+
+	<select id="selectCourseByCourseId" parameterType="Integer"
+		resultType="Course">
+		select * from course where courseId=#{courseId}
+	</select>
+
+	<select id="selectCourseList" resultType="Course">
+		select * form course
+	</select>
 </mapper>

@@ -3,6 +3,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,10 @@ import yolo.service.InterfacePagingService;
 import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.CourseAndModuleVO;
+import yolo.vo.CourseListVO;
 import yolo.vo.CourseVO;
+import yolo.vo.ModuleAndTopicVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.PagingVO;
 import yolo.vo.PwdQuestionVO;
@@ -173,30 +177,51 @@ public class AramController {
 		@RequestMapping("/PagingModule")
 		public String pagingModule(@RequestParam(value="curPage",defaultValue="1") int curPage, HttpServletRequest request,Model model, int courseId) {
 					
+			CourseAndModuleVO courseAndModule = new CourseAndModuleVO();
+			
+			// CourseAndModuleVO의 course
+			CourseVO course = courseService.readCourseByCourseId(courseId);
+			courseAndModule.setCourse(course);
+			
+			// CourseAndModuleVO의 user
+			courseAndModule.setUser(userService.readUserByUserId(course.getUserId()));
+			
+			// CourseAndModuleVO의 ModuleAndTopicList
+			List<ModuleVO> moduleList1 = pagingService.test(courseId);
+			System.out.println("moduleList1 : " + moduleList1);
+			List<ModuleAndTopicVO> moduleAndTopicList = new ArrayList<ModuleAndTopicVO>();
+			for(int i = 0; i < moduleList1.size(); i++) {
+				ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO();
+				List<TopicVO> topicList = topicService.readTopicListByModuleId(moduleList1.get(i).getModuleId());
+				moduleAndTopic.setModule(moduleList1.get(i));
+				moduleAndTopic.setUser(userService.readUserByUserId(moduleList1.get(i).getUserId()));
+				moduleAndTopic.setTopicList(topicList);
+				moduleAndTopicList.add(moduleAndTopic);
+			}
+			courseAndModule.setModuleAndTopicList(moduleAndTopicList);
+
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			List<CourseVO> courseList = courseService.readCourseByUserId(userId);
 						
-					
-			TopicVO topic = new TopicVO(courseId);
 						
-			int listCnt = pagingService.selectTotalPaging(courseId);
+			int listCnt = pagingService.selectTotalPagignM(courseId);
+			
 			PagingVO paging = new PagingVO(listCnt, curPage);
 						
 
-			topic.setStartIndex(paging.getStartIndex());
-			topic.setCntPerPage(paging.getPageSize());
+			courseAndModule.setStartIndex(paging.getStartIndex());
+			courseAndModule.setCntPerPage(5);
 						
-			List<TopicVO> topicList = pagingService.selectPaging(topic);
+			List<CourseAndModuleVO> moduleList = pagingService.selectPagingM(courseAndModule);
+			System.out.println(moduleList);
 						
-			ModuleVO module = moduleService.readModuleByModuleId(courseId);
-						
-			model.addAttribute("moduleList",moduleList);
-			model.addAttribute("topicList",topicList);
+			model.addAttribute("courseList",courseList);
 			model.addAttribute("listCnt",listCnt);
 			model.addAttribute("paging",paging);		
-			model.addAttribute("module",module);
+			/*model.addAttribute("course",course);*/
+			model.addAttribute("courseAndModule", courseAndModule);
 						
-			return "adminCourseModuleTopic/moduleAndCourse1";
+			return "adminCourseModuleTopic/moduleAndCourse5";
 						
 		}
 

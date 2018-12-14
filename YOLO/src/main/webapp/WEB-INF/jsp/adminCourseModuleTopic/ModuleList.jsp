@@ -54,10 +54,10 @@
 			<li role="presentation" id="curverBtn"><a
 				href="courseCurver?courseId=${course.courseId }">커버</a></li>
 			<li role="presentation" id="moduleListBtn" class="active"><a
-				href="#">토픽 목록</a></li>
+				href="#">모듈 목록</a></li>
 		</ul>
 		<br>
-		<div id="topicLists" style="display: block;">
+		<div id="moduleLists" style="display: block;">
 			<h3>토픽 목록</h3>
 			<!-- 토픽목록 가져오는 쿼리.. -->
 			<hr>
@@ -70,15 +70,17 @@
 				<tbody>
 
 					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
-					<c:forEach var="module" items="${moduleList}">
+					<c:forEach var="moduleAndTopic" items="${courseAndModule.moduleAndTopicList}">
+					
 						<tr>
 							<td colspan="2"><a id="a"
-								href="modulePage?moduleId=${module.moduleId}">${module.mTitle}</a><a
+								href="modulePage?moduleId=${moduleAndTopic.module.moduleId}">${moduleAndTopic.module.mTitle}</a><a
 								id="modifyAndDelete"
-								href="moduleCurver?moduleId=${module.moduleId}">[수정 및
+								href="moduleCurver?moduleId=${moduleAndTopic.module.moduleId}">[수정 및
 									삭제]</a></td>
 
 						</tr>
+					
 					</c:forEach>
 				</tbody>
 			</table>

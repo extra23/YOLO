@@ -17,6 +17,14 @@ public class CourseVO {
 	
 	public CourseVO () {}
 	
+	
+	//pagination
+	public CourseVO(int courseId) {
+		this.courseId = courseId;
+	}
+
+
+
 	//insert, update
 	public CourseVO(int userId, int courseId,String cTitle,  String cContent, String cSummary) {
 		this.userId = userId;
