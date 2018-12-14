@@ -84,7 +84,7 @@
 		outer join user u on m.userId = u.userId join course c on co.courseId
 		= c.courseId order by m.udate desc;
 	</select>
-
+<!--  -->
 	<select id="myModuleList" parameterType="Integer" resultType="ModuleList">
 		select * from module m left join course c on m.courseId = c.courseId
 		left Join user u on m.userId = u.userId where u.userId=#{userId};
