@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/courseLeftCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleInCourseHeaderCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/topicInCourseContentCss.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/courseHeaderJs.js"></script>
 	
 </head>
 <body>

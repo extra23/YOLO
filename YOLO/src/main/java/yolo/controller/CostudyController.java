@@ -37,5 +37,10 @@ public class CostudyController {
 		}
 	}
 	
+	@ResponseBody
+	@RequestMapping("toggleCostudyModule")
+	public String toggleCostudyModule(int moduleId, int userId) {
+		
+	}
 
 }

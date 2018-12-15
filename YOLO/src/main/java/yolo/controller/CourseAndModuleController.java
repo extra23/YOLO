@@ -76,13 +76,8 @@ public class CourseAndModuleController {
 		return courseAndModule;
 		
 	}
-
-	@RequestMapping("coursePage")
-	public ModelAndView getCoursePage(HttpServletRequest request, int courseId) {
-		
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("courseAndModule", makeObj(courseId));
-		
+	
+	private void checkCostudyCourse(ModelAndView mav, HttpServletRequest request, int courseId) {
 		UserVO user = (UserVO)request.getSession().getAttribute("authUser");
 		if(user != null) {
 			CoCourseAndCourseVO coCourseAndCourse = coCourseService.readCoCourseByCourseIdAndUserId(new CoCourseAndCourseVO(courseId, user.getUserId()));
@@ -92,6 +87,15 @@ public class CourseAndModuleController {
 				mav.addObject("costudy_courseId", coCourseAndCourse.getCostudy_courseId());
 			}
 		}
+	}
+
+	@RequestMapping("coursePage")
+	public ModelAndView getCoursePage(HttpServletRequest request, int courseId) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("courseAndModule", makeObj(courseId));
+		
+		checkCostudyCourse(mav, request, courseId);
 		
 		mav.setViewName("courseModuleTopic/course");
 		
@@ -100,10 +104,12 @@ public class CourseAndModuleController {
 	}
 	
 	@RequestMapping("moduleInCoursePage")
-	public ModelAndView getModuleInCoursePage(int courseId, int moduleIndex) {
+	public ModelAndView getModuleInCoursePage(HttpServletRequest request, int courseId, int moduleIndex) {
 		
 		ModelAndView mav = new ModelAndView();
 		CourseAndModuleVO courseAndModule = makeObj(courseId);
+		
+		checkCostudyCourse(mav, request, courseId);
 		
 		mav.addObject("courseAndModule", courseAndModule);
 		mav.addObject("moduleAndTopic", courseAndModule.getModuleAndTopicList().get(moduleIndex));
@@ -114,10 +120,12 @@ public class CourseAndModuleController {
 	}
 	
 	@RequestMapping("topicInCoursePage")
-	public ModelAndView getTopicInCoursePage(int courseId, int moduleIndex, int topicIndex) {
+	public ModelAndView getTopicInCoursePage(HttpServletRequest request, int courseId, int moduleIndex, int topicIndex) {
 		
 		ModelAndView mav = new ModelAndView();
 		CourseAndModuleVO courseAndModule = makeObj(courseId);
+		
+		checkCostudyCourse(mav, request, courseId);
 		
 		mav.addObject("courseAndModule", courseAndModule);
 		mav.addObject("moduleAndTopic", courseAndModule.getModuleAndTopicList().get(moduleIndex));
@@ -127,7 +135,8 @@ public class CourseAndModuleController {
 		return mav;
 		
 	}
-//module And Course 에서 코스 가져오기
+
+	//module And Course 에서 코스 가져오기
 	@RequestMapping("/AdminCourseAndModule")
 	public String mainAdminC(Model model, HttpServletRequest request) {
 		int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
@@ -137,7 +146,7 @@ public class CourseAndModuleController {
 		return "adminCourseModuleTopic/moduleAndCourse4";
 	}
 	
-//course -> 코스 커버 페이지 가져오기
+	//course -> 코스 커버 페이지 가져오기
 	@RequestMapping("/courseCurver")
 	public String courseCurver(Model model, HttpServletRequest request, int courseId) {
 		
@@ -148,7 +157,7 @@ public class CourseAndModuleController {
 	}
 	
 	
-//course의 페이지네이션
+	//course의 페이지네이션
 	@RequestMapping("/PagingModule")
 	public String pagingModule(@RequestParam(value="curPage",defaultValue="1") int curPage, HttpServletRequest request,Model model, int courseId) {
 				
@@ -199,7 +208,7 @@ public class CourseAndModuleController {
 					
 	}
 
-//course의 모듈 리스트 가져오기
+	//course의 모듈 리스트 가져오기
 	@RequestMapping("/moduleList")
 	public String ModuleList(int courseId,  HttpServletRequest request, Model model) {
 			
@@ -211,7 +220,7 @@ public class CourseAndModuleController {
 	}
 		
 	
-//course의 커버 페이지 수정해주기
+	//course의 커버 페이지 수정해주기
 	@RequestMapping("/courseModify")
 	public String courseModify(Model model, HttpServletRequest request, int courseId, String cTitle, String cSummary, @RequestParam("summernote") String cContent) {
 		int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
@@ -222,7 +231,7 @@ public class CourseAndModuleController {
 		return courseCurver(model, request, courseId);
 	}
 
-//course의 커버 내용 삭제하기
+	//course의 커버 내용 삭제하기
 	@RequestMapping("/courseDelete")
 	public String courseDelete(Model model, HttpServletRequest request, int courseId) {
 		courseService.removeCourse(courseId);
@@ -230,7 +239,7 @@ public class CourseAndModuleController {
 		return mainAdminC(model, request);
 	}
 	
-//course의 커버 페이지 만들어주기
+	//course의 커버 페이지 만들어주기
 	@RequestMapping("/courseCreate")
 	public String courseCreate(Model model, HttpServletRequest request,String cTitle, String cSummary, @RequestParam("summernote") String cContent) {
 		int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
@@ -240,7 +249,5 @@ public class CourseAndModuleController {
 
 		return mainAdminC(model, request);
 	}
-
-
 	
 }

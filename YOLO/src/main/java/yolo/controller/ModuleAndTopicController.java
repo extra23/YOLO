@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import yolo.service.InterfaceCoModuleService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePagingService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.CoModuleAndModuleVO;
 import yolo.vo.ModuleAndTopicVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.PagingVO;
@@ -37,6 +39,16 @@ public class ModuleAndTopicController {
 	
 	@Autowired
 	private InterfacePagingService pagingService;
+	
+	@Autowired
+	private InterfaceCoModuleService coModuleService;
+	
+	private void checkCostudyModule(HttpServletRequest request, int moduleId) {
+		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
+		if(user != null) {
+
+		}
+	}
 
 	// module 페이지로 이동
 	@RequestMapping("/modulePage")
