@@ -257,7 +257,18 @@
 					</div>
 				</div>
 				
-				<input type="password" name="oldPwd" placeholder="현재 비밀번호">
+				<div>
+					<div class="form-group">
+						<input type="submit" value="Modify"
+							class="button_base b01_simple_rollover col-sm-5"
+							style="position: relative; left: 42%;">
+					</div>
+
+					<div class="form-group">
+						<div class="button_base b01_simple_rollover col-sm-5"
+							style="position: relative; left: 42%; margin-bottom: 10px;">Cancel</div>
+					</div>
+				</div>
 
 				<div>
 					<div class="form-group">
