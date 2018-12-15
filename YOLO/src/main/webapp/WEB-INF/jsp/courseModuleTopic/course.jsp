@@ -4,6 +4,13 @@
 <html>
 <head>
 	
+<style>
+
+	#body {background-color: #F7F7F7;}
+
+</style>	
+
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	
@@ -23,11 +30,11 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/courseHeaderJs.js"></script>
 	
 </head>
-<body>
+<body id="body">
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 
-	<div style="width: 80%; margin: 80px auto;">
+	<div style="width: 80%; margin: 80px auto;" id="coback">
 		
 		<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
 	
