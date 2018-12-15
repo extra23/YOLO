@@ -60,12 +60,13 @@ public class SoheeController {
 		
 		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
 		model.addAttribute("moduleMap", moduleMap);
-
+		
 		return "moduleListPage";
 	}
 	
 	@RequestMapping("/myModuleList")
 	public String myModuleList(Model model, int userId) {
+		
 		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
 		model.addAttribute("moduleMap", moduleMap);
 		return "myModuleList";
