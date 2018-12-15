@@ -55,15 +55,15 @@
 				<tbody>
 
 					<!-- mTitle에 a태그 넣어서 해당 module로 이동할 수 있게 하기  -->
-					<c:forEach var="topic" items="${topicList}">
+					<c:forEach var="topic" items="${topicList}" varStatus="status">
 						<tr>
 							<td colspan="2"><a id="a"
-								href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a><a
+								href="topicPage?moduleId=${topic.moduleId}&topicIndex=${status.index}">${topic.tTitle}</a><a
 								id="modifyAndDelete"
 								href="topicModifyDeleteForm?topicId=${topic.topicId}">[수정 및
 									삭제]</a></td>
-
 						</tr>
+							
 					</c:forEach>
 				</tbody>
 			</table>

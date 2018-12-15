@@ -127,7 +127,7 @@ tr {
 					<c:forEach var="topic" items="${topicSearchList}">
 						<tr>
 							<td><a id="finds" href="getUser.do?email=${topic.email}">${topic.nickName}</a></td>
-							<td><a id="finds" href="topicPage?topicId=${topic.topicId}">${topic.tTitle}</a></td>
+							<td><a id="finds" href="topicPage?moduleId=${topic.moduleId}&topicIndex=${topic.topicId}">${topic.tTitle}</a></td>
 							<td>${topic.tContent}</td>
 						</tr>
 					</c:forEach>
@@ -156,7 +156,7 @@ tr {
 					<c:forEach var="module" items="${moduleSearchList}">
 						<tr>
 							<td><a id="finds" href="getUser.do?email=${module.email}">${module.nickName}</a></td>
-							<td>${module.mTitle}</td>
+							<td><a id="finds" href="modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 							<td>${module.mSummary}</td>
 						</tr>
 					</c:forEach>
@@ -188,7 +188,7 @@ tr {
 					<c:forEach var="course" items="${courseSearchList}">
 						<tr>
 							<td><a id="finds" href="getUser.do?email=${course.email}">${course.nickName}</a></td>
-							<td>${course.cTitle}</td>
+							<td><a id="finds" href="coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
 							<td>${course.cSummary}</td>
 						</tr>
 					</c:forEach>

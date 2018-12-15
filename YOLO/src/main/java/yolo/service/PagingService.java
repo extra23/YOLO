@@ -26,18 +26,14 @@ public class PagingService implements InterfacePagingService {
 		return pagingDao.selectPaging(topic);
 	}
 
-	public List<CourseAndModuleVO> selectPagingM(CourseAndModuleVO courseAndModule) {
-		
-		return pagingDao.selectPagingM(courseAndModule);
-	}
 
 	public int selectTotalPagignM(int courseId) {
 		return pagingDao.selectTotalPagignM(courseId);
 	}
 
-	public List<ModuleVO> test(int courseId) {
+	public List<ModuleVO> selectPagingM(int courseId) {
 		
-		return pagingDao.test(courseId);
+		return pagingDao.selectPagingM(courseId);
 	}
 
 }

@@ -6,22 +6,18 @@
 <mapper namespace="yolo.dao.InterfacePagingMapper">
 
 	<select id="selectPaging" parameterType="Topic" resultType="Topic" >
-		select * from topic where moduleId = #{moduleId} order by udate DESC limit #{startIndex},#{cntPerPage}
+		select * from topic where moduleId = #{moduleId} limit #{startIndex},#{cntPerPage}
 	</select>
 	
 	<select id="selectTotalPaging" parameterType="Integer" resultType="Integer">
 		select count(*) from topic where moduleId = #{moduleId}
 	</select>
 	
-	<select id="selectPagingM" parameterType="CourseAndModuleVO" resultType="CourseAndModuleVO">
-		select * from module left join como on module.moduleId = como.moduleId where courseId=#{course.courseId} order by udate DESC
-	</select>
-
 	<select id="selectTotalPagignM" parameterType="Integer" resultType="Integer">
 		select count(*) from module join como on module.moduleId = como.moduleId where courseId = #{courseId};
 	</select>
 	
-	<select id="test" parameterType="Integer" resultType="Module">
+	<select id="selectPagingM" parameterType="Integer" resultType="Module">
 		select * from module join como on module.moduleId = como.moduleId where courseId = #{courseId};
 	</select>
 	

@@ -25,18 +25,14 @@ public class PagingDAO implements InterfacePagingDAO{
 		return total;
 	}
 
-	public List<CourseAndModuleVO> selectPagingM(CourseAndModuleVO courseAndModule) {
-		List<CourseAndModuleVO> moduleList= pagingMapper.selectPagingM(courseAndModule);
-		return moduleList;
-	}
 
 	public int selectTotalPagignM(int courseId) {
 		int total = pagingMapper.selectTotalPagignM(courseId);
 		return total;
 	}
 
-	public List<ModuleVO> test(int courseId) {
-		List<ModuleVO> moduleList = pagingMapper.test(courseId);
+	public List<ModuleVO> selectPagingM(int courseId) {
+		List<ModuleVO> moduleList = pagingMapper.selectPagingM(courseId);
 		return moduleList;
 	}
 

@@ -135,12 +135,11 @@ public class ModuleAndTopicController {
 				
 			int listCnt = pagingService.selectTotalPaging(moduleId);
 			PagingVO paging = new PagingVO(listCnt, curPage);
-				
+			
 			paging.setPageSize(10);
 			topic.setStartIndex(paging.getStartIndex());
 			topic.setCntPerPage(paging.getPageSize());
 			
-			System.out.println(paging);
 				
 			List<TopicVO> topicList = pagingService.selectPaging(topic);
 				

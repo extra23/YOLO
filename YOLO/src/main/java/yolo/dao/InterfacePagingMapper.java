@@ -14,11 +14,9 @@ public interface InterfacePagingMapper {
 	
 	public int selectTotalPaging(int moduleId);
 	
-	//모듈
-	public List<CourseAndModuleVO> selectPagingM(CourseAndModuleVO courseAndModule);
-	
+	//모듈	
 	public int selectTotalPagignM(int courseId);
 	
-	public List<ModuleVO> test(int courseId);
+	public List<ModuleVO> selectPagingM(int courseId);
 	
 }

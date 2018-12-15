@@ -17,6 +17,7 @@
 #MorCList{
 	float: left;
 	border: 1px solid lightgray;
+	border-radius: 1%;
 	width: 200px;
 	height: 700px;
 	font-family: 'Jua';

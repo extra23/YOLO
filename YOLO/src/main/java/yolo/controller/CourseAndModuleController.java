@@ -147,7 +147,7 @@ public class CourseAndModuleController {
 		courseAndModule.setUser(userService.readUserByUserId(course.getUserId()));
 		
 		// CourseAndModuleVO의 ModuleAndTopicList
-		List<ModuleVO> moduleList = pagingService.test(courseId);
+		List<ModuleVO> moduleList = pagingService.selectPagingM(courseId);
 		List<ModuleAndTopicVO> moduleAndTopicList = new ArrayList<ModuleAndTopicVO>();
 		for(int i = 0; i < moduleList.size(); i++) {
 			ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO();

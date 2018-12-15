@@ -3,7 +3,7 @@
 #formTable {
 	top: -660px;
 	left: 230px;
-	width: 800px;
+	width: 70%;
 	position: relative;
 	font-family: 'Jua';
 	
@@ -16,7 +16,7 @@
 #innerList {
 	top: -660px;
 	left: 230px;
-	width: 800px;
+	width: 70%;
 	position: relative;
 	font-family: 'Jua';
 }
