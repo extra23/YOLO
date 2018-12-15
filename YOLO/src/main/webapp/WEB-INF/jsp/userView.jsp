@@ -201,6 +201,14 @@
 		});
 
 	});
+	
+	
+	$(function(){
+		var imgWidthStr = $("#profileImage").css("width");
+		var imgWidth = Number(imgWidthStr.substring(0, imgWidthStr.indexOf("px")));
+		$("#profileImage").css("left", (125 - imgWidth/2) + "px");
+	});
+	
 </script>
 
 </head>
@@ -226,10 +234,15 @@
 					</colgroup>
 
 					<tr>
-						<td rowspan="4" style="padding-right: 50px; padding-left: 45px;">
-							<!-- style="width: 250px;" 있었음 --> <img
-							src="${pageContext.request.contextPath}/images/profileImageBasic.png"
-							style="width: 250px; height: 250px;">
+										<td rowspan="4" style="padding-right: 50px; padding-left: 45px;">	<!-- style="width: 250px;" 있었음 -->
+							<div style="width: 250px; height: 250px; border-radius: 50%; overflow: hidden;">
+								<c:if test="${not empty user.profileImage}">
+									<img id="profileImage" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="margin: auto; position: relative; width: auto; height: 250px;">
+								</c:if>
+								<c:if test="${empty user.profileImage}">
+									<img id="profileImage" src="${pageContext.request.contextPath}/images/profileImageBasic.png">
+								</c:if>
+							</div>
 						</td>
 						<td colspan="3"><span id="mail"> &lt; E-mail
 								:&nbsp;&nbsp; <span style="font-family: 'Jua', sans-serif">${user.email}</span>
