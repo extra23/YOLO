@@ -72,7 +72,7 @@
 		.form-control {
 			margin-bottom: 20px;
 		}
-		
+		/*  */
 		.button_base {
 			margin: 0;
 			border: 0;

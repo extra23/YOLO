@@ -68,7 +68,7 @@ body {
 	border: 1px solid gray;
 	font-size: 20px;
 }
-
+/*  */
 .category {
 	background-color: lightgray;
 }
