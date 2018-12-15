@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import yolo.dao.InterfaceCoModuleDAO;
 import yolo.vo.CoModuleAndModuleVO;
+import yolo.vo.CoModuleListVO;
 
 @Service("CoModuleService")
 public class CoModuleService implements InterfaceCoModuleService {
@@ -15,7 +16,14 @@ public class CoModuleService implements InterfaceCoModuleService {
 	private InterfaceCoModuleDAO coModuleDAO;
 
 	public List<CoModuleAndModuleVO> readJoinModule(int userId) {
+		
 		return coModuleDAO.selectJoinModule(userId);
+		
+	}
+
+	public List<CoModuleListVO> readcoModuleList(int userId) {
+		
+		return coModuleDAO.coModuleList(userId);
 	}
 
 }
