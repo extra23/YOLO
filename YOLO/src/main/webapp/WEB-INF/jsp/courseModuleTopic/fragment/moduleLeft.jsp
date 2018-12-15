@@ -47,7 +47,7 @@
 			<ul class="nav">
 				<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status">
 					<li style="text-indent: 1em;">
-						<a href="topicPage?moduleId=${param.moduleId}&topicIndex=${status.index}">${topic.tTitle}</a>
+						<a href="topicPage?moduleId=${param.moduleId}&topicId=${topic.topicId}">${topic.tTitle}</a>
 					</li>
 				</c:forEach>
 			</ul>
