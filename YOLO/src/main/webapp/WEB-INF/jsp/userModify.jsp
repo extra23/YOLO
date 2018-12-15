@@ -82,7 +82,7 @@
 			top: 50%;
 			margin-top: 10px;
 			/* margin-left: -23%; */
-			width: 200px;
+			width: 60%;
 			height: 50px;
 			text-align: center;
 			box-sizing: border-box;
@@ -235,7 +235,6 @@
 					<div class="col-sm-6">
 						<c:if test="${!empty qList}">
 							<select name="pwQId">
-								<option selected disabled="disabled">&nbsp;질문을 선택해주세요.</option>
 								<c:forEach var="pQuestion" items="${qList}">
 									<c:if test="${pQuestion.pwQId eq user.pwQId}">
 										<option selected value="${pQuestion.pwQId}">${pQuestion.question}</option>
@@ -257,20 +256,28 @@
 					</div>
 				</div>
 				
-				<input type="password" name="oldPwd" placeholder="현재 비밀번호">
-
+				<div class="form-group form-group-lg">
+					<label for="password" class="col-sm-3 control-label">현재 비밀번호</label>
+					<div class="col-sm-6">
+						<input type="password" class="form-control" name="oldPwd" placeholder="현재 비밀번호">
+					</div>
+				</div>
+				
 				<div>
 					<div class="form-group">
-						<input type="submit" value="Modify" class="button_base b01_simple_rollover col-sm-5" style="position: relative; left: 42%;">
+						<input type="submit" value="Modify"
+							class="button_base b01_simple_rollover col-sm-5"
+							style="position: relative; left: 20%;">
 					</div>
 
 					<div class="form-group">
-						<div class="button_base b01_simple_rollover col-sm-5" style="position: relative; left: 42%; margin-bottom: 10px;">Cancel</div>
+						<div class="button_base b01_simple_rollover col-sm-5"
+							style="position: relative; margin-bottom: 10px; left: 20%;">Cancel</div>
 					</div>
 				</div>
 
 			</form>
-
+//
 		</div>
 
 	</div>

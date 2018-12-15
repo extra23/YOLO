@@ -70,6 +70,8 @@ body {
 .category {
 	background-color: lightgray;
 }
+.cTitle{color: black;}
+.cTitle:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
