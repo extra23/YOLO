@@ -5,6 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+	
 <title>비밀번호 찾는 페이지</title>
 
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
@@ -16,7 +26,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 
 	<style type="text/css">
-		body {
+		#fn_pwBody {
 			background: #F7F7F7 no-repeat center center fixed;
 			-webkit-background-size: cover; 
 			-moz-background-size: cover; 
@@ -26,31 +36,30 @@
 		
 		.form-horizontal {
 			margin-left: 50px;
-			margin-top: 70px;
+			margin-top: 30px;
 		}
 		
 		.mainForm {
 			width: 100%;
+			background-color: #F7F7F7;
 			font-family: 'Jua', sans-serif;
 			text-align: center;
-			margin-top: 180px;
 		}
 		
 		.passwordForm {
-			width: 40%;
-			margin: 0 auto;
-			background-color: lightgray;
+			width:40%;
+			background-color: gainsboro;
+			display: inline-block;
+			margin-top: 30px;
+			margin-bottom: 30px;
 			border: 1px solid black;
 			border-radius: 10px;
-			padding-bottom : 20px;
 		}
 		
-		.form-group-lg {
-			margin-right: 20px !important;
-		}
 		
 		.btn {
-			margin-bottom: 10px;
+			font-family: 'Jua';
+			margin-left: 20px;
 		}
 		
 		.passwordForm p {
@@ -58,7 +67,7 @@
 			margin-top: 40px;
 		}
 		
-		select {
+		#pwQId {
 			width: 100%;
 			height: 40px;
 			border: 1px solid lightgray;
@@ -94,7 +103,8 @@
 	</script>
 
 </head>
-<body>
+<body id="fn_pwBody">
+	<jsp:include page="header3.jsp" />
 	<div class="mainForm">
 		<div class="passwordForm">
 			<p>Find Password</p>
@@ -122,7 +132,7 @@
 				<div class="form-group form-group-lg">
 					<label for="inputPassword3" class="col-sm-3 control-label">Password Answer</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="pwA" placeholder="Password Answer" name="pwA">
+						<input type="text" class="form-control" id="btn"  placeholder="Password Answer" name="pwA">
 					
 					</div>
 				</div>
@@ -131,17 +141,17 @@
 						
 						<button id="findBtn" class="btn btn-default btn-block btn-lg">비밀번호 찾기</button>
 					</div>		
-				</div>
+				
 				
 
 				<div class="col-sm-offset-2 col-sm-7">
-						<a href="mainBoard" class="btn btn-default btn-block btn-lg">Cancel</a>
+						<button  class="btn btn-default btn-block btn-lg" onclick="location.href='mainBoard'">Cancel</button>
 				</div>
-			
+			</div>
 			</div>
 			<!-- </form> -->
 		</div>
 	</div>
-
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
