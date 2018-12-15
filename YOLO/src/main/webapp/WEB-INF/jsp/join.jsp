@@ -81,8 +81,8 @@
 			top: 50%;
 			left: 50%;
 			margin-top: 10px;
-			margin-left: -23%;
-			width: 200px;
+			margin-left: -33%;
+			width: 60%;
 			height: 50px;
 			text-align: center;
 			box-sizing: border-box;
@@ -187,7 +187,7 @@
 
 				<div class="form-group form-group-lg">
 					<div class="profile">
-						<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;" title="프로필 이미지"> 
+						<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer; margin-right: 50px;" title="프로필 이미지"> 
 						<input id="input_img" name="file" type="file" style="display: none;" accept="image/*">
 					</div>
 					<div class="profileButton">
@@ -254,11 +254,11 @@
 				<div>
 					<div class="form-group">
 						<input type="submit" value="join"
-							class="button_base b01_simple_rollover col-sm-5">
+							class="button_base b01_simple_rollover col-sm-5 " style="position: relative;">
 					</div>
 
 					<div class="form-group">
-						<div class="button_base b01_simple_rollover col-sm-5">Cancel</div>
+						<div class="button_base b01_simple_rollover col-sm-5" style="position: relative; margin-bottom: 10px;">Cancel</div>
 					</div>
 				</div>
 

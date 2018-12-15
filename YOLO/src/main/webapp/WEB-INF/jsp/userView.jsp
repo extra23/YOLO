@@ -271,11 +271,12 @@
 								
 								<c:if test="${ coModuleAndModuleList.size()>0}">
 								<div class="mm dp_none">
-									<span id="not"><p
-											style="font-family: 'Jua', sans-serif; color: black;">
+									<span id="not">
+									<p style="font-family: 'Jua', sans-serif; color: black;">
 											&nbsp;&nbsp;* 미리보기는 최근 등록순으로 5개까지만 제공이 됩니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;추가
 											내용은 더보기를 클릭해주세요 :D
-										</p></span>
+										</p>
+									</span>
 									<ul>
 										<table class="table table-sm table-sm" id="cotable">
 											<thead>
@@ -400,9 +401,7 @@
 								<li class="co">
 									<div class="panel panel-default"
 										style="width: 200px; height: 131.17px">
-										<a href="#"
-											style="font-family: 'Jua', sans-serif; color: black;"
-											class="plus">[ 더 보 기 ]</a>
+										<a href="${pageContext.request.contextPath}/myCourseList?userId=${user.userId}" style="font-family: 'Jua', sans-serif; color: black;" class="plus">[ 더 보 기 ]</a>
 									</div>
 								</li>
 							</c:if>
@@ -444,9 +443,7 @@
 								<li class="mo">
 									<div class="panel panel-default"
 										style="width: 200px; height: 131.17px">
-										<a href="#"
-											style="font-family: 'Jua', sans-serif; color: black;"
-											class="plus">[ 더 보 기 ]</a>
+										<a href="${pageContext.request.contextPath}/myModuleList?userId=${user.userId}" style="font-family: 'Jua', sans-serif; color: black;" class="plus">[ 더 보 기 ]</a>
 									</div>
 								</li>
 							</c:if>
