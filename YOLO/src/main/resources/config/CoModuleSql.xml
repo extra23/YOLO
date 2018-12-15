@@ -4,17 +4,31 @@
 
 <mapper namespace="yolo.dao.InterfaceCoModuleMapper">
 
+	<insert id="insertCoModule" parameterType="CoModuleAndModule">
+		insert into costudy_module(moduleId, userId) values(#{moduleId}, #{userId})
+		<selectKey keyProperty="costudy_moduleId" resultType="Integer">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+
 	<select id="selectJoinModule" parameterType="Integer" resultType="CoModuleAndModule">
 		select c.costudy_moduleId, c.moduleId, c.userId, m.mTitle from costudy_module c join module m on c.moduleId=m.moduleId where c.userId=#{userId}
 	</select>
 	
 	<select id="coModuleList" parameterType="Integer" resultType="coModuleList" >
-	
 		select u.userId as writer, u.nickname, m.mTitle, c.cTitle, m.udate, csm.* from como cm 
 		right outer join costudy_module csm on cm.moduleId = csm.moduleId
         left outer join module m on m.moduleId = csm.moduleId
         left outer join course c on cm.courseId = c.courseId
         join user u on u.userId = m.userId where csm.userId=#{userId} order by m.udate DESC;
 	</select>
+	
+	<select id="selectCoModuleAndModuleByModuleIdAndUserId" parameterType="CoModuleAndModule" resultType="CoModuleAndModule">
+		select * from costudy_module where moduleId=#{moduleId} and userId=#{userId}
+	</select>
+	
+	<delete id="deleteCoModule" parameterType="Integer">
+		delete from costudy_module where costudy_moduleId=#{costudy_moduleId}
+	</delete>
 
 </mapper>

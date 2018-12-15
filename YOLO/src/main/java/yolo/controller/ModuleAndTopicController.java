@@ -43,21 +43,28 @@ public class ModuleAndTopicController {
 	@Autowired
 	private InterfaceCoModuleService coModuleService;
 	
-	private void checkCostudyModule(HttpServletRequest request, int moduleId) {
+	private void checkCostudyModule(ModelAndView mav, HttpServletRequest request, int moduleId) {
 		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
 		if(user != null) {
-
+			CoModuleAndModuleVO coModuleAndModule = coModuleService.readCoModuleAndModuleByModuleIdAndUserId(new CoModuleAndModuleVO(moduleId, user.getUserId()));
+			if(coModuleAndModule == null) {
+				mav.addObject("costudy_moduleId", 0);
+			}else {
+				mav.addObject("costudy_moduleId", coModuleAndModule.getCostudy_moduleId());
+			}
 		}
 	}
 
 	// module 페이지로 이동
 	@RequestMapping("/modulePage")
-	public ModelAndView getModulePage(int moduleId) {
+	public ModelAndView getModulePage(HttpServletRequest request, int moduleId) {
 		ModelAndView mav = new ModelAndView();
 		
 		ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 		List<TopicVO> topicList = topicService.readTopicListByModuleId(module.getModuleId());
 		UserVO user = userService.readUserByUserId(module.getUserId());
+		
+		checkCostudyModule(mav, request, moduleId);
 		
 		mav.addObject("moduleAndTopic", new ModuleAndTopicVO(module, user, topicList));
 		mav.setViewName("courseModuleTopic/module");
@@ -67,7 +74,7 @@ public class ModuleAndTopicController {
 	
 	// tTitle 클릭 시 topic 페이지로 이동
 	@RequestMapping("/topicPage")
-	public ModelAndView getTopicPage(int moduleId, int topicId) {
+	public ModelAndView getTopicPage(HttpServletRequest request, int moduleId, int topicId) {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -76,6 +83,8 @@ public class ModuleAndTopicController {
 		UserVO user = userService.readUserByUserId(module.getUserId());
 		
 		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO(module, user, topicList);
+		
+		checkCostudyModule(mav, request, moduleId);
 		
 		mav.addObject("moduleAndTopic", moduleAndTopic);
 		mav.addObject("topic", topicService.readTopicByTopicId(topicId));

@@ -20,16 +20,14 @@
 			<img id="newModule" src="${pageContext.request.contextPath}/images/plus.png" title="새로운 모듈 생성">		
 		</c:if>
 		
-		<%-- <c:if test="${not empty authUser}">
+		<c:if test="${not empty authUser}">
 			<c:if test="${costudy_moduleId eq 0}">
-				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${moduleAndTopic.user.userId})" >
 			</c:if>
 			<c:if test="${costudy_moduleId > 0}">
-				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부"  onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${moduleAndTopic.user.userId})">
 			</c:if>
-		</c:if> --%>
-		
-		<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${moduleAndTopic.user.userId})">
+		</c:if>
 		
 		<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
 			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="모듈 수정">

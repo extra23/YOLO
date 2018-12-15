@@ -19,6 +19,12 @@ public class CoModuleAndModuleVO {
 		this.userId = userId;
 		this.mTitle = mTitle;
 	}
+	
+	// CostudyController에서 사용하는 생성자
+	public CoModuleAndModuleVO(int moduleId, int userId) {
+		this.moduleId = moduleId;
+		this.userId = userId;
+	}
 
 	public int getCostudy_moduleId() {
 		return costudy_moduleId;

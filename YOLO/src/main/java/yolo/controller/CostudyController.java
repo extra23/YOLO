@@ -6,14 +6,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import yolo.service.CoCourseService;
+import yolo.service.CoModuleService;
 import yolo.service.InterfaceCoCourseService;
+import yolo.service.InterfaceCoModuleService;
 import yolo.vo.CoCourseAndCourseVO;
+import yolo.vo.CoModuleAndModuleVO;
 
 @Controller
 public class CostudyController {
 	
 	@Autowired
 	private InterfaceCoCourseService coCourseService;
+	
+	@Autowired
+	private InterfaceCoModuleService coModuleService;
 	
 	@ResponseBody
 	@RequestMapping("toggleCostudyCourse")
@@ -41,6 +47,23 @@ public class CostudyController {
 	@RequestMapping("toggleCostudyModule")
 	public String toggleCostudyModule(int moduleId, int userId) {
 		
+		// 해당 moduleId와 userId로 되어 있는 row가 없는지 확인
+		CoModuleAndModuleVO old_coModuleAndModule = coModuleService.readCoModuleAndModuleByModuleIdAndUserId(new CoModuleAndModuleVO(moduleId, userId));
+		
+		if(old_coModuleAndModule == null) {
+			// row가 없다면 추가
+			if(coModuleService.addCoModule(new CoModuleAndModuleVO(moduleId, userId)) > 0) {
+				return "add";
+			}else {
+				return null;
+			}
+		}else {
+			// row가 있다면 삭제
+			int costudy_moduleId = old_coModuleAndModule.getCostudy_moduleId();
+			coModuleService.removeCoModule(costudy_moduleId);
+			return "remove";
+		}
+
 	}
 
 }

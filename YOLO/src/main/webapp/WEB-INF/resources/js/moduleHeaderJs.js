@@ -15,7 +15,20 @@ $(function(){
 		console.log("moduleId : " + moduleId + "\nuserId : " + userId);
 		$.ajax({
 			url: "toggleCostudyModule",
-			
+			data: "moduleId=" + moduleId + "&userId=" + userId,
+			dataType: "text",
+			success: function(result){
+				if(result == "add"){
+					$("#costudy").attr("src", "images/incostudy.png");
+					alert("모듈의 공동공부에 참여되었습니다.");
+				}else{
+					$("#costudy").attr("src", "images/outcostudy.png");
+					alert("모듈의 공동공부에서 해체되었습니다.");
+				}
+			},
+			error: function(){
+				alert("모듈의 공동공부 참여 및 해제에 실패하였습니다.");
+			}
 		});
 	});
 	
