@@ -8,77 +8,152 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>관리자 : 사용자 강제 탈퇴</title>
 	
+	<!-- (공통) bootstrap -->
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-
+	
 	<!-- 글꼴 -->
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
 	
 	<style>
+	
+		@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 		
-		#contentBody {
-			background: #F7F7F7 no-repeat center center fixed;
-			-webkit-background-size: cover; 
-			-moz-background-size: cover; 
-			-o-background-size: cover; 
-			background-size: cover;
+		.mainForm {
+			width: 100%;
+			background-color: #F7F7F7;
+			font-family: 'Jua', sans-serif;
+			text-align: center;
 		}
 		
-		#content {
+		.deleteForm {
+			width: 60%;
+			background-color: gainsboro;
+			display: inline-block;
+			margin-top: 30px;
+			margin-bottom: 30px;
+			border: 1px solid black;
+			border-radius: 10px;
+		}
+		
+		/* .btn {
+			margin-bottom: 10px;
+		} */
+	
+		.deleteTitle {
+			margin-top: 40px;
+			font-size: 50px;
+		}
+		
+		.profileTitle {
+			padding-right: 60px;
+			padding-bottom: 10px;
+		}
+		
+		.form-control {
+			margin-bottom: 20px;
+		}
+		
+		.button_base {
+			margin: 0;
+			border: 0;
+			font-size: 25px;
+			position: relative;
+			top: 50%;
+			margin-top: 10px;
+			/* margin-left: -23%; */
+			width: 60%;
+			height: 50px;
 			text-align: center;
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-user-select: none;
+			cursor: default;
+			border-radius: 10px;
+		}
+		
+		.button_base:hover {
+			cursor: pointer;
+		}
+		
+		.b01_simple_rollover {
+			color: #000000;
+			border: #000000 solid 1px;
+			padding: 10px;
+			background-color: #ffffff;
+		}
+		
+		.b01_simple_rollover:hover {
+			color: #ffffff;
+			background-color: #000000;
 		}
 		
 	</style>
 
 </head>
-<body id="contentBody">
+<body>
 
 	<jsp:include page="header3.jsp"></jsp:include>
 	
-	<div id="content">
-	
-		<h1>회원 강제 탈퇴</h1>
+	<div class="mainForm">
 		
-		<div id="deleteForm">
+		<div class="deleteForm">
+		
+			<p class="deleteTitle">관리자 : 회원 강제 탈퇴</p>
 			
-			<form action="adminUserDelete" method="post">
+			<form class="form-horizontal" action="adminUserDelete" method="post" enctype="multipart/form-data">
 				
 				<input type="hidden" name="userId" value="${user.userId}">
 				
-				<p>
-					<img src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%;">
-				</p>
+				<div class="form-group form-group-lg">
+					<div class="profile">
+						<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;" title="프로필 이미지"> 
+						<input id="input_img" name="file" type="file" style="display: none;" accept="image/*">
+					</div>
+				</div>	
 				
-				<p>
-					회원 email : <input type="email" name="email" disabled="disabled" value="${user.email}">
-				</p>
+				<div class="form-group form-group-lg">
+					<label for="email" class="col-sm-3 control-label">Email</label>
+					<div class="col-sm-6">
+						<input type="email" class="form-control" name="email" readonly="readonly" value="${user.email}">
+					</div>
+				</div>
 			
-				<p>
-					회원 password : <input type="password" name="u_password" placeholder="User Password">
-					<c:if test="${errors.u_password}">
-						<span>회원 Password를 입력해주세요.</span>
-					</c:if>
-					<c:if test="${errors.invalidPassword}">
-						<span>잘못된 회원 비밀번호 입니다.</span>
-					</c:if>
-				</p>
+			
+				<div class="form-group form-group-lg">
+					<label for="password" class="col-sm-3 control-label">사용자의 비밀번호</label>
+					<div class="col-sm-6">
+						<input type="password"  class="form-control" name="oldPwd" placeholder="(*필수)현재 사용자 비밀번호">
+						<c:if test="${errors.u_password}"><span>현재 비밀번호를 입력해주세요</span></c:if>
+						<c:if test="${errors.invalidPassword}"><span>잘못된 비밀번호 입니다.</span></c:if>
+					</div>
+				</div>
 				
-				<p>
+				<div class="form-group form-group-lg">
+					<label for="confirmPassword" class="col-sm-3 control-label">관리자 비밀번호</label>
+					<div class="col-sm-6">
 					<input type="hidden" name="adminId" value="${authUser.userId}">
-					관리자  password : <input type="password" name="ad_password" placeholder="Admin Password">
-					<c:if test="${errors.ad_password}">
-						<span>관리자 Password를 입력해주세요.</span>
-					</c:if>
-					<c:if test="${errors.adminInvalidPassword}">
-						<span>잘못된 관리자 비밀번호 입니다.</span>
-					</c:if>
-				</p>
+							<input type="password"  class="form-control" name="ad_password" placeholder="(*필수)관리자 비밀번호">
+							<c:if test="${errors.ad_password}"><span>관리자 비밀번호를 입력해주세요</span></c:if>
+							<c:if test="${errors.adminInvalidPassword}"><span>잘못된 비밀번호 입니다.</span></c:if>
+					</div>
+				</div>
 				
-				<p>
-					<input type="submit" value="탈퇴">
-				</p>
+				<div>
+					<div class="form-group">
+						<input type="submit" value="탈퇴"
+							class="button_base b01_simple_rollover col-sm-5"
+							style="position: relative; left: 20%;">
+					</div>
+				</div>
+				
+				<div class="form-group">
+						<div class="button_base b01_simple_rollover col-sm-5"
+							style="position: relative; margin-bottom: 10px; left: 20%;">Cancel</div>
+					</div>
+				</div>
 				
 			</form>
 		
