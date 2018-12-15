@@ -51,8 +51,6 @@ public class adminController {
 		/*paging.setStartIndex(0);*/
 		paging.setPageSize(10);
 		
-		System.out.println(paging);
-		
 		List<UserVO> list = userService.readUserListByLimit(paging);
 		
 		model.addAttribute("list", list);
