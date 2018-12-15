@@ -127,7 +127,7 @@ tr {
 					<c:forEach var="topic" items="${topicSearchList}">
 						<tr>
 							<td><a id="finds" href="getUser.do?email=${topic.email}">${topic.nickName}</a></td>
-							<td><a id="finds" href="topicPage?moduleId=${topic.moduleId}&topicIndex=${topic.topicId}">${topic.tTitle}</a></td>
+							<td><a id="finds" href="topicPage?moduleId=${topic.moduleId}&topicId=${topic.topicId}">${topic.tTitle}</a></td>
 							<td>${topic.tContent}</td>
 						</tr>
 					</c:forEach>
