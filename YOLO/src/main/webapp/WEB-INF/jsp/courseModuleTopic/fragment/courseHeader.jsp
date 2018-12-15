@@ -33,7 +33,15 @@
 			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="코스 수정" onclick="courseHeader(${courseAndModule.course.courseId})">
 		</c:if>
 		
+		<c:if test="${not empty authUser}">
+			<c:if test="${removeHistoryId eq 0}">
+				<img id="see" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${history.historyId}, ${history.topic.topicId}, ${history.user.userId})">
+			</c:if>
+			<c:if test="${removeHistoryId > 0}">
+				<img id="history" src="${pageContext.request.contextPath}/images/see.png" title="봤어요" onclick="history(${history.historyId}, ${history.topic.topicId}, ${history.user.userId})">
+			</c:if>
+		</c:if>
 	</div>
-
+<!--  /dddd -->
 </body>
 </html>
