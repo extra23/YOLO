@@ -60,16 +60,14 @@ public class SoheeController {
 		
 		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
 		model.addAttribute("moduleMap", moduleMap);
-		
-		List<CourseListVO> courseListPage = courseService.courseListPage();
-		model.addAttribute("courseListPage",courseListPage);
+
 		return "moduleListPage";
 	}
 	
 	@RequestMapping("/myModuleList")
 	public String myModuleList(Model model, int userId) {
-		List<ModuleListVO> myModuleList = moduleService.myModuleList(userId);
-		model.addAttribute("myModuleList", myModuleList);
+		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
+		model.addAttribute("moduleMap", moduleMap);
 		return "myModuleList";
 	}
 	
