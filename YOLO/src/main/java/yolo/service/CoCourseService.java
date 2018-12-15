@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import yolo.dao.InterfaceCoCourseDAO;
 import yolo.vo.CoCourseAndCourseVO;
+import yolo.vo.CoCourseListVO;
 
 @Service("CoCourseService")
 public class CoCourseService implements InterfaceCoCourseService {

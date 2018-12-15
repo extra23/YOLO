@@ -3,6 +3,7 @@ package yolo.dao;
 import java.util.List;
 
 import yolo.vo.CoCourseAndCourseVO;
+import yolo.vo.CoCourseListVO;
 
 public interface InterfaceCoCourseDAO {
 	

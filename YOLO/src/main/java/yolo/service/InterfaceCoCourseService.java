@@ -3,6 +3,7 @@ package yolo.service;
 import java.util.List;
 
 import yolo.vo.CoCourseAndCourseVO;
+import yolo.vo.CoCourseListVO;
 
 public interface InterfaceCoCourseService {
 	

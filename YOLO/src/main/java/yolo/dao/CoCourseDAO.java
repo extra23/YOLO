@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import yolo.vo.CoCourseAndCourseVO;
+import yolo.vo.CoCourseListVO;
 
 @Repository("CoCourserDAO")
 public class CoCourseDAO implements InterfaceCoCourseDAO {
