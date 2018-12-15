@@ -26,7 +26,7 @@
 		<c:forEach var="module" items="${moduleList}">
 			<a href="moduleCurver.do?moduleId=${module.moduleId}" class="list-group-item"> ${module.mTitle}</a>
 		</c:forEach>
-		</div>>
+		</div>
 	</div>
 	<div id="Curver">
 	<jsp:include page="TopicList.jsp"></jsp:include>

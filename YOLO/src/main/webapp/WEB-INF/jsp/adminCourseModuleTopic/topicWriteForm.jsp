@@ -76,7 +76,18 @@
 		<!-- 수정해주세요 -->
 		<form name="writeForm" action="topicWirte" method="post">
 			<div id="formTable">
-				<input type="hidden" name="moduleId" value="${module.moduleId}">			
+			모듈 선택<div class="form-group form-group-lg">
+					
+					<div class="col-sm-6">
+							<select name="selectModule" id="selectModule">
+								<option selected>&nbsp;모듈을 선택해 주세요</option>
+								<c:forEach var="modules" items="${moduleList}" varStatus="status">
+									<option value="${modules.moduleId}">${modules.mTitle}</option>
+								</c:forEach>
+							</select>
+					</div>
+				</div>	 		
+				<br>
 				토픽 제목 <input type="text" name="tTitle" size="100"> <br> <br>
 				토픽 내용
 				<textarea id="summernote" name="summernote"></textarea>
