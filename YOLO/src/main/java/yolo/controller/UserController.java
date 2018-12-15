@@ -26,6 +26,7 @@ import yolo.exception.DuplicatedPasswordException;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.service.DeleteService;
+import yolo.service.InterfaceCoCourseService;
 import yolo.service.InterfaceCoModuleService;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceEmailService;
@@ -33,6 +34,8 @@ import yolo.service.InterfaceLoginService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.CoCourseAndCourseVO;
+import yolo.vo.CoCourseListVO;
 import yolo.vo.CoModuleAndModuleVO;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleVO;
@@ -62,6 +65,9 @@ public class UserController {
 	
 	@Autowired
 	private InterfaceCoModuleService coModuleService;
+	
+	@Autowired
+	private InterfaceCoCourseService coCourseService;
 	
 	@Autowired
 	private InterfaceEmailService emailService;
@@ -320,11 +326,14 @@ public class UserController {
 		List<CourseVO> courseList = courseService.readCourseByUserId(user.getUserId());
 		// List<CoModuleAndModule> 객체 (해당 user가 참여한 coStudy_Module 객체와 Module 객체를 조인한 CoModuleAndModule 객체를 리스트 형태로 불러옴)
 		List<CoModuleAndModuleVO> coModuleAndModuleList = coModuleService.readJoinModule(userId);
+		// List<CoCourseAndCourse> 객체 (해당 user가 참여한 coStudy_Course 객체와 Course 객체를 조인한 CoCourseAndCourse 객체를 리스트 형태로 불러옴)
+		List<CoCourseAndCourseVO> coCourseAndCourseList = coCourseService.readJoinCourse(userId);
 		
 		mav.addObject("user", user);
 		mav.addObject("moduleList", moduleList);
 		mav.addObject("courseList", courseList);
 		mav.addObject("coModuleAndModuleList", coModuleAndModuleList);
+		mav.addObject("coCourseAndCourseList",coCourseAndCourseList);
 		mav.setViewName("userView");
 		
 		return mav;
