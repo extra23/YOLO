@@ -201,15 +201,13 @@ public class ModuleAndTopicController {
 		
 	//topicWriteForm
 		@RequestMapping("topicWriteForm")
-		public String topicWriteForm(Model model,HttpServletRequest request, int moduleId) {
+		public String topicWriteForm(Model model,HttpServletRequest request) {
 			
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
 			
-			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 			
 			model.addAttribute("moduleList",moduleList);
-			model.addAttribute("module",module);
 			return "adminCourseModuleTopic/moduleAndCourse3";
 		}
 		
