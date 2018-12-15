@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import yolo.service.CourseService;
+import yolo.service.InterfaceCoCourseService;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePagingService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
+import yolo.vo.CoCourseAndCourseVO;
 import yolo.vo.CourseAndModuleVO;
 import yolo.vo.CourseVO;
 import yolo.vo.ModuleAndTopicVO;
@@ -43,6 +45,9 @@ public class CourseAndModuleController {
 	
 	@Autowired
 	private InterfacePagingService pagingService;
+	
+	@Autowired
+	private InterfaceCoCourseService coCourseService;
 	
 	private CourseAndModuleVO makeObj(int courseId) {
 		
@@ -73,11 +78,21 @@ public class CourseAndModuleController {
 	}
 
 	@RequestMapping("coursePage")
-	public ModelAndView getCoursePage(int courseId) {
+	public ModelAndView getCoursePage(HttpServletRequest request, int courseId) {
 		
 		ModelAndView mav = new ModelAndView();
-		
 		mav.addObject("courseAndModule", makeObj(courseId));
+		
+		UserVO user = (UserVO)request.getSession().getAttribute("authUser");
+		if(user != null) {
+			CoCourseAndCourseVO coCourseAndCourse = coCourseService.readCoCourseByCourseIdAndUserId(new CoCourseAndCourseVO(courseId, user.getUserId()));
+			if(coCourseAndCourse == null) {
+				mav.addObject("costudy_courseId", 0);
+			}else {
+				mav.addObject("costudy_courseId", coCourseAndCourse.getCostudy_courseId());
+			}
+		}
+		
 		mav.setViewName("courseModuleTopic/course");
 		
 		return mav;
