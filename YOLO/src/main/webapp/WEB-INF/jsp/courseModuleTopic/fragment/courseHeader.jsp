@@ -21,7 +21,12 @@
 		</c:if>
 		
 		<c:if test="${not empty authUser}">
-			<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+			<c:if test="${costudy_courseId eq 0}">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+			</c:if>
+			<c:if test="${costudy_courseId > 0}">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+			</c:if>
 		</c:if>
 		
 		<c:if test="${authUser.userId eq courseAndModule.user.userId}">
