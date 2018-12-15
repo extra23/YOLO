@@ -24,7 +24,7 @@
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	
-	<div style="width: 80%; margin: 80px auto;">
+	<div style="width: 80%; margin: 80px auto; min-height: 461px;">
 	
 		<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
 	

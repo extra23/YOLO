@@ -34,7 +34,7 @@
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 
-	<div style="width: 80%; margin: 80px auto;" id="coback">
+	<div style="width: 80%; margin: 80px auto; min-height: 461px;" id="coback">
 		
 		<jsp:include page="fragment/courseHeader.jsp"></jsp:include>
 	
