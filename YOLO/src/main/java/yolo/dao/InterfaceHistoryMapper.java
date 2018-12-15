@@ -7,11 +7,13 @@ import yolo.vo.HistoryVO;
 @AnnotationYoloMapper
 public interface InterfaceHistoryMapper {
 
-	public void insertHistory(HistoryVO history);
+	public int insertHistory(HistoryVO history);
 	
 	public List<HistoryVO> selectHistoryByUserId(int userId);
 	
 	public HistoryVO selectHistoryByhistoryId(int historyId);
+	
+	public HistoryVO selectHistoryByUserId(HistoryVO history);
 	
 	public List<HistoryVO> selectHistoryList();
 	

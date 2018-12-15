@@ -6,15 +6,17 @@ import yolo.vo.HistoryVO;
 
 public interface InterfaceHistoryService {
 
-	public void addHistory(HistoryVO history);
+	public int addHistory(HistoryVO history);
 	
 	public List<HistoryVO> readHistoryByUserId(int userId);
 	
 	public HistoryVO readHistoryByHistoryId(int historyId);
 	
+	public HistoryVO readHistoryByUserId(HistoryVO history);
+	
 	public List<HistoryVO> readHistoryList();
 	
-	public void removeHistory(int historyId);
+	public void removeHistory(int removeHistoryId);
 	
 	public List<HistoryVO> historyListPage();
 	

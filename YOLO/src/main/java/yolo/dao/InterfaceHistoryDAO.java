@@ -6,11 +6,13 @@ import yolo.vo.HistoryVO;
 
 public interface InterfaceHistoryDAO {
 	
-	public void insertHistory(HistoryVO history);
+	public int insertHistory(HistoryVO history);
 	
 	public List<HistoryVO> selectHistoryByUserId(int userId);
 	
 	public HistoryVO selectHistoryByHistoryId(int historyId);
+	
+	public HistoryVO selectHistoryByUserId(HistoryVO history);
 	
 	public List<HistoryVO> selectHistoryList();
 	

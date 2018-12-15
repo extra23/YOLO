@@ -14,8 +14,8 @@ public class HistoryService implements InterfaceHistoryService{
 	@Autowired
 	InterfaceHistoryDAO historyDAO;
 
-	public void addHistory(HistoryVO history) {
-		historyDAO.insertHistory(history);	
+	public int addHistory(HistoryVO history) {
+		return historyDAO.insertHistory(history);	
 	}
 
 	public List<HistoryVO> readHistoryByUserId(int userId) {
@@ -26,6 +26,9 @@ public class HistoryService implements InterfaceHistoryService{
 		return historyDAO.selectHistoryByHistoryId(historyId);
 	}
 
+	public HistoryVO readHistoryByUserId(HistoryVO history) {
+		return historyDAO.selectHistoryByUserId(history);
+	}
 	public List<HistoryVO> readHistoryList() {
 		return historyDAO.selectHistoryList();
 	}

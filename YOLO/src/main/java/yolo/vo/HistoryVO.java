@@ -8,7 +8,7 @@ import org.apache.ibatis.type.Alias;
 public class HistoryVO {
 	
 	private int historyId;
-	private int topciId;
+	private int topicId;
 	private int userId;
 	private String nickName;
 	private String tTitle;
@@ -24,6 +24,13 @@ public class HistoryVO {
 		this.udate = udate;
 	}
 	
+	public HistoryVO(int historyId, int topicId, int userId) {
+		super();
+		this.historyId = historyId;
+		this.topicId = topicId;
+		this.userId = userId;
+	}
+	
 	
 	
 	public int getHistoryId() {
@@ -34,12 +41,12 @@ public class HistoryVO {
 		this.historyId = historyId;
 	}
 
-	public int getTopciId() {
-		return topciId;
+	public int getTopidId() {
+		return topicId;
 	}
 
-	public void setTopciId(int topciId) {
-		this.topciId = topciId;
+	public void setTopicId(int topidId) {
+		this.topicId = topicId;
 	}
 
 	public int getUserId() {

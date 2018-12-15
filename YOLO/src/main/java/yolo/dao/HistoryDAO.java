@@ -13,8 +13,8 @@ public class HistoryDAO implements InterfaceHistoryDAO{
 	@Autowired
 	InterfaceHistoryMapper historyMapper;
 
-	public void insertHistory(HistoryVO history) {
-		historyMapper.insertHistory(history);
+	public int insertHistory(HistoryVO history) {
+		return historyMapper.insertHistory(history);
 		
 	}
 
@@ -26,6 +26,11 @@ public class HistoryDAO implements InterfaceHistoryDAO{
 	public HistoryVO selectHistoryByHistoryId(int historyId) {
 		HistoryVO history = historyMapper.selectHistoryByhistoryId(historyId);
 		return history;
+	}
+	
+	public HistoryVO selectHistoryByUserId(HistoryVO history) {
+		HistoryVO historyy = historyMapper.selectHistoryByUserId(history);
+		return historyy;
 	}
 
 	public List<HistoryVO> selectHistoryList() {

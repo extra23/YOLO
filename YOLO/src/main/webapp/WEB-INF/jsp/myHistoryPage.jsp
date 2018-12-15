@@ -27,10 +27,46 @@
 		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
 	</style>
 	
+	<script>
+	var historyId = 0;
+	var topicId = 0;
+	var userId = 0;
+	
+	function history(historyId, userId, topicId){
+		this.historyId = historyId;
+		this.userId = userId;
+		this.topicId = topicId;
+	}
+	
+	$(function(){
+		// 눈 아이콘 클릭시 봤어요 눈 아이콘으로 바뀜
+		$("#see").click(function(){
+			$.ajax({
+				url: "toggleHistory",
+				data:"&historyId=" + historyId + "&userId=" + userId + "&topicId" + topicId,
+				success: function(result){
+					if(Number(result) == "add"){
+						alert("봤어요");
+						$("#see").attr("src", "imges/see.png");
+					}else{
+						alert("안봤어요");
+						$("#see").attr("src", "imges/notSee.png");
+					}
+				},
+				error : function(){
+					alert("봐썽요 실패");
+				}
+			})
+		});
+	});
+	
+	
+	</script>
+	
 </head>
 <body>
 	
-	<%-- <jsp:include page="header3.jsp"></jsp:include> --%>
+	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<h2 class="text-center">봤어요</h2>
 	
@@ -61,25 +97,38 @@
 	</table>
 	
 	
-	<div id="pagination">
-		<c:if test="${userPage.totalPages > 10 && not(userPage.currentPage eq 1)}">
-			<a href="mUserList?pageNo=1">&lt;&lt;</a>
-		</c:if>
-		<c:if test="${userPage.startPage > 5}">
-			<a href="mUserList?pageNo=${userPage.startPage - 5}">&lt;</a>
-		</c:if>
-		<c:forEach var="pageNo" begin="${userPage.startPage}" end="${userPage.endPage}">
-			<a href="mUserList?pageNo=${pageNo}">[${pageNo}]</a>
-		</c:forEach>
-		<c:if test="${userPage.endPage > 5}">
-			<a href="${userPage.startPage + 5}">&gt;</a>
-		</c:if>
-		<c:if test="${userPage.totalPages > 10 && not(userPage.currentPage eq userPage.endPage)}">
-			<a href="mUserList?pageNo=${userPage.totalPages}">&gt;&gt;</a>
-		</c:if>
-	</div>
+	<nav>
+				<ul class="pagination">
+					<c:if test="${paging.endPage >1 }">
+						<c:if test="${paging.curPage ne 1}">
+							<li><a href="#" aria-label="Previous"
+								onclick="fn_paging(${paging.prevPage})"> <span
+									aria-hidden="true">&laquo;</span>
+							</a></li>
+						</c:if>
+						<c:forEach var="pageNum" begin="${paging.startPage}"
+							end="${paging.endPage}">
+							<c:choose>
+								<c:when test="${pageNum eq paging.curPage}">
+									<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
+								</c:when>
+								<c:otherwise>
+									<li><a href="#" onclick="fn_paging(${pageNum})">${pageNum}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						<c:if
+							test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
+							<li><a href="#" aria-label="Next"
+								onclick="fn_paging(${paging.nextPage})"> <span
+									aria-hidden="true">&raquo;</span>
+							</a></li>
+						</c:if>
+					</c:if>
+				</ul>
+			</nav>
 
-	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+	<jsp:include page="footer.jsp"></jsp:include>
 	
 </body>
 </html>
