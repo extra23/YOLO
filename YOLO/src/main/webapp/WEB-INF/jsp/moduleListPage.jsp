@@ -72,6 +72,8 @@ body {
 .category {
 	background-color: lightgray;
 }
+.mTitle{color: black;}
+.mTitle:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -83,7 +85,7 @@ body {
 			</div>
 			<div class="mContent">
 				<form>
-					<table class="table table-striped"
+					<table class="table table-striped table-hover"
 						style="border: 1px solid white !important">
 						<thead>
 							<tr class="category" style="border: 1px solid white !important">
@@ -98,7 +100,7 @@ body {
 							<c:forEach var="module" items="${moduleMap.values()}" varStatus="status">
 								<tr>
 									<td>${status.count}</td>
-									<td>${module.mTitle}</td>
+									<td><a class="mTitle" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 									<td>${module.nickName}</td>
 									<td>${module.udate}</td>
 									<td>

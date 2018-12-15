@@ -70,6 +70,8 @@ body {
 .category {
 	background-color: lightgray;
 }
+.mTitle{color: black;}
+.mTitle:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -81,23 +83,28 @@ body {
 			</div>
 			<div class="mContent">
 				<form>
-					<table class="table table-striped"
+					<table class="table table-striped table-hover"
 						style="border: 1px solid white !important">
 						<thead>
 							<tr class="category" style="border: 1px solid white !important">
-								<td width="10%">공개/비공개</td>
-								<td width="20%">제목</td>
+								<td width="5%">번호</td>
+								<td width="30%">제목</td>
 								<td width="30%">연관 코스</td>
+								<td width="5%">공개/비공개</td>
 							</tr>
 						</thead>
 						<tbody class="table-hover">
-							<c:forEach var="module" items="${myModuleList}">
+							<c:forEach var="module" items="${moduleMap.values()}"
+								varStatus="status">
 								<tr>
-									<td>체크 박스</td>
-									<td>${module.mTitle}</td>
+									
+									<td>${status.count}</td>
+									<td><a class="mTitle" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 									<td>
-										${module.cTitle}
-									</td>
+									<c:forEach var="cTitle" items="${module.cTitleList}">
+										${cTitle} 
+									</c:forEach></td>
+									<td>체크박스</td>
 								</tr>
 							</c:forEach>
 						</tbody>

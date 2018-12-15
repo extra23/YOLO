@@ -72,6 +72,8 @@ body {
 .category {
 	background-color: lightgray;
 }
+.cTitle{color: black;}
+.cTitle:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -83,7 +85,7 @@ body {
 			</div>
 			<div class="mContent">
 				<form>
-					<table class="table table-striped"
+					<table class="table table-striped table-hover"
 						style="border: 1px solid white !important">
 						<thead>
 							<tr class="category" style="border: 1px solid white !important">
@@ -97,7 +99,7 @@ body {
 							<c:forEach var="course" items="${courseListPage}">
 								<tr>
 									<td>${course.courseId}</td>
-									<td>${course.cTitle}</td>
+									<td><a class="cTitle" href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
 									<td>${course.nickName}</td>
 									<td>
 									<c:forEach var="module" items="${module}">
