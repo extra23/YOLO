@@ -257,6 +257,13 @@
 					</div>
 				</div>
 				
+				<div class="form-group form-group-lg">
+					<label for="password" class="col-sm-3 control-label">현재 비밀번호</label>
+					<div class="col-sm-6">
+						<input type="password" class="form-control" name="oldPwd" placeholder="현재 비밀번호">
+					</div>
+				</div>
+				
 				<div>
 					<div class="form-group">
 						<input type="submit" value="Modify"
