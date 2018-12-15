@@ -22,5 +22,15 @@
 	<delete id="deleteCoCourse" parameterType="Integer">
 		delete from costudy_course where costudy_courseId=#{costudy_courseId}
 	</delete>
+	
+		
+	<select id="coCourseList" parameterType="Integer" resultType="CoCourseList">
+	
+		select u.userId as writer, u.nickname, m.mTitle, c.cTitle, c.udate, cc.* from como cm 
+		right outer join costudy_course cc on cm.courseId = cc.courseId
+        left outer join module m on m.moduleId = cm.moduleId
+        join course c on cc.courseId = c.courseId
+        join user u on u.userId = c.userId where cc.userId=#{userId} group by c.cTitle order by c.udate DESC;
+	</select>
 
 </mapper>

@@ -14,4 +14,6 @@ public interface InterfaceCoCourseService {
 
 	public void removeCoCourse(int costudy_courseId);
 	
+	public List<CoCourseListVO> readcoCourseList(int userId);
+	
 }

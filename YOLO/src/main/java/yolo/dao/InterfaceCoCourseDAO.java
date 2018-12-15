@@ -14,4 +14,7 @@ public interface InterfaceCoCourseDAO {
 	
 	public void deleteCoCourse(int costudy_courseId);
 	
+	public List<CoCourseListVO> coCourseList(int userId);
+
+	
 }

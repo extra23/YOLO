@@ -30,5 +30,10 @@ public class CoCourseService implements InterfaceCoCourseService {
 	public void removeCoCourse(int costudy_courseId) {
 		coCourseDAO.deleteCoCourse(costudy_courseId);
 	}
+	
+	public List<CoCourseListVO> readcoCourseList(int userId) {
+		// TODO Auto-generated method stub
+		return coCourseDAO.coCourseList(userId);
+	}
 
 }

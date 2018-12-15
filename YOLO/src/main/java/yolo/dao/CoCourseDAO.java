@@ -30,4 +30,9 @@ public class CoCourseDAO implements InterfaceCoCourseDAO {
 		coCourseMapper.deleteCoCourse(costudy_courseId);
 	}
 	
+	public List<CoCourseListVO> coCourseList(int userId) {
+		// TODO Auto-generated method stub
+		return coCourseMapper.coCourseList(userId);
+	}
+	
 }
