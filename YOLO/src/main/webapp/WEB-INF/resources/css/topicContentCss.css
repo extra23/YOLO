@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+
+#topicContent {
+	border: 1px solid black;
+	float: right;
+	width: 79%;
+	padding: 10px;
+}
+
+#tContent {
+	padding: 20px;
+}

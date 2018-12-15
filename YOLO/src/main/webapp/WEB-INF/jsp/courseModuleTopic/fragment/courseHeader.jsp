@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 </head>
@@ -12,7 +15,7 @@
 	<div id="courseHeader">
 		
 		<div id="courseTitle">
-			<a href="coursePage?courseId=${courseAndModule.course.courseId}">${courseAndModule.course.cTitle}</a>
+			<a href="coursePage?courseId=${courseAndModule.course.courseId}" style="font-family: 'Gamja Flower', cursive;font-weight: bold;color: white;">&lt; ${courseAndModule.course.cTitle} &gt;</a>
 			<div id="courseSummary">${courseAndModule.course.cSummary}</div>
 		</div>
 

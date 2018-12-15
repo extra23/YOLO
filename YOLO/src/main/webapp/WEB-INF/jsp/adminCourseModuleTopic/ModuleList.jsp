@@ -43,13 +43,13 @@
 		</ul>
 		<br>
 		<div id="innerList" style="display: block;">
-			<h3>토픽 목록</h3>
+			<h3>모듈 목록</h3>
 			<!-- 토픽목록 가져오는 쿼리.. -->
 			<hr>
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>토픽 제목</th>
+						<th>모듈 제목</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -14,6 +14,7 @@
 	<!-- CSS & Javascript(jQuery) -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleHeaderCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleLeftCss.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/topicContentCss.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/thumbnailJs.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/moduleHeaderJs.js"></script>
 	
@@ -22,7 +23,7 @@
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	
-	<div style="width: 80%; margin: 80px auto;">
+	<div style="width: 80%; margin: 80px auto; min-height: 461px;">
 	
 		<jsp:include page="fragment/moduleHeader.jsp"></jsp:include>
 	

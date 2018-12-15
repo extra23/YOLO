@@ -1,5 +1,9 @@
 @charset "EUC-KR";
 
+body{
+	background: #F7F7F7 no-repeat center center fixed;
+}
+
 #mAcdiv{
 	margin-left: auto;
 	margin-right: auto;

@@ -85,6 +85,7 @@
 <body>
 
 	<div class="mainDiv">
+	
 		<ul id="curverListUl" class="nav nav-tabs">
 			<li role="presentation" id="curverBtn" class="active"><a
 				href="#">Curver</a></li>
@@ -123,6 +124,7 @@
 	
 
 	</div> 
+	
 	<script>
 		$(function(){
 			//모듈의 삭제시 비밀번호 확인
@@ -134,7 +136,7 @@
 				if(answer==password){
 					location.href="moduleDelete?moduleId="+num
 				}else{
-					alert("비밀번호가 틀렸습니다!");
+					alert("비밀번호를 잘못 입력했습니다.")
 				}
 			});
 		
