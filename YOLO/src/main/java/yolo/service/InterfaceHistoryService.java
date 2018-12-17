@@ -8,6 +8,8 @@ public interface InterfaceHistoryService {
 
 	public int addHistory(HistoryVO history);
 	
+	public HistoryVO readHistoryByTopicIdAndUserId(HistoryVO history);
+	
 	public List<HistoryVO> readHistoryByUserId(int userId);
 	
 	public HistoryVO readHistoryByHistoryId(int historyId);

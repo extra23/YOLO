@@ -9,6 +9,8 @@ public interface InterfaceHistoryMapper {
 
 	public int insertHistory(HistoryVO history);
 	
+	public HistoryVO selectHistoryByTopicIdAndUserId(HistoryVO history);
+	
 	public List<HistoryVO> selectHistoryByUserId(int userId);
 	
 	public HistoryVO selectHistoryByhistoryId(int historyId);

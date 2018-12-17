@@ -8,6 +8,8 @@ public interface InterfaceHistoryDAO {
 	
 	public int insertHistory(HistoryVO history);
 	
+	public HistoryVO selectHistoryByTopicIdAndUserId(HistoryVO history);
+	
 	public List<HistoryVO> selectHistoryByUserId(int userId);
 	
 	public HistoryVO selectHistoryByHistoryId(int historyId);

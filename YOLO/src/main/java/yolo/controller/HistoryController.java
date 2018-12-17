@@ -30,14 +30,13 @@ public class HistoryController {
 	// 눈 아이콘 클릭시 봤어요, 안봤어요
 	@ResponseBody
 	@RequestMapping("toggleHistory")
-	public String addToggleHistory(int historyId, int topicId, int userId) {
+	public String addToggleHistory(int topicId, int userId) {
 		
-		HistoryVO old_history = historyService.readHistoryByUserId(new HistoryVO(historyId, topicId, userId));
-		
+		HistoryVO old_history = historyService.readHistoryByTopicIdAndUserId(new HistoryVO(topicId, userId));
 		
 		if(old_history == null) {
 			// row가 없다면 추가
-			if(historyService.addHistory(new HistoryVO(historyId, topicId, userId)) > 0) {
+			if(historyService.addHistory(new HistoryVO(topicId, userId)) > 0) {
 				return "add";
 			}else {
 				// ajax에서 강제로 error로 보내기
