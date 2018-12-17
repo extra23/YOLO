@@ -71,6 +71,7 @@
 		<url-pattern>/modifyUser</url-pattern>
 		<url-pattern>/deleteUser</url-pattern>
 		<url-pattern>/moduleAndCourse</url-pattern>
+		<url-pattern>/adminUserList</url-pattern><!--  -->
 	</filter-mapping>
   
 </web-app>
