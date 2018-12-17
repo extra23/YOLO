@@ -7,6 +7,7 @@
 <style>
 
 	#body {background-color: #F7F7F7;}
+	#body * {font-family: 'a찐빵M'}
 
 </style>	
 

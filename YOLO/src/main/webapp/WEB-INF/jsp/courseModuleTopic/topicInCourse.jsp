@@ -21,8 +21,12 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/courseHeaderJs.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/historyJs.js"></script>	
 	
+	<style>
+		#body {font-family: 'a찐빵M'}
+	</style>
+	
 </head>
-<body>
+<body id="body">
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	

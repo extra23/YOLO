@@ -19,8 +19,12 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/thumbnailJs.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/moduleHeaderJs.js"></script>
 	
+	<style>
+		#body {font-family: 'a찐빵M'}
+	</style>
+	
 </head>
-<body>
+<body id="body">
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	

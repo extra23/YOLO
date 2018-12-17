@@ -19,8 +19,12 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleInCourseContentCss.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/courseHeaderJs.js"></script>
 	
+	<style>
+		#body {font-family: 'a찐빵M'}
+	</style>
+	
 </head>
-<body>
+<body id="body">
 
 	<jsp:include page="../header3.jsp"></jsp:include>
 	

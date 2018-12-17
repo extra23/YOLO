@@ -88,6 +88,7 @@ public class adminController {
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
 		List<UserVO> userList = userService.readUserList();
+		List<PwdQuestionVO> qList = pwdQuestionService.readQList();
 		
 		/*if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
 			newPwd1 = oldPwd;
@@ -105,6 +106,7 @@ public class adminController {
 		if(oldPwd == null || oldPwd.isEmpty()) {
 			errors.put("oldPwd", true);
 			mv.addObject("errors", errors);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			req.setAttribute("user", user);
 			return mv;
@@ -113,6 +115,7 @@ public class adminController {
 		if (ad_password == null || ad_password.isEmpty()) {
 			errors.put("ad_password", true);
 			mv.addObject("errors", errors);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			req.setAttribute("user", user);
 			System.out.println(ad_password + "ad_password");
@@ -123,6 +126,7 @@ public class adminController {
 			mv.addObject("errors", errors);
 			mv.addObject("user", user);
 			mv.addObject("list", userList);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			return mv;
 		}
@@ -134,6 +138,7 @@ public class adminController {
 		} catch (UserNotFoundException e) {
 			errors.put("userNotFound", true);
 			mv.addObject("errors", errors);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			req.setAttribute("user", user);
 			System.out.println("userNotFound");
@@ -141,6 +146,7 @@ public class adminController {
 		} catch (DuplicatedPasswordException e) {
 			errors.put("duplicatedPassword", true);
 			mv.addObject("errors", errors);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			req.setAttribute("user", user);
 			System.out.println("duplicatedPassword");
@@ -148,6 +154,7 @@ public class adminController {
 		} catch (InvalidPasswordException e) {
 			errors.put("invalidPassword", true);
 			mv.addObject("errors", errors);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			req.setAttribute("user", user);
 			System.out.println("invalidPassword");
@@ -155,6 +162,7 @@ public class adminController {
 		}catch(AdminInvalidPasswordException e) {
 			errors.put("adminInvalidPassword", true);
 			mv.addObject("errors", errors);
+			mv.addObject("qList", qList);
 			mv.setViewName("adminUserModify");
 			req.setAttribute("user", user);
 			System.out.println("AdminInvalidPassword");

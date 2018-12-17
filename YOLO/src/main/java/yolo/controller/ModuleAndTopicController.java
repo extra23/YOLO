@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import yolo.service.InterfaceCoModuleService;
+import yolo.service.InterfaceHistoryService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePagingService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CoModuleAndModuleVO;
+import yolo.vo.HistoryVO;
 import yolo.vo.ModuleAndTopicVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.PagingVO;
@@ -43,6 +45,9 @@ public class ModuleAndTopicController {
 	@Autowired
 	private InterfaceCoModuleService coModuleService;
 	
+	@Autowired
+	private InterfaceHistoryService historyService;
+	
 	private void checkCostudyModule(ModelAndView mav, HttpServletRequest request, int moduleId) {
 		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
 		if(user != null) {
@@ -51,6 +56,18 @@ public class ModuleAndTopicController {
 				mav.addObject("costudy_moduleId", 0);
 			}else {
 				mav.addObject("costudy_moduleId", coModuleAndModule.getCostudy_moduleId());
+			}
+		}
+	}
+	
+	private void checkHistory(ModelAndView mav, HttpServletRequest request, int topicId) {
+		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
+		if(user != null) {
+			HistoryVO history = historyService.readHistoryByTopicIdAndUserId(new HistoryVO(topicId, user.getUserId()));
+			if(history == null) {
+				mav.addObject("historyId", 0);
+			}else {
+				mav.addObject("historyId", history.getHistoryId());
 			}
 		}
 	}
@@ -85,6 +102,7 @@ public class ModuleAndTopicController {
 		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO(module, user, topicList);
 		
 		checkCostudyModule(mav, request, moduleId);
+		checkHistory(mav, request, topicId);
 		
 		mav.addObject("moduleAndTopic", moduleAndTopic);
 		mav.addObject("topic", topicService.readTopicByTopicId(topicId));

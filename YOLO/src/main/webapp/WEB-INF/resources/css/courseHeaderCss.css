@@ -12,11 +12,12 @@
 
 #courseTitle a, #courseTitle a:hover {
 	text-decoration: none;
-	font-family: 'Baloo Tamma', cursive;
+	font-family: 'aÂð»§L', cursive;
 	font-size: 80px;
 	color: black;
 	line-height: 60px;
 	display: block;
+	height: 80px;
 	background-color: #71acc3;
 }
 

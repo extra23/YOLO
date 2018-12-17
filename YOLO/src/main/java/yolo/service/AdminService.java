@@ -65,9 +65,17 @@ public class AdminService implements InterfaceAdminService{
 		}
 				
 		// oldPwd와 newPwd 비교
-		if(newUser.getPassword() != null && oldUser.getPassword().equals(newUser.getPassword())) {
-			throw new DuplicatedPasswordException("비밀번호 중복");
+		if(newUser.getPassword().isEmpty() || newUser.getPassword() == null) {
+			System.out.println("들어옴");
+			newUser.setPassword(oldPwd);
+		}else{
+			if(oldUser.getPassword().equals(newUser.getPassword())) {
+				throw new DuplicatedPasswordException("비밀번호 중복");
+			}
 		}
+		/*if(newUser.getPassword() != null && oldUser.getPassword().equals(newUser.getPassword())) {
+			throw new DuplicatedPasswordException("비밀번호 중복");
+		}*/
 				
 		// 받아온 객체가 비어있지 않다면(사용자가 존재한다면) 받아온 사용자의 원래 비밀번호와 확인을 위한 oldPwd 비교
 		if(!oldUser.getPassword().equals(oldPwd)) {
@@ -78,7 +86,8 @@ public class AdminService implements InterfaceAdminService{
 		if(!admin.getPassword().equals(ad_password)) {
 			throw new AdminInvalidPasswordException("관리자 비밀번호 틀림");
 		}
-				
+		
+		System.out.println(newUser);
 		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정
 		userDAO.updateUser(newUser);
 	}     
