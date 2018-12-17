@@ -72,8 +72,8 @@ body {
 .category {
 	background-color: lightgray;
 }
-.cTitle, .userId{color: black;}
-.cTitle, .userId:hover{text-decoration: none; color: #5a5a5a;}
+.text_de{color: black;}
+.text_de:hover{text-decoration: none!important; color: #5a5a5a!important;}
 </style>
 </head>
 <body>
@@ -99,12 +99,12 @@ body {
 							<c:forEach var="course" items="${courseListPage}">
 								<tr>
 									<td>${course.courseId}</td>
-									<td><a class="cTitle" href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
-									<td><a class="userId" href="${pageContext.request.contextPath}/userView?userId=${course.userId}">${course.nickName}</a></td>
+									<td><a class="text_de" href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
+									<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${course.userId}">${course.nickName}</a></td>
 									<td>
 									<c:forEach var="module" items="${module}">
 										<c:if test="${course.courseId eq module.courseId}">
-										<a href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a>
+										<a class="text_de" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a>
 										</c:if>
 									</c:forEach>
 										</td>

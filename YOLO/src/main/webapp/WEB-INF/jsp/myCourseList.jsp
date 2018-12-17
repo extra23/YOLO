@@ -70,8 +70,8 @@ body {
 .category {
 	background-color: lightgray;
 }
-.cTitle{color: black;}
-.cTitle:hover{text-decoration: none; color: #5a5a5a;}
+.cTitle, .moduleId{color: black;}
+.cTitle, .moduleId:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -100,7 +100,7 @@ body {
 									<td>
 									<c:forEach var="module" items="${module}">
 										<c:if test="${course.courseId eq module.courseId}">
-										${module.mTitle}
+										<a class="moduleId" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a>
 										</c:if>
 									</c:forEach>
 										</td>
