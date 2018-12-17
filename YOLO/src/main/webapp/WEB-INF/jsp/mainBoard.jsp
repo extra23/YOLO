@@ -119,7 +119,7 @@
 		}
 
 		.plus {
-			text-decoration: none !important;
+			text-decoration: none!important;
 			color: #d6d6d6;
 			font-size: 50px;
 			margin-top: 25%;
@@ -180,14 +180,13 @@
 		}
 		
 	</style>
-	
+	<!--  -->
 </head>
 <body id="contentBody" style="-ms-overflow-style: none;">
 	
 	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<div id="mainContent">
-		
 		<div class="menu">
 			
 			<div class="course">
@@ -281,7 +280,7 @@
 						<h3>토픽 모듈 코스에 대하여</h3>
 						<hr>
 						<p>
-							모듈 그리고 크스라고 하는 개념에 대해서 도움을 드리겠습니다.<br> 토픽이라고 하는 것은 한평의 글입니다.<br>
+							모듈 그리고 코스라고 하는 개념에 대해서 도움을 드리겠습니다.<br> 토픽이라고 하는 것은 한평의 글입니다.<br>
 							만약 블로그 일가 익숙하신 분들은 포스트 하나가 토픽 하나라고 생각하시면<br> 되겠습니다. 토픽들이 모이면
 							하나의 모듈이라고 할 수 있습니다.<br> 그리고 모듈이 모이면 코스가 됩니다.
 						</p>

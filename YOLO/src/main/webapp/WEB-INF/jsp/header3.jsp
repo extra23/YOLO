@@ -165,7 +165,7 @@
 		#btn-group * {
 			font-family: 'Jua';
 		}
-		
+		.search-btn{text-decoration: none!important;}
 		
 	</style>
 	
