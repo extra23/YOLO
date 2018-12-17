@@ -72,8 +72,8 @@ body {
 .category {
 	background-color: lightgray;
 }
-.cTitle{color: black;}
-.cTitle:hover{text-decoration: none; color: #5a5a5a;}
+.cTitle, .userId{color: black;}
+.cTitle, .userId:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -100,11 +100,11 @@ body {
 								<tr>
 									<td>${course.courseId}</td>
 									<td><a class="cTitle" href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
-									<td>${course.nickName}</td>
+									<td><a class="userId" href="${pageContext.request.contextPath}/userView?userId=${course.userId}">${course.nickName}</a></td>
 									<td>
 									<c:forEach var="module" items="${module}">
 										<c:if test="${course.courseId eq module.courseId}">
-										${module.mTitle}
+										<a href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a>
 										</c:if>
 									</c:forEach>
 										</td>
