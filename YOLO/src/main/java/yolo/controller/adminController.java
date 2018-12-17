@@ -25,9 +25,11 @@ import yolo.exception.UserNotFoundException;
 import yolo.service.AdminService;
 import yolo.service.DeleteService;
 import yolo.service.InterfaceAdminService;
+import yolo.service.InterfacePwdQuestionService;
 import yolo.service.InterfaceUserService;
 import yolo.service.UserService;
 import yolo.vo.PagingVO;
+import yolo.vo.PwdQuestionVO;
 import yolo.vo.UserVO;
 
 @Controller
@@ -41,6 +43,9 @@ public class adminController {
 	
 	@Autowired
 	private InterfaceAdminService adminService;	
+	
+	@Autowired
+	private InterfacePwdQuestionService pwdQuestionService;
 	
 	// 관리자 사용자 리스트
 	@RequestMapping(value="adminUserList")
@@ -64,6 +69,9 @@ public class adminController {
 	// 관리자에 의한 강제 수정페이지로
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.GET)
 	public ModelAndView modifyUserForm(int userId, ModelAndView mv) {
+		List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+		mv.addObject("qList", qList);
+		
 		UserVO user = userService.readUserByUserId(userId);
 		mv.addObject("user", user);
 		mv.setViewName("adminUserModify");
