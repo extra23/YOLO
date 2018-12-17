@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -200,6 +200,7 @@
 						</c:if>
 					</div>
 				</div>
+				
 
 				<div class="form-group form-group-lg">
 					<label for="p_answer" class="col-sm-3 control-label">비밀번호 확인 답</label>
@@ -227,8 +228,8 @@
 					</div>
 
 					<div class="form-group">
-						<div class="button_base b01_simple_rollover col-sm-5"
-							style="position: relative; margin-bottom: 10px; left: 20%;">Cancel</div>
+						<input type="button" value="Cancel" onClick="location.href='adminUserList'"
+							class="button_base b01_simple_rollover col-sm-5 " style="position: relative; margin-bottom: 10px; left: 20%;">
 					</div>
 				</div>
 		

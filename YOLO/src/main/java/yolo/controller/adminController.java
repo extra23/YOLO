@@ -70,9 +70,9 @@ public class adminController {
 		return mv;
 	}
 	
-	/*// 수정해서 프로필 페이지로 넘기기.
+	// 수정해서 프로필 페이지로 넘기기.
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
-	public ModelAndView modifyUser(@RequestParam("userId") int userId, int adminId, String profileImage, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) {
+	public ModelAndView modifyUser(@RequestParam("userId") int userId, int adminId, String profileImage, String thumbnail, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) {
 
 		ModelAndView mv = new ModelAndView();
 		UserVO user = userDAO.selectUser(userId);
@@ -116,7 +116,7 @@ public class adminController {
 			return mv;
 		}
 
-//		UserVO newUser = new UserVO(userId, profileImage, nickName, email, newPwd1, pwQId, pwA);
+		UserVO newUser = new UserVO(userId, profileImage, thumbnail, nickName, email, newPwd1, pwQId, pwA);
 		
 		try {
 			adminService.modifyUser(user, adminId, oldPwd, ad_password);
@@ -154,16 +154,16 @@ public class adminController {
 		System.out.println(user + "user1");
 		mv.setViewName("adminUserList");
 		
-		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정
-		//userDAO.updateUser(user);
+		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정.
+		userDAO.updateUser(user);
 		req.getSession().setAttribute("user", user);
 		System.out.println(user + "user2");
 	
 		List<UserVO> userList = userService.readUserList();
-		model.addAttribute("userList", userList);
+		model.addAttribute("list", userList);
 		return mv;
 	}
-*/
+
 	// 관리자에 의한 강제 탈퇴페이지로
 	@RequestMapping(value="/adminUserDelete", method = RequestMethod.GET)
 	public ModelAndView deleteUserForm(int userId, ModelAndView mv) {
@@ -233,8 +233,10 @@ public class adminController {
 		
 		
 		List<UserVO> userList = userService.readUserList();
-		model.addAttribute("userList", userList);
+		model.addAttribute("list", userList);
+		
 		mv.setViewName("adminUserList");
+		
 	// adminUserList 페이지로 돌아가기
 	return mv;
 	}

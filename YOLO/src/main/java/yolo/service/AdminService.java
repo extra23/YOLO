@@ -89,7 +89,7 @@ public class AdminService implements InterfaceAdminService{
 
 	public void deleteUser(int userId, int adminId, String u_password, String ad_password){
 		
-		// userId를 이용해서 UserVO 객체를 DB에서 select 해옴
+		// userId를 이용해서 UserVO 객체를 DB에서 select 해옴.
 		UserVO admin = userDAO.selectUser(adminId);
 		UserVO user = userDAO.selectUser(userId);
 		

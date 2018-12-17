@@ -90,6 +90,15 @@
 			background-color: #000000;
 		}
 		
+		select {
+			width: 100%;
+			height: 40px;
+			border: 1px solid lightgray;
+			border-radius: 5px;
+			font-size: 20px !important;
+			color: gray !important;
+		}
+		
 	</style>
 
 </head>
@@ -125,9 +134,9 @@
 				<div class="form-group form-group-lg">
 					<label for="password" class="col-sm-3 control-label">사용자의 비밀번호</label>
 					<div class="col-sm-6">
-						<input type="password"  class="form-control" name="oldPwd" placeholder="(*필수)현재 사용자 비밀번호">
-						<c:if test="${errors.u_password}"><span>현재 비밀번호를 입력해주세요</span></c:if>
-						<c:if test="${errors.invalidPassword}"><span>잘못된 비밀번호 입니다.</span></c:if>
+						<input type="password"  class="form-control" name="u_password" placeholder="(*필수)현재 사용자 비밀번호">
+						<c:if test="${errors.u_password}"><span>사용자 비밀번호를 입력해주세요</span></c:if>
+						<c:if test="${errors.invalidPassword}"><span>잘못된 사용자 비밀번호 입니다.</span></c:if>
 					</div>
 				</div>
 				
@@ -137,21 +146,21 @@
 					<input type="hidden" name="adminId" value="${authUser.userId}">
 							<input type="password"  class="form-control" name="ad_password" placeholder="(*필수)관리자 비밀번호">
 							<c:if test="${errors.ad_password}"><span>관리자 비밀번호를 입력해주세요</span></c:if>
-							<c:if test="${errors.adminInvalidPassword}"><span>잘못된 비밀번호 입니다.</span></c:if>
+							<c:if test="${errors.adminInvalidPassword}"><span>잘못된 관리자 비밀번호 입니다.</span></c:if>
 					</div>
 				</div>
 				
 				<div>
 					<div class="form-group">
-						<input type="submit" value="탈퇴"
-							class="button_base b01_simple_rollover col-sm-5"
-							style="position: relative; left: 20%;">
+						<input type="submit" value="Delete"
+							class="button_base b01_simple_rollover col-sm-5 " style="position: relative; left: 20%;">
 					</div>
 				</div>
 				
-				<div class="form-group">
-						<div class="button_base b01_simple_rollover col-sm-5"
-							style="position: relative; margin-bottom: 10px; left: 20%;">Cancel</div>
+				
+				<div><div class="form-group">
+						<input type="button" value="Cancel" onClick="location.href='adminUserList'"
+							class="button_base b01_simple_rollover col-sm-5 " style="position: relative; margin-bottom: 10px; left: 20%;">
 					</div>
 				</div>
 				
@@ -162,6 +171,7 @@
 	</div>
 	
 	<jsp:include page="footer.jsp"></jsp:include>
+
 
 </body>
 </html>
