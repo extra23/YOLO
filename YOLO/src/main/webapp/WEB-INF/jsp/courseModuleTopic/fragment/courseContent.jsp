@@ -8,10 +8,16 @@
 </head>
 <body>
 
-	<div id="courseContent2">
+	<div id="courseContentDiv">
+		
 		<h4>Cover Page</h4>
+		
 		<hr>
-		${courseAndModule.course.cContent}
+		
+		<div id="courseContent">
+			${courseAndModule.course.cContent}
+		</div>
+		
 	</div>
 
 </body>

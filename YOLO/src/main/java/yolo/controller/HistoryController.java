@@ -30,14 +30,15 @@ public class HistoryController {
 	// 눈 아이콘 클릭시 봤어요, 안봤어요
 	@ResponseBody
 	@RequestMapping("toggleHistory")
-	public String addToggleHistory(int historyId, int topicId, int userId) {
+	public String addToggleHistory(int topicId, int userId) {
 		
-		HistoryVO old_history = historyService.readHistoryByUserId(new HistoryVO(historyId, topicId, userId));
+		System.out.println("들어옴");
 		
+		HistoryVO old_history = historyService.readHistoryByTopicIdAndUserId(new HistoryVO(topicId, userId));
 		
 		if(old_history == null) {
 			// row가 없다면 추가
-			if(historyService.addHistory(new HistoryVO(historyId, topicId, userId)) > 0) {
+			if(historyService.addHistory(new HistoryVO(topicId, userId)) > 0) {
 				return "add";
 			}else {
 				// ajax에서 강제로 error로 보내기
@@ -55,7 +56,7 @@ public class HistoryController {
 	
 
 	// 내가 봤어요! 한 페이지로 이동
-	@RequestMapping("/historyPage")
+	/*@RequestMapping("/historyPage")
 	public ModelAndView getHistoryPage(int userId) {
 		ModelAndView mav = new ModelAndView();
 		
@@ -67,7 +68,7 @@ public class HistoryController {
 		mav.setViewName("myHistoryPage");
 		
 		return mav;
-	}
+	}*/
 	
 	// topic 봤어요 한 사람들 리스트
 	/*@RequestMapping("/topicHistoryPage")

@@ -10,9 +10,18 @@
 <body>
 
 	<div id="topicContent">
+		
 		<div id="tTitle"><h2>${topic.tTitle}</h2></div>
+		
 		<hr>
+		
 		<div id="tContent">${topic.tContent}</div>
+		
+		<div id="historyDiv">
+			<hr>
+			<img id="history" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${topic.topicId}, ${authUser.userId})">
+		</div>
+		
 	</div>
 
 </body>

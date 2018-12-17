@@ -25,13 +25,13 @@
 			<c:forEach var="moduleAndTopic" items="${courseAndModule.moduleAndTopicList}" varStatus="status">
 			
 				<li>
-					<a href="moduleInCoursePage?courseId=${param.courseId}&moduleIndex=${status.index}">${moduleAndTopic.module.mTitle}</a>
+					<a href="moduleInCoursePage?courseId=${param.courseId}&moduleId=${moduleAndTopic.module.moduleId}">${moduleAndTopic.module.mTitle}</a>
 					<c:if test="${moduleAndTopic.topicList.size() > 0}">
 						<a href="#" class="toggle-custom" id="btn-${status.index}" data-toggle="collapse" data-target="#submenu${status.index}" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 					</c:if>
 					<ul class="nav collapse" id="submenu${status.index}" role="menu" aria-labelledby="btn-${status.index}">
 						<c:forEach var="topic" items="${moduleAndTopic.topicList}" varStatus="status2">
-							<li style="text-indent: 2em;"><a href="topicInCoursePage?courseId=${param.courseId}&moduleIndex=${status.index}&topicIndex=${status2.index}">${topic.tTitle}</a></li>
+							<li style="text-indent: 2em;"><a href="topicInCoursePage?courseId=${param.courseId}&moduleId=${moduleAndTopic.module.moduleId}&topicId=${topic.topicId}">${topic.tTitle}</a></li>
 						</c:forEach>
 					</ul>
 				</li>

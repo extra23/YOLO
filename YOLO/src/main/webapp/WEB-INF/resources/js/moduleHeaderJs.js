@@ -9,6 +9,9 @@ function moduleHeader(moduleId, userId){
 $(function(){
 	
 	// #newModule 클릭 시 새로운 모듈을 생성하는 곳으로 이동
+	$("#newModule").click(function(){
+		location.href = "AdminModuleAndCourse";
+	});
 	
 	// #costudy 클릭 시 코스의 공동공부에 참여 혹은 해제
 	$("#costudy").click(function(){
@@ -33,5 +36,8 @@ $(function(){
 	});
 	
 	// #edit 클릭 시 모듈을 수정하는 페이지로 이동
+	$("#edit").click(function(){
+		location.href = "moduleCurver.do?moduleId=" + moduleId;
+	});
 	
 });
