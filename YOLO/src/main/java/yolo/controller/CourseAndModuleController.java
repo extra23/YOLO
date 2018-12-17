@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import yolo.service.CourseService;
 import yolo.service.InterfaceCoCourseService;
 import yolo.service.InterfaceCourseService;
+import yolo.service.InterfaceHistoryService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePagingService;
 import yolo.service.InterfaceTopicService;
@@ -22,6 +23,7 @@ import yolo.service.InterfaceUserService;
 import yolo.vo.CoCourseAndCourseVO;
 import yolo.vo.CourseAndModuleVO;
 import yolo.vo.CourseVO;
+import yolo.vo.HistoryVO;
 import yolo.vo.ModuleAndTopicVO;
 import yolo.vo.ModuleVO;
 import yolo.vo.PagingVO;
@@ -48,6 +50,9 @@ public class CourseAndModuleController {
 	
 	@Autowired
 	private InterfaceCoCourseService coCourseService;
+	
+	@Autowired
+	private InterfaceHistoryService historyService;
 	
 	private CourseAndModuleVO makeObj(int courseId) {
 		
@@ -90,7 +95,15 @@ public class CourseAndModuleController {
 	}
 	
 	private void checkHistory(ModelAndView mav, HttpServletRequest request, int topicId) {
-		//UserVO user = (UserVO) 
+		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
+		if(user != null) {
+			HistoryVO history = historyService.readHistoryByTopicIdAndUserId(new HistoryVO(topicId, user.getUserId()));
+			if(history == null) {
+				mav.addObject("historyId", 0);
+			}else {
+				mav.addObject("historyId", history.getHistoryId());
+			}
+		}
 	}
 
 	@RequestMapping("coursePage")
@@ -132,6 +145,7 @@ public class CourseAndModuleController {
 		CourseAndModuleVO courseAndModule = makeObj(courseId);
 		
 		checkCostudyCourse(mav, request, courseId);
+		checkHistory(mav, request, topicId);
 		
 		mav.addObject("courseAndModule", courseAndModule);
 		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO();

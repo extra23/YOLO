@@ -18,8 +18,15 @@
 		<div id="tContent">${topic.tContent}</div>
 		
 		<div id="historyDiv">
-			<hr>
-			<img id="history" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${topic.topicId}, ${authUser.userId})">
+			<c:if test="${not empty authUser}">
+				<hr>
+				<c:if test="${historyId eq 0}">
+					<img id="history" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${topic.topicId}, ${authUser.userId})">
+				</c:if>
+				<c:if test="${historyId > 0}">
+					<img id="history" src="${pageContext.request.contextPath}/images/see.png" title="봤어요" onclick="history(${topic.topicId}, ${authUser.userId})">
+				</c:if>
+			</c:if>
 		</div>
 		
 	</div>

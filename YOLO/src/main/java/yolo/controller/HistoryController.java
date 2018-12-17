@@ -32,8 +32,6 @@ public class HistoryController {
 	@RequestMapping("toggleHistory")
 	public String addToggleHistory(int topicId, int userId) {
 		
-		System.out.println("들어옴");
-		
 		HistoryVO old_history = historyService.readHistoryByTopicIdAndUserId(new HistoryVO(topicId, userId));
 		
 		if(old_history == null) {

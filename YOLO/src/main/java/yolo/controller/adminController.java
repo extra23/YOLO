@@ -78,7 +78,7 @@ public class adminController {
 		return mv;
 	}
 	
-	// 수정해서 프로필 페이지로 넘기기.
+	// 수정해서 사용자 리스트 페이지로 넘기기.
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
 	public ModelAndView modifyUser(@RequestParam("userId") int userId, int adminId, String profileImage, String thumbnail, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) {
 
@@ -87,10 +87,12 @@ public class adminController {
 
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
-		if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
+		List<UserVO> userList = userService.readUserList();
+		
+		/*if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
 			newPwd1 = oldPwd;
 			newPwd2 = oldPwd;
-		}
+		}*/
 
 		if (!newPwd1.equals(newPwd2)) {
 			errors.put("notEqualNewPwd", true);
@@ -120,6 +122,7 @@ public class adminController {
 		if (!errors.isEmpty()) {
 			mv.addObject("errors", errors);
 			mv.addObject("user", user);
+			mv.addObject("list", userList);
 			mv.setViewName("adminUserModify");
 			return mv;
 		}
@@ -127,7 +130,7 @@ public class adminController {
 		UserVO newUser = new UserVO(userId, profileImage, thumbnail, nickName, email, newPwd1, pwQId, pwA);
 		
 		try {
-			adminService.modifyUser(user, adminId, oldPwd, ad_password);
+			adminService.modifyUser(newUser, adminId, oldPwd, ad_password);
 		} catch (UserNotFoundException e) {
 			errors.put("userNotFound", true);
 			mv.addObject("errors", errors);
@@ -158,17 +161,13 @@ public class adminController {
 			return mv;
 		}
 		
-		mv.addObject("newUser", newUser);
-		System.out.println(user + "user1");
+		List<UserVO> newUserList = userService.readUserList();
+		mv.addObject("list", newUserList);
+		
 		mv.setViewName("adminUserList");
 		
 		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정.
-		userDAO.updateUser(user);
-		req.getSession().setAttribute("user", user);
-		System.out.println(user + "user2");
 	
-		List<UserVO> userList = userService.readUserList();
-		model.addAttribute("list", userList);
 		return mv;
 	}
 

@@ -65,7 +65,7 @@ public class AdminService implements InterfaceAdminService{
 		}
 				
 		// oldPwd와 newPwd 비교
-		if(!oldUser.getPassword().equals(newUser.getPassword())) {
+		if(newUser.getPassword() != null && oldUser.getPassword().equals(newUser.getPassword())) {
 			throw new DuplicatedPasswordException("비밀번호 중복");
 		}
 				

@@ -15,7 +15,7 @@
 	<div id="courseHeader">
 		
 		<div id="courseTitle">
-			<a href="coursePage?courseId=${courseAndModule.course.courseId}" style="font-family: 'Gamja Flower', cursive;font-weight: bold;color: white;">&lt; ${courseAndModule.course.cTitle} &gt;</a>
+			<a href="coursePage?courseId=${courseAndModule.course.courseId}" style="font-family: 'a찐빵M', cursive;font-weight: bold;">${courseAndModule.course.cTitle}</a>
 			<div id="courseSummary">${courseAndModule.course.cSummary}</div>
 		</div>
 

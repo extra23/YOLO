@@ -397,9 +397,9 @@ public class UserController {
 			fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
 		}
 
-		System.out.println("userId : " + userId);
+		/*System.out.println("userId : " + userId);*/
 		UserVO user = new UserVO(userId, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
-		System.out.println("user : " + user.toString());
+		/*System.out.println("user : " + user.toString());*/
 		try {
 			userService.modifyUser(user, oldPwd);
 		} catch (UserNotFoundException e) {
