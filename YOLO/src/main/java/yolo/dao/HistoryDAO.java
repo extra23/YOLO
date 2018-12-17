@@ -15,7 +15,10 @@ public class HistoryDAO implements InterfaceHistoryDAO{
 
 	public int insertHistory(HistoryVO history) {
 		return historyMapper.insertHistory(history);
-		
+	}
+	
+	public HistoryVO selectHistoryByTopicIdAndUserId(HistoryVO history) {
+		return historyMapper.selectHistoryByTopicIdAndUserId(history);
 	}
 
 	public List<HistoryVO> selectHistoryByUserId(int userId) {
@@ -42,7 +45,6 @@ public class HistoryDAO implements InterfaceHistoryDAO{
 		historyMapper.deleteHistory(historyId);
 		
 	}
-	
 
 	public List<HistoryVO> historyListPage() {
 		List<HistoryVO> historyListPage = historyMapper.historyListPage();
@@ -53,8 +55,5 @@ public class HistoryDAO implements InterfaceHistoryDAO{
 		List<HistoryVO> myHistoryList = historyMapper.myHistoryList(userId);
 		return myHistoryList;
 	}
-
-	
-	
 
 }

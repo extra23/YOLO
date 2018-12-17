@@ -1,6 +1,6 @@
 @charset "EUC-KR";
 
-#courseContent2 {
+#courseContentDiv {
 	float: right;
 	width: 79%;
 	border: 1px solid black;
@@ -9,4 +9,8 @@
 	overflow: hidden;
 	word-wrap: break-word;
     background-color: white;
+}
+
+#courseContent {
+	padding: 20px;
 }

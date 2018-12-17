@@ -1,0 +1,17 @@
+@charset "EUC-KR";
+
+#historyDiv {
+	text-align: right;
+}
+
+#historyDiv hr {
+	margin-bottom: 0px;
+}
+
+#history {
+	width: 25px;
+	height: 25px;
+	margin: 10px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}

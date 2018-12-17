@@ -88,6 +88,10 @@ public class CourseAndModuleController {
 			}
 		}
 	}
+	
+	private void checkHistory(ModelAndView mav, HttpServletRequest request, int topicId) {
+		//UserVO user = (UserVO) 
+	}
 
 	@RequestMapping("coursePage")
 	public ModelAndView getCoursePage(HttpServletRequest request, int courseId) {
@@ -104,7 +108,7 @@ public class CourseAndModuleController {
 	}
 	
 	@RequestMapping("moduleInCoursePage")
-	public ModelAndView getModuleInCoursePage(HttpServletRequest request, int courseId, int moduleIndex) {
+	public ModelAndView getModuleInCoursePage(HttpServletRequest request, int courseId, int moduleId) {
 		
 		ModelAndView mav = new ModelAndView();
 		CourseAndModuleVO courseAndModule = makeObj(courseId);
@@ -112,7 +116,9 @@ public class CourseAndModuleController {
 		checkCostudyCourse(mav, request, courseId);
 		
 		mav.addObject("courseAndModule", courseAndModule);
-		mav.addObject("moduleAndTopic", courseAndModule.getModuleAndTopicList().get(moduleIndex));
+		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO();
+			moduleAndTopic.setModule(moduleService.readModuleByModuleId(moduleId));
+		mav.addObject("moduleAndTopic", moduleAndTopic);
 		mav.setViewName("courseModuleTopic/moduleInCourse");
 		
 		return mav;
@@ -120,7 +126,7 @@ public class CourseAndModuleController {
 	}
 	
 	@RequestMapping("topicInCoursePage")
-	public ModelAndView getTopicInCoursePage(HttpServletRequest request, int courseId, int moduleIndex, int topicIndex) {
+	public ModelAndView getTopicInCoursePage(HttpServletRequest request, int courseId, int moduleId, int topicId) {
 		
 		ModelAndView mav = new ModelAndView();
 		CourseAndModuleVO courseAndModule = makeObj(courseId);
@@ -128,8 +134,10 @@ public class CourseAndModuleController {
 		checkCostudyCourse(mav, request, courseId);
 		
 		mav.addObject("courseAndModule", courseAndModule);
-		mav.addObject("moduleAndTopic", courseAndModule.getModuleAndTopicList().get(moduleIndex));
-		mav.addObject("topic", courseAndModule.getModuleAndTopicList().get(moduleIndex).getTopicList().get(topicIndex));
+		ModuleAndTopicVO moduleAndTopic = new ModuleAndTopicVO();
+			moduleAndTopic.setModule(moduleService.readModuleByModuleId(moduleId));
+		mav.addObject("moduleAndTopic", moduleAndTopic);
+		mav.addObject("topic", topicService.readTopicByTopicId(topicId));
 		mav.setViewName("courseModuleTopic/topicInCourse");
 		
 		return mav;

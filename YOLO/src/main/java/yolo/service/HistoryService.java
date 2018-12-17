@@ -13,9 +13,13 @@ public class HistoryService implements InterfaceHistoryService{
 
 	@Autowired
 	InterfaceHistoryDAO historyDAO;
-
+	
 	public int addHistory(HistoryVO history) {
 		return historyDAO.insertHistory(history);	
+	}
+	
+	public HistoryVO readHistoryByTopicIdAndUserId(HistoryVO history) {
+		return historyDAO.selectHistoryByTopicIdAndUserId(history);
 	}
 
 	public List<HistoryVO> readHistoryByUserId(int userId) {
@@ -44,6 +48,5 @@ public class HistoryService implements InterfaceHistoryService{
 	public List<HistoryVO> myHistoryList(int userId) {
 		return historyDAO.myHistoryList(userId);
 	}
-	
 	
 }

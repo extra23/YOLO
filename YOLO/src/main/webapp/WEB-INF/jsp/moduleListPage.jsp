@@ -72,8 +72,8 @@ body {
 .category {
 	background-color: lightgray;
 }
-.mTitle, .userId{color: black;}
-.mTitle, .userId:hover{text-decoration: none; color: #5a5a5a;}
+.mTitle{color: black;}
+.mTitle:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -101,7 +101,7 @@ body {
 								<tr>
 									<td>${status.count}</td>
 									<td><a class="mTitle" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
-									<td><a class="userId" href="${pageContext.request.contextPath}/userView?userId=${module.userId}">${module.nickName}</a></td>
+									<td>${module.nickName}</td>
 									<td>${module.udate}</td>
 									<td>
 									<c:forEach var="cTitle" items="${module.cTitleList}">

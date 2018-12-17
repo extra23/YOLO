@@ -31,12 +31,17 @@ public class HistoryVO {
 		this.userId = userId;
 	}
 	
-	
+	// HistoryController에서 사용할 생성자
+	public HistoryVO(int topicId, int userId) {
+		super();
+		this.topicId = topicId;
+		this.userId = userId;
+	}
 	
 	public int getHistoryId() {
 		return historyId;
 	}
-	
+
 	public void setHistoryId(int historyId) {
 		this.historyId = historyId;
 	}
