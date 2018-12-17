@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-
+<!--  -->
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
 
@@ -72,8 +72,8 @@ body {
 .category {
 	background-color: lightgray;
 }
-.mTitle, .userId{color: black;}
-.mTitle, .userId:hover{text-decoration: none; color: #5a5a5a;}
+.text_de{color: black;}
+.text_de:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -100,8 +100,8 @@ body {
 							<c:forEach var="module" items="${moduleMap.values()}" varStatus="status">
 								<tr>
 									<td>${status.count}</td>
-									<td><a class="mTitle" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
-									<td><a class="userId" href="${pageContext.request.contextPath}/userView?userId=${module.userId}">${module.nickName}</a></td>
+									<td><a class="text_de" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
+									<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${module.userId}">${module.nickName}</a></td>
 									<td>${module.udate}</td>
 									<td>
 									<c:forEach var="cTitle" items="${module.cTitleList}">

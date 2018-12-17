@@ -10,7 +10,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
-
+<!--  -->
 
 <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma"
 	rel="stylesheet">
