@@ -86,6 +86,7 @@ body {
 					<table class="table table-striped"
 						style="border: 1px solid white !important">
 						<thead>
+						<!--  -->
 							<tr class="category" style="border: 1px solid white !important">
 								<td width="10%">공개/비공개</td>
 								<td width="20%">제목</td>
