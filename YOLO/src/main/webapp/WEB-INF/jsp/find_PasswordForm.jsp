@@ -75,7 +75,7 @@
 			font-size: 20px !important;
 			color: gray !important;
 		}
-		#findBtn{margin-bottom: 20px;}
+		#findBtn{margin-top: 20px; margin-bottom: 10px;}
 	</style>
 	
 	<script>
@@ -140,7 +140,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-7">
 						
-						<button id="findBtn" class="btn btn-default btn-block btn-lg">Find password</button>
+						<button id="findBtn" class="btn btn-default btn-block btn-lg">Find Password</button>
 					</div>		
 				
 				
