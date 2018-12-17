@@ -11,6 +11,18 @@
 
 	<dependencies>
 
+		<dependency>
+        	<groupId>net.sf.sociaal</groupId>
+        	<artifactId>xmlpull-xpp3</artifactId>
+        	<version>3.0.0.20130526</version>
+    	</dependency>
+    	
+    	<dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -145,6 +157,13 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
 			<version>1.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.json/json summernote에서 json사용해서 이미지 업로드 -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20180813</version>
 		</dependency>
 
 

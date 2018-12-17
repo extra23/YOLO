@@ -9,6 +9,9 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+	<!-- 네이버 백과사전 api -->
+	<context:component-scan base-package="NaverSearchService"/>
+	
 
 	<!-- 빈 등록 -->
 	<!-- 컨테이너에 빈으로 넣으려면 컴포넌트 스캐너를 이용해서 빈을 찾아 넣어야 한다.(빈 등록을 위해 필요) -->
@@ -47,6 +50,9 @@
 				<value>classpath:config/ModuleSql.xml</value>
 				<value>classpath:config/CourseSql.xml</value>
 				<value>classpath:config/PquestionSql.xml</value>
+				<value>classpath:config/CoCourseSql.xml</value>
+				<value>classpath:config/CoModuleSql.xml</value>
+				<value>classpath:config/PagingSql.xml</value>
 			</list>
 		</property>
 	</bean>
