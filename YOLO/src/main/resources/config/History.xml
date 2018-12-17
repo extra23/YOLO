@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.dao.InterfaceHistoryMapper">
+	<!-- 22 -->
+	<insert id="selectHistoryByTopicIdAndUserId" parameterType="History" >
+		select * from history where topicId=#{topicId} and userId=#{userId}
+		<selectKey keyProperty="history" resultType="Integer">
+			select last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="selectHistoryByTopicId" parameterType="History" resultType="History">
+		select * from history join topic on history topicId=#{topic.topicId}
+	</select>
+	
+	<select id="insertHistory" parameterType="History" resultType="History">
+		insert into history(historyId, topicId, userId) values(#{historyId}, #{topicId}, #{usesrId})
+	</select>
+	
+	<delete id="deleteHistory" parameterType="History">
+		delete from topic where historyId=#{historyId}
+	</delete>
+
+	<select id="selectJoinHistory" parameterType="integer" resultType="HistoryAndNickName">
+		select * from history join user on history userId=#{user.userId} join topic on history topicId=#{topic.topicId}
+	</select>
+
+</mapper>
