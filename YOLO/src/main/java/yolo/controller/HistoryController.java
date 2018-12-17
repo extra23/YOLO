@@ -32,6 +32,8 @@ public class HistoryController {
 	@RequestMapping("toggleHistory")
 	public String addToggleHistory(int topicId, int userId) {
 		
+		System.out.println("들어옴");
+		
 		HistoryVO old_history = historyService.readHistoryByTopicIdAndUserId(new HistoryVO(topicId, userId));
 		
 		if(old_history == null) {
@@ -54,7 +56,7 @@ public class HistoryController {
 	
 
 	// 내가 봤어요! 한 페이지로 이동
-	@RequestMapping("/historyPage")
+	/*@RequestMapping("/historyPage")
 	public ModelAndView getHistoryPage(int userId) {
 		ModelAndView mav = new ModelAndView();
 		
@@ -66,7 +68,7 @@ public class HistoryController {
 		mav.setViewName("myHistoryPage");
 		
 		return mav;
-	}
+	}*/
 	
 	// topic 봤어요 한 사람들 리스트
 	/*@RequestMapping("/topicHistoryPage")

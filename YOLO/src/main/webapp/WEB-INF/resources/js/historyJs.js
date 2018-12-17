@@ -13,13 +13,15 @@ $(function(){
 		$.ajax({
 			url: "toggleHistory",
 			data: "topicId=" + topicId + "&userId=" + userId,
+			dataType: "text",
 			success: function(result){
-				if(Number(result) == "add"){
+				console.log("result : " + result);
+				if(result == "add"){
 					alert("봤어요");
 					$("#history").attr("src", "images/see.png");
 				}else{
+					$("#history").attr("src", "images/notSee.png");
 					alert("안봤어요");
-					$("#hitory").attr("src", "images/notSee.png");
 				}
 			},
 			error : function(){

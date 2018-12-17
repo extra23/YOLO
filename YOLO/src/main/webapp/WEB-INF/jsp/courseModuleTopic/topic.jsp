@@ -15,8 +15,10 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleHeaderCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/moduleLeftCss.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/topicContentCss.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/historyCss.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/thumbnailJs.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/moduleHeaderJs.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/historyJs.js"></script>
 	
 </head>
 <body>

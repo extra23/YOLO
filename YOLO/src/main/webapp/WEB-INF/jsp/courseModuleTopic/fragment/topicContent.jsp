@@ -19,7 +19,7 @@
 		
 		<div id="historyDiv">
 			<hr>
-			<img id="history" src="${pageContext.request.contextPath}/images/see.png" title="봤어요" onclick="history(${topic.topicId}, ${authUser.userId})">
+			<img id="history" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${topic.topicId}, ${authUser.userId})">
 		</div>
 		
 	</div>

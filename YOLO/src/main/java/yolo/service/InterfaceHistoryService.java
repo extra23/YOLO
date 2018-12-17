@@ -10,17 +10,17 @@ public interface InterfaceHistoryService {
 	
 	public HistoryVO readHistoryByTopicIdAndUserId(HistoryVO history);
 	
-	public List<HistoryVO> readHistoryByUserId(int userId);
+	/*public List<HistoryVO> readHistoryByUserId(int userId);
 	
 	public HistoryVO readHistoryByHistoryId(int historyId);
 	
 	public HistoryVO readHistoryByUserId(HistoryVO history);
 	
-	public List<HistoryVO> readHistoryList();
+	public List<HistoryVO> readHistoryList();*/
 	
 	public void removeHistory(int removeHistoryId);
 	
-	public List<HistoryVO> historyListPage();
+	/*public List<HistoryVO> historyListPage();
 	
-	public List<HistoryVO> myHistoryList(int userId);
+	public List<HistoryVO> myHistoryList(int userId);*/
 }

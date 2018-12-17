@@ -5,7 +5,7 @@
 <mapper namespace="yolo.dao.InterfaceHistoryMapper">
 	
 	<insert id="insertHistory" parameterType="History">
-		insert history(topicId, userId) values(#{topicId}, #{userId})
+		insert into history(topicId, userId) values(#{topicId}, #{userId})
 		<selectKey keyProperty="historyId" resultType="Integer">
 			select last_insert_id()
 		</selectKey>
@@ -15,20 +15,16 @@
 		select * from history where topicId=#{topicId} and userId=#{userId}
 	</select>
 	
-	<select id="selectHistoryByTopicId" parameterType="History" resultType="History">
+	<!-- <select id="selectHistoryByTopicId" parameterType="History" resultType="History">
 		select * from history join topic on history topicId=#{topic.topicId}
-	</select>
-	
-	<select id="insertHistory" parameterType="History" resultType="History">
-		insert into history(historyId, topicId, userId) values(#{historyId}, #{topicId}, #{usesrId})
-	</select>
+	</select> -->
 	
 	<delete id="deleteHistory" parameterType="History">
-		delete from topic where historyId=#{historyId}
+		delete from history where historyId=#{historyId}
 	</delete>
 
-	<select id="selectJoinHistory" parameterType="integer" resultType="HistoryAndNickName">
+	<!-- <select id="selectJoinHistory" parameterType="integer" resultType="HistoryAndNickName">
 		select * from history join user on history userId=#{user.userId} join topic on history topicId=#{topic.topicId}
-	</select>
+	</select> -->
 
 </mapper>

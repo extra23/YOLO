@@ -22,7 +22,7 @@ public class HistoryService implements InterfaceHistoryService{
 		return historyDAO.selectHistoryByTopicIdAndUserId(history);
 	}
 
-	public List<HistoryVO> readHistoryByUserId(int userId) {
+	/*public List<HistoryVO> readHistoryByUserId(int userId) {
 		return historyDAO.selectHistoryByUserId(userId);
 	}
 
@@ -35,18 +35,18 @@ public class HistoryService implements InterfaceHistoryService{
 	}
 	public List<HistoryVO> readHistoryList() {
 		return historyDAO.selectHistoryList();
-	}
+	}*/
 
 	public void removeHistory(int historyId) {
 		historyDAO.deleteHistory(historyId);	
 	}
 
-	public List<HistoryVO> historyListPage() {
+	/*public List<HistoryVO> historyListPage() {
 		return historyDAO.historyListPage();
 	}
 
 	public List<HistoryVO> myHistoryList(int userId) {
 		return historyDAO.myHistoryList(userId);
-	}
+	}*/
 	
 }
