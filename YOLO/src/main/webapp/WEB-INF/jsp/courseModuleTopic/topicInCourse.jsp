@@ -22,6 +22,11 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/historyJs.js"></script>	
 	
 	<style>
+		@font-face{
+			font-family: 'a찐빵M';
+			src: url('${pageContext.request.contextPath}/font/a찐빵M.ttf');
+		}
+	
 		#body {font-family: 'a찐빵M'}
 	</style>
 	

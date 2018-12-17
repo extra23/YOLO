@@ -6,6 +6,11 @@
 	
 <style>
 
+	@font-face{
+		font-family: 'a찐빵M';
+		src: url('${pageContext.request.contextPath}/font/a찐빵M.ttf');
+	}
+
 	#body {background-color: #F7F7F7;}
 	#body * {font-family: 'a찐빵M'}
 
