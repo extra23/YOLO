@@ -44,8 +44,14 @@ public class UserService implements InterfaceUserService {
 		}
 		
 		// oldPwd와 newPwd 비교
-		if(newUser.getPassword() != null && oldUser.getPassword().equals(newUser.getPassword())) {
-			throw new DuplicatedPasswordException("비밀번호 중복");
+		System.out.println("new User password : " + newUser.getPassword());
+		if(newUser.getPassword().isEmpty() || newUser.getPassword() == null) {
+			System.out.println("들어옴");
+			newUser.setPassword(oldPwd);
+		}else{
+			if(oldUser.getPassword().equals(newUser.getPassword())) {
+				throw new DuplicatedPasswordException("비밀번호 중복");
+			}
 		}
 		
 		// 받아온 객체가 비어있지 않다면(사용자가 존재한다면) 받아온 사용자의 원래 비밀번호와 확인을 위한 oldPwd 비교

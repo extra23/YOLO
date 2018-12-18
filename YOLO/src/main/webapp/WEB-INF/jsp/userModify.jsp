@@ -215,7 +215,7 @@
 				<div class="form-group form-group-lg">
 					<label for="password" class="col-sm-3 control-label">New Password</label>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" name="password" placeholder="새로운 비밀번호 (바꿀 경우만 작성)">
+						<input type="password" class="form-control" name="newPwd1" placeholder="새로운 비밀번호 (바꿀 경우만 작성)">
 						<c:if test="${errors.password}">비밀번호를 입력해주세요.</c:if>
 					</div>
 				</div>
@@ -224,7 +224,7 @@
 					<!--  -->
 					<label for="confirmPassword" class="col-sm-3 control-label">ConfirmPassword</label>
 					<div class="col-sm-6">
-						<input type="password" class="form-control" name="confirmPassword" placeholder="새로운 비밀번호 재확인">
+						<input type="password" class="form-control" name="newPwd2" placeholder="새로운 비밀번호 재확인">
 						<c:if test="${errors.confirmPassword}">비밀번호를 재입력 해주세요.</c:if>
 						<c:if test="${errors.passwordNotMatch}">재입력한 비밀번호가 일치하지 않습니다.</c:if>
 					</div>

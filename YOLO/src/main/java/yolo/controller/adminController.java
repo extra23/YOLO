@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.almom.util.UploadFileUtils;
 
 import yolo.dao.UserDAO;
 import yolo.exception.AdminInvalidPasswordException;
@@ -46,6 +50,9 @@ public class adminController {
 	
 	@Autowired
 	private InterfacePwdQuestionService pwdQuestionService;
+	
+	@Resource(name="uploadPath")
+	private String uploadPath;
 	
 	// 관리자 사용자 리스트
 	@RequestMapping(value="adminUserList")
@@ -80,7 +87,7 @@ public class adminController {
 	
 	// 수정해서 사용자 리스트 페이지로 넘기기.
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
-	public ModelAndView modifyUser(@RequestParam("userId") int userId, int adminId, String profileImage, String thumbnail, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) {
+	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, int adminId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) throws IOException, Exception {
 
 		ModelAndView mv = new ModelAndView();
 		UserVO user = userDAO.selectUser(userId);
@@ -130,8 +137,13 @@ public class adminController {
 			mv.setViewName("adminUserModify");
 			return mv;
 		}
+		
+		String[] fileNameArr = new String[2];
+		if(file.getOriginalFilename() != "") {
+			fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
+		}
 
-		UserVO newUser = new UserVO(userId, profileImage, thumbnail, nickName, email, newPwd1, pwQId, pwA);
+		UserVO newUser = new UserVO(userId, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
 		
 		try {
 			adminService.modifyUser(newUser, adminId, oldPwd, ad_password);

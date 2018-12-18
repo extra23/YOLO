@@ -398,6 +398,7 @@ public class UserController {
 		}
 
 		/*System.out.println("userId : " + userId);*/
+		System.out.println("new Password : " + newPwd1);
 		UserVO user = new UserVO(userId, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
 		/*System.out.println("user : " + user.toString());*/
 		try {

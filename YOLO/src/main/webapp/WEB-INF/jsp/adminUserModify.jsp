@@ -135,7 +135,7 @@
 				
 				<div class="form-group form-group-lg">
 					<div class="profile">
-						<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%;">
+						<img id="profileImg" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="width: 250px; height: 250px; border-radius: 50%;">
 				    	<input id="input_img" name="file" type="file" style="display: none;" accept="image/*">
 					</div>
 					<div class="profileButton">
