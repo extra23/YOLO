@@ -32,6 +32,20 @@
 		function fn_paging(curPage) {
 			location.href = "adminUserList?curPage=" + curPage;
 		}
+		
+		$(function(){
+			$("#profileImage").hover(
+				function(event){
+					$("#profileImage>img").css("display", "block");
+					$("#profileImage>img").css("left", event.pageX + "px")
+					$("#profileImage>img").css("right", event.pageY + "px")
+					$("#profileImage").css("text-decoration", "")
+				},
+				function(){
+					$("#profileImage>img").css("display", "none");
+				}
+			);
+		});
 	
 	</script>
 	
@@ -47,6 +61,7 @@
 			<tr>
 				<th>번호</th>
 				<th>프로필 이미지</th>
+				<th>썸네일</th>
 				<th>닉네임</th>
 				<th>이메일</th>
 				<th>password</th>
@@ -63,7 +78,11 @@
 					<c:if test="${empty param.pageNo}">${status.count}</c:if>
 					<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count}</c:if>
 				</td>
-				<td>${user.profileImage}</td>
+				<td id="profileImage">
+					<span>${user.profileImage}</span>
+					<img src="${pageContext.request.contextPath}/images/${user.profileImage}" style="display: none; position: fixed; width: 200px; height: auto;">
+				</td>
+				<td id="thumbnail">${user.thumbnail}</td>
 				<td>${user.nickName}</td>
 				<td>${user.email}</td>
 				<td>${user.password}</td>
