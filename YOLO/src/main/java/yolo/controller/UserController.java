@@ -373,6 +373,8 @@ public class UserController {
 		}*/
 
 		if (oldPwd == null || oldPwd.isEmpty()) {
+			UserVO user = userService.readUserByUserId(userId);
+			mav.addObject("user", user);
 			errors.put("oldPwd", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
@@ -382,6 +384,8 @@ public class UserController {
 		}
 
 		if (newPwd1 != null && newPwd2 != null && !newPwd1.equals(newPwd2)) {
+			UserVO user = userService.readUserByUserId(userId);
+			mav.addObject("user", user);
 			errors.put("notEqualNewPwd", true);
 			mav.addObject("errors", errors);
 			mav.setViewName("userModify");
