@@ -75,7 +75,6 @@
 
 			<nav>
 				<ul class="pagination">
-					<c:if test="${paging.endPage >1 }">
 						<c:if test="${paging.curPage ne 1}">
 							<li><a href="#" aria-label="Previous"
 								onclick="fn_paging(${paging.prevPage})"> <span
@@ -100,7 +99,6 @@
 									aria-hidden="true">&raquo;</span>
 							</a></li>
 						</c:if>
-					</c:if>
 				</ul>
 			</nav>
 

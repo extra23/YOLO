@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -497,8 +498,9 @@ public class UserController {
 	//비밀번호 찾기
 		@RequestMapping(value = "/Find_PasswordForm.do", method = RequestMethod.POST)
 		public void findPassword(Model model, HttpServletRequest request, HttpServletResponse response, String email,
-				int pwQId, String pwA) throws IOException {
-
+				int pwQId, @RequestParam("pwA") String pwA) throws IOException {
+			System.out.println("pwA:"+pwA+"email"+email+"pwQId"+pwQId);
+			
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out = response.getWriter();
 
@@ -508,17 +510,14 @@ public class UserController {
 			if (uservo == null) {
 				out.print("잘못된 이메일입니다.");
 				out.close();
-
 			} else {
 				if (pwQId != uservo.getPwQId()) {
 					out.print("잘못된 비밀번호 찾기 질문 입니다.");
 					out.close();
-
 				} else if (!pwA.equals(uservo.getPwA())) {
 					System.out.println(pwA + ", " + uservo.getPwA());
 					out.print("잘못된 비밀번호 찾기 질문 답변입니다.");
 					out.close();
-
 				} else {
 
 					// 임시 비밀번호 생성

@@ -96,6 +96,17 @@
 			<form name="writeForm" action="moduleInsert" method="post">
 
 				<div id="formTable" >
+					코스 선택  
+				<div class="form-group form-group-lg">
+					<div class="col-sm-6">
+							<select name="selectModule" id="selectModule">
+								<option selected>&nbsp;모듈을 선택해 주세요</option>
+								<c:forEach var="course" items="${courseList}" varStatus="status">
+									<option value="${course.courseId}">${course.cTitle}</option>
+								</c:forEach>
+							</select>
+					</div>
+				</div>	 	
 					모듈 제목  <input type="text" id="mTitle" name="mTitle" size="100"> <br> <br>
 					모듈 요약  <input type="text" name="mSummary" size="100"> <br> <br>
 					모듈 내용

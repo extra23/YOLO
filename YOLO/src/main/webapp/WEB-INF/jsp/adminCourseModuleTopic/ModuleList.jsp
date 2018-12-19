@@ -72,13 +72,13 @@
 			</table>
 
 			<button id="writeBtn" class="btn btn-default navbar-btn"
-				onclick="location.href='AdminModuleAndCourse'">글쓰기</button>
+				onclick="location.href='AdminModuleAndCourse'">모듈 커버 추가하기</button>
 
 
 
 			<nav>
 				<ul class="pagination">
-					<c:if test="${paging.endPage >1 }">
+					
 						<c:if test="${paging.curPage ne 1}">
 							<li><a href="#" aria-label="Previous"
 								onclick="fn_paging(${paging.prevPage})"> <span
@@ -96,14 +96,12 @@
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
-						<c:if
-							test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
+						<c:if test="${paging.curPage ne paging.pageCnt && paging.pageCnt > 0 }">
 							<li><a href="#" aria-label="Next"
 								onclick="fn_paging(${paging.nextPage})"> <span
 									aria-hidden="true">&raquo;</span>
 							</a></li>
 						</c:if>
-					</c:if>
 				</ul>
 			</nav>
 

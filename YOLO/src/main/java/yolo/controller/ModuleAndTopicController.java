@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import yolo.service.InterfaceCoModuleService;
+import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceHistoryService;
 import yolo.service.InterfaceModuleService;
 import yolo.service.InterfacePagingService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CoModuleAndModuleVO;
+import yolo.vo.CourseVO;
 import yolo.vo.HistoryVO;
 import yolo.vo.ModuleAndTopicVO;
 import yolo.vo.ModuleVO;
@@ -47,6 +49,9 @@ public class ModuleAndTopicController {
 	
 	@Autowired
 	private InterfaceHistoryService historyService;
+	
+	@Autowired
+	private InterfaceCourseService courseService;
 	
 	private void checkCostudyModule(ModelAndView mav, HttpServletRequest request, int moduleId) {
 		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
@@ -124,10 +129,12 @@ public class ModuleAndTopicController {
 	//moduleCurver - module 커버 내용 불러오기
 		@RequestMapping("/moduleCurver")
 		public String moduleCurver(Model model,HttpServletRequest request, int moduleId) {
-			
+			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			List<CourseVO> courseList = courseService.readCourseByUserId(userId);
 			
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 			
+			model.addAttribute("courseList",courseList);
 			model.addAttribute("module",module);
 			return mainAdminM(model, request);
 		}
