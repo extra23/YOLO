@@ -1,5 +1,7 @@
 package yolo.vo;
 
+import java.time.LocalDateTime;
+
 import org.apache.ibatis.type.Alias;
 
 @Alias("CourseList")
@@ -10,10 +12,11 @@ public class CourseListVO {
 	private String nickName;
 	private int moduleId;
 	private String mTitle;
+	private LocalDateTime udate;
 	
 	public CourseListVO() {}
 
-	public CourseListVO(int courseId, String cTitle, int userId, String nickName, int moduleId, String mTitle) {
+	public CourseListVO(int courseId, String cTitle, int userId, String nickName, int moduleId, String mTitle, LocalDateTime udate) {
 		super();
 		this.courseId = courseId;
 		this.cTitle = cTitle;
@@ -21,6 +24,7 @@ public class CourseListVO {
 		this.nickName = nickName;
 		this.moduleId = moduleId;
 		this.mTitle = mTitle;
+		this.udate = udate;
 	}
 
 	public int getCourseId() {
@@ -69,6 +73,14 @@ public class CourseListVO {
 
 	public void setmTitle(String mTitle) {
 		this.mTitle = mTitle;
+	}
+
+	public LocalDateTime getUdate() {
+		return udate;
+	}
+
+	public void setUdate(LocalDateTime udate) {
+		this.udate = udate;
 	}
 
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,6 +93,7 @@ body {
 								<td width="5%">번호</td>
 								<td width="20%">제목</td>
 								<td width="10%">작성자</td>
+								<td width="10%">마지막 수정일</td>
 								<td width="30%">연관 모듈</td>
 							</tr>
 						</thead>
@@ -101,6 +103,11 @@ body {
 									<td>${course.courseId}</td>
 									<td><a class="text_de" href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
 									<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${course.userId}">${course.nickName}</a></td>
+									<td>
+									<fmt:parseDate value="${course.udate}" var="courseUdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
+									<fmt:formatDate value="${courseUdate}" var="udate" pattern="YYYY-MM-dd HH:mm"/>
+												${udate}
+									</td>
 									<td>
 									<c:forEach var="module" items="${module}">
 										<c:if test="${course.courseId eq module.courseId}">
