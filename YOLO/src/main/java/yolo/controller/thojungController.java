@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import yolo.service.InterfaceCoCourseService;
 import yolo.service.InterfaceCoModuleService;
 import yolo.vo.CoCourseListVO;
+import yolo.vo.CoCourseListViewVO;
 import yolo.vo.CoModuleListVO;
+import yolo.vo.CoModuleListViewVO;
 
 @Controller
 public class thojungController {
@@ -25,7 +27,7 @@ public class thojungController {
 	public String CoCourseListPage(Model model,int userId) {
 		
 		//List<CoCourseListVO> 객체.해당 user가 참여한 coStudy_Course 와 como ,  course , module ,user 를 조인하여 리스트 형태로 불러옴 
-		List<CoCourseListVO> coCourseList = coCourseService.readcoCourseList(userId);
+		List<CoCourseListViewVO> coCourseList = coCourseService.readcoCourseList(userId);
 		
 		
 		model.addAttribute("coCourseList", coCourseList);
@@ -38,7 +40,7 @@ public class thojungController {
 	public String coModuleListpage(Model model,int userId) {
 		
 		//List<CoModuleListVO> 객체. 해당 user가 참여한 coStudy_Module 와 como , course , module ,user 를 조인하여 리스트 형태로 불러옴 
-		List<CoModuleListVO> coModuleList = coModuleService.readcoModuleList(userId);
+		List<CoModuleListViewVO> coModuleList = coModuleService.readcoModuleList(userId);
 		
 		model.addAttribute("coModuleList",coModuleList);
 		
