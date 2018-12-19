@@ -6,6 +6,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
+	
+	<script>
+		 $(function(){
+			$("#option").click(function(){
+				location.href="modifyUser?userId=${moduleAndTopic.user.userId}";
+			});
+		});
+	</script>
 </head>
 <body>
 
@@ -23,7 +31,7 @@
 						<a href="userView?userId=${moduleAndTopic.user.userId}">${moduleAndTopic.user.nickName}</a>
 						<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
 							&nbsp;
-							<img id="option" src="${pageContext.request.contextPath}/images/option.png" title="프로필 수정">
+							<img id="option" src="${pageContext.request.contextPath}/images/option.png" title="프로필 수정" style="cursor: pointer;">
 						</c:if>
 					</td>
 				</tr>
