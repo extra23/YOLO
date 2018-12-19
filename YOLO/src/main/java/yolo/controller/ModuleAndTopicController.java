@@ -252,7 +252,7 @@ public class ModuleAndTopicController {
 		
 	//topicWrite
 		@RequestMapping(value="topicWirte",method=RequestMethod.POST)
-		public String topicWrite(Model model, HttpServletRequest request,int moduleId, String tTitle, @RequestParam("summernote") String tContent) {
+		public String topicWrite(Model model, HttpServletRequest request, @RequestParam("selectModule") int moduleId, String tTitle, @RequestParam("summernote") String tContent) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			TopicVO topicvo = new TopicVO(moduleId, userId, tTitle, tContent);
 					
