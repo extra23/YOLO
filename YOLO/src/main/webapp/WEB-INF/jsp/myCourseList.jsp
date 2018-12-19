@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,7 @@ body {
 #mlist {
 	font-size: 80px;
 	margin: 0 auto;
-	width: 500px;
+	width: 800px;
 	text-align: center;
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -79,7 +80,7 @@ body {
 	<div class="mainContainer">
 		<div class="mMain">
 			<div id="mTitle" style="font-family: 'Baloo Tamma', cursive;">
-				<h1 id="mlist" style="font-size: 80px;">Course list</h1>
+				<h1 id="mlist" style="font-size: 80px;">My course list</h1>
 			</div>
 			<div class="mContent">
 				<form>
@@ -88,16 +89,22 @@ body {
 						<thead>
 						<!--  -->
 							<tr class="category" style="border: 1px solid white !important">
-								<td width="10%">공개/비공개</td>
+								<td width="10%">번호</td>
 								<td width="20%">제목</td>
+								<td width="10%">마지막 수정일</td>
 								<td width="30%">연관 모듈</td>
 							</tr>
 						</thead>
 						<tbody class="table-hover">
-							<c:forEach var="course" items="${myCourseList}">
+							<c:forEach var="course" items="${myCourseList}" varStatus="status">
 								<tr>
-									<td>체크박스</td>
+									<td>${status.count}</td>
 									<td>${course.cTitle}</td>
+									<td>
+									<fmt:parseDate value="${course.udate}" var="courseUdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
+									<fmt:formatDate value="${courseUdate}" var="udate" pattern="YYYY-MM-dd HH:mm"/>
+												${udate}
+									</td>
 									<td>
 									<c:forEach var="module" items="${module}">
 										<c:if test="${course.courseId eq module.courseId}">

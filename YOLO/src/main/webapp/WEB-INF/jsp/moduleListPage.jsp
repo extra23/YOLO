@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%-- <fmt:parseDate value="${wdateStr }" var="parseWdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
-<fmt:formatDate value="${parseWdate }" var="wdate" pattern="YYYY-MM-dd HH:mm"/>
-${wdate } --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -105,7 +102,11 @@ body {
 									<td>${status.count}</td>
 									<td><a class="text_de" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 									<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${module.userId}">${module.nickName}</a></td>
-									<td>${module.udate}</td>
+									<td>
+									<fmt:parseDate value="${module.udate}" var="moduleUdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
+									<fmt:formatDate value="${moduleUdate}" var="udate" pattern="YYYY-MM-dd HH:mm"/>
+												${udate}
+									</td>
 									<td>
 									<c:forEach var="cTitle" items="${module.cTitleList}">
 										${cTitle} 
