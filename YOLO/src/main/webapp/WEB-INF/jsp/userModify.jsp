@@ -186,10 +186,16 @@
 			<form class="form-horizontal" action="modifyUser" method="post" enctype="multipart/form-data">
 				
 				<input type="hidden" name="userId" value="${param.userId}">
+				<input type="hidden" name="userType" value="${user.userType}">
 
 				<div class="form-group form-group-lg">
 					<div class="profile">
-						<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;" title="프로필 이미지"> 
+						<c:if test="${empty user.profileImage}">
+							<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;" title="프로필 이미지">
+						</c:if>
+						<c:if test="${not empty user.profileImage}">
+							<img id="profileImg" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;" title="프로필 이미지">
+						</c:if>
 						<input id="input_img" name="file" type="file" style="display: none;" accept="image/*">
 					</div>
 					<div class="profileButton">
