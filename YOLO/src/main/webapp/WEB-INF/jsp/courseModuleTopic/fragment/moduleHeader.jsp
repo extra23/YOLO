@@ -30,7 +30,7 @@
 		</c:if>
 		
 		<c:if test="${authUser.userId eq moduleAndTopic.user.userId}">
-			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="모듈 수정">
+			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="모듈 수정" onclick="moduleHeader(${moduleAndTopic.module.moduleId})">
 		</c:if>
 		
 		<%-- <div id="btns">
