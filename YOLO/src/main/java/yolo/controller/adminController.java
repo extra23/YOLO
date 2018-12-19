@@ -87,7 +87,7 @@ public class adminController {
 	
 	// 수정해서 사용자 리스트 페이지로 넘기기.
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
-	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, int adminId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) throws IOException, Exception {
+	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, boolean userType, int adminId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) throws IOException, Exception {
 
 		ModelAndView mv = new ModelAndView();
 		UserVO user = userDAO.selectUser(userId);
@@ -143,7 +143,7 @@ public class adminController {
 			fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
 		}
 
-		UserVO newUser = new UserVO(userId, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
+		UserVO newUser = new UserVO(userId, userType, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
 		
 		try {
 			adminService.modifyUser(newUser, adminId, oldPwd, ad_password);

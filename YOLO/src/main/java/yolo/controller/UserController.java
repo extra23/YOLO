@@ -361,7 +361,7 @@ public class UserController {
 
 	// 수정해서 프로필 페이지로 넘기기
 	@RequestMapping(value = "/modifyUser", method = RequestMethod.POST)
-	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, int pwQId, String pwA) throws IOException, Exception {
+	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, boolean userType, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, int pwQId, String pwA) throws IOException, Exception {
  
 		ModelAndView mav = new ModelAndView();
 
@@ -403,7 +403,7 @@ public class UserController {
 
 		/*System.out.println("userId : " + userId);*/
 		System.out.println("new Password : " + newPwd1);
-		UserVO user = new UserVO(userId, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
+		UserVO user = new UserVO(userId, userType, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
 		/*System.out.println("user : " + user.toString());*/
 		try {
 			userService.modifyUser(user, oldPwd);

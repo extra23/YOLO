@@ -118,6 +118,58 @@
 		
 	</style>
 	
+	<script>
+		
+		$(document).ready(function() {
+			
+			$("#profileImg").click(function() {
+				$("#input_img").click();
+			})
+			
+			$("#input_img").on("change", fileChange);
+			
+			$("#basicBtn").on("click", toBasic);
+			
+		})
+	
+		function fileChange(e) {
+	
+			var files = e.target.files;
+			var filesArr = Array.prototype.slice.call(files);
+	
+			filesArr.forEach(function(f) {
+				if (!f.type.match("image.*")) {
+					alert("확장자는 이미지 확장자만 가능합니다.");
+					return;
+				}
+	
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$("#profileImg").attr("src", e.target.result);
+				}
+				reader.readAsDataURL(f);
+			});
+	
+		}
+	
+		function toBasic(e) {
+			e.preventDefault();
+	
+			/* if ($.browser.msie) { 
+				// ie 일때 input[type=file] init. 
+				$("#input_img").replaceWith( $("#filename").clone(true) ); 
+			} else { 
+				// other browser 일때 input[type=file] init. 
+				$("#input_img").val("${pageContext.request.contextPath}/images/profileImageBasic.png"); 
+			} */
+	
+			$("#input_img").val("");
+	
+			$("#profileImg").attr("src", "${pageContext.request.contextPath}/images/profileImageBasic.png")
+		}
+		
+	</script>
+	
 </head>
 <body>
 
@@ -132,10 +184,11 @@
 			<form class="form-horizontal" action="adminUserModify" method="post" enctype="multipart/form-data">
 		
 				<input type="hidden" name="userId" value="${param.userId}">
+				<input type="hidden" name="userType" value="${user.userType}">
 				
 				<div class="form-group form-group-lg">
 					<div class="profile">
-						<img id="profileImg" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="width: 250px; height: 250px; border-radius: 50%;">
+						<img id="profileImg" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;">
 				    	<input id="input_img" name="file" type="file" style="display: none;" accept="image/*">
 					</div>
 					<div class="profileButton">

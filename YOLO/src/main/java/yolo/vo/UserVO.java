@@ -35,10 +35,11 @@ public class UserVO {
 	}
 	
 	//update
-	public UserVO(int userId, String profileImage, String thumbnail, String nickName, String email, String password, int pwQId,
+	public UserVO(int userId, boolean userType, String profileImage, String thumbnail, String nickName, String email, String password, int pwQId,
 			String pwA) {
 		super();
 		this.userId = userId;
+		this.userType = userType;
 		this.profileImage = profileImage;
 		this.thumbnail = thumbnail;
 		this.nickName = nickName;
