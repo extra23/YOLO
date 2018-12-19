@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="coModuleList" parameterType="Integer" resultType="coModuleList" >
-		select u.userId as writer, u.nickname, m.mTitle, c.cTitle, m.udate, csm.* from como cm 
+		select u.userId as writer, u.nickname, m.mTitle, c.cTitle, m.udate, c.courseId,csm.* from como cm 
 		right outer join costudy_module csm on cm.moduleId = csm.moduleId
         left outer join module m on m.moduleId = csm.moduleId
         left outer join course c on cm.courseId = c.courseId
