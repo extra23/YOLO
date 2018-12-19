@@ -308,7 +308,7 @@
 														<td
 															style="font-size: 20px; font-family: 'Jua', sans-serif; font-style: bold">
 															&nbsp;&nbsp;&nbsp;${state.count}</td>
-														<td><a href="#"
+														<td><a href="${pageContext.request.contextPath}/modulePage?moduleId=${coModuleAndModule.moduleId}"
 															style="font-size: 20px; font-family: 'Jua', sans-serif; color: white">
 																&nbsp;&nbsp;${coModuleAndModule.mTitle}</a></td>
 													</tr>
@@ -358,7 +358,7 @@
 														<td
 															style="font-size: 20px; font-family: 'Jua', sans-serif; font-style: bold">
 															&nbsp;&nbsp;&nbsp;${state.count}</td>
-														<td><a href="#"
+														<td><a href="${pageContext.request.contextPath}/coursePage?courseId=${coCourseAndCourse.courseId}"
 															style="font-size: 20px; font-family: 'Jua', sans-serif; color: white">
 																&nbsp;&nbsp;${coCourseAndCourse.cTitle}</a></td>
 													</tr>
