@@ -3,6 +3,7 @@ package yolo.service;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,7 +65,7 @@ public class ModuleService implements InterfaceModuleService {
 	
 	public Map<Integer, ModuleRequest> relatedModule() {
 		List<ModuleListVO> relatedModule = moduleDAO.relatedModule();
-		Map<Integer, ModuleRequest> moduleMap = new LinkedHashMap<Integer, ModuleRequest>();
+		TreeMap<Integer, ModuleRequest> moduleMap = new TreeMap<Integer, ModuleRequest>();
 		
 		for (ModuleListVO module : relatedModule) {
 			if (moduleMap.containsKey(module.getModuleId())) {
@@ -73,10 +74,8 @@ public class ModuleService implements InterfaceModuleService {
 				moduleMap.put(module.getModuleId(), new ModuleRequest(module));
 			}
 		}
-
-		System.out.println(moduleMap);
 		
-		return moduleMap;
+		return moduleMap.descendingMap();
 	}
 	
 	public List<ModuleListVO> moduleListPage(){
