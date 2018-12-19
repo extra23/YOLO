@@ -50,7 +50,7 @@
 		join como co on c.courseId =
 		co.courseId left Join user u on c.userId
 		= u.userId where u.userId =
-		#{userId} group by c.courseId;
+		#{userId} group by c.courseId order by c.udate desc;
 	</select>
 
 	<select id="courseListBox" resultType="Course">
