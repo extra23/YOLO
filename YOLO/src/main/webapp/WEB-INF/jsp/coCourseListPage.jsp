@@ -94,20 +94,19 @@ body {
 							</tr>
 						</thead>
 						<tbody class="table-hover">
-							<c:forEach var="course" items="${coCourseList}" varStatus="state">
+							<c:forEach var="course"  items="${coCourseList}" varStatus="state">
 								<tr>
 									<td>${state.count}</td>
-									<td>${course.cTitle}</td>
+									<td><a href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId }" style="color: black;">${course.cTitle}</a></td>
 									<td>${course.nickname}</td>
 									<td>
-									<c:forEach var="module" items="${coCourseList}">
+									<c:forEach var="moLink" items="${course.moLinks}" varStatus="states">
 								
-										<c:if test="${course.courseId eq module.courseId}">
-										${module.mTitle}
-											<c:if test="${module.mTitle eq null}">
+										
+										<a href="${pageContext.request.contextPath}/modulePage?moduleId=${moLink.moduleId}" style="color: black;">${moLink.mTitle}</a>
+											<c:if test="${moLink.mTitle eq null}">
 												-
 											</c:if> 
-										</c:if>
 									</c:forEach>
 										</td>
 								</tr>

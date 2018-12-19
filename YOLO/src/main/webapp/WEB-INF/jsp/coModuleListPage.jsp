@@ -15,10 +15,14 @@
 <link href="https://fonts.googleapis.com/css?family=Baloo+Tamma"
 	rel="stylesheet">
 
-	<!-- 공통 : bootstrap & jQuery -->
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<!-- 공통 : bootstrap & jQuery -->
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
@@ -37,7 +41,7 @@
 	display: inline-block;
 }
 
-#mTitle{
+#mTitle {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -91,25 +95,24 @@ body {
 								<td width="20%">모듈 이름</td>
 								<td width="10%">작성자</td>
 								<td width="30%">연관 코스</td>
-								
+
 							</tr>
 						</thead>
 						<tbody class="table-hover">
-							<c:forEach var="module" items="${coModuleList}"  varStatus="state">
+							<c:forEach var="module" items="${coModuleList}" varStatus="state">
 								<tr>
 									<td>${state.count}</td>
-									<td>${module.mTitle}</td>
-									<td>${module.nickName}</td>
+									<td><a href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}" style="color: black;">${module.mTitle}</a></td>
+									<td>${module.nickname}</td>
 									<td>
-									<c:forEach var="course" items="${coModuleList}">
-								
-										<c:if test="${module.moduleId eq course.moduleId}">
-										${course.cTitle}
-											<c:if test="${course.cTitle eq null}">
+										<c:forEach var="coLink" items="${module.coLinks}" varStatus="states">
+												
+										<a href="${pageContext.request.contextPath}/coursePage?courseId=${coLink.courseId}" style="color: black;">${coLink.cTitle}</a>
+												
+											<c:if test="${coLink.cTitle eq null}">
 												-
 											</c:if> 
-										</c:if>
-									</c:forEach>
+										</c:forEach>
 									</td>
 								</tr>
 							</c:forEach>
