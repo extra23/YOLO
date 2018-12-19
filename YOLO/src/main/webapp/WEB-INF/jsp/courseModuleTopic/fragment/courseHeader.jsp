@@ -4,9 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
-
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 </head>
