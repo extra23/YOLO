@@ -106,6 +106,5 @@ public class NaverSearchService{
         }
         return list;
     }
-}
+}*/
  
-*/
