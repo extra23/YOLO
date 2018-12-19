@@ -47,8 +47,8 @@
 	<select id="myCourseList" parameterType="Integer"
 		resultType="CourseList">
 		select * from course c left
-		join module m on c.courseId =
-		m.courseId left Join user u on c.userId
+		join como co on c.courseId =
+		co.courseId left Join user u on c.userId
 		= u.userId where u.userId =
 		#{userId} group by c.courseId;
 	</select>
