@@ -4,6 +4,7 @@ import java.util.List;
 
 import yolo.vo.CoCourseAndCourseVO;
 import yolo.vo.CoCourseListVO;
+import yolo.vo.CoCourseListViewVO;
 
 public interface InterfaceCoCourseService {
 	
@@ -15,6 +16,6 @@ public interface InterfaceCoCourseService {
 
 	public void removeCoCourse(int costudy_courseId);
 	
-	public List<CoCourseListVO> readcoCourseList(int userId);
+	public List<CoCourseListViewVO> readcoCourseList(int userId);
 	
 }
