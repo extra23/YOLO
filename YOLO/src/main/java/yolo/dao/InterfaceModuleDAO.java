@@ -27,6 +27,8 @@ public interface InterfaceModuleDAO {
 	
 	public void deleteModule(int moduleId);
 	
+	public void deleteMuser(int userId);
+	
 	//검색 결과를 출력ss
 	public List<SearchVO> searchModule(String mTitle);
 	

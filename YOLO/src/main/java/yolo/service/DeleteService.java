@@ -11,28 +11,29 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import yolo.dao.CourseDAO;
-import yolo.dao.ModuleDAO;
-import yolo.dao.TopicDAO;
-import yolo.dao.UserDAO;
+import yolo.dao.InterfaceCourseDAO;
+import yolo.dao.InterfaceModuleDAO;
+import yolo.dao.InterfaceTopicDAO;
+import yolo.dao.InterfaceUserDAO;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.vo.UserVO;
 
+
 @Service("DeleteService")
-public class DeleteService {
+public class DeleteService implements InterfaceDeleteService{
 	
 	@Autowired
-	private UserDAO userDAO;
+	InterfaceUserDAO userDAO;
 	
 	@Autowired
-	private TopicDAO topicDAO;
+	InterfaceTopicDAO topicDAO;
 	
 	@Autowired
-	private ModuleDAO moduleDAO;
+	InterfaceModuleDAO moduleDAO;
 	
 	@Autowired
-	private CourseDAO courseDAO;
+	InterfaceCourseDAO courseDAO;
 	
 /*	public String select(int userId) {
 		return null;
@@ -69,6 +70,11 @@ public class DeleteService {
 			throw new UserNotFoundException("사용자 권한 없음.");
 		}*/
 
+	}
+
+	public void removeUser(int user) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

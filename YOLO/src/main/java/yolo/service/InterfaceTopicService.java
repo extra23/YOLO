@@ -21,6 +21,8 @@ public interface InterfaceTopicService {
 	
 	public void removeTopic(int topicId);
 	
+	public void removeTuser(int userId);
+	
 	public List<SearchVO> searchTopic(String tTitle);
 	
 	public int countBySearch(String tTitle);

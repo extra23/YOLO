@@ -40,6 +40,11 @@ public class CourseService implements InterfaceCourseService {
 		courseDAO.deleteCourse(courseId);
 	}
 	
+	public void removeCuser(int userId) {
+		courseDAO.deleteCourse(userId);
+		
+	}
+	
 	public List<SearchVO> searchCourse(String cTitle){
 		return courseDAO.searchCourse(cTitle);
 	}
@@ -59,4 +64,5 @@ public class CourseService implements InterfaceCourseService {
 	public List<CourseVO> courseListBox(){
 		return courseDAO.courseListBox();
 	}
+
 }

@@ -52,6 +52,10 @@ public class ModuleService implements InterfaceModuleService {
 		moduleDAO.deleteModule(moduleId);
 
 	}
+	public void removeMuser(int userId) {
+		moduleDAO.deleteModule(userId);
+		
+	}
 
 	public List<SearchVO> searchModule(String mTitle) {
 		// TODO Auto-generated method stub
@@ -89,5 +93,6 @@ public class ModuleService implements InterfaceModuleService {
 	public List<ModuleVO> moduleListBox(){
 		return moduleDAO.moduleListBox();
 	}
+
 
 }
