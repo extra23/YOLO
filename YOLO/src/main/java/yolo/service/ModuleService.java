@@ -62,11 +62,11 @@ public class ModuleService implements InterfaceModuleService {
 		return moduleDAO.countBySearch(mTitle);
 	}
 	
-	public Map<Integer, ModuleRequest> moduleListPage() {
-		List<ModuleListVO> moduleListPage = moduleDAO.moduleListPage();
+	public Map<Integer, ModuleRequest> relatedModule() {
+		List<ModuleListVO> relatedModule = moduleDAO.relatedModule();
 		Map<Integer, ModuleRequest> moduleMap = new LinkedHashMap<Integer, ModuleRequest>();
 		
-		for (ModuleListVO module : moduleListPage) {
+		for (ModuleListVO module : relatedModule) {
 			if (moduleMap.containsKey(module.getModuleId())) {
 				moduleMap.get(module.getModuleId()).addcTitle(module.getcTitle());
 			} else {
@@ -75,6 +75,10 @@ public class ModuleService implements InterfaceModuleService {
 		}
 		
 		return moduleMap;
+	}
+	
+	public List<ModuleListVO> moduleListPage(){
+		return moduleDAO.moduleListPage();
 	}
 	
 	public List<ModuleListVO> myModuleList(int userId){

@@ -37,8 +37,8 @@ public class SoheeController {
 		List<CourseListVO> courseListPage = courseService.courseListPage();
 		model.addAttribute("courseListPage",courseListPage);
 		
-		List<ModuleVO> moduleList = moduleService.readModuleList();
-		model.addAttribute("module", moduleList);
+		List<ModuleListVO> moduleListPage = moduleService.moduleListPage();
+		model.addAttribute("module", moduleListPage);
 		
 		return "courseListPage";
 	}
@@ -49,8 +49,8 @@ public class SoheeController {
 		List<CourseListVO> myCourseList = courseService.myCourseList(userId);
 		model.addAttribute("myCourseList", myCourseList);
 		
-		List<ModuleVO> moduleList = moduleService.readModuleList();
-		model.addAttribute("module", moduleList);
+		List<ModuleListVO> moduleListPage = moduleService.moduleListPage();
+		model.addAttribute("module", moduleListPage);
 		
 		return "myCourseList";
 	}
@@ -58,7 +58,7 @@ public class SoheeController {
 	@RequestMapping("/moduleListPage")
 	public String moduleListPage(Model model) {
 		
-		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
+		Map<Integer, ModuleRequest> moduleMap = moduleService.relatedModule();
 		model.addAttribute("moduleMap", moduleMap);
 		
 		return "moduleListPage";
@@ -67,7 +67,7 @@ public class SoheeController {
 	@RequestMapping("/myModuleList")
 	public String myModuleList(Model model, int userId) {
 		
-		Map<Integer, ModuleRequest> moduleMap = moduleService.moduleListPage();		
+		Map<Integer, ModuleRequest> moduleMap = moduleService.relatedModule();		
 		model.addAttribute("moduleMap", moduleMap);
 		return "myModuleList";
 	}

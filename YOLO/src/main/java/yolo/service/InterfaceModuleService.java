@@ -29,7 +29,9 @@ public interface InterfaceModuleService {
 	
 	public int countBySearch(String mTitle);
 	
-	public Map<Integer, ModuleRequest> moduleListPage();
+	public Map<Integer, ModuleRequest> relatedModule();
+	
+	public List<ModuleListVO> moduleListPage();
 	
 	public List<ModuleListVO> myModuleList(int userId);
 	

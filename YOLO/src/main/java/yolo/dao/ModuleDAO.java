@@ -82,6 +82,11 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		return count;
 	}
 	
+	public List<ModuleListVO> relatedModule(){
+		List<ModuleListVO> relatedModule = moduleMapper.relatedModule();
+		return relatedModule;
+	}
+	
 	public List<ModuleListVO> moduleListPage(){
 		List<ModuleListVO> moduleListPage = moduleMapper.moduleListPage();
 		return moduleListPage;
