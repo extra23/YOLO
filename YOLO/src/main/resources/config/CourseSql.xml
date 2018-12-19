@@ -41,7 +41,7 @@
 	<select id="courseListPage" resultType="CourseList">
 		select * from course c
 		left join como co on c.courseId = co.courseId left Join user u on
-		c.userId = u.userId group by c.courseId;
+		c.userId = u.userId group by c.courseId order by c.udate desc;
 	</select>
 
 	<select id="myCourseList" parameterType="Integer"

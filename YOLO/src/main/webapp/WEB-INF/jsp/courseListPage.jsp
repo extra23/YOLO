@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="dt" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,9 +104,7 @@ body {
 									<td><a class="text_de" href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId}">${course.cTitle}</a></td>
 									<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${course.userId}">${course.nickName}</a></td>
 									<td>
-									<fmt:parseDate value="${course.udate}" var="courseUdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
-									<fmt:formatDate value="${courseUdate}" var="udate" pattern="YYYY-MM-dd HH:mm"/>
-												${udate}
+									<dt:formatDateTime value="${course.udate}" pattern="YYYY-MM-dd HH:mm"/>
 									</td>
 									<td>
 									<c:forEach var="module" items="${module}">

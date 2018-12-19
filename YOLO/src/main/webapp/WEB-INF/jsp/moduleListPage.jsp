@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="dt" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,9 +103,7 @@ body {
 									<td><a class="text_de" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 									<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${module.userId}">${module.nickName}</a></td>
 									<td>
-									<fmt:parseDate value="${module.udate}" var="moduleUdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
-									<fmt:formatDate value="${moduleUdate}" var="udate" pattern="YYYY-MM-dd HH:mm"/>
-												${udate}
+									<dt:formatDateTime value="${module.udate}" pattern="YYYY-MM-dd HH:mm"/>
 									</td>
 									<td>
 									<c:forEach var="cTitle" items="${module.cTitleList}">

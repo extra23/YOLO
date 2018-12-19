@@ -90,8 +90,8 @@
 	</select>
 	
 	<select id="myModuleList" parameterType="Integer" resultType="ModuleList">
-		select * from module m left join course c on m.courseId = c.courseId
-		left Join user u on m.userId = u.userId where u.userId=#{userId};
+		select * from module m left join como co on m.moduleId = co.moduleId
+		left Join user u on m.userId = u.userId where u.userId=#{userId} order by m.udate desc;
 	</select>
 
 	<select id="moduleListBox" resultType="Module">

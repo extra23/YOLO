@@ -73,6 +73,8 @@ public class ModuleService implements InterfaceModuleService {
 				moduleMap.put(module.getModuleId(), new ModuleRequest(module));
 			}
 		}
+
+		System.out.println(moduleMap);
 		
 		return moduleMap;
 	}
