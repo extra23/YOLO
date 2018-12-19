@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +16,63 @@
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 		
 	<style>
-
-		#container * {font-family: a찐빵M;}
 	
-		#myHistoryPage {width: 90%; margin: auto;}
-		#myHistoryPage, #myHistoryPage tr, th, td {border: 1px solid black; border-collapse: collapse;}
-		#myHistoryPage td, #myHistoryPage th, #myHistoryPage tr {padding: 10px; text-align: center;}
-		#myHistoryPage thead {background-color: gainsboro;}
-		
-		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
+.mainContainer {
+	width: 100%;
+	height: 1000px;
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.mMain {
+	width: 85%;
+	height: auto;
+	display: inline-block;
+	font-family: 'a찐빵M'
+}
+
+#mTitle{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-family: 'a찐빵M'
+}
+
+td {
+	border: 1px solid white !important
+}
+
+.mContent {
+	font-family: 'Jua', sans-serif;
+	margin-top: 15px;
+}
+
+body {
+	font-family: 'Jua', sans-serif;
+}
+
+#mlist {
+	font-size: 80px;
+	margin: 0 auto;
+	width: 500px;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	
+}
+
+.table {
+	border: 1px solid gray;
+	font-size: 20px;
+}
+/*  */
+.category {
+	background-color: lightgray;
+}
+.text_de{color: black;}
+.text_de:hover{text-decoration: none; color: #5a5a5a;}
+
+
 	</style>
 	
 	<script>
@@ -66,35 +114,50 @@
 </head>
 <body>
 	
-	<jsp:include page="header3.jsp"></jsp:include>
+	<%-- <jsp:include page="header3.jsp"></jsp:include> --%>
 	
-	<h2 class="text-center">봤어요</h2>
-	
-	<table id="myHistoryPage">
-		<thead>
-			<tr>
-				<th>글쓴이</th>
-				<th>tTitle</th>
-				<th>날짜</th>
-				<th>봤어요</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="history" items="${myHistoryList}" varStatus="status">
-			<tr>
-				<td>
-					<c:if test="${empty param.pageNo}">${status.count}</c:if>
-					<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count}</c:if>
-				</td>
-				<td>${user.nickName}</td>
-				<td>${topic.tTitle}</td>
-				<td>${topic.udate}</td>
-				<td><a href="adminUserModify?userId=${user.userId}">[봤어요]</a></td>
+	<div class="mainContainer">
+		<div class="mMain">
+			<div id="mTitle" style="font-family: 'Baloo Tamma', cursive;">
+				<h1 id="mlist" style="font-size: 80px;">History</h1>
+			</div>
+			<div class="mContent">
+				<form>
+					<table class="table table-striped table-hover" style="border: 1px solid white !important">
+						<thead>
+							<tr class="category" style="border: 1px solid white !important">
+								<td width="10%">번호</td>
+								<td width="15%">글쓴이</td>
+								<td width="25%">tTitle</td>
+								<td width="15%">날짜</td>
+								<td width="15%">봤어요</td>
+							</tr>
+						</thead>
+						<tbody class="table-hover">
+							<c:forEach var="history" items="${myHistoryList}" varStatus="status">
+								<tr>
+									<td>
+									<c:if test="${empty param.pageNo}">${status.count}</c:if>
+									<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count}</c:if>
+									</td>
+								<td><a class="text_de" href="${pageContext.request.contextPath}/userView?userId=${topic.userId}">${topic.nickName}</a></td>
+								<td><a class="text_de" href="${pageContext.request.contextPath}/topic?topicId=${topic.topicId}">${topic.tTitle}</a></td>
+								<td>
+									<c:set value="${topic.udate.toString()}" var="udate"/> 
+									<fmt:parseDate value="${udate }" var="parseUdate" pattern="YYYY-MM-dd'T'HH:mm:ss"/>
+									<fmt:formatDate value="${parseUdate }" var="udate" pattern="YYYY-MM-dd HH:mm"/>
+								${topic.udate}
+								</td>
+								<td><a href="adminUserModify?userId=${user.userId}">[봤어요]</a></td>
 				
-			</tr>
-			</c:forEach>
-		</tbody>	
-	</table>
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	
 	<nav>
@@ -128,7 +191,7 @@
 				</ul>
 			</nav>
 
-	<jsp:include page="footer.jsp"></jsp:include>
+	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
 	
 </body>
 </html>
