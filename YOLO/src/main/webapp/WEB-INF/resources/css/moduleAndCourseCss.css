@@ -9,7 +9,7 @@ body{
 	margin-right: auto;
 	margin-top: 5%;
     width: 82%;
-    height: 900px;
+    height: 1500px;
     overflow: hidden;
 }
 		
@@ -23,7 +23,7 @@ body{
 	border: 1px solid lightgray;
 	border-radius: 1%;
 	width: 200px;
-	height: 700px;
+	height: 900px;
 	font-family: 'Jua';
 	overflow: scroll;
 	overflow-x:hidden;  

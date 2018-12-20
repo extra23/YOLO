@@ -97,12 +97,16 @@
 			
 
 				<div id="formTable" >
-				코스 선택
-					<div>
-						<c:forEach var="course" items="${courseList}" varStatus="status">
-						<input type="checkbox" name="co" value="${course.courseId}"/>${course.cTitle}
+					코스 선택
+						<a href="#" class="toggle-custom" id="btn1" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+					<ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn1">
+						<c:forEach var="course" items="${courseList}" varStatus="status1">
+							<label><input type="checkbox" name="co" value="${course.courseId}">${course.cTitle}</label>
+							&nbsp;&nbsp;
 						</c:forEach>
-					</div>
+					</ul>
+					<br>
+
 					모듈 제목  <input type="text" id="mTitle" name="mTitle" size="100"> <br> <br>
 					모듈 요약  <input type="text" name="mSummary" size="100"> <br> <br>
 					모듈 내용
@@ -116,17 +120,15 @@
 			<form name="writeForm" action="moduleModify" method="post">
 
 				<div id="formTable">
-				코스 선택  
-				<div class="form-group form-group-lg">
-					<div class="col-sm-6">
-							<select name="selectModule" id="selectModule">
-								<option selected>&nbsp;선택된 코스 없음</option>
-								<c:forEach var="course" items="${courseList}" varStatus="status">
-									<option value="${course.courseId}">${course.cTitle}</option>
-								</c:forEach>
-							</select>
-					</div>
-				</div>	 	
+					코스 선택
+						<a href="#" class="toggle-custom" id="btn1" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+					<ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn1">
+						<c:forEach var="course" items="${courseList}" varStatus="status1">
+							<label><input type="checkbox" name="co" value="${course.courseId}">${course.cTitle}</label>
+							&nbsp;&nbsp;
+						</c:forEach>
+					</ul>
+					<br>	 	
 					<input type="hidden" name="moduleId" value="${module.moduleId}">
 					모듈 제목 <input type="text" name="mTitle" id="mTitle" value="${module.mTitle}" size="100"> <br><br> 
 					모듈 요약 <input type="text" name="mSummary" value="${module.mSummary}" size="100"><br><br> 
@@ -157,6 +159,12 @@
 					alert("비밀번호를 잘못 입력했습니다.")
 				}
 			});
+			
+			if(${comoList}!=null){
+				for(${comoList}.size()){
+					
+				}
+			}
 		
 		})
 	</script>

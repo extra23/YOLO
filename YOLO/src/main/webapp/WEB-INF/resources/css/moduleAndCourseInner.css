@@ -5,7 +5,7 @@ body{
 }
 
 #formTable {
-	top: -660px;
+	top: -850px;
 	left: 230px;
 	width: 70%;
 	position: relative;
@@ -41,4 +41,14 @@ body{
 	margin-left: 15%;
 	height: 25px;
 	
+}
+
+.toggle-custom {
+	position:absolute !important;
+	top:0;
+	left: 11%;
+}
+
+.toggle-custom[aria-expanded='true'] .glyphicon-plus:before {
+  content: "\2212";
 }

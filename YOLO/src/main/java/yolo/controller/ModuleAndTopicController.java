@@ -126,16 +126,18 @@ public class ModuleAndTopicController {
 		@RequestMapping("/AdminModuleAndCourse")
 		public String mainAdminM(Model model,HttpServletRequest request) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
+			
 			List<ModuleVO> moduleList = moduleService.readModuleListByUserId(userId);
+			List<CourseVO> courseList = courseService.readCourseByUserId(userId);
+			
 			model.addAttribute("moduleList",moduleList);
+			model.addAttribute("courseList",courseList);
 			return "adminCourseModuleTopic/moduleAndCourse";
 		}
 
 	//moduleCurver - module 커버 내용 불러오기
 		@RequestMapping("/moduleCurver")
-		public String moduleCurver(Model model,HttpServletRequest request, int moduleId) {
-			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
-			List<CourseVO> courseList = courseService.readCourseByUserId(userId);
+		public String moduleCurver(Model model,HttpServletRequest request, int moduleId) {			
 			
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 			
@@ -145,7 +147,7 @@ public class ModuleAndTopicController {
 				model.addAttribute("comoList",comoList);
 			}
 			
-			model.addAttribute("courseList",courseList);
+			
 			model.addAttribute("module",module);
 			return mainAdminM(model, request);
 		}
