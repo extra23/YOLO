@@ -93,7 +93,6 @@ body {
 								<td width="15%">최근 수정 날짜</td>
 								<td width="20%">연관 코스</td>
 							</tr>
-							
 						</thead>
 						<tbody class="table-hover">
 							<c:forEach var="module" items="${moduleMap.values()}" varStatus="status">
