@@ -77,8 +77,8 @@ body {
 .category {
 	background-color: lightgray;
 }
-.mTitle{color: black;}
-.mTitle:hover{text-decoration: none; color: #5a5a5a;}
+.text_de{color: black;}
+.text_de:hover{text-decoration: none; color: #5a5a5a;}
 </style>
 </head>
 <body>
@@ -105,13 +105,13 @@ body {
 								varStatus="status">
 								<tr>
 									<td>${status.count}</td>
-									<td><a class="mTitle" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
+									<td><a class="text_de" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 									<td>
 									<dt:formatDateTime value="${module.udate}" pattern="YYYY-MM-dd HH:mm"/>
 									</td>
 									<td>
 									<c:forEach var="i" begin="0" end="${module.courseIdList.size()}" step="1">
-										<a href="${pageContext.request.contextPath}/coursePage?courseId=${module.courseIdList[i]}">${module.cTitleList[i]}</a> 
+										<a class="text_de" href="${pageContext.request.contextPath}/coursePage?courseId=${module.courseIdList[i]}">${module.cTitleList[i]}</a> 
 									</c:forEach>
 									</td>
 								</tr>
