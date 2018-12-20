@@ -61,7 +61,7 @@ public class CoCourseService implements InterfaceCoCourseService {
 							mLinks,
 							cocList.get(i).getcTitle(),
 							cocList.get(i).getNickname(),
-							cocList.get(i).getUserId(),
+							cocList.get(i).getWriter(),
 							cocList.get(i).getUdate()
 							)
 					);
