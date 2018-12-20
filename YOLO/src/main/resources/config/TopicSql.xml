@@ -43,12 +43,5 @@
 	<select id="countBySearch" parameterType="string" resultType="Integer">
 		select count(*) from topic t join user u on u.userId = t.userId where tTitle Like CONCAT('%',#{tTitle},'%')
 	</select>
-
-	<select id="tTitle">
-		select * from topic order by tTitle ASC
-	</select>
 	
-	<select id="tUdate">
-		select * from topic order by udate DESC
-	</select>
 </mapper>

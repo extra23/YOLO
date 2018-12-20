@@ -50,7 +50,6 @@ public class TopicDAO implements InterfaceTopicDAO {
 	
 	public void deleteTuser(int userId) {
 		topicMapper.deleteTuser(userId);
-
 	}
 
 	public List<SearchVO> searchTopic(String tTitle) {

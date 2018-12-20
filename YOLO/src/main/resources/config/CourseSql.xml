@@ -58,14 +58,6 @@
 		by wdate desc
 	</select>
 
-	<select id="cTitle">
-		select * from course order by cTitle ASC
-	</select>
-
-	<select id="cUdate">
-		select * from course order by udate DESC
-	</select>
-
 	<select id="selectCourseByUserId" parameterType="Integer"
 		resultType="Course">
 		select * from course where userId=#{userId}
@@ -79,4 +71,5 @@
 	<select id="selectCourseList" resultType="Course">
 		select * form course
 	</select>
+	
 </mapper>

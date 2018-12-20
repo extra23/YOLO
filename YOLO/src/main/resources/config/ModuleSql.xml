@@ -103,15 +103,6 @@
 		select * from module order
 		by wdate desc
 	</select>
-
-	<select id="mTitle">
-		select * from module order by mTitle ASC
-	</select>
-
-	<select id="mUdate">
-		select * from module order by udate DESC
-	</select>
-	
 	
 </mapper>
 

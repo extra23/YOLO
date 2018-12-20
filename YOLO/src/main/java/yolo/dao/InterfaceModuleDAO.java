@@ -27,7 +27,8 @@ public interface InterfaceModuleDAO {
 	
 	public void deleteModule(int moduleId);
 	
-	//검색 결과를 출력ss
+	public void deleteMuser(int userId);
+	
 	public List<SearchVO> searchModule(String mTitle);
 	
 	public int countBySearch(String mTitle);

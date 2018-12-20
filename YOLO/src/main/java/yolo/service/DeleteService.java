@@ -12,6 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import yolo.dao.CourseDAO;
+import yolo.dao.InterfaceComoDAO;
+import yolo.dao.InterfaceCourseDAO;
+import yolo.dao.InterfaceModuleDAO;
+import yolo.dao.InterfaceTopicDAO;
+import yolo.dao.InterfaceUserDAO;
 import yolo.dao.ModuleDAO;
 import yolo.dao.TopicDAO;
 import yolo.dao.UserDAO;
@@ -20,25 +25,24 @@ import yolo.exception.UserNotFoundException;
 import yolo.vo.UserVO;
 
 @Service("DeleteService")
-public class DeleteService {
+public class DeleteService implements InterfaceDeleteService {
 	
 	@Autowired
-	private UserDAO userDAO;
+	private InterfaceUserDAO userDAO;
 	
 	@Autowired
-	private TopicDAO topicDAO;
+	private InterfaceTopicDAO topicDAO;
 	
 	@Autowired
-	private ModuleDAO moduleDAO;
+	private InterfaceModuleDAO moduleDAO;
 	
 	@Autowired
-	private CourseDAO courseDAO;
+	private InterfaceCourseDAO courseDAO;
 	
-/*	public String select(int userId) {
-		return null;
-	}*/
+	@Autowired
+	private InterfaceComoDAO comoDAO;
 	
-	public void delete(HttpServletRequest req, HttpServletResponse resp, int userId, String password){
+	public void remove(HttpServletRequest req, HttpServletResponse resp, int userId, String password) {
 		
 		// userId를 이용해서 UserVO 객체를 DB에서 select 해옴
 		UserVO user = userDAO.selectUser(userId);
@@ -56,6 +60,7 @@ public class DeleteService {
 			// 비밀번호가 일치하면 DAO들을 통해서 내용 삭제
 			userDAO.deleteUser(userId);
 			topicDAO.deleteTuser(userId);
+			comoDAO.deleteByUser(userId);
 			moduleDAO.deleteMuser(userId);
 			courseDAO.deleteCuser(userId);	
 		}
