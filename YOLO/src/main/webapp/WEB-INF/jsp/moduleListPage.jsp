@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<!--  -->
 <link href="https://fonts.googleapis.com/css?family=Jua"
 	rel="stylesheet">
 
@@ -106,11 +105,9 @@ body {
 									<dt:formatDateTime value="${module.udate}" pattern="YYYY-MM-dd HH:mm"/>
 									</td>
 									<td>
-									<c:forEach var="cTitle" items="${module.cTitleList}">
-										${cTitle} 
+									<c:forEach var="i" begin="0" end="${module.courseIdList.size()}" step="1">
+										<a href="${pageContext.request.contextPath}/coursePage?courseId=${module.courseIdList[i]}">${module.cTitleList[i]}</a> 
 									</c:forEach>
-									</td>
-								</tr>
 							</c:forEach>
 						</tbody>
 					</table>

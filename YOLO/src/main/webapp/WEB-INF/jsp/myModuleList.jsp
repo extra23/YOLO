@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="dt" tagdir="/WEB-INF/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,15 +104,14 @@ body {
 							<c:forEach var="module" items="${moduleMap.values()}"
 								varStatus="status">
 								<tr>
-									
 									<td>${status.count}</td>
 									<td><a class="mTitle" href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}">${module.mTitle}</a></td>
 									<td>
 									<dt:formatDateTime value="${module.udate}" pattern="YYYY-MM-dd HH:mm"/>
 									</td>
 									<td>
-									<c:forEach var="cTitle" items="${module.cTitleList}">
-										${cTitle} 
+									<c:forEach var="i" begin="0" end="${module.courseIdList.size()}" step="1">
+										<a href="${pageContext.request.contextPath}/coursePage?courseId=${module.courseIdList[i]}">${module.cTitleList[i]}</a> 
 									</c:forEach>
 									</td>
 								</tr>

@@ -12,7 +12,7 @@ public class ModuleRequest {
 	private int userId;
 	private String nickName;
 	private LocalDateTime udate;
-	private int courseId;
+	private List<Integer> courseIdList;
 	private List<String> cTitleList;
 
 	public ModuleRequest(ModuleListVO module) {
@@ -21,7 +21,8 @@ public class ModuleRequest {
 		userId = module.getUserId();
 		nickName = module.getNickName();
 		udate = module.getUdate();
-		courseId = module.getCourseId();
+		courseIdList = new ArrayList<Integer>();
+		courseIdList.add(module.getCourseId());
 		cTitleList = new ArrayList<String>();
 		cTitleList.add(module.getcTitle());
 	}
@@ -65,13 +66,17 @@ public class ModuleRequest {
 	public void setUdate(LocalDateTime udate) {
 		this.udate = udate;
 	}
-
-	public int getCourseId() {
-		return courseId;
+	
+	public List<Integer> getCourseIdList() {
+		return courseIdList;
 	}
 
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
+	public void setCourseIdList(List<Integer> courseIdList) {
+		this.courseIdList = courseIdList;
+	}
+
+	public void addCourseId(int courseId) {
+		courseIdList.add(courseId);
 	}
 
 	public List<String> getcTitleList() {
@@ -89,6 +94,8 @@ public class ModuleRequest {
 	@Override
 	public String toString() {
 		return "ModuleRequest [moduleId=" + moduleId + ", mTitle=" + mTitle + ", userId=" + userId + ", nickName="
-				+ nickName + ", udate=" + udate + ", courseId=" + courseId + ", cTitleList=" + cTitleList + "]";
+				+ nickName + ", udate=" + udate + ", courseIdList=" + courseIdList + ", cTitleList=" + cTitleList + "]";
 	}
+
+	
 }
