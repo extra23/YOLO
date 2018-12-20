@@ -61,7 +61,7 @@ public class CoModuleService implements InterfaceCoModuleService {
 							cLinks,
 							comList.get(i).getmTitle(),
 							comList.get(i).getNickname(),
-							comList.get(i).getUserId(),
+							comList.get(i).getWriter(),
 							comList.get(i).getUdate()
 							)
 					);
