@@ -445,17 +445,18 @@ public class UserController {
 	}
 	
 	// 유저 탈퇴페이지로 
-	@RequestMapping(value="/deleteUser", method = RequestMethod.GET)
+	@RequestMapping(value="/removeUser", method = RequestMethod.GET)
 	public ModelAndView deleteUserForm(@RequestParam("userId") int userId, ModelAndView mv) {	
 		UserVO user = userService.readUserByUserId(userId);
 		mv.addObject("user", user);
+		mv.setViewName("deleteUser");
 		return mv;
 	}
 		
 	
 	// 유저 탈퇴하고 메인 페이지로 복귀하기
 		@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
-		public String deleteUser(@RequestParam("userId") int userId, String email, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		public ModelAndView deleteUser(@RequestParam("userId") int userId, String email, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 			ModelAndView mav = new ModelAndView();
 			
 			// Map<String, Boolean> errors 객체 생성
@@ -469,11 +470,13 @@ public class UserController {
 				}catch(InvalidPasswordException e) {
 					errors.put("invalidPassword", true);
 					mav.addObject("errors", errors);
-					return "deleteUser";
+					mav.setViewName("deleteUser");
+					return mav;
 				}catch(UserNotFoundException e) {
 					errors.put("UserNotFound", true);
 					mav.addObject("errors", errors);
-					return "deleteUser";
+					mav.setViewName("deleteUser");
+					return mav;
 				}
 				HttpSession session = req.getSession(false);
 				if(session == null) {
@@ -484,7 +487,7 @@ public class UserController {
 				session.invalidate();
 			
 			// mainBoard 페이지로 돌아가기
-			return "mainBoard";
+			return getMainBoard();
 		}
 		
 		
