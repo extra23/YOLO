@@ -19,7 +19,12 @@
 		delete from como where courseId=#{courseId} and moduleId=#{moduleId}
 	</delete>
 	
+	<delete id="deleteByUser" parameterType="Integer">
+		delete * from (select como.courseId, como.moduleId, module.userId from como join module on como.moduleId=module.moduleId) as comomo where comomo.userId=#{userId};
+	</delete>
+	
 	<select id="selectComoList" parameterType="Integer" resultType="Como">
 		select * from como where moduleId=#{moduleId}
 	</select>
+
 </mapper>

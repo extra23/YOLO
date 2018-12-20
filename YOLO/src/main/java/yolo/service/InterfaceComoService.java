@@ -13,7 +13,8 @@ public interface InterfaceComoService {
 	
 	public void deleteComo(int moduleId);
 	
-	public List<ComoVO> selectComoList(int moduleId);
+	public void removeComoByUser(int userId);
 	
+	public List<ComoVO> selectComoList(int moduleId);
 
 }

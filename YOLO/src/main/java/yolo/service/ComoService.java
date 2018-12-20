@@ -58,13 +58,14 @@ public class ComoService implements InterfaceComoService {
 		comoDAO.deleteComoByModuleId(moduleId);
 		
 	}
+	
+	public void removeComoByUser(int userId) {
+		comoDAO.deleteByUser(userId);
+	}
 
 	public List<ComoVO> selectComoList(int moduleId) {
 		
 		return comoDAO.selectComoList(moduleId);
 	}
-
-
-	
 
 }

@@ -12,6 +12,8 @@ public interface InterfaceComoDAO {
 	
 	public void deleteComo(ComoVO como);
 	
+	public void deleteByUser(int userId);
+	
 	public List<ComoVO> selectComoList(int moduleId);
 
 }
