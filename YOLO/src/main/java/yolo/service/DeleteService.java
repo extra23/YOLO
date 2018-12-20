@@ -35,11 +35,7 @@ public class DeleteService implements InterfaceDeleteService{
 	@Autowired
 	InterfaceCourseDAO courseDAO;
 	
-/*	public String select(int userId) {
-		return null;
-	}*/
-	
-	public void delete(HttpServletRequest req, HttpServletResponse resp, int userId, String password){
+	public void remove(HttpServletRequest req, HttpServletResponse resp, int userId, String password){
 		
 		// userId를 이용해서 UserVO 객체를 DB에서 select 해옴
 		UserVO user = userDAO.selectUser(userId);
@@ -70,11 +66,6 @@ public class DeleteService implements InterfaceDeleteService{
 			throw new UserNotFoundException("사용자 권한 없음.");
 		}*/
 
-	}
-
-	public void removeUser(int user) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

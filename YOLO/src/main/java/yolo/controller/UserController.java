@@ -30,6 +30,7 @@ import yolo.service.DeleteService;
 import yolo.service.InterfaceCoCourseService;
 import yolo.service.InterfaceCoModuleService;
 import yolo.service.InterfaceCourseService;
+import yolo.service.InterfaceDeleteService;
 import yolo.service.InterfaceEmailService;
 import yolo.service.InterfaceLoginService;
 import yolo.service.InterfaceModuleService;
@@ -53,7 +54,7 @@ public class UserController {
 	private InterfaceLoginService loginService;
 	
 	@Autowired
-	private DeleteService deleteService;
+	private InterfaceDeleteService deleteService;
 	
 	@Autowired
 	private InterfacePwdQuestionService pwdQuestionService;
@@ -463,7 +464,7 @@ public class UserController {
 			
 			
 			try {
-				deleteService.delete(req, resp, userId, password);
+				deleteService.remove(req, resp, userId, password);
 				//UserDAO userDAO = (UserDAO)session.getAttribute("email");
 				}catch(InvalidPasswordException e) {
 					errors.put("invalidPassword", true);

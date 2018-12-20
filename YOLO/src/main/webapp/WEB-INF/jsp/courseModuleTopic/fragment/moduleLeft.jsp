@@ -8,11 +8,21 @@
 	<title>Insert title here</title>
 	
 	<script>
-		 $(function(){
+		
+		$(function(){
 			$("#option").click(function(){
 				location.href="modifyUser?userId=${moduleAndTopic.user.userId}";
 			});
 		});
+		
+		$(function(){
+			console.log("들어옴")
+			var imgWidthStr = $("#thumbnailImg").css("width");
+			console.log(imgWidthStr);
+			var imgWidth = Number(imgWidthStr.substring(0, imgWidthStr.indexOf("px")));
+			$("#thumbnailImg").css("left", (40 - imgWidth/2) + "px");
+		});
+		
 	</script>
 </head>
 <body>
