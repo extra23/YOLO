@@ -21,7 +21,10 @@ public class ComoService implements InterfaceComoService {
 	
 	public void insertComo(int[] courseIdArr, ModuleVO module) {
 		
-		int moduleId = moduleDAO.insertModule(module);
+		/*int moduleId = moduleDAO.insertModule(module);*/
+		moduleDAO.insertModule(module);
+		int moduleId = module.getModuleId();
+		System.out.println("moduleId : " + moduleId);
 		
 		for(int i = 0; i<courseIdArr.length; i++) {
 			

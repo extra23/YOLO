@@ -94,8 +94,15 @@
 		<br>
 		<c:if test="${empty module.mTitle}">
 			<form name="writeForm" action="moduleInsert" method="post">
+			
 
 				<div id="formTable" >
+				코스 선택
+					<div>
+						<c:forEach var="course" items="${courseList}" varStatus="status">
+						<input type="checkbox" name="co" value="${course.courseId}"/>${course.cTitle}
+						</c:forEach>
+					</div>
 					모듈 제목  <input type="text" id="mTitle" name="mTitle" size="100"> <br> <br>
 					모듈 요약  <input type="text" name="mSummary" size="100"> <br> <br>
 					모듈 내용

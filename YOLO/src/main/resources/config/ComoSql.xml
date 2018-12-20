@@ -4,8 +4,11 @@
 
 <mapper namespace="yolo.dao.InterfaceComoMapper">
 	
-	<insert id="insertComo" parameterType="Como">
+	<insert id="insertComo" parameterType="Como" keyProperty="id" useGeneratedKeys="true">
 		insert into como(courseId,moduleId) values(#{courseId},#{moduleId})
+		<selectKey keyProperty="id" resultType="Integer">
+			select last_insert_id()
+		</selectKey>
 	</insert>
 	
 	<delete id="deleteComoByModuleId" parameterType="Integer">
