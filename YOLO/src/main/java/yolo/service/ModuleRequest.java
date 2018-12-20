@@ -90,8 +90,8 @@ public class ModuleRequest {
 	public void addcTitle(String cTitle) {
 		cTitleList.add(cTitle);
 	}
-
-	@Override
+/*
+*/	@Override
 	public String toString() {
 		return "ModuleRequest [moduleId=" + moduleId + ", mTitle=" + mTitle + ", userId=" + userId + ", nickName="
 				+ nickName + ", udate=" + udate + ", courseIdList=" + courseIdList + ", cTitleList=" + cTitleList + "]";
