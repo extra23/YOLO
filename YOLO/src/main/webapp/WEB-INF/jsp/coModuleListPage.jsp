@@ -103,7 +103,7 @@ body {
 								<tr>
 									<td>${state.count}</td>
 									<td><a href="${pageContext.request.contextPath}/modulePage?moduleId=${module.moduleId}" style="color: black;">${module.mTitle}</a></td>
-									<td>${module.nickname}</td>
+									<td><a href="${pageContext.request.contextPath}/userView?userId=${module.writer}" style="color: black;">${module.nickname}</a></td>
 									<td>
 										<c:forEach var="coLink" items="${module.coLinks}" varStatus="states">
 												

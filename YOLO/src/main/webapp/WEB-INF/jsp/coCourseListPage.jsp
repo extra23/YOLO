@@ -98,7 +98,7 @@ body {
 								<tr>
 									<td>${state.count}</td>
 									<td><a href="${pageContext.request.contextPath}/coursePage?courseId=${course.courseId }" style="color: black;">${course.cTitle}</a></td>
-									<td>${course.nickname}</td>
+									<td><a href="${pageContext.request.contextPath}/userView?userId=${course.writer}" style="color: black;">${course.nickname}</a></td>
 									<td>
 									<c:forEach var="moLink" items="${course.moLinks}" varStatus="states">
 								
