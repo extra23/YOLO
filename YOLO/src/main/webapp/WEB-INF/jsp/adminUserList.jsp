@@ -16,15 +16,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Tamma" rel="stylesheet">
 		
 	<style>
-
+	html,body{height: 100%; font-family: 'Jua', sans-serif;}
+	.mainContainer{min-height: 100%; text-align: center;}
+	.text-center{font-size: 60px; padding-top: 50px;}
 		#container * {font-family: a찐빵M;}
-	
-		#userListTable {width: 90%; margin: auto;}
+		#userListTable {width: 90%; margin-top: 100px; margin-left: 5%;}
 		#userListTable, #userListTable tr, th, td {border: 1px solid black; border-collapse: collapse;}
 		#userListTable td, #userListTable th, #userListTable tr {padding: 10px; text-align: center;}
 		#userListTable thead {background-color: gainsboro;}
 		
 		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
+
 	</style>
 	
 	<script>
@@ -54,6 +56,7 @@
 	<!-- 11 -->
 	<jsp:include page="header3.jsp"></jsp:include>
 	
+	<div class="mainContainer">
 	<h2 class="text-center">사용자 목록</h2>
 	
 	<table id="userListTable">
@@ -124,7 +127,7 @@
                 <div>
                     총 게시글 수 : ${pagination.listCnt } /    총 페이지 수 : ${pagination.pageCnt } / 현재 페이지 : ${pagination.curPage } / 현재 블럭 : ${pagination.curRange } / 총 블럭 수 : ${pagination.rangeCnt }
                 </div>
-
+	</div>
 	
 
 	<jsp:include page="footer.jsp"></jsp:include>
