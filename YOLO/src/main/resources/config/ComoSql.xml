@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yolo.dao.InterfaceComoMapper">
+	
+	<insert id="insertComo" parameterType="Como">
+		insert into como(courseId,moduleId) values(#{courseId},#{moduleId})
+	</insert>
+	
+	<delete id="deleteComoByModuleId" parameterType="Integer">
+		delete from como where moduleId=#{moduleId}
+	</delete>
+	
+	<delete id="deleteComo" parameterType="Como">
+		delete from como where courseId=#{courseId} and moduleId=#{moduleId}
+	</delete>
+	
+	<select id="selectComoList" parameterType="Integer" resultType="Como">
+		select * from como where moduleId=#{moduleId}
+	</select>
+</mapper>

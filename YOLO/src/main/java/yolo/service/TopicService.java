@@ -47,10 +47,6 @@ public class TopicService implements InterfaceTopicService {
 		topicDAO.deleteTopic(topicId);
 
 	}
-	public void removeTuser(int userId) {
-		topicDAO.deleteTopic(userId);
-		
-	}
 
 	public List<SearchVO> searchTopic(String tTitle) {
 		
@@ -61,6 +57,5 @@ public class TopicService implements InterfaceTopicService {
 		
 		return topicDAO.countBySearch(tTitle);
 	}
-
 
 }

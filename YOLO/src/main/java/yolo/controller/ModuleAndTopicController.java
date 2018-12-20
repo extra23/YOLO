@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import yolo.service.InterfaceCoModuleService;
+import yolo.service.InterfaceComoService;
 import yolo.service.InterfaceCourseService;
 import yolo.service.InterfaceHistoryService;
 import yolo.service.InterfaceModuleService;
@@ -21,6 +22,7 @@ import yolo.service.InterfacePagingService;
 import yolo.service.InterfaceTopicService;
 import yolo.service.InterfaceUserService;
 import yolo.vo.CoModuleAndModuleVO;
+import yolo.vo.ComoVO;
 import yolo.vo.CourseVO;
 import yolo.vo.HistoryVO;
 import yolo.vo.ModuleAndTopicVO;
@@ -52,6 +54,9 @@ public class ModuleAndTopicController {
 	
 	@Autowired
 	private InterfaceCourseService courseService;
+	
+	@Autowired
+	private InterfaceComoService comoService;
 	
 	private void checkCostudyModule(ModelAndView mav, HttpServletRequest request, int moduleId) {
 		UserVO user = (UserVO) request.getSession().getAttribute("authUser");
@@ -134,6 +139,12 @@ public class ModuleAndTopicController {
 			
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 			
+			List<ComoVO> comoList= comoService.selectComoList(moduleId);
+			if(comoList != null) {
+				
+				model.addAttribute("comoList",comoList);
+			}
+			
 			model.addAttribute("courseList",courseList);
 			model.addAttribute("module",module);
 			return mainAdminM(model, request);
@@ -141,28 +152,34 @@ public class ModuleAndTopicController {
 		
 	//module 커버 내용 추가해주기
 		@RequestMapping(value="/moduleInsert")
-		public String moduleInsert(Model model, HttpServletRequest request, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
+		public String moduleInsert(Model model, HttpServletRequest request, int[] courseIdArr, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			
 			ModuleVO module = new ModuleVO(mTitle, mContent, mSummary, userId);
-			moduleService.addModule(module);
-			
+//			moduleService.addModule(module);
+			comoService.insertComo(courseIdArr, module);
 			
 			return mainAdminM(model, request);
 		}
 		
 	//module커버의 내용 수정해주기
 		@RequestMapping(value="/moduleModify", method= RequestMethod.POST)
-		public String moduleModify(Model model, HttpServletRequest request,int moduleId, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
+		public String moduleModify(Model model, HttpServletRequest request,int[] courseIdArr,int moduleId, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
 			ModuleVO module = new ModuleVO(moduleId, mTitle, mContent, mSummary);
-			moduleService.modifyModule(module);
+		/*	moduleService.modifyModule(module);*/
+			
+//			System.out.println(courseId +":"+moduleId);
+			
+			comoService.updateComo(moduleId, courseIdArr, module);
 			
 			return moduleCurver(model, request, moduleId);
 		}
 	//module커버의 내용 삭제하기
 		@RequestMapping("/moduleDelete")
 		public String moduleDelte(int moduleId, Model model, HttpServletRequest request) {
-			moduleService.removeModule(moduleId);
+//			moduleService.removeModule(moduleId);
+			
+			comoService.deleteComo(moduleId);
 			
 			return mainAdminM(model, request);
 		}

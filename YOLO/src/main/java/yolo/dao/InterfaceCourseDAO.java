@@ -20,8 +20,6 @@ public interface InterfaceCourseDAO {
 	public void updateCourse(CourseVO course);
 
 	public void deleteCourse(int courseId);
-	
-	public void deleteCuser(int userId);
 
 	public List<SearchVO> searchCourse(String cTitle);
 

@@ -25,8 +25,6 @@ public interface InterfaceModuleService {
 	
 	public void removeModule(int moduleId);
 	
-	public void removeMuser(int userId);
-	
 	public List<SearchVO> searchModule(String mTitle);
 	
 	public int countBySearch(String mTitle);

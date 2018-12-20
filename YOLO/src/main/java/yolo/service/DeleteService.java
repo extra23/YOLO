@@ -11,31 +11,34 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import yolo.dao.InterfaceCourseDAO;
-import yolo.dao.InterfaceModuleDAO;
-import yolo.dao.InterfaceTopicDAO;
-import yolo.dao.InterfaceUserDAO;
+import yolo.dao.CourseDAO;
+import yolo.dao.ModuleDAO;
+import yolo.dao.TopicDAO;
+import yolo.dao.UserDAO;
 import yolo.exception.InvalidPasswordException;
 import yolo.exception.UserNotFoundException;
 import yolo.vo.UserVO;
 
-
 @Service("DeleteService")
-public class DeleteService implements InterfaceDeleteService{
+public class DeleteService {
 	
 	@Autowired
-	InterfaceUserDAO userDAO;
+	private UserDAO userDAO;
 	
 	@Autowired
-	InterfaceTopicDAO topicDAO;
+	private TopicDAO topicDAO;
 	
 	@Autowired
-	InterfaceModuleDAO moduleDAO;
+	private ModuleDAO moduleDAO;
 	
 	@Autowired
-	InterfaceCourseDAO courseDAO;
+	private CourseDAO courseDAO;
 	
-	public void remove(HttpServletRequest req, HttpServletResponse resp, int userId, String password){
+/*	public String select(int userId) {
+		return null;
+	}*/
+	
+	public void delete(HttpServletRequest req, HttpServletResponse resp, int userId, String password){
 		
 		// userId를 이용해서 UserVO 객체를 DB에서 select 해옴
 		UserVO user = userDAO.selectUser(userId);

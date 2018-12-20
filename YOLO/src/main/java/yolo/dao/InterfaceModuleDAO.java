@@ -11,7 +11,7 @@ import yolo.vo.SearchVO;
 public interface InterfaceModuleDAO {
 	
 	
-	public void insertModule(ModuleVO module);
+	public int insertModule(ModuleVO module);
 	
 	public ModuleVO selectModuleByUserId(int userId);
 
@@ -27,8 +27,6 @@ public interface InterfaceModuleDAO {
 	
 	public void deleteModule(int moduleId);
 	
-	public void deleteMuser(int userId);
-	
 	//검색 결과를 출력ss
 	public List<SearchVO> searchModule(String mTitle);
 	
@@ -42,4 +40,5 @@ public interface InterfaceModuleDAO {
 	
 	public List<ModuleVO> moduleListBox();
 
+	public int lastInsertId();
 }

@@ -20,8 +20,6 @@ public interface InterfaceCourseService {
 	
 	public void removeCourse(int courseId);
 	
-	public void removeCuser(int userId);
-	
 	public List<SearchVO> searchCourse(String cTitle); 
 	
 	public int countBySearch(String cTitle);

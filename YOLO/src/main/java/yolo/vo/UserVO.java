@@ -1,4 +1,4 @@
-package yolo.vo;//
+package yolo.vo;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

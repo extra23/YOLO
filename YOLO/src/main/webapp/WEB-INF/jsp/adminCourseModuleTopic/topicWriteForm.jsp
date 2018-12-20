@@ -82,12 +82,7 @@
 							<select name="selectModule" id="selectModule">
 								<option selected>&nbsp;모듈을 선택해 주세요</option>
 								<c:forEach var="modules" items="${moduleList}" varStatus="status">
-									<c:if test="${modules.moduleId eq param.moduleId}">
-										<option value="${modules.moduleId}" selected="selected">${modules.mTitle}</option>
-									</c:if>
-									<c:if test="${not (modules.moduleId eq param.moduleId)}">
-										<option value="${modules.moduleId}">${modules.mTitle}</option>
-									</c:if>
+									<option value="${modules.moduleId}">${modules.mTitle}</option>
 								</c:forEach>
 							</select>
 					</div>

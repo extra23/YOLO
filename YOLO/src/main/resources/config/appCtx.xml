@@ -54,6 +54,7 @@
 				<value>classpath:config/CoModuleSql.xml</value>
 				<value>classpath:config/PagingSql.xml</value>
 				<value>classpath:config/History.xml</value>
+				<value>classpath:config/ComoSql.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -15,10 +15,10 @@ public class ModuleDAO implements InterfaceModuleDAO {
 	@Autowired
 	InterfaceModuleMapper moduleMapper;
 
-	public void insertModule(ModuleVO module) {
+	public int insertModule(ModuleVO module) {
 		
-		moduleMapper.insertModule(module);
-
+		int moduleId = moduleMapper.insertModule(module);
+		return moduleId;
 	}
 
 	public ModuleVO selectModuleByUserId(int userId) {
@@ -101,6 +101,13 @@ public class ModuleDAO implements InterfaceModuleDAO {
 		List<ModuleVO> moduleListBox = moduleMapper.moduleListBox();
 		return moduleListBox;
 	}
+
+	public int lastInsertId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 	
 
 }

@@ -9,7 +9,7 @@ import yolo.vo.SearchVO;
 @AnnotationYoloMapper
 public interface InterfaceModuleMapper {
 
-	public void insertModule(ModuleVO module);
+	public int insertModule(ModuleVO module);
 	
 	public ModuleVO selectModuleByUserId(int userId);
 	
@@ -38,4 +38,5 @@ public interface InterfaceModuleMapper {
 	public List<ModuleListVO> myModuleList(int userId);
 	
 	public List<ModuleVO> moduleListBox();
+	
 }
