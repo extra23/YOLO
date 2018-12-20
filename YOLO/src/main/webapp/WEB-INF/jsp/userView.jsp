@@ -286,8 +286,8 @@
 								<div class="mm dp_none">
 									<span id="not">
 									<p style="font-family: 'Jua', sans-serif; color: black;">
-											&nbsp;&nbsp;* 미리보기는 최근 등록순으로 5개까지만 제공이 됩니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;추가
-											내용은 더보기를 클릭해주세요 :D
+											&nbsp;&nbsp;* 미리보기는 최근 등록순으로 5개까지만 제공이 됩니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;
+											해당 페이지로 이동을 원하시면 버튼을 클릭해주세요 :D
 										</p>
 									</span>
 									<ul>
@@ -317,9 +317,9 @@
 										</table>
 
 									</ul>
-									<c:if test="${coModuleAndModuleList.size() > 5}">
+									
 									<span id="pluss" ><a href="coModuleListPage?userId=${user.userId}"  style="font-family: 'Jua', sans-serif; color: black;"> +더보기</a></span>
-									</c:if>
+								
 								</div>
 								</c:if>
 								
@@ -336,8 +336,8 @@
 								<div class="mm dp_none">
 									<span id="not"><p
 											style="font-family: 'Jua', sans-serif; color: black;">
-											&nbsp;&nbsp;* 미리보기는 최근 등록순으로 5개까지만 제공이 됩니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;추가
-											내용은 더보기를 클릭해주세요 :D
+											&nbsp;&nbsp;* 미리보기는 최근 등록순으로 5개까지만 제공이 됩니다.<br>&nbsp;&nbsp;&nbsp;&nbsp;
+											해당 페이지로 이동을 원하시면 버튼을 클릭해주세요 :D
 										</p></span>
 
 									<ul>
@@ -367,9 +367,9 @@
 										</table>
 
 									</ul>
-									<c:if test="${coCourseAndCourseList.size() > 5}">
-									<span id="pluss" ><a href="coCourseListPage?userId=${user.userId}" style="font-family: 'Jua', sans-serif; color: black;"> +더보기</a></span>
-									</c:if>
+									
+									<span id="pluss" ><a href="coCourseListPage?userId=${user.userId}" style="font-family: 'Jua', sans-serif; color: black;"> +더보기 </a></span>
+									
 								</div>
 								</c:if>
 							</div>
