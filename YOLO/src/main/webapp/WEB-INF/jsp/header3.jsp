@@ -142,14 +142,14 @@
 		}
 		
 		#nickName{
-			font-family: 'Jua', cursive;
+		font-family: 'Jua', sans-serif;
 		}
 		
 		#btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle), #btn-group>.btn+.dropdown-toggle{
 			background-color: white;
 			border-color: gray;
 			color: black;
-			font-family: 'Baloo Tamma','Jua', cursive;
+			font-family: 'Jua', sans-serif;
 			height: 35px;
 		}
 		
@@ -163,7 +163,7 @@
 		}
 		
 		#btn-group * {
-			font-family: 'Jua';
+			font-family: 'Jua', sans-serif;
 		}
 		.search-btn{text-decoration: none!important;}
 		
@@ -215,7 +215,7 @@
 				
 				
 				<div class="btn-group" id="btn-group">
-					<button type="button" id="namebox" class="btn btn-danger">${authUser.nickName}</button>
+					<button type="button" id="namebox" class="btn btn-danger" style="font-family: 'Jua', sans-serif ">${authUser.nickName}</button>
 					<button type="button" class="btn btn-danger dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false">
 						<span class="caret"></span> <span class="sr-only">Toggle Dropdown</span>
 					</button>
