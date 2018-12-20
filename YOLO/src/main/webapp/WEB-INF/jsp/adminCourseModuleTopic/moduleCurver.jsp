@@ -71,7 +71,7 @@
 			if(isNaN(num)){
 				alert("모듈을 선택해주세요.");
 			}else{
-				location.href = "topicList?moduleId="+num;
+				location.href = "topicList?moduleId=" + num;
 			}
 		})
 		
