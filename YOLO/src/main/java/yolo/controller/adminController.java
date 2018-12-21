@@ -86,110 +86,122 @@ public class adminController {
 	}
 	
 	// 수정해서 사용자 리스트 페이지로 넘기기.
-	@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
-	public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, boolean userType, int adminId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) throws IOException, Exception {
+		@RequestMapping(value="/adminUserModify", method = RequestMethod.POST)
+		public ModelAndView modifyUser(HttpServletRequest request, MultipartFile file, int userId, String userTypeStr, int adminId, String email, String nickName, String newPwd1, String newPwd2, String oldPwd, String ad_password, int pwQId, String pwA, HttpServletRequest req, Model model) throws IOException, Exception {
 
-		ModelAndView mv = new ModelAndView();
-		UserVO user = userDAO.selectUser(userId);
+			ModelAndView mv = new ModelAndView();
+			UserVO user = userDAO.selectUser(userId);
+			
+			boolean userType = false;
+			if(userTypeStr.equals("true")) {
+				userType = true;
+			}else if(userTypeStr.equals("false")){
+				userType = false;
+			}
+			
 
-		Map<String, Boolean> errors = new HashMap<String, Boolean>();
+			Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
-		List<UserVO> userList = userService.readUserList();
-		List<PwdQuestionVO> qList = pwdQuestionService.readQList();
-		
-		/*if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
-			newPwd1 = oldPwd;
-			newPwd2 = oldPwd;
-		}*/
+			List<UserVO> userList = userService.readUserList();
+			List<PwdQuestionVO> qList = pwdQuestionService.readQList();
+			
+			/*if (newPwd1 == null || newPwd1.isEmpty() || newPwd2 == null || newPwd2.isEmpty()) {
+				newPwd1 = oldPwd;
+				newPwd2 = oldPwd;
+			}*/
+	/*		if(userType == "") {
+				
+			}*/
 
-		if (!newPwd1.equals(newPwd2)) {
-			errors.put("notEqualNewPwd", true);
-			mv.addObject("errors", errors);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			return mv;
-		}
-		
-		if(oldPwd == null || oldPwd.isEmpty()) {
-			errors.put("oldPwd", true);
-			mv.addObject("errors", errors);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			return mv;
-		}
-		
-		if (ad_password == null || ad_password.isEmpty()) {
-			errors.put("ad_password", true);
-			mv.addObject("errors", errors);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			System.out.println(ad_password + "ad_password");
-			return mv;
-		}
-		
-		if (!errors.isEmpty()) {
-			mv.addObject("errors", errors);
-			mv.addObject("user", user);
-			mv.addObject("list", userList);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			return mv;
-		}
-		
-		String[] fileNameArr = new String[2];
-		if(file.getOriginalFilename() != "") {
-			fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
-		}
 
-		UserVO newUser = new UserVO(userId, userType, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
+			if (!newPwd1.equals(newPwd2)) {
+				errors.put("notEqualNewPwd", true);
+				mv.addObject("errors", errors);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				return mv;
+			}
+			
+			if(oldPwd == null || oldPwd.isEmpty()) {
+				errors.put("oldPwd", true);
+				mv.addObject("errors", errors);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				return mv;
+			}
+			
+			if (ad_password == null || ad_password.isEmpty()) {
+				errors.put("ad_password", true);
+				mv.addObject("errors", errors);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				System.out.println(ad_password + "ad_password");
+				return mv;
+			}
+			
+			if (!errors.isEmpty()) {
+				mv.addObject("errors", errors);
+				mv.addObject("user", user);
+				mv.addObject("list", userList);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				return mv;
+			}
+			
+			String[] fileNameArr = new String[2];
+			if(file.getOriginalFilename() != "") {
+				fileNameArr = UploadFileUtils.uploadFile(request.getServletContext().getRealPath(uploadPath), file.getOriginalFilename(), file.getBytes());
+			}
+
+			UserVO newUser = new UserVO(userId, userType, fileNameArr[0], fileNameArr[1], nickName, email, newPwd1, pwQId, pwA);
+			
+			try {
+				adminService.modifyUser(newUser, adminId, oldPwd, ad_password);
+			} catch (UserNotFoundException e) {
+				errors.put("userNotFound", true);
+				mv.addObject("errors", errors);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				System.out.println("userNotFound");
+				return mv;
+			} catch (DuplicatedPasswordException e) {
+				errors.put("duplicatedPassword", true);
+				mv.addObject("errors", errors);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				System.out.println("duplicatedPassword");
+				return mv;
+			} catch (InvalidPasswordException e) {
+				errors.put("invalidPassword", true);
+				mv.addObject("errors", errors);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				System.out.println("invalidPassword");
+				return mv;
+			}catch(AdminInvalidPasswordException e) {
+				errors.put("adminInvalidPassword", true);
+				mv.addObject("errors", errors);
+				mv.addObject("qList", qList);
+				mv.setViewName("adminUserModify");
+				req.setAttribute("user", user);
+				System.out.println("AdminInvalidPassword");
+				return mv;
+			}
+			
+			List<UserVO> newUserList = userService.readUserList();
+			mv.addObject("list", newUserList);
+			
+			mv.setViewName("adminUserList");
+			
+			
 		
-		try {
-			adminService.modifyUser(newUser, adminId, oldPwd, ad_password);
-		} catch (UserNotFoundException e) {
-			errors.put("userNotFound", true);
-			mv.addObject("errors", errors);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			System.out.println("userNotFound");
-			return mv;
-		} catch (DuplicatedPasswordException e) {
-			errors.put("duplicatedPassword", true);
-			mv.addObject("errors", errors);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			System.out.println("duplicatedPassword");
-			return mv;
-		} catch (InvalidPasswordException e) {
-			errors.put("invalidPassword", true);
-			mv.addObject("errors", errors);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			System.out.println("invalidPassword");
-			return mv;
-		}catch(AdminInvalidPasswordException e) {
-			errors.put("adminInvalidPassword", true);
-			mv.addObject("errors", errors);
-			mv.addObject("qList", qList);
-			mv.setViewName("adminUserModify");
-			req.setAttribute("user", user);
-			System.out.println("AdminInvalidPassword");
 			return mv;
 		}
-		
-		List<UserVO> newUserList = userService.readUserList();
-		mv.addObject("list", newUserList);
-		
-		mv.setViewName("adminUserList");
-		
-		// 사용자가 존재하고 비밀번호가 일치한다면 db의 정보를 수정.
-	
-		return mv;
-	}
 
 	// 관리자에 의한 강제 탈퇴페이지로
 	@RequestMapping(value="/adminUserDelete", method = RequestMethod.GET)

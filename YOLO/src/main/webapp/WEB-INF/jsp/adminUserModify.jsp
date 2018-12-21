@@ -115,7 +115,11 @@
 			font-size: 20px !important;
 			color: gray !important;
 		}
-		
+		.radio{font-size: 20px;
+		}
+		span{margin-right: 50px;
+			margin-left: 50px;
+			}
 	</style>
 	
 	<script>
@@ -193,6 +197,15 @@
 					</div>
 					<div class="profileButton">
 						<input id="basicBtn" type="button" value="Basic Image" class="fileButton button_base b01_simple_rollover" onfocus="this.blur();">
+					</div>
+				</div>
+				
+				<div class="form-group form-group-lg">
+					<label for="email" class="col-sm-3 control-label">Authorization</label>
+					<div class="col-sm-6 radio">
+						<span><input type="radio" name="userTypeStr" value="false" class="user">User</span>
+						<span><input type="radio" name="userTypeStr" value="true" class="admin">Admin</span>
+					
 					</div>
 				</div>
 				
