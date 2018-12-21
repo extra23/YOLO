@@ -160,11 +160,6 @@
 				}
 			});
 			
-			if(${comoList}!=null){
-				for(${comoList}.size()){
-					
-				}
-			}
 		
 		})
 	</script>

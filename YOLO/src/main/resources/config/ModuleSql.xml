@@ -17,13 +17,13 @@
 		것임. -->
 	<!-- 필요한 정보들을 적어줘야 함. 인자값, 쿼리문 등 -->
 	<!-- 단, 쿼리문에서는 (?,?)이 아닌 (#{})를 사용해줌. -->
-	<insert id="insertModule" parameterType="Module" useGeneratedKeys="true" keyProperty="id">
+	<insert id="insertModule" parameterType="Module" useGeneratedKeys="true" keyProperty="moduleId">
 		insert into
 		module(mTitle, mContent, mSummary, userId)
 		values(#{mTitle},
 		#{mContent}, #{mSummary}, #{userId})
 		
-	<selectKey keyProperty="id" resultType="Integer">
+	<selectKey keyProperty="moduleId" resultType="Integer">
 		select LAST_INSERT_ID()
 	</selectKey>
 		

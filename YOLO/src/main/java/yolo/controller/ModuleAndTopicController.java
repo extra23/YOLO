@@ -154,9 +154,10 @@ public class ModuleAndTopicController {
 		
 	//module 커버 내용 추가해주기
 		@RequestMapping(value="/moduleInsert")
-		public String moduleInsert(Model model, HttpServletRequest request, int[] courseIdArr, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
+		public String moduleInsert(Model model, HttpServletRequest request, @RequestParam("co") int[] courseIdArr, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
 			int userId = ((UserVO)request.getSession().getAttribute("authUser")).getUserId();
 			
+	
 			ModuleVO module = new ModuleVO(mTitle, mContent, mSummary, userId);
 //			moduleService.addModule(module);
 			comoService.insertComo(courseIdArr, module);
@@ -166,7 +167,7 @@ public class ModuleAndTopicController {
 		
 	//module커버의 내용 수정해주기
 		@RequestMapping(value="/moduleModify", method= RequestMethod.POST)
-		public String moduleModify(Model model, HttpServletRequest request,int[] courseIdArr,int moduleId, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
+		public String moduleModify(Model model, HttpServletRequest request, @RequestParam("co") int[] courseIdArr,int moduleId, String mTitle, String mSummary, @RequestParam("summernote") String mContent) {
 			ModuleVO module = new ModuleVO(moduleId, mTitle, mContent, mSummary);
 		/*	moduleService.modifyModule(module);*/
 			
