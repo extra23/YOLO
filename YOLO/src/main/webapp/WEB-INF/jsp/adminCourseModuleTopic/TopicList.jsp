@@ -69,7 +69,7 @@
 			</table>
 
 			<button id="writeBtn" class="btn btn-default navbar-btn"
-				onclick="location.href='topicWriteForm'">글쓰기</button>
+				onclick="location.href='topicWriteForm?moduleId=${param.moduleId}'">글쓰기</button>
 
 
 
