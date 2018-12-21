@@ -4,11 +4,8 @@
 
 <mapper namespace="yolo.dao.InterfaceComoMapper">
 	
-	<insert id="insertComo" parameterType="Como" keyProperty="id" useGeneratedKeys="true">
+	<insert id="insertComo" parameterType="Como">
 		insert into como(courseId,moduleId) values(#{courseId},#{moduleId})
-		<selectKey keyProperty="id" resultType="Integer">
-			select last_insert_id()
-		</selectKey>
 	</insert>
 	
 	<delete id="deleteComoByModuleId" parameterType="Integer">
@@ -20,7 +17,7 @@
 	</delete>
 	
 	<delete id="deleteByUser" parameterType="Integer">
-		delete * from (select como.courseId, como.moduleId, module.userId from como join module on como.moduleId=module.moduleId) as comomo where comomo.userId=#{userId};
+		delete c from como c join module m on c.moduleId=m.moduleId where m.userId=#{userId}
 	</delete>
 	
 	<select id="selectComoList" parameterType="Integer" resultType="Como">

@@ -22,10 +22,10 @@
 		
 		<c:if test="${not empty authUser}">
 			<c:if test="${costudy_moduleId eq 0}">
-				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${moduleAndTopic.user.userId})" >
+				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${authUser.userId})" >
 			</c:if>
 			<c:if test="${costudy_moduleId > 0}">
-				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부"  onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${moduleAndTopic.user.userId})">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부"  onclick="moduleHeader(${moduleAndTopic.module.moduleId}, ${authUser.userId})">
 			</c:if>
 		</c:if>
 		

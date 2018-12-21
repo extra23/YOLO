@@ -19,7 +19,7 @@
 		select * from history join topic on history topicId=#{topic.topicId}
 	</select> -->
 	
-	<delete id="deleteHistory" parameterType="History">
+	<delete id="deleteHistory" parameterType="Integer">
 		delete from history where historyId=#{historyId}
 	</delete>
 

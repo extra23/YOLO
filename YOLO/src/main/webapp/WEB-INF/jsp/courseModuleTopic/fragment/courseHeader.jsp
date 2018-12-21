@@ -22,10 +22,10 @@
 		
 		<c:if test="${not empty authUser}">
 			<c:if test="${costudy_courseId eq 0}">
-				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/outcostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${authUser.userId})">
 			</c:if>
 			<c:if test="${costudy_courseId > 0}">
-				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${courseAndModule.user.userId})">
+				<img id="costudy" src="${pageContext.request.contextPath}/images/incostudy.png" title="공동공부" onclick="courseHeader(${courseAndModule.course.courseId}, ${authUser.userId})">
 			</c:if>
 		</c:if>
 		
@@ -33,15 +33,15 @@
 			<img id="edit" src="${pageContext.request.contextPath}/images/edit.png" title="코스 수정" onclick="courseHeader(${courseAndModule.course.courseId})">
 		</c:if>
 		
-		<c:if test="${not empty authUser}">
+		<%-- <c:if test="${not empty authUser}">
 			<c:if test="${removeHistoryId eq 0}">
-				<img id="see" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${history.historyId}, ${history.topic.topicId}, ${history.user.userId})">
+				<img id="see" src="${pageContext.request.contextPath}/images/notSee.png" title="봤어요" onclick="history(${history.historyId}, ${history.topic.topicId}, ${authUser.userId})">
 			</c:if>
 			<c:if test="${removeHistoryId > 0}">
-				<img id="history" src="${pageContext.request.contextPath}/images/see.png" title="봤어요" onclick="history(${history.historyId}, ${history.topic.topicId}, ${history.user.userId})">
+				<img id="history" src="${pageContext.request.contextPath}/images/see.png" title="봤어요" onclick="history(${history.historyId}, ${history.topic.topicId}, ${authUser.userId})">
 			</c:if>
-		</c:if>
+		</c:if> --%>
 	</div>
-<!--  /dddd -->
+
 </body>
 </html>
