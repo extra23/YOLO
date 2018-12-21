@@ -157,14 +157,6 @@
 		function toBasic(e) {
 			e.preventDefault();
 	
-			/* if ($.browser.msie) { 
-				// ie 일때 input[type=file] init. 
-				$("#input_img").replaceWith( $("#filename").clone(true) ); 
-			} else { 
-				// other browser 일때 input[type=file] init. 
-				$("#input_img").val("${pageContext.request.contextPath}/images/profileImageBasic.png"); 
-			} */
-	
 			$("#input_img").val("");
 	
 			$("#profileImg").attr("src", "${pageContext.request.contextPath}/images/profileImageBasic.png")
@@ -230,7 +222,8 @@
 				</div>
 
 				<div class="form-group form-group-lg">
-					<label for="pQId" class="col-sm-3 control-label">p_qId</label>
+					<label for="pQId" class="col-sm-3 control-label">Password
+							Question</label>
 					<div class="col-sm-6">
 						<c:if test="${!empty qList}">
 							<select name="pwQId">
@@ -244,7 +237,8 @@
 				</div>
 
 				<div class="form-group form-group-lg">
-					<label for="p_answer" class="col-sm-3 control-label">p_answer</label>
+					<label for="p_answer" class="col-sm-3 control-label">Password
+							Answer</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="pwA">
 						<c:if test="${errors.pwA}">질문에 대한 답을 작성해 주세요.</c:if>
@@ -256,9 +250,10 @@
 						<input type="submit" value="join"
 							class="button_base b01_simple_rollover col-sm-5 " style="position: relative;">
 					</div>
-
+					
 					<div class="form-group">
-						<div class="button_base b01_simple_rollover col-sm-5" style="position: relative; margin-bottom: 10px;">Cancel</div>
+						<div class="button_base b01_simple_rollover col-sm-5" style="position: relative; margin-bottom: 10px;"
+						onclick="location.href='mainBoard'">Cancel</div>
 					</div>
 				</div>
 

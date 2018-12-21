@@ -47,6 +47,7 @@
 
 .mainForm {
 	width: 100%;
+	height: 620px;
 	background-color: #F7F7F7;
 	font-family: 'Jua', sans-serif;
 	text-align: center;
@@ -56,7 +57,7 @@
 	width: 40%;
 	background-color: gainsboro;
 	display: inline-block;
-	margin-top: 30px;
+	margin-top: 5%;
 	margin-bottom: 30px;
 	border: 1px solid black;
 	border-radius: 10px;
@@ -65,6 +66,7 @@
 .btn {
 	font-family: 'Jua';
 	margin-left: 20px;
+	margin-top: 10px;
 }
 
 .passwordForm p {
@@ -155,7 +157,6 @@
 							<button id="findBtns" class="btn btn-default btn-block btn-lg">Find
 								Password</button>
 						</div>
-
 
 
 						<div class="col-sm-offset-2 col-sm-7">
