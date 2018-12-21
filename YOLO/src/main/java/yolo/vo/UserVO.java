@@ -16,6 +16,7 @@ public class UserVO {
 	private String email;
 	private String password;
 	private int pwQId;
+	private String question;
 	private String pwA;
 	private LocalDateTime wdate;
 	private LocalDateTime udate;

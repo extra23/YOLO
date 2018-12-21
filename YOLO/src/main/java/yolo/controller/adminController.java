@@ -55,7 +55,7 @@ public class adminController {
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
-	// 관리자 사용자 리스트
+	// 관리자가 볼 수 있는 유저 리스트
 	@RequestMapping(value="adminUserList")
 	public String readUserList(Model model, @RequestParam(defaultValue="1") int curPage) {
 		
@@ -73,6 +73,26 @@ public class adminController {
         
 		return "adminUserList";
 	}
+	
+	//관리자 리스트
+	@RequestMapping(value="adminList")
+	public String readAdminList(Model model, @RequestParam(defaultValue="1") int curPage) {
+		
+		int listCnt = userService.readUserList().size();
+		PagingVO paging = new PagingVO(listCnt, curPage);
+		/*paging.setStartIndex(0);*/
+		paging.setPageSize(10);
+		
+		List<UserVO> list = userService.readUserListByLimit(paging);
+		
+		model.addAttribute("list", list);
+        model.addAttribute("listCnt", listCnt);
+        model.addAttribute("curPage", curPage);
+        model.addAttribute("pagination", paging);
+        
+		return "adminList";
+	}
+	
 	
 	// 관리자에 의한 강제 수정페이지로
 	@RequestMapping(value="/adminUserModify", method = RequestMethod.GET)

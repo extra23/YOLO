@@ -76,10 +76,11 @@
 		</thead>
 		<tbody>
 			<c:forEach var="user" items="${list}" varStatus="status">
+			<c:if test="${user.userType eq false}">
 			<tr>
 				<td>
-					<c:if test="${empty param.pageNo}">${status.count}</c:if>
-					<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count}</c:if>
+					<c:if test="${empty param.pageNo}">${status.count-1}</c:if>
+					<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count-1}</c:if>
 				</td>
 				<td id="profileImage">
 					<span>${user.profileImage}</span>
@@ -94,6 +95,7 @@
 				<td><a href="adminUserModify?userId=${user.userId}">[수정]</a></td>
 				<td><a href="adminUserDelete?userId=${user.userId}">[삭제]</a></td>
 			</tr>
+			</c:if>
 			</c:forEach>
 		</tbody>	
 	</table>
@@ -124,9 +126,6 @@
                     </c:if>
                 </div>
                 
-                <div>
-                    총 게시글 수 : ${pagination.listCnt } /    총 페이지 수 : ${pagination.pageCnt } / 현재 페이지 : ${pagination.curPage } / 현재 블럭 : ${pagination.curRange } / 총 블럭 수 : ${pagination.rangeCnt }
-                </div>
 	</div>
 	
 
