@@ -23,7 +23,7 @@ public class thojungController {
 	@Autowired 
 	private InterfaceCoModuleService coModuleService;
 	
-	@RequestMapping("/coCourseListPage")
+/*	@RequestMapping("/coCourseListPage")
 	public String CoCourseListPage(Model model,int userId) {
 		
 		//List<CoCourseListVO> 객체.해당 user가 참여한 coStudy_Course 와 como ,  course , module ,user 를 조인하여 리스트 형태로 불러옴 
@@ -45,7 +45,7 @@ public class thojungController {
 		model.addAttribute("coModuleList",coModuleList);
 		
 		return "coModuleListPage";
-	}
+	}*/
 	
 	
 }

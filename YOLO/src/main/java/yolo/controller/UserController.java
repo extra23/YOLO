@@ -78,8 +78,9 @@ public class UserController {
 	private String uploadPath;
 	
 	// mianBoard(메인 화면)으로 이동
-	@RequestMapping("/mainBoard")
+	/*@RequestMapping("/mainBoard")
 	public ModelAndView getMainBoard() {
+		System.out.println("User Controller MainBoard");
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -96,6 +97,21 @@ public class UserController {
 		
 		return mav;
 		
+	}*/
+	@RequestMapping(value = "/mainBoard", method = RequestMethod.GET)
+	public String boxView(Model model) {
+		
+		System.out.println("Sohee Controller MainBoard");
+		List<CourseVO> courseBox = courseService.courseListBox();
+		model.addAttribute("courseBoxView", courseBox);
+	
+		List<ModuleVO> moduleBox = moduleService.moduleListBox();
+		model.addAttribute("moduleBoxView", moduleBox);
+		
+		List<UserVO> userList = userService.readUserList();
+		model.addAttribute("userList", userList);
+		
+		return "mainBoard";
 	}
 
 	// login(로그인 화면)으로 이동
@@ -456,38 +472,42 @@ public class UserController {
 	
 	// 유저 탈퇴하고 메인 페이지로 복귀하기
 		@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
-		public ModelAndView deleteUser(@RequestParam("userId") int userId, String email, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp) throws IOException {
-			ModelAndView mav = new ModelAndView();
+		public String deleteUser(Model model, @RequestParam("userId") int userId, String email, String password, ModelAndView mv, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 			
 			// Map<String, Boolean> errors 객체 생성
 			Map<String, Boolean> errors = new HashMap<String, Boolean>();
-			req.setAttribute("errors", errors);
-			
+			/*req.setAttribute("errors", errors);*/
 			
 			try {
 				deleteService.remove(req, resp, userId, password);
 				//UserDAO userDAO = (UserDAO)session.getAttribute("email");
-				}catch(InvalidPasswordException e) {
-					errors.put("invalidPassword", true);
-					mav.addObject("errors", errors);
-					mav.setViewName("deleteUser");
-					return mav;
-				}catch(UserNotFoundException e) {
-					errors.put("UserNotFound", true);
-					mav.addObject("errors", errors);
-					mav.setViewName("deleteUser");
-					return mav;
-				}
-				HttpSession session = req.getSession(false);
-				if(session == null) {
-					// 잘못된 접근시 에러페이지로 보냄.
-					resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
-					}
-				// 세션 삭제
-				session.invalidate();
+			}catch(InvalidPasswordException e) {
+				errors.put("invalidPassword", true);
+				/*mav.addObject("errors", errors);
+				mav.setViewName("deleteUser");*/
+				model.addAttribute("errors", errors);
+				return "deleteUser";
+			}catch(UserNotFoundException e) {
+				errors.put("UserNotFound", true);
+				/*mav.addObject("errors", errors);
+				mav.setViewName("deleteUser");*/
+				model.addAttribute("errors", errors);
+				return "deleteUser";
+			}
+			
+			HttpSession session = req.getSession(false);
+			if(session == null) {
+				// 잘못된 접근시 에러페이지로 보냄.
+				resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			}
+			
+			// 세션 삭제
+			session.invalidate();
 			
 			// mainBoard 페이지로 돌아가기
-			return getMainBoard();
+			/*mav.setViewName("mainBoard");*/
+			
+			return boxView(model);
 		}
 		
 		
