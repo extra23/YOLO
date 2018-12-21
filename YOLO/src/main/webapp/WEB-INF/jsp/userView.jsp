@@ -259,9 +259,10 @@
 					</tr>
 
 					<tr>
-						<td colspan="3"
-							title="공동 공부하는 Module과 Course의 수와 리스트, 열람했던 topic의 수와 리스트를 보여주는 항목입니다."><span
-							id="par">&lt; Co-Study & History &gt;</span></td>
+						<td colspan="3" title="공동 공부하는 Module과 Course의 수와 리스트, 열람했던 topic의 수와 리스트를 보여주는 항목입니다.">
+							<!-- <span id="par">&lt; Co-Study & History &gt;</span> -->
+							<span id="par">&lt; Co-Study &gt;</span>
+						</td>
 					</tr>
 
 					<tr>
@@ -375,10 +376,10 @@
 							</div>
 						</td>
 						<td>
-							<div style="height: 100px; margin: 5px;">
+							<!-- <div style="height: 100px; margin: 5px;">
 								<span id="h"> · history :</span> <span class="badge mcnt"
 									style="width: 50px; height: 30px; font-size: 20px;">50</span>
-							</div>
+							</div> -->
 						</td>
 					</tr>
 
