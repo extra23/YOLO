@@ -192,7 +192,12 @@
 				
 				<div class="form-group form-group-lg">
 					<div class="profile">
-						<img id="profileImg" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;">
+						<c:if test="${empty user.profileImage}">
+							<img id="profileImg" src="${pageContext.request.contextPath}/images/profileImageBasic.png" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;">
+						</c:if>
+						<c:if test="${not empty user.profileImage}">
+							<img id="profileImg" src="${pageContext.request.contextPath}/images/${user.profileImage}" style="width: 250px; height: 250px; border-radius: 50%; cursor: pointer;">
+				    	</c:if>
 				    	<input id="input_img" name="file" type="file" style="display: none;" accept="image/*">
 					</div>
 					<div class="profileButton">
@@ -203,9 +208,8 @@
 				<div class="form-group form-group-lg">
 					<label for="email" class="col-sm-3 control-label">Authorization</label>
 					<div class="col-sm-6 radio">
-						<span><input type="radio" name="userTypeStr" value="false" class="user">User</span>
+						<span><input type="radio" name="userTypeStr" value="false" class="user" checked="checked">User</span>
 						<span><input type="radio" name="userTypeStr" value="true" class="admin">Admin</span>
-					
 					</div>
 				</div>
 				
@@ -220,7 +224,7 @@
 					<label for="nickName" class="col-sm-3 control-label">Nickname</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="nickName" value="${user.nickName}">
-						<c:if test="${errors.email}">닉네임을 입력해주세요.</c:if>
+						<c:if test="${errors.email}"><script>alert("닉네임을 입력해주세요.")</script></c:if>
 					</div>
 				</div>
 				
@@ -228,8 +232,8 @@
 					<label for="password" class="col-sm-3 control-label">사용자의 현재 비밀번호</label>
 					<div class="col-sm-6">
 						<input type="password"  class="form-control" name="oldPwd" placeholder="(*필수)현재 사용자 비밀번호">
-					<c:if test="${errors.oldPwd}"><span>현재 비밀번호를 입력해주세요</span></c:if>
-					<c:if test="${errors.invalidPassword}"><span>잘못된 비밀번호 입니다.</span></c:if>
+					<c:if test="${errors.oldPwd}"><span><script>alert("현재 비밀번호를 입력해주세요")</script></span></c:if>
+					<c:if test="${errors.invalidPassword}"><script>alert("잘못된 비밀번호 입니다.")</script></c:if>
 					</div>
 				</div>
 				
@@ -237,7 +241,7 @@
 					<label for="confirmPassword" class="col-sm-3 control-label">ConfirmPassword</label>
 					<div class="col-sm-6">
 						<input type="password" class="form-control" name="newPwd1" placeholder="새로운 비밀번호 (바꿀 경우만 작성)">
-					<c:if test="${errors.duplicatedPassword}"><span>바꾸려는 비밀번호가 현재 비밀번호와 같습니다.</span></c:if>
+					<c:if test="${errors.duplicatedPassword}"><script>alert("바꾸려는 비밀번호가 현재 비밀번호와 같습니다.")</script></c:if>
 					</div>
 				</div>
 				
@@ -245,7 +249,7 @@
 					<label for="confirmPassword" class="col-sm-3 control-label">ConfirmPassword</label>
 					<div class="col-sm-6">
 					<input type="password" class="form-control" name="newPwd2" placeholder="새로운 비밀번호 재확인">
-					<c:if test="${errors.notEqualNewPwd}"><span>새로 입력한 비밀번호들이 맞지 않습니다.</span></c:if>
+					<c:if test="${errors.notEqualNewPwd}"><script>alert("새로 입력한 비밀번호들이 맞지 않습니다.")</script></c:if>
 					</div>
 				</div>
 				
@@ -272,7 +276,7 @@
 					<label for="p_answer" class="col-sm-3 control-label">비밀번호 확인 답</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" name="pwA" value="${user.pwA}">
-						<c:if test="${errors.pwA}">질문에 대한 답을 작성해 주세요.</c:if>
+						<c:if test="${errors.pwA}"><script>alert("질문에 대한 답을 작성해 주세요.")</script></c:if>
 					</div>
 				</div>
 				
@@ -281,8 +285,8 @@
 					<div class="col-sm-6">
 					<input type="hidden" name="adminId" value="${authUser.userId}">
 							<input type="password"  class="form-control" name="ad_password" placeholder="(*필수)관리자 비밀번호">
-							<c:if test="${errors.ad_password}"><span>관리자 비밀번호를 입력해주세요</span></c:if>
-							<c:if test="${errors.adminInvalidPassword}"><span>잘못된 비밀번호 입니다.</span></c:if>
+							<c:if test="${errors.ad_password}"><script>alert("관리자 비밀번호를 입력해주세요")</script></c:if>
+							<c:if test="${errors.adminInvalidPassword}"><script>alert("잘못된 비밀번호 입니다.")</script></c:if>
 					</div>
 				</div>
 				

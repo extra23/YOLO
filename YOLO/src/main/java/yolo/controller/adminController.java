@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -91,14 +92,6 @@ public class adminController {
 
 			ModelAndView mv = new ModelAndView();
 			UserVO user = userDAO.selectUser(userId);
-			
-			boolean userType = false;
-			if(userTypeStr.equals("true")) {
-				userType = true;
-			}else if(userTypeStr.equals("false")){
-				userType = false;
-			}
-			
 
 			Map<String, Boolean> errors = new HashMap<String, Boolean>();
 
@@ -112,7 +105,13 @@ public class adminController {
 	/*		if(userType == "") {
 				
 			}*/
-
+			boolean userType = false;
+			if(userTypeStr.equals("true")) {
+				userType = true;
+			}else if(userTypeStr.equals("false")){
+				userType = false;
+			}
+			System.out.println(userTypeStr);
 
 			if (!newPwd1.equals(newPwd2)) {
 				errors.put("notEqualNewPwd", true);

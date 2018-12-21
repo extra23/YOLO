@@ -63,8 +63,8 @@
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>프로필 이미지</th>
-				<th>썸네일</th>
+				<th style="width: 25%">프로필 이미지</th>
+				<th style="width: 25%">썸네일</th>
 				<th>닉네임</th>
 				<th>이메일</th>
 				<th>password</th>
@@ -103,9 +103,6 @@
                     <c:if test="${pagination.curRange ne 1 }">
                         <a href="#" onClick="fn_paging(1)">[처음]</a> 
                     </c:if>
-                    <c:if test="${pagination.curPage ne 1}">
-                        <a href="#" onClick="fn_paging('${pagination.prevPage }')">[이전]</a> 
-                    </c:if>
                     <c:forEach var="pageNum" begin="${pagination.startPage }" end="${pagination.endPage }">
                         <c:choose>
                             <c:when test="${pageNum eq  pagination.curPage}">
@@ -116,6 +113,9 @@
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
+                     <c:if test="${pagination.curPage ne 1}">
+                        <a href="#" onClick="fn_paging('${pagination.prevPage }')">[이전]</a> 
+                    </c:if>
                     <c:if test="${pagination.curPage ne pagination.pageCnt && pagination.pageCnt > 0}">
                         <a href="#" onClick="fn_paging('${pagination.nextPage }')">[다음]</a> 
                     </c:if>
