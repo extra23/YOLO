@@ -123,8 +123,14 @@
 					코스 선택
 						<a href="#" class="toggle-custom" id="btn1" data-toggle="collapse" data-target="#submenu1" aria-expanded="false"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 					<ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn1">
-						<c:forEach var="course" items="${courseList}" varStatus="status1">
-							<label><input type="checkbox" name="co" value="${course.courseId}">${course.cTitle}</label>
+						<c:forEach var="course" items="${courseList}">
+						<c:forEach var="como" items="${comoList }">
+							<c:if test="${course.courseId eq como.courseId }">
+								<label><input type="checkbox" name="co" value="${course.courseId}" checked="checked">${course.cTitle}</label>
+							&nbsp;&nbsp;
+							</c:if>
+						</c:forEach>
+								<label><input type="checkbox" name="co" value="${course.courseId}">${course.cTitle}</label>
 							&nbsp;&nbsp;
 						</c:forEach>
 					</ul>

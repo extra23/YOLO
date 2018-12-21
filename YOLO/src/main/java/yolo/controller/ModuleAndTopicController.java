@@ -142,10 +142,12 @@ public class ModuleAndTopicController {
 			ModuleVO module = moduleService.readModuleByModuleId(moduleId);
 			
 			List<ComoVO> comoList= comoService.selectComoList(moduleId);
-			if(comoList != null) {
+			
+			
+			
 				
-				model.addAttribute("comoList",comoList);
-			}
+			model.addAttribute("comoList",comoList);
+			
 			
 			
 			model.addAttribute("module",module);
