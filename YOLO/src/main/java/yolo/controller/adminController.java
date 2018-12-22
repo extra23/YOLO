@@ -65,11 +65,13 @@ public class adminController {
 		paging.setPageSize(10);
 		
 		List<UserVO> list = userService.readUserListByLimit(paging);
+		List<PwdQuestionVO> newQList = pwdQuestionService.readQList();
 		
 		model.addAttribute("list", list);
         model.addAttribute("listCnt", listCnt);
         model.addAttribute("curPage", curPage);
         model.addAttribute("pagination", paging);
+        model.addAttribute("question", newQList);
         
 		return "adminUserList";
 	}
@@ -84,11 +86,13 @@ public class adminController {
 		paging.setPageSize(10);
 		
 		List<UserVO> list = userService.readUserListByLimit(paging);
+		List<PwdQuestionVO> newQList = pwdQuestionService.readQList();
 		
 		model.addAttribute("list", list);
         model.addAttribute("listCnt", listCnt);
         model.addAttribute("curPage", curPage);
         model.addAttribute("pagination", paging);
+        model.addAttribute("question", newQList);
         
 		return "adminList";
 	}
@@ -114,6 +118,7 @@ public class adminController {
 			UserVO user = userDAO.selectUser(userId);
 
 			Map<String, Boolean> errors = new HashMap<String, Boolean>();
+			
 
 			List<UserVO> userList = userService.readUserList();
 			List<PwdQuestionVO> qList = pwdQuestionService.readQList();
@@ -213,7 +218,10 @@ public class adminController {
 			}
 			
 			List<UserVO> newUserList = userService.readUserList();
+			List<PwdQuestionVO> newQList = pwdQuestionService.readQList();
 			mv.addObject("list", newUserList);
+			mv.addObject("question", newQList);
+
 			
 			mv.setViewName("adminUserList");
 			

@@ -26,8 +26,7 @@
 		#userListTable thead {background-color: gainsboro;}
 		
 		#pagination {text-align: center; margin: 10px; margin-top: 30px; font-size: 18px;}
-	#image{color: black;}
-	#image:hover{text-decoration: none; color: #5a5a5a;}
+
 	</style>
 	
 	<script>
@@ -36,8 +35,8 @@
 			location.href = "adminUserList?curPage=" + curPage;
 		}
 		
-		/* $(function(){
-			$("#image").click(
+		$(function(){
+			$("#profileImage").hover(
 				function(event){
 					$("#profileImage>img").css("display", "block");
 					$("#profileImage>img").css("left", event.pageX + "px")
@@ -48,7 +47,7 @@
 					$("#profileImage>img").css("display", "none");
 				}
 			);
-		}); */
+		});
 	
 	</script>
 	
@@ -58,7 +57,7 @@
 	<jsp:include page="header3.jsp"></jsp:include>
 	
 	<div class="mainContainer">
-	<h2 class="text-center">사용자 목록</h2>
+	<h2 class="text-center">관리자 목록</h2>
 	
 	<table id="userListTable">
 		<thead>
@@ -71,21 +70,19 @@
 				<th>password</th>
 				<th style="width: 15%">password 확인 질문</th>
 				<th>password 확인 질문 답</th>
-				<th>수정</th>
-				<th>삭제</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="user" items="${list}" varStatus="status">
-			<c:if test="${user.userType eq false}">
+			<c:if test="${user.userType eq true}">
 			<tr>
 				<td>
-					<c:if test="${empty param.pageNo}">${status.count-1}</c:if>
-					<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count-1}</c:if>
+					<c:if test="${empty param.pageNo}">${status.count}</c:if>
+					<c:if test="${not empty param.pageNo}">${(20 * (param.pageNo-1))+status.count}</c:if>
 				</td>
 				<td id="profileImage">
-					<span><a id="image" href="${pageContext.request.contextPath}/images/${user.profileImage}">${user.profileImage}</a></span>
-<%-- 					<img src="${pageContext.request.contextPath}/images/${user.profileImage}" style="display: none; position: fixed; width: 200px; height: auto;"> --%>
+					<span>${user.profileImage}</span>
+					<img src="${pageContext.request.contextPath}/images/${user.profileImage}" style="display: none; position: fixed; width: 200px; height: auto;">
 				</td>
 				<td id="thumbnail">${user.thumbnail}</td>
 				<td>${user.nickName}</td>
@@ -97,8 +94,6 @@
 				</c:if>
 				</c:forEach>
 				<td>${user.pwA}</td>
-				<td><a href="adminUserModify?userId=${user.userId}">[수정]</a></td>
-				<td><a href="adminUserDelete?userId=${user.userId}">[삭제]</a></td>
 			</tr>
 			</c:if>
 			</c:forEach>
