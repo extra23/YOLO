@@ -213,7 +213,6 @@
 			
 			<c:if test="${not empty sessionScope.authUser}">
 				
-				
 				<div class="btn-group" id="btn-group">
 					<button type="button" id="namebox" class="btn btn-danger" style="font-family: 'Jua', sans-serif ">${authUser.nickName}</button>
 					<button type="button" class="btn btn-danger dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-expanded="false">

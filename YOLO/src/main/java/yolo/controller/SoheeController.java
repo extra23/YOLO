@@ -72,20 +72,5 @@ public class SoheeController {
 		return "myModuleList";
 	}
 	
-	/*@RequestMapping(value = "/mainBoard", method = RequestMethod.GET)
-	public String boxView(Model model) {
-		
-		System.out.println("Sohee Controller MainBoard");
-		List<CourseVO> courseBox = courseService.courseListBox();
-		model.addAttribute("courseBoxView", courseBox);
-	
-		List<ModuleVO> moduleBox = moduleService.moduleListBox();
-		model.addAttribute("moduleBoxView", moduleBox);
-		
-		List<UserVO> userList = userService.readUserList();
-		model.addAttribute("userList", userList);
-		
-		return "mainBoard";
-	}*/
 }
 

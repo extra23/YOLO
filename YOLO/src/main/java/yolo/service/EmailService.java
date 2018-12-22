@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 import yolo.vo.UserVO;
 
 @Service("EmailService")
-public class EmailService implements InterfaceEmailService {
-
-	
-	
+public class EmailService implements InterfaceEmailService {	
 	public void send_email(UserVO user) {
 		//Mail Server 설정
 		String charSet = "utf-8";
@@ -45,13 +42,9 @@ public class EmailService implements InterfaceEmailService {
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
-			email.send();
-			
+			email.send();	
 		}catch(Exception e) {
 			System.out.println("메일발송 실패: "+ e);
-		}
-		
+		}	
 	}
-
-
 }
